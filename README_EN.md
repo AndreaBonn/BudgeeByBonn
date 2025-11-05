@@ -132,6 +132,4 @@ For more information, collaborations, or feedback:
 
 Developed by **Andrea Bonacci**
 
-Made in Italy 🇮🇹
-
 </div>

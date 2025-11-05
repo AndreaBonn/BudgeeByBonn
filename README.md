@@ -137,6 +137,4 @@ Per maggiori informazioni, collaborazioni o feedback:
 
 Sviluppato da **Andrea Bonacci**
 
-Made in Italy 🇮🇹
-
 </div>
