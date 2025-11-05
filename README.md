@@ -1,6 +1,6 @@
-# 💰 Finance Manager PWA
+# 💰 Budgee (PWA)
 
-Benvenuto nella pagina di presentazione del mio progetto di gestione finanziaria personale!
+Benvenuto nella pagina di presentazione del mio progetto!
 
 👉 **Visita l'app live:** [Budgee by Bonn](https://financial-management-by-bonn.web.app)
 
@@ -8,7 +8,7 @@ Benvenuto nella pagina di presentazione del mio progetto di gestione finanziaria
 
 ## ℹ️ Descrizione
 
-**Finance Manager PWA** è un'applicazione web progressiva completa per la gestione delle finanze personali. Sviluppata con **HTML5, CSS3 e JavaScript vanilla**, utilizza **Firebase** per il backend e **Chart.js** per le visualizzazioni interattive.
+**Budgee** è un'applicazione web progressiva completa per la gestione delle finanze personali. Sviluppata con **HTML5, CSS3 e JavaScript vanilla**, utilizza **Firebase** per il backend e **Chart.js** per le visualizzazioni interattive.
 
 L'app offre un'esperienza utente moderna e intuitiva, con focus su **performance**, **design responsivo** e **funzionalità offline-first**.
 
