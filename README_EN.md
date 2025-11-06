@@ -130,6 +130,6 @@ For more information, collaborations, or feedback:
 
 **The source code is private, but you can test the application via the link above.**
 
-Developed by **Andrea Bonacci**
+**© 2025 Andrea Bonacci - Tutti i diritti riservati**
 
 </div>
