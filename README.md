@@ -135,6 +135,6 @@ Per maggiori informazioni, collaborazioni o feedback:
 
 **Il codice sorgente è privato, ma puoi testare l'applicazione tramite il link sopra.**
 
-Sviluppato da **Andrea Bonacci**
+**© 2025 Andrea Bonacci - Tutti i diritti riservati**
 
 </div>
