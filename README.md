@@ -40,9 +40,11 @@ Confronta entrate vs spese nel tempo. Clicca su un punto per vedere tutte le tra
 ### 🎯 Budget e Monitoraggio
 
 - **Budget Mensili** - Imposta limiti di spesa per ogni categoria
+- **Copia Budget Mese Precedente** - Riprendi rapidamente i budget dal mese precedente con selezione selettiva e gestione conflitti
 - **Monitoraggio Real-time** - Visualizza percentuali di utilizzo con barre colorate
 - **Avvisi Automatici** - Notifiche quando superi il budget
 - **Previsioni Intelligenti** - Stima la spesa a fine mese basata sui trend attuali
+- **Budget Proporzionali** - Calcolo automatico per periodi personalizzati basato sui giorni effettivi
 
 ### 🤖 Insights Intelligenti
 
@@ -50,6 +52,8 @@ Il motore di analisi automatica ti aiuta a:
 - 📈 Identificare pattern nelle tue abitudini di spesa
 - 🔍 Scoprire le categorie più utilizzate
 - 📅 Confrontare periodi diversi (mese corrente vs precedente)
+- 📊 **Report Periodi Personalizzati** - Genera report per range di date specifici (es: 20 giorni di ottobre + 10 di novembre)
+- 💸 **Flusso di Denaro (Sankey Diagram)** - Visualizza come si muovono i tuoi soldi tra entrate e spese
 - 💡 Ricevere suggerimenti personalizzati per ottimizzare le finanze
 
 ### 🌍 Multilingua
@@ -113,10 +117,13 @@ Aggiungi spese ed entrate con pochi click. Ogni transazione include:
 I grafici si aggiornano automaticamente ad ogni nuova transazione. Clicca su qualsiasi elemento per vedere i dettagli.
 
 ### 5. Imposta i Budget
-Definisci limiti mensili per ogni categoria e monitora l'utilizzo in tempo reale.
+Definisci limiti mensili per ogni categoria e monitora l'utilizzo in tempo reale. Usa la funzione "Riprendi Budget Mese Precedente" per copiare rapidamente i budget dal mese scorso.
 
-### 6. Ricevi Insights
-Il sistema analizza automaticamente le tue abitudini e ti fornisce suggerimenti personalizzati.
+### 6. Genera Report Personalizzati
+Crea report per periodi specifici (es: dal 15 ottobre al 20 novembre). Il sistema calcola automaticamente i budget proporzionali in base ai giorni effettivi di ogni mese inclusi nel periodo.
+
+### 7. Ricevi Insights
+Il sistema analizza automaticamente le tue abitudini e ti fornisce suggerimenti personalizzati. Visualizza il flusso di denaro con il diagramma Sankey per capire dove vanno i tuoi soldi.
 
 
 ---

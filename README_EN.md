@@ -40,9 +40,11 @@ Compare income vs expenses over time. Click on a point to see all transactions f
 ### 🎯 Budget and Monitoring
 
 - **Monthly Budgets** - Set spending limits for each category
+- **Copy Previous Month Budget** - Quickly resume budgets from the previous month with selective selection and conflict management
 - **Real-time Monitoring** - View usage percentages with colored bars
 - **Automatic Alerts** - Notifications when you exceed your budget
 - **Smart Forecasts** - Estimate end-of-month spending based on current trends
+- **Proportional Budgets** - Automatic calculation for custom periods based on actual days
 
 ### 🤖 Smart Insights
 
@@ -50,6 +52,8 @@ The automatic analysis engine helps you:
 - 📈 Identify patterns in your spending habits
 - 🔍 Discover the most used categories
 - 📅 Compare different periods (current month vs previous)
+- � **cCustom Period Reports** - Generate reports for specific date ranges (e.g., 20 days of October + 10 days of November)
+- 💸 **Money Flow (Sankey Diagram)** - Visualize how your money moves between income and expenses
 - 💡 Receive personalized suggestions to optimize your finances
 
 ### 🌍 Multilingual
@@ -111,10 +115,13 @@ Add expenses and income with just a few clicks. Each transaction includes:
 Charts update automatically with each new transaction. Click on any element to see details.
 
 ### 5. Set Budgets
-Define monthly limits for each category and monitor usage in real-time.
+Define monthly limits for each category and monitor usage in real-time. Use the "Copy Previous Month Budget" feature to quickly copy budgets from last month.
 
-### 6. Receive Insights
-The system automatically analyzes your habits and provides personalized suggestions.
+### 6. Generate Custom Reports
+Create reports for specific periods (e.g., from October 15 to November 20). The system automatically calculates proportional budgets based on the actual days of each month included in the period.
+
+### 7. Receive Insights
+The system automatically analyzes your habits and provides personalized suggestions. Visualize money flow with the Sankey diagram to understand where your money goes.
 
 ---
 
