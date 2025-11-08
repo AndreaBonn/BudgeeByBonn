@@ -21,6 +21,7 @@ L'app offre un'esperienza utente moderna e intuitiva, con focus su **performance
 - **Multi-Valuta** - Supporto per EUR, PLN con conversione automatica
 - **Importazione Excel** - Carica massivamente i tuoi dati da file .xlsx/.xls
 - **Esportazione CSV** - Backup completo dei tuoi dati
+- **🔄 Transazioni Ricorrenti** - Programma spese ed entrate che si ripetono automaticamente (abbonamenti, stipendi, affitti)
 
 ### 📊 Visualizzazioni Interattive
 
@@ -45,6 +46,16 @@ Confronta entrate vs spese nel tempo. Clicca su un punto per vedere tutte le tra
 - **Avvisi Automatici** - Notifiche quando superi il budget
 - **Previsioni Intelligenti** - Stima la spesa a fine mese basata sui trend attuali
 - **Budget Proporzionali** - Calcolo automatico per periodi personalizzati basato sui giorni effettivi
+
+### 🔄 Transazioni Ricorrenti
+
+- **Spese Ricorrenti** - Programma spese che si ripetono (abbonamenti Netflix, affitto, bollette, palestra)
+- **Entrate Ricorrenti** - Programma entrate che si ripetono (stipendio, freelance, affitti ricevuti)
+- **Frequenze Flessibili** - Giornaliera, settimanale (scegli il giorno), mensile (primo/ultimo/giorno specifico), annuale
+- **Conferma Manuale** - Ogni transazione ricorrente richiede la tua conferma prima di essere registrata
+- **Gestione Completa** - Modifica importo, descrizione e metodo di pagamento delle ricorrenze future
+- **Eliminazione Intelligente** - Salta singoli pagamenti o elimina tutte le occorrenze future mantenendo lo storico
+- **Modal Eleganti** - Interfaccia premium senza alert nativi, con animazioni fluide e design moderno
 
 ### 🤖 Insights Intelligenti
 
@@ -122,7 +133,20 @@ Definisci limiti mensili per ogni categoria e monitora l'utilizzo in tempo reale
 ### 6. Genera Report Personalizzati
 Crea report per periodi specifici (es: dal 15 ottobre al 20 novembre). Il sistema calcola automaticamente i budget proporzionali in base ai giorni effettivi di ogni mese inclusi nel periodo.
 
-### 7. Ricevi Insights
+### 7. Configura Transazioni Ricorrenti
+Programma spese ed entrate che si ripetono:
+- **Crea una ricorrenza**: Spunta "🔄 Spesa/Entrata Ricorrente" e scegli la frequenza
+- **Conferma pagamenti**: Ricevi notifiche quando è il momento di confermare una transazione ricorrente
+- **Gestisci ricorrenze**: Clicca su "📋 Gestisci Ricorrenti" per modificare o eliminare le programmazioni future
+
+**Esempi pratici:**
+- 💰 Stipendio mensile (ultimo giorno del mese)
+- 🏠 Affitto (primo giorno del mese)
+- 📺 Netflix (giorno 15 di ogni mese)
+- 🏋️ Palestra (ogni lunedì)
+- 💼 Cliente freelance fisso (primo del mese)
+
+### 8. Ricevi Insights
 Il sistema analizza automaticamente le tue abitudini e ti fornisce suggerimenti personalizzati. Visualizza il flusso di denaro con il diagramma Sankey per capire dove vanno i tuoi soldi.
 
 

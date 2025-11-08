@@ -21,6 +21,7 @@ The app offers a modern and intuitive user experience, with a focus on **perform
 - **Multi-Currency** - Support for EUR, PLN with automatic conversion
 - **Excel Import** - Bulk load your data from .xlsx/.xls files
 - **CSV Export** - Complete backup of your data
+- **🔄 Recurring Transactions** - Schedule expenses and income that repeat automatically (subscriptions, salaries, rent)
 
 ### 📊 Interactive Visualizations
 
@@ -45,6 +46,16 @@ Compare income vs expenses over time. Click on a point to see all transactions f
 - **Automatic Alerts** - Notifications when you exceed your budget
 - **Smart Forecasts** - Estimate end-of-month spending based on current trends
 - **Proportional Budgets** - Automatic calculation for custom periods based on actual days
+
+### 🔄 Recurring Transactions
+
+- **Recurring Expenses** - Schedule repeating expenses (Netflix subscriptions, rent, bills, gym)
+- **Recurring Income** - Schedule repeating income (salary, freelance, rental income)
+- **Flexible Frequencies** - Daily, weekly (choose day), monthly (first/last/specific day), yearly
+- **Manual Confirmation** - Each recurring transaction requires your confirmation before being recorded
+- **Complete Management** - Edit amount, description, and payment method for future occurrences
+- **Smart Deletion** - Skip individual payments or delete all future occurrences while keeping history
+- **Elegant Modals** - Premium interface without native alerts, with smooth animations and modern design
 
 ### 🤖 Smart Insights
 
@@ -120,7 +131,20 @@ Define monthly limits for each category and monitor usage in real-time. Use the 
 ### 6. Generate Custom Reports
 Create reports for specific periods (e.g., from October 15 to November 20). The system automatically calculates proportional budgets based on the actual days of each month included in the period.
 
-### 7. Receive Insights
+### 7. Configure Recurring Transactions
+Schedule expenses and income that repeat:
+- **Create a recurrence**: Check "🔄 Recurring Expense/Income" and choose the frequency
+- **Confirm payments**: Receive notifications when it's time to confirm a recurring transaction
+- **Manage recurrences**: Click "📋 Manage Recurring" to edit or delete future schedules
+
+**Practical examples:**
+- 💰 Monthly salary (last day of month)
+- 🏠 Rent (first day of month)
+- 📺 Netflix (15th of each month)
+- 🏋️ Gym (every Monday)
+- 💼 Fixed freelance client (first of month)
+
+### 8. Receive Insights
 The system automatically analyzes your habits and provides personalized suggestions. Visualize money flow with the Sankey diagram to understand where your money goes.
 
 ---
