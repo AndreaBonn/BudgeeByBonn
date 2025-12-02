@@ -1,8 +1,12 @@
 # 💰 Budgee (PWA)
 
-Welcome to my project presentation page!
+<div align="center">
 
-👉 **Visit the live app:** [Budgee by Bonn](https://financial-management-by-bonn.web.app)
+**Complete Progressive Web App for Personal Finance Management**
+
+🌐 [**Try Live**](https://financial-management-by-bonn.web.app) • 📱 Installable • ☁️ Cloud Sync
+
+</div>
 
 ---
 
@@ -146,6 +150,20 @@ Schedule expenses and income that repeat:
 
 ### 8. Receive Insights
 The system automatically analyzes your habits and provides personalized suggestions. Visualize money flow with the Sankey diagram to understand where your money goes.
+
+---
+
+## 🎯 Try the App Now!
+
+<div align="center">
+
+### 👉 [**OPEN BUDGEE**](https://financial-management-by-bonn.web.app) 👈
+
+**No installation required • Works on all devices • Cloud-synced data**
+
+[![Try Now](https://img.shields.io/badge/🚀_START_FREE-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white&labelColor=1a73e8)](https://financial-management-by-bonn.web.app)
+
+</div>
 
 ---
 
