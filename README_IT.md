@@ -25,7 +25,6 @@ L'app offre un'esperienza utente moderna e intuitiva, con focus su **performance
 - **Multi-Valuta** - Supporto per EUR, PLN con conversione automatica
 - **Importazione Excel** - Carica massivamente i tuoi dati da file .xlsx/.xls
 - **Esportazione CSV** - Backup completo dei tuoi dati
-- **🔄 Transazioni Ricorrenti** - Programma spese ed entrate che si ripetono automaticamente (abbonamenti, stipendi, affitti)
 
 ### 📊 Visualizzazioni Interattive
 

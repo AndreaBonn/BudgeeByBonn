@@ -25,7 +25,6 @@ The app offers a modern and intuitive user experience, with a focus on **perform
 - **Multi-Currency** - Support for EUR, PLN with automatic conversion
 - **Excel Import** - Bulk load your data from .xlsx/.xls files
 - **CSV Export** - Complete backup of your data
-- **🔄 Recurring Transactions** - Schedule expenses and income that repeat automatically (subscriptions, salaries, rent)
 
 ### 📊 Interactive Visualizations
 
