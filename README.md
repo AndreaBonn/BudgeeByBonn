@@ -2,26 +2,23 @@
 
 <div align="center">
 
-**Complete Progressive Web App for Personal Finance Management**
+[![Live App](https://img.shields.io/badge/🌐_Live_App-Visit_Now-667eea?style=for-the-badge)](https://financial-management-by-bonn.web.app)
 
-🌐 [**Try Live**](https://financial-management-by-bonn.web.app) • 📱 Installable • ☁️ Cloud Sync
+
+[![English](https://img.shields.io/badge/ENGLISH-Read_Documentation-4A90E2?style=for-the-badge)](./README_EN.md)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+[![Italiano](https://img.shields.io/badge/Italiano-Leggi_Documentazione-009246?style=for-the-badge)](./README_IT.md)
 
 </div>
 
+---
+
+## ℹ️ About / Informazioni
 Track expenses and income, set budgets, schedule recurring transactions, and gain insights into your spending habits with beautiful charts and smart analytics.
 
----
 
-### 📖 Read Documentation in Your Language
 
-Choose your language:
-
-- [**English Documentation**](./README_EN.md)
-- [**Documentazione Italiana**](./README_IT.md)
-
----
-
-## ✨ Key Features
+## ✨ Key Features / Caratteristiche Principali
 
 - 💸 **Expense & Income Tracking** - Record all your transactions with customizable categories
 - 🔄 **Recurring Transactions** - Automate subscriptions, salaries, and recurring bills
@@ -34,12 +31,17 @@ Choose your language:
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Quick Start / Avvio Rapido
 
-1. **Visit the app**: [Budgee](https://financial-management-by-bonn.web.app)
-2. **Create an account** with your email
+<div align="center">
+
+### [👉 Launch App / Avvia App 👈](https://financial-management-by-bonn.web.app)
+
+</div>
+
+1. **Create an account** with your email
+2. **Install the app** on your device for quick access
 3. **Start tracking** your finances immediately
-4. **Install the app** on your device for quick access
 
 ---
 

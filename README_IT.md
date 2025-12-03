@@ -2,13 +2,12 @@
 
 <div align="center">
 
-**Progressive Web App completa per la gestione delle finanze personali**
+**Web App per la gestione delle finanze personali**
 
 🌐 [**Prova l'App**](https://financial-management-by-bonn.web.app) • 📱 Installabile • ☁️ Sincronizzazione Cloud
 
 </div>
 
----
 
 ## ℹ️ Descrizione
 

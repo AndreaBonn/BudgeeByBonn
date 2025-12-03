@@ -2,13 +2,12 @@
 
 <div align="center">
 
-**Complete Progressive Web App for Personal Finance Management**
+**Web App for Personal Finance Management**
 
 🌐 [**Try Live**](https://financial-management-by-bonn.web.app) • 📱 Installable • ☁️ Cloud Sync
 
 </div>
 
----
 
 ## ℹ️ Description
 
