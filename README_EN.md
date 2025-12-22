@@ -8,6 +8,7 @@
 
 </div>
 
+---
 
 ## ℹ️ Description
 
@@ -21,6 +22,7 @@ The app offers a modern and intuitive user experience, with a focus on **perform
 
 ### 💸 Complete Finance Management
 - **Expense and Income Tracking** - Record all your transactions with customizable categories
+- **Dedicated Savings Analysis** - Complete tab to monitor your savings over time
 - **Multi-Currency** - Support for EUR, PLN with automatic conversion
 - **Excel Import** - Bulk load your data from .xlsx/.xls files
 - **CSV Export** - Complete backup of your data
@@ -35,12 +37,39 @@ Monitor monthly and yearly trends of your finances with line charts showing cumu
 
 #### Combined Chart
 Compare income vs expenses over time. Click on a point to see all transactions for that day with:
-- 💰 Total income
-- 💸 Total expenses
+- �  Total income
+- � Tottal expenses
 - 📊 Daily balance
 - 📝 Detailed transaction list
 
-### 🎯 Budget and Monitoring
+#### Complete Savings Tab
+An entire section dedicated to analyzing your savings:
+
+**Advanced Charts:**
+- **Monthly Savings Trend** - View income, expenses, and savings for each month with combined chart (lines + bars)
+- **Cumulative Savings** - Monitor the progressive growth of your wealth with dynamic filled area (green/red)
+- **Saving Rate Trend** - Analyze monthly savings percentage with dynamic colors based on performance
+
+**Interactive Statistics:**
+- 💰 **Total Saved** (clickable) - Shows complete breakdown of total income vs total expenses
+- 📊 **Average Saving Rate** - Average savings percentage relative to period income
+- 🏆 **Best Month** (clickable) - Identifies the month with highest savings and displays complete details
+- ⚠️ **Worst Month** (clickable) - Identifies the month with lowest savings to understand where to improve
+
+**Smart Insights:**
+- Automatic analysis of savings patterns
+- Savings rate evaluation (Excellent ≥20%, Good ≥10%, Low ≥0%)
+- Trend comparison between consecutive months
+- Personalized suggestions to optimize savings
+
+**Flexible Time Filters:**
+- Current month
+- Last 3, 6, or 12 months
+- Year to date (default)
+- All available period
+- Custom range with specific dates
+
+### � Budtget and Monitoring
 
 - **Monthly Budgets** - Set spending limits for each category
 - **Copy Previous Month Budget** - Quickly resume budgets from the previous month with selective selection and conflict management
@@ -62,10 +91,10 @@ Compare income vs expenses over time. Click on a point to see all transactions f
 ### 🤖 Smart Insights
 
 The automatic analysis engine helps you:
-- 📈 Identify patterns in your spending habits
+- 📈 Identify patterns in your spending and saving habits
 - 🔍 Discover the most used categories
 - 📅 Compare different periods (current month vs previous)
-- � **cCustom Period Reports** - Generate reports for specific date ranges (e.g., 20 days of October + 10 days of November)
+- 📊 **Custom Period Reports** - Generate reports for specific date ranges (e.g., 20 days of October + 10 days of November)
 - 💸 **Money Flow (Sankey Diagram)** - Visualize how your money moves between income and expenses
 - 💡 Receive personalized suggestions to optimize your finances
 
@@ -75,7 +104,7 @@ Fully translated interface in:
 - 🇮🇹 **Italian**
 - 🇬🇧 **English**
 
-Instant language switching with automatic translation of all categories and messages.
+Instant language switching with automatic translation of all categories, charts, and messages.
 
 ### 📱 Progressive Web App
 
@@ -127,13 +156,21 @@ Add expenses and income with just a few clicks. Each transaction includes:
 ### 4. View Charts
 Charts update automatically with each new transaction. Click on any element to see details.
 
-### 5. Set Budgets
+### 5. Analyze Savings
+Go to the "Savings" tab to:
+- View monthly trend of income, expenses, and savings
+- Monitor cumulative wealth growth
+- Analyze monthly savings percentage
+- Click on statistics for in-depth details
+- Receive automatic insights on your savings patterns
+
+### 6. Set Budgets
 Define monthly limits for each category and monitor usage in real-time. Use the "Copy Previous Month Budget" feature to quickly copy budgets from last month.
 
-### 6. Generate Custom Reports
+### 7. Generate Custom Reports
 Create reports for specific periods (e.g., from October 15 to November 20). The system automatically calculates proportional budgets based on the actual days of each month included in the period.
 
-### 7. Configure Recurring Transactions
+### 8. Configure Recurring Transactions
 Schedule expenses and income that repeat:
 - **Create a recurrence**: Check "🔄 Recurring Expense/Income" and choose the frequency
 - **Confirm payments**: Receive notifications when it's time to confirm a recurring transaction
@@ -146,7 +183,7 @@ Schedule expenses and income that repeat:
 - 🏋️ Gym (every Monday)
 - 💼 Fixed freelance client (first of month)
 
-### 8. Receive Insights
+### 9. Receive Insights
 The system automatically analyzes your habits and provides personalized suggestions. Visualize money flow with the Sankey diagram to understand where your money goes.
 
 ---
@@ -177,6 +214,6 @@ For more information, collaborations, or feedback:
 
 **The source code is private, but you can test the application via the link above.**
 
-**© 2025 Andrea Bonacci - Tutti i diritti riservati**
+**© 2025 Andrea Bonacci - All rights reserved**
 
 </div>

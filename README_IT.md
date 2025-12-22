@@ -2,43 +2,72 @@
 
 <div align="center">
 
-**Web App per la gestione delle finanze personali**
+**App Web per la Gestione delle Finanze Personali**
 
-🌐 [**Prova l'App**](https://financial-management-by-bonn.web.app) • 📱 Installabile • ☁️ Sincronizzazione Cloud
+🌐 [**Prova Live**](https://financial-management-by-bonn.web.app) • 📱 Installabile • ☁️ Sincronizzazione Cloud
 
 </div>
 
+---
 
 ## ℹ️ Descrizione
 
-**Budgee** è un'applicazione web progressiva completa per la gestione delle finanze personali. Sviluppata con **HTML5, CSS3 e JavaScript vanilla**, utilizza **Firebase** per il backend e **Chart.js** per le visualizzazioni interattive.
+**Budgee** è un'applicazione web progressiva completa per la gestione delle finanze personali. Costruita con **HTML5, CSS3 e JavaScript vanilla**, utilizza **Firebase** per il backend e **Chart.js** per visualizzazioni interattive.
 
-L'app offre un'esperienza utente moderna e intuitiva, con focus su **performance**, **design responsivo** e **funzionalità offline-first**.
+L'app offre un'esperienza utente moderna e intuitiva, con focus su **performance**, **design responsive** e **funzionalità offline-first**.
 
 ---
 
-## ✨ Caratteristiche Principali
+## ✨ Funzionalità Principali
 
 ### 💸 Gestione Completa delle Finanze
 - **Tracciamento Spese ed Entrate** - Registra tutte le tue transazioni con categorie personalizzabili
+- **Analisi Risparmi Dedicata** - Tab completo per monitorare i tuoi risparmi nel tempo
 - **Multi-Valuta** - Supporto per EUR, PLN con conversione automatica
 - **Importazione Excel** - Carica massivamente i tuoi dati da file .xlsx/.xls
 - **Esportazione CSV** - Backup completo dei tuoi dati
 
 ### 📊 Visualizzazioni Interattive
 
-#### Heatmap in formato calendario
+#### Calendario Heatmap
 Analizza la distribuzione delle tue spese ed entrate per giorno. Clicca su ogni sezione per vedere i dettagli delle transazioni.
 
 #### Grafici Trend Cumulativi
-Monitora l'andamento mensile e annuale delle tue finanze con grafici a linee che mostrano la crescita cumulativa.
+Monitora l'andamento mensile e annuale delle tue finanze con grafici a linea che mostrano la crescita cumulativa.
 
 #### Grafico Combinato
 Confronta entrate vs spese nel tempo. Clicca su un punto per vedere tutte le transazioni di quel giorno con:
 - 💰 Totale entrate
 - 💸 Totale spese
 - 📊 Bilancio giornaliero
-- 📝 Lista dettagliata delle transazioni
+- 📝 Lista dettagliata transazioni
+
+#### Tab Risparmi Completo
+Un'intera sezione dedicata all'analisi dei tuoi risparmi:
+
+**Grafici Avanzati:**
+- **Trend Mensile Risparmi** - Visualizza entrate, spese e risparmi per ogni mese con grafico combinato (linee + barre)
+- **Risparmi Cumulati** - Monitora la crescita progressiva del tuo patrimonio con area riempita dinamica (verde/rosso)
+- **Trend Saving Rate** - Analizza la percentuale di risparmio mensile con colori dinamici basati sulla performance
+
+**Statistiche Interattive:**
+- 💰 **Totale Risparmiato** (cliccabile) - Mostra il breakdown completo di entrate totali vs spese totali
+- 📊 **Tasso Medio di Risparmio** - Percentuale media di risparmio rispetto alle entrate del periodo
+- 🏆 **Miglior Mese** (cliccabile) - Identifica il mese con maggior risparmio e visualizza dettagli completi
+- ⚠️ **Peggior Mese** (cliccabile) - Identifica il mese con minor risparmio per capire dove migliorare
+
+**Insights Intelligenti:**
+- Analisi automatica dei pattern di risparmio
+- Valutazione del tasso di risparmio (Eccellente ≥20%, Buono ≥10%, Basso ≥0%)
+- Confronto trend tra mesi consecutivi
+- Suggerimenti personalizzati per ottimizzare i risparmi
+
+**Filtri Temporali Flessibili:**
+- Mese corrente
+- Ultimi 3, 6 o 12 mesi
+- Dall'inizio dell'anno (default)
+- Tutto il periodo disponibile
+- Range personalizzato con date specifiche
 
 ### 🎯 Budget e Monitoraggio
 
@@ -55,18 +84,18 @@ Confronta entrate vs spese nel tempo. Clicca su un punto per vedere tutte le tra
 - **Entrate Ricorrenti** - Programma entrate che si ripetono (stipendio, freelance, affitti ricevuti)
 - **Frequenze Flessibili** - Giornaliera, settimanale (scegli il giorno), mensile (primo/ultimo/giorno specifico), annuale
 - **Conferma Manuale** - Ogni transazione ricorrente richiede la tua conferma prima di essere registrata
-- **Gestione Completa** - Modifica importo, descrizione e metodo di pagamento delle ricorrenze future
+- **Gestione Completa** - Modifica importo, descrizione e metodo di pagamento per le occorrenze future
 - **Eliminazione Intelligente** - Salta singoli pagamenti o elimina tutte le occorrenze future mantenendo lo storico
 - **Modal Eleganti** - Interfaccia premium senza alert nativi, con animazioni fluide e design moderno
 
 ### 🤖 Insights Intelligenti
 
 Il motore di analisi automatica ti aiuta a:
-- 📈 Identificare pattern nelle tue abitudini di spesa
+- 📈 Identificare pattern nelle tue abitudini di spesa e risparmio
 - 🔍 Scoprire le categorie più utilizzate
 - 📅 Confrontare periodi diversi (mese corrente vs precedente)
-- 📊 **Report Periodi Personalizzati** - Genera report per range di date specifici (es: 20 giorni di ottobre + 10 di novembre)
-- 💸 **Flusso di Denaro (Sankey Diagram)** - Visualizza come si muovono i tuoi soldi tra entrate e spese
+- 📊 **Report Periodi Personalizzati** - Genera report per range di date specifici (es: 20 giorni di ottobre + 10 giorni di novembre)
+- 💸 **Flusso di Denaro (Diagramma Sankey)** - Visualizza come si muovono i tuoi soldi tra entrate e spese
 - 💡 Ricevere suggerimenti personalizzati per ottimizzare le finanze
 
 ### 🌍 Multilingua
@@ -75,17 +104,15 @@ Interfaccia completamente tradotta in:
 - 🇮🇹 **Italiano**
 - 🇬🇧 **English**
 
-Switch istantaneo tra le lingue con traduzione automatica di tutte le categorie e messaggi.
+Cambio istantaneo della lingua con traduzione automatica di tutte le categorie, grafici e messaggi.
 
 ### 📱 Progressive Web App
 
 - **Installabile** - Aggiungi alla home screen come app nativa
-- **Responsive Design** - Ottimizzata per mobile, tablet e desktop
+- **Design Responsive** - Ottimizzato per mobile, tablet e desktop
 - **Performance** - Caricamento veloce e animazioni fluide
 
 ---
-
-
 
 ## 🛠️ Tecnologie Utilizzate
 
@@ -106,7 +133,7 @@ Switch istantaneo tra le lingue con traduzione automatica di tutte le categorie 
 ### Architettura
 - **Single Page Application** - Navigazione fluida senza reload
 - **Offline First** - Persistenza locale con sincronizzazione cloud
-- **Responsive Design** - Mobile-first approach
+- **Responsive Design** - Approccio mobile-first
 
 ---
 
@@ -116,9 +143,9 @@ Switch istantaneo tra le lingue con traduzione automatica di tutte le categorie 
 Crea un account con email e password. Verifica la tua email per accedere.
 
 ### 2. Crea il Tuo Profilo
-Imposta nome e valuta predefinita.
+Imposta il tuo nome e la valuta predefinita.
 
-### 3. Registra le Transazioni
+### 3. Registra Transazioni
 Aggiungi spese ed entrate con pochi click. Ogni transazione include:
 - Importo
 - Categoria
@@ -129,32 +156,39 @@ Aggiungi spese ed entrate con pochi click. Ogni transazione include:
 ### 4. Visualizza i Grafici
 I grafici si aggiornano automaticamente ad ogni nuova transazione. Clicca su qualsiasi elemento per vedere i dettagli.
 
-### 5. Imposta i Budget
-Definisci limiti mensili per ogni categoria e monitora l'utilizzo in tempo reale. Usa la funzione "Riprendi Budget Mese Precedente" per copiare rapidamente i budget dal mese scorso.
+### 5. Analizza i Risparmi
+Vai al tab "Risparmi" per:
+- Visualizzare il trend mensile di entrate, spese e risparmi
+- Monitorare la crescita cumulativa del patrimonio
+- Analizzare la percentuale di risparmio mensile
+- Cliccare sulle statistiche per dettagli approfonditi
+- Ricevere insights automatici sui tuoi pattern di risparmio
 
-### 6. Genera Report Personalizzati
-Crea report per periodi specifici (es: dal 15 ottobre al 20 novembre). Il sistema calcola automaticamente i budget proporzionali in base ai giorni effettivi di ogni mese inclusi nel periodo.
+### 6. Imposta Budget
+Definisci limiti mensili per ogni categoria e monitora l'utilizzo in tempo reale. Usa la funzione "Copia Budget Mese Precedente" per copiare rapidamente i budget dal mese scorso.
 
-### 7. Configura Transazioni Ricorrenti
+### 7. Genera Report Personalizzati
+Crea report per periodi specifici (es: dal 15 ottobre al 20 novembre). Il sistema calcola automaticamente i budget proporzionali in base ai giorni effettivi di ogni mese incluso nel periodo.
+
+### 8. Configura Transazioni Ricorrenti
 Programma spese ed entrate che si ripetono:
 - **Crea una ricorrenza**: Spunta "🔄 Spesa/Entrata Ricorrente" e scegli la frequenza
 - **Conferma pagamenti**: Ricevi notifiche quando è il momento di confermare una transazione ricorrente
-- **Gestisci ricorrenze**: Clicca su "📋 Gestisci Ricorrenti" per modificare o eliminare le programmazioni future
+- **Gestisci ricorrenze**: Clicca "📋 Gestisci Ricorrenti" per modificare o eliminare programmazioni future
 
 **Esempi pratici:**
 - 💰 Stipendio mensile (ultimo giorno del mese)
 - 🏠 Affitto (primo giorno del mese)
-- 📺 Netflix (giorno 15 di ogni mese)
+- 📺 Netflix (15 di ogni mese)
 - 🏋️ Palestra (ogni lunedì)
-- 💼 Cliente freelance fisso (primo del mese)
+- 💼 Cliente fisso freelance (primo del mese)
 
-### 8. Ricevi Insights
-Il sistema analizza automaticamente le tue abitudini e ti fornisce suggerimenti personalizzati. Visualizza il flusso di denaro con il diagramma Sankey per capire dove vanno i tuoi soldi.
-
+### 9. Ricevi Insights
+Il sistema analizza automaticamente le tue abitudini e fornisce suggerimenti personalizzati. Visualizza il flusso di denaro con il diagramma Sankey per capire dove vanno i tuoi soldi.
 
 ---
 
-## 🎯 Prova Subito l'App!
+## 🎯 Prova l'App Ora!
 
 <div align="center">
 
