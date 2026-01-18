@@ -20,12 +20,27 @@ L'app offre un'esperienza utente moderna e intuitiva, con focus su **performance
 
 ## ✨ Funzionalità Principali
 
-### 💸 Gestione Completa delle Finanze
-- **Tracciamento Spese ed Entrate** - Registra tutte le tue transazioni con categorie personalizzabili
-- **Analisi Risparmi Dedicata** - Tab completo per monitorare i tuoi risparmi nel tempo
-- **Multi-Valuta** - Supporto per EUR, PLN con conversione automatica
-- **Importazione Excel** - Carica massivamente i tuoi dati da file .xlsx/.xls
-- **Esportazione CSV** - Backup completo dei tuoi dati
+### 💰 Gestione Finanziaria Completa
+- 💸 **Tracciamento Spese ed Entrate** - Registra tutte le transazioni con categorie gerarchiche
+- 📈 **Portafoglio Investimenti** - Gestisci obbligazioni, azioni, ETF, crypto e immobili
+- 💳 **Gestione Finanziamenti** - Monitora mutui, prestiti auto e finanziamenti personali
+- 📁 **Organizzazione Documenti** - Integrazione Google Drive con oltre 25 cartelle predefinite
+- 📊 **Analisi Risparmi** - Tab dedicato con crescita cumulativa e trend del tasso di risparmio
+- 🔄 **Transazioni Ricorrenti** - Automatizza abbonamenti, stipendi e bollette ricorrenti
+
+### 📊 Analisi Avanzate
+- 📈 **Grafici Interattivi** - Heatmap, trend, diagrammi Sankey e viste cumulative
+- 🎯 **Gestione Budget** - Imposta limiti mensili e monitora la spesa in tempo reale
+- 🤖 **Insights Intelligenti** - Ricevi suggerimenti personalizzati basati sulle tue abitudini
+- 🔍 **Ricerca Avanzata** - Trova qualsiasi transazione con filtri multipli
+- 📑 **Report Personalizzati** - Genera report per qualsiasi periodo con budget proporzionali
+
+### 🌐 Esperienza Moderna
+- 🌍 **Multilingua** - Disponibile in Italiano 🇮🇹 e English 🇬🇧
+- 💱 **Multi-valuta** - Supporto per EUR € e PLN zł con conversione automatica
+- 📱 **PWA** - Installabile come app nativa su qualsiasi dispositivo
+- ☁️ **Sincronizzazione Cloud** - I tuoi dati sincronizzati su tutti i dispositivi con Firebase
+- 🔒 **Sicuro** - Firebase Authentication e regole di sicurezza Firestore
 
 ### 📊 Visualizzazioni Interattive
 
@@ -72,11 +87,38 @@ Un'intera sezione dedicata all'analisi dei tuoi risparmi:
 ### 🎯 Budget e Monitoraggio
 
 - **Budget Mensili** - Imposta limiti di spesa per ogni categoria
-- **Copia Budget Mese Precedente** - Riprendi rapidamente i budget dal mese precedente con selezione selettiva e gestione conflitti
+- **Copia Budget Mese Precedente** - Riprendi rapidamente i budget dal mese precedente con selezione selettiva
 - **Monitoraggio Real-time** - Visualizza percentuali di utilizzo con barre colorate
 - **Avvisi Automatici** - Notifiche quando superi il budget
 - **Previsioni Intelligenti** - Stima la spesa a fine mese basata sui trend attuali
-- **Budget Proporzionali** - Calcolo automatico per periodi personalizzati basato sui giorni effettivi
+- **Budget Proporzionali** - Calcolo automatico per periodi personalizzati
+
+### 📈 Gestione Investimenti
+
+- **Tipologie Multiple** - Obbligazioni, conti deposito, azioni, fondi, ETF, crypto, immobili
+- **Tracking Completo** - Importo investito, tasso di interesse, date sottoscrizione/scadenza
+- **Rendimenti** - Monitora rendimento atteso (lordo/netto) e rendimento effettivo
+- **Barra Progresso** - Visualizza il tempo trascorso fino alla scadenza
+- **Collegamento Entrate** - Associa dividendi e interessi ricevuti agli investimenti
+- **Statistiche Aggregate** - Totale investito, rendimenti totali, tasso medio
+
+### 💳 Gestione Finanziamenti
+
+- **Tipologie Multiple** - Mutuo, prestito auto/personale/studenti, finanziamento telefono, riscatto laurea
+- **Tracking Completo** - Importo prestito, numero rate, importo rata, tasso di interesse
+- **Monitoraggio Pagamenti** - Rate pagate, importo totale pagato, rimanente da pagare
+- **Barra Progresso** - Visualizza l'avanzamento del pagamento
+- **Collegamento Spese** - Associa i pagamenti delle rate alle spese
+- **Statistiche Aggregate** - Totale prestato, da pagare, pagato, rimanente, rata media
+
+### 📁 Organizzazione Documenti
+
+- **Integrazione Google Drive** - Accesso sicuro tramite OAuth 2.0
+- **25+ Cartelle Predefinite** - Buste paga, fatture, spese detraibili, referti medici, contratti, assicurazioni, bollette, estratti conto, documenti fiscali, e molto altro
+- **Cartelle Anno** - Organizzazione automatica per anno (2024, 2025, ecc.)
+- **Personalizzazione** - Scegli quali cartelle visualizzare
+- **Accesso Diretto** - Link rapidi per aprire le cartelle su Google Drive
+- **Sincronizzazione Preferenze** - Le tue scelte salvate e sincronizzate
 
 ### 🔄 Transazioni Ricorrenti
 
@@ -91,12 +133,13 @@ Un'intera sezione dedicata all'analisi dei tuoi risparmi:
 ### 🤖 Insights Intelligenti
 
 Il motore di analisi automatica ti aiuta a:
-- 📈 Identificare pattern nelle tue abitudini di spesa e risparmio
-- 🔍 Scoprire le categorie più utilizzate
-- 📅 Confrontare periodi diversi (mese corrente vs precedente)
-- 📊 **Report Periodi Personalizzati** - Genera report per range di date specifici (es: 20 giorni di ottobre + 10 giorni di novembre)
-- 💸 **Flusso di Denaro (Diagramma Sankey)** - Visualizza come si muovono i tuoi soldi tra entrate e spese
+- 📈 Identificare pattern nelle tue abitudini di spesa, risparmio e investimento
+- 🔍 Scoprire le categorie più utilizzate e ottimizzare la distribuzione
+- 📅 Confrontare periodi diversi (mese corrente vs precedente, anno su anno)
+- 📊 **Report Periodi Personalizzati** - Genera report per range di date specifici con budget proporzionali
+- 💸 **Flusso di Denaro (Diagramma Sankey)** - Visualizza come si muovono i tuoi soldi
 - 💡 Ricevere suggerimenti personalizzati per ottimizzare le finanze
+- 🎯 Analizzare performance investimenti e costi finanziamenti
 
 ### 🌍 Multilingua
 
@@ -125,15 +168,20 @@ Cambio istantaneo della lingua con traduzione automatica di tutte le categorie, 
 - **Firebase Firestore** - Database NoSQL real-time
 - **Firebase Authentication** - Sistema di autenticazione sicuro
 - **Firebase Hosting** - Hosting veloce e affidabile con HTTPS
+- **Firebase Cloud Functions** - Funzioni serverless per Telegram
 
 ### Integrazioni
+- **Google Drive API** - Archiviazione e organizzazione documenti
+- **Google Identity Services** - Autenticazione OAuth 2.0
+- **Telegram Bot API** - Notifiche e report automatici
 - **SheetJS (xlsx)** - Importazione file Excel
-- **CSV Export** - Esportazione dati
+- **JSZip** - Esportazione dati in archivi ZIP
 
 ### Architettura
 - **Single Page Application** - Navigazione fluida senza reload
 - **Offline First** - Persistenza locale con sincronizzazione cloud
 - **Responsive Design** - Approccio mobile-first
+- **Real-time Sync** - Aggiornamenti istantanei su tutti i dispositivi
 
 ---
 
@@ -143,20 +191,41 @@ Cambio istantaneo della lingua con traduzione automatica di tutte le categorie, 
 Crea un account con email e password. Verifica la tua email per accedere.
 
 ### 2. Crea il Tuo Profilo
-Imposta il tuo nome e la valuta predefinita.
+Imposta il tuo nome, valuta predefinita e lingua preferita.
 
 ### 3. Registra Transazioni
 Aggiungi spese ed entrate con pochi click. Ogni transazione include:
-- Importo
-- Categoria
+- Importo e valuta
+- Categoria e sottocategoria
 - Descrizione (opzionale)
-- Data
-- Valuta
+- Data e metodo di pagamento
+- Collegamento a investimenti/finanziamenti (opzionale)
 
-### 4. Visualizza i Grafici
+### 4. Gestisci Investimenti
+Aggiungi i tuoi investimenti al portafoglio:
+- Inserisci nome, tipo e importo investito
+- Specifica tasso di interesse e date
+- Collega le entrate (dividendi/interessi) agli investimenti
+- Monitora rendimenti attesi ed effettivi
+
+### 5. Monitora Finanziamenti
+Tieni traccia di prestiti e mutui:
+- Registra importo prestito, numero rate e importo rata
+- Collega i pagamenti delle rate alle spese
+- Visualizza progresso e rimanente da pagare
+- Monitora interessi totali
+
+### 6. Organizza Documenti
+Connetti Google Drive per archiviare documenti:
+- Accedi con il tuo account Google
+- L'app crea automaticamente 25+ cartelle organizzate
+- Personalizza quali cartelle visualizzare
+- Accedi rapidamente ai tuoi documenti finanziari
+
+### 7. Visualizza i Grafici
 I grafici si aggiornano automaticamente ad ogni nuova transazione. Clicca su qualsiasi elemento per vedere i dettagli.
 
-### 5. Analizza i Risparmi
+### 8. Analizza i Risparmi
 Vai al tab "Risparmi" per:
 - Visualizzare il trend mensile di entrate, spese e risparmi
 - Monitorare la crescita cumulativa del patrimonio
@@ -164,13 +233,13 @@ Vai al tab "Risparmi" per:
 - Cliccare sulle statistiche per dettagli approfonditi
 - Ricevere insights automatici sui tuoi pattern di risparmio
 
-### 6. Imposta Budget
+### 9. Imposta Budget
 Definisci limiti mensili per ogni categoria e monitora l'utilizzo in tempo reale. Usa la funzione "Copia Budget Mese Precedente" per copiare rapidamente i budget dal mese scorso.
 
-### 7. Genera Report Personalizzati
+### 10. Genera Report Personalizzati
 Crea report per periodi specifici (es: dal 15 ottobre al 20 novembre). Il sistema calcola automaticamente i budget proporzionali in base ai giorni effettivi di ogni mese incluso nel periodo.
 
-### 8. Configura Transazioni Ricorrenti
+### 11. Configura Transazioni Ricorrenti
 Programma spese ed entrate che si ripetono:
 - **Crea una ricorrenza**: Spunta "🔄 Spesa/Entrata Ricorrente" e scegli la frequenza
 - **Conferma pagamenti**: Ricevi notifiche quando è il momento di confermare una transazione ricorrente
@@ -182,8 +251,9 @@ Programma spese ed entrate che si ripetono:
 - 📺 Netflix (15 di ogni mese)
 - 🏋️ Palestra (ogni lunedì)
 - 💼 Cliente fisso freelance (primo del mese)
+- 💳 Rata mutuo (collegata al finanziamento)
 
-### 9. Ricevi Insights
+### 12. Ricevi Insights
 Il sistema analizza automaticamente le tue abitudini e fornisce suggerimenti personalizzati. Visualizza il flusso di denaro con il diagramma Sankey per capire dove vanno i tuoi soldi.
 
 ---

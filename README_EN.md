@@ -20,12 +20,27 @@ The app offers a modern and intuitive user experience, with a focus on **perform
 
 ## ✨ Key Features
 
-### 💸 Complete Finance Management
-- **Expense and Income Tracking** - Record all your transactions with customizable categories
-- **Dedicated Savings Analysis** - Complete tab to monitor your savings over time
-- **Multi-Currency** - Support for EUR, PLN with automatic conversion
-- **Excel Import** - Bulk load your data from .xlsx/.xls files
-- **CSV Export** - Complete backup of your data
+### 💰 Complete Finance Management
+- 💸 **Expense and Income Tracking** - Record all transactions with hierarchical categories
+- 📈 **Investment Portfolio** - Manage bonds, stocks, ETFs, crypto, and real estate
+- 💳 **Loan Management** - Track mortgages, car loans, and personal financing
+- 📁 **Document Organization** - Google Drive integration with 25+ predefined folders
+- 📊 **Savings Analysis** - Dedicated tab with cumulative growth and saving rate trends
+- 🔄 **Recurring Transactions** - Automate subscriptions, salaries, and recurring bills
+
+### 📊 Advanced Analytics
+- 📈 **Interactive Charts** - Heatmaps, trends, Sankey diagrams, and cumulative views
+- 🎯 **Budget Management** - Set monthly limits and monitor spending in real-time
+- 🤖 **Smart Insights** - Get personalized suggestions based on your habits
+- 🔍 **Advanced Search** - Find any transaction with multiple filters
+- 📑 **Custom Reports** - Generate reports for any date range with proportional budgets
+
+### 🌐 Modern Experience
+- 🌍 **Multi-language** - Available in English 🇬🇧 and Italian 🇮🇹
+- 💱 **Multi-currency** - Support for EUR € and PLN zł with automatic conversion
+- 📱 **PWA** - Install as a native app on any device
+- ☁️ **Cloud Sync** - Your data synced across all devices with Firebase
+- 🔒 **Secure** - Firebase Authentication and Firestore security rules
 
 ### 📊 Interactive Visualizations
 
@@ -37,8 +52,8 @@ Monitor monthly and yearly trends of your finances with line charts showing cumu
 
 #### Combined Chart
 Compare income vs expenses over time. Click on a point to see all transactions for that day with:
-- �  Total income
-- � Tottal expenses
+- 💰 Total income
+- 💸 Total expenses
 - 📊 Daily balance
 - 📝 Detailed transaction list
 
@@ -69,14 +84,14 @@ An entire section dedicated to analyzing your savings:
 - All available period
 - Custom range with specific dates
 
-### � Budtget and Monitoring
+### 🎯 Budget and Monitoring
 
 - **Monthly Budgets** - Set spending limits for each category
-- **Copy Previous Month Budget** - Quickly resume budgets from the previous month with selective selection and conflict management
+- **Copy Previous Month Budget** - Quickly resume budgets from the previous month with selective selection
 - **Real-time Monitoring** - View usage percentages with colored bars
 - **Automatic Alerts** - Notifications when you exceed your budget
 - **Smart Forecasts** - Estimate end-of-month spending based on current trends
-- **Proportional Budgets** - Automatic calculation for custom periods based on actual days
+- **Proportional Budgets** - Automatic calculation for custom periods
 
 ### 🔄 Recurring Transactions
 
@@ -88,15 +103,43 @@ An entire section dedicated to analyzing your savings:
 - **Smart Deletion** - Skip individual payments or delete all future occurrences while keeping history
 - **Elegant Modals** - Premium interface without native alerts, with smooth animations and modern design
 
+### 📈 Investment Management
+
+- **Multiple Types** - Bonds, deposit accounts, stocks, funds, ETFs, crypto, real estate
+- **Complete Tracking** - Invested amount, interest rate, subscription/maturity dates
+- **Returns** - Monitor expected return (gross/net) and actual return
+- **Progress Bar** - Visualize time elapsed until maturity
+- **Income Linking** - Associate received dividends and interest to investments
+- **Aggregate Statistics** - Total invested, total returns, average rate
+
+### 💳 Loan Management
+
+- **Multiple Types** - Mortgage, car/personal/student loans, phone financing, degree redemption
+- **Complete Tracking** - Loan amount, number of installments, installment amount, interest rate
+- **Payment Monitoring** - Installments paid, total amount paid, remaining to pay
+- **Progress Bar** - Visualize payment progress
+- **Expense Linking** - Associate installment payments to expenses
+- **Aggregate Statistics** - Total loaned, to pay, paid, remaining, average installment
+
+### 📁 Document Organization
+
+- **Google Drive Integration** - Secure access via OAuth 2.0
+- **25+ Predefined Folders** - Payslips, invoices, deductible expenses, medical reports, contracts, insurance, bills, bank statements, tax documents, and more
+- **Year Folders** - Automatic organization by year (2024, 2025, etc.)
+- **Customization** - Choose which folders to display
+- **Direct Access** - Quick links to open folders on Google Drive
+- **Preference Sync** - Your choices saved and synchronized
+
 ### 🤖 Smart Insights
 
 The automatic analysis engine helps you:
-- 📈 Identify patterns in your spending and saving habits
-- 🔍 Discover the most used categories
-- 📅 Compare different periods (current month vs previous)
-- 📊 **Custom Period Reports** - Generate reports for specific date ranges (e.g., 20 days of October + 10 days of November)
-- 💸 **Money Flow (Sankey Diagram)** - Visualize how your money moves between income and expenses
+- 📈 Identify patterns in your spending, saving, and investment habits
+- 🔍 Discover the most used categories and optimize distribution
+- 📅 Compare different periods (current month vs previous, year over year)
+- 📊 **Custom Period Reports** - Generate reports for specific date ranges with proportional budgets
+- 💸 **Money Flow (Sankey Diagram)** - Visualize how your money moves
 - 💡 Receive personalized suggestions to optimize your finances
+- 🎯 Analyze investment performance and financing costs
 
 ### 🌍 Multilingual
 
@@ -125,15 +168,20 @@ Instant language switching with automatic translation of all categories, charts,
 - **Firebase Firestore** - Real-time NoSQL database
 - **Firebase Authentication** - Secure authentication system
 - **Firebase Hosting** - Fast and reliable hosting with HTTPS
+- **Firebase Cloud Functions** - Serverless functions for Telegram
 
 ### Integrations
+- **Google Drive API** - Document storage and organization
+- **Google Identity Services** - OAuth 2.0 authentication
+- **Telegram Bot API** - Notifications and automated reports
 - **SheetJS (xlsx)** - Excel file import
-- **CSV Export** - Data export
+- **JSZip** - Data export in ZIP archives
 
 ### Architecture
 - **Single Page Application** - Smooth navigation without reload
 - **Offline First** - Local persistence with cloud synchronization
 - **Responsive Design** - Mobile-first approach
+- **Real-time Sync** - Instant updates across all devices
 
 ---
 
@@ -143,20 +191,41 @@ Instant language switching with automatic translation of all categories, charts,
 Create an account with email and password. Verify your email to access.
 
 ### 2. Create Your Profile
-Set your name and default currency.
+Set your name, default currency, and preferred language.
 
 ### 3. Record Transactions
 Add expenses and income with just a few clicks. Each transaction includes:
-- Amount
-- Category
+- Amount and currency
+- Category and subcategory
 - Description (optional)
-- Date
-- Currency
+- Date and payment method
+- Link to investments/loans (optional)
 
-### 4. View Charts
+### 4. Manage Investments
+Add your investments to the portfolio:
+- Enter name, type, and invested amount
+- Specify interest rate and dates
+- Link income (dividends/interest) to investments
+- Monitor expected and actual returns
+
+### 5. Monitor Loans
+Keep track of loans and mortgages:
+- Record loan amount, number of installments, and installment amount
+- Link installment payments to expenses
+- View progress and remaining to pay
+- Monitor total interest
+
+### 6. Organize Documents
+Connect Google Drive to store documents:
+- Sign in with your Google account
+- The app automatically creates 25+ organized folders
+- Customize which folders to display
+- Quickly access your financial documents
+
+### 7. View Charts
 Charts update automatically with each new transaction. Click on any element to see details.
 
-### 5. Analyze Savings
+### 8. Analyze Savings
 Go to the "Savings" tab to:
 - View monthly trend of income, expenses, and savings
 - Monitor cumulative wealth growth
@@ -164,13 +233,13 @@ Go to the "Savings" tab to:
 - Click on statistics for in-depth details
 - Receive automatic insights on your savings patterns
 
-### 6. Set Budgets
+### 9. Set Budgets
 Define monthly limits for each category and monitor usage in real-time. Use the "Copy Previous Month Budget" feature to quickly copy budgets from last month.
 
-### 7. Generate Custom Reports
+### 10. Generate Custom Reports
 Create reports for specific periods (e.g., from October 15 to November 20). The system automatically calculates proportional budgets based on the actual days of each month included in the period.
 
-### 8. Configure Recurring Transactions
+### 11. Configure Recurring Transactions
 Schedule expenses and income that repeat:
 - **Create a recurrence**: Check "🔄 Recurring Expense/Income" and choose the frequency
 - **Confirm payments**: Receive notifications when it's time to confirm a recurring transaction
@@ -182,8 +251,9 @@ Schedule expenses and income that repeat:
 - 📺 Netflix (15th of each month)
 - 🏋️ Gym (every Monday)
 - 💼 Fixed freelance client (first of month)
+- 💳 Mortgage payment (linked to financing)
 
-### 9. Receive Insights
+### 12. Receive Insights
 The system automatically analyzes your habits and provides personalized suggestions. Visualize money flow with the Sankey diagram to understand where your money goes.
 
 ---
