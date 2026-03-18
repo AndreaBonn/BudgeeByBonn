@@ -1,0 +1,21 @@
+# Debug logs
+firebase-debug.log
+firebase-debug.*.log
+
+# Environment & credentials
+.env
+.env.*
+firebase-config.js
+google-config.js
+telegram-config.js
+
+# Dependencies
+node_modules/
+
+# Build
+dist/
+build/
+
+# OS
+.DS_Store
+Thumbs.db
