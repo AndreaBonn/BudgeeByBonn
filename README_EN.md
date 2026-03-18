@@ -1,289 +1,92 @@
-# 💰 Budgee (PWA)
+# 💰 Budgee — Personal Finance Manager
 
 <div align="center">
 
-**Web App for Personal Finance Management**
+**Take control of your finances, stress-free**
 
-🌐 [**Try Live**](https://financial-management-by-bonn.web.app) • 📱 Installable • ☁️ Cloud Sync
+🌐 [**Open the App**](https://financial-management-by-bonn.web.app) &nbsp;•&nbsp; 📱 Installable &nbsp;•&nbsp; ☁️ Cloud Sync &nbsp;•&nbsp; 🆓 Free
+
+[![Italiano](https://img.shields.io/badge/🇮🇹_Leggi_in_Italiano-009246?style=for-the-badge)](./README.md)
 
 </div>
 
 ---
 
-## ℹ️ Description
+## 💡 What is Budgee
 
-**Budgee** is a comprehensive progressive web application for personal finance management. Built with **HTML5, CSS3, and vanilla JavaScript**, it uses **Firebase** for the backend and **Chart.js** for interactive visualizations.
+Budgee is a free web app that helps you manage your personal finances in a simple, visual way. Track expenses and income, set budgets, follow your investments and savings — all accessible from any device, always updated in real time.
 
-The app offers a modern and intuitive user experience, with a focus on **performance**, **responsive design**, and **offline-first functionality**.
+It's not a spreadsheet. It's not a complicated tool. It's built for people who want a clear picture of their money without spending hours on it.
 
 ---
 
-## ✨ Key Features
+## 🎯 Why Budgee
 
-### 💰 Complete Finance Management
-- 💸 **Expense and Income Tracking** - Record all transactions with hierarchical categories
-- 📈 **Investment Portfolio** - Manage bonds, stocks, ETFs, crypto, and real estate
-- 💳 **Loan Management** - Track mortgages, car loans, and personal financing
-- 📁 **Document Organization** - Google Drive integration with 25+ predefined folders
-- 📊 **Savings Analysis** - Dedicated tab with cumulative growth and saving rate trends
-- 🔄 **Recurring Transactions** - Automate subscriptions, salaries, and recurring bills
+- **Everything in one place** — expenses, income, budgets, investments, loans, and documents in a single app
+- **Free, forever** — no subscription, no hidden premium tier
+- **Works everywhere** — smartphone, tablet, desktop; installable as a native app on your home screen
+- **Your data, always available** — secure cloud sync, accessible from all your devices
+- **Works offline too** — record transactions even without an internet connection
+- **Ready in 2 minutes** — create an account and start right away, no complex setup needed
 
-### 📊 Advanced Analytics
-- 📈 **Interactive Charts** - Heatmaps, trends, Sankey diagrams, and cumulative views
-- 🎯 **Budget Management** - Set monthly limits and monitor spending in real-time
-- 🤖 **Smart Insights** - Get personalized suggestions based on your habits
-- 🔍 **Advanced Search** - Find any transaction with multiple filters
-- 📑 **Custom Reports** - Generate reports for any date range with proportional budgets
+---
 
-### 🌐 Modern Experience
-- 🌍 **Multi-language** - Available in English 🇬🇧 and Italian 🇮🇹
-- 💱 **Multi-currency** - Support for EUR € and PLN zł with automatic conversion
-- 📱 **PWA** - Install as a native app on any device
-- ☁️ **Cloud Sync** - Your data synced across all devices with Firebase
-- 🔒 **Secure** - Firebase Authentication and Firestore security rules
+## 📋 What you can do
 
-### 📊 Interactive Visualizations
+### 💸 Expenses & Income
+Record every transaction with category, description, currency, and payment method. Import from Excel or export to CSV. Multi-currency support for EUR and PLN.
 
-#### Calendar Heatmap
-Analyze the distribution of your expenses and income by day. Click on each section to see transaction details.
+### 🎯 Budget
+Set a monthly limit for each spending category and monitor how much you've already spent in real time. Copy last month's budget in one click. End-of-month spending forecasts included.
 
-#### Cumulative Trend Charts
-Monitor monthly and yearly trends of your finances with line charts showing cumulative growth.
+### 📊 Savings
+A dedicated section with monthly trend charts, cumulative savings, and saving rate. Find your best and worst months, and receive automatic insights on your savings patterns.
 
-#### Combined Chart
-Compare income vs expenses over time. Click on a point to see all transactions for that day with:
-- 💰 Total income
-- 💸 Total expenses
-- 📊 Daily balance
-- 📝 Detailed transaction list
+### 📈 Investments
+Track your portfolio: bonds, stocks, ETFs, crypto, real estate. Monitor gross and net returns, maturity dates, and link your income (dividends, interest) to each investment.
 
-#### Complete Savings Tab
-An entire section dedicated to analyzing your savings:
+### 💳 Loans & Financing
+Manage mortgages, car loans, personal loans, and other financing. Track installments paid, remaining balance, and overall repayment progress.
 
-**Advanced Charts:**
-- **Monthly Savings Trend** - View income, expenses, and savings for each month with combined chart (lines + bars)
-- **Cumulative Savings** - Monitor the progressive growth of your wealth with dynamic filled area (green/red)
-- **Saving Rate Trend** - Analyze monthly savings percentage with dynamic colors based on performance
-
-**Interactive Statistics:**
-- 💰 **Total Saved** (clickable) - Shows complete breakdown of total income vs total expenses
-- 📊 **Average Saving Rate** - Average savings percentage relative to period income
-- 🏆 **Best Month** (clickable) - Identifies the month with highest savings and displays complete details
-- ⚠️ **Worst Month** (clickable) - Identifies the month with lowest savings to understand where to improve
-
-**Smart Insights:**
-- Automatic analysis of savings patterns
-- Savings rate evaluation (Excellent ≥20%, Good ≥10%, Low ≥0%)
-- Trend comparison between consecutive months
-- Personalized suggestions to optimize savings
-
-**Flexible Time Filters:**
-- Current month
-- Last 3, 6, or 12 months
-- Year to date (default)
-- All available period
-- Custom range with specific dates
-
-### 🎯 Budget and Monitoring
-
-- **Monthly Budgets** - Set spending limits for each category
-- **Copy Previous Month Budget** - Quickly resume budgets from the previous month with selective selection
-- **Real-time Monitoring** - View usage percentages with colored bars
-- **Automatic Alerts** - Notifications when you exceed your budget
-- **Smart Forecasts** - Estimate end-of-month spending based on current trends
-- **Proportional Budgets** - Automatic calculation for custom periods
+### 📁 Documents
+Connect your Google Drive and organize financial documents in 25+ predefined folders: payslips, invoices, medical receipts, tax returns, and much more.
 
 ### 🔄 Recurring Transactions
+Automate repeating expenses and income: subscriptions, rent, salary, bills. Choose the frequency (daily, weekly, monthly, yearly) and confirm each occurrence whenever you want.
 
-- **Recurring Expenses** - Schedule repeating expenses (Netflix subscriptions, rent, bills, gym)
-- **Recurring Income** - Schedule repeating income (salary, freelance, rental income)
-- **Flexible Frequencies** - Daily, weekly (choose day), monthly (first/last/specific day), yearly
-- **Manual Confirmation** - Each recurring transaction requires your confirmation before being recorded
-- **Complete Management** - Edit amount, description, and payment method for future occurrences
-- **Smart Deletion** - Skip individual payments or delete all future occurrences while keeping history
-- **Elegant Modals** - Premium interface without native alerts, with smooth animations and modern design
-
-### 📈 Investment Management
-
-- **Multiple Types** - Bonds, deposit accounts, stocks, funds, ETFs, crypto, real estate
-- **Complete Tracking** - Invested amount, interest rate, subscription/maturity dates
-- **Returns** - Monitor expected return (gross/net) and actual return
-- **Progress Bar** - Visualize time elapsed until maturity
-- **Income Linking** - Associate received dividends and interest to investments
-- **Aggregate Statistics** - Total invested, total returns, average rate
-
-### 💳 Loan Management
-
-- **Multiple Types** - Mortgage, car/personal/student loans, phone financing, degree redemption
-- **Complete Tracking** - Loan amount, number of installments, installment amount, interest rate
-- **Payment Monitoring** - Installments paid, total amount paid, remaining to pay
-- **Progress Bar** - Visualize payment progress
-- **Expense Linking** - Associate installment payments to expenses
-- **Aggregate Statistics** - Total loaned, to pay, paid, remaining, average installment
-
-### 📁 Document Organization
-
-- **Google Drive Integration** - Secure access via OAuth 2.0
-- **25+ Predefined Folders** - Payslips, invoices, deductible expenses, medical reports, contracts, insurance, bills, bank statements, tax documents, and more
-- **Year Folders** - Automatic organization by year (2024, 2025, etc.)
-- **Customization** - Choose which folders to display
-- **Direct Access** - Quick links to open folders on Google Drive
-- **Preference Sync** - Your choices saved and synchronized
-
-### 🤖 Smart Insights
-
-The automatic analysis engine helps you:
-- 📈 Identify patterns in your spending, saving, and investment habits
-- 🔍 Discover the most used categories and optimize distribution
-- 📅 Compare different periods (current month vs previous, year over year)
-- 📊 **Custom Period Reports** - Generate reports for specific date ranges with proportional budgets
-- 💸 **Money Flow (Sankey Diagram)** - Visualize how your money moves
-- 💡 Receive personalized suggestions to optimize your finances
-- 🎯 Analyze investment performance and financing costs
-
-### 🌍 Multilingual
-
-Fully translated interface in:
-- 🇮🇹 **Italian**
-- 🇬🇧 **English**
-
-Instant language switching with automatic translation of all categories, charts, and messages.
-
-### 📱 Progressive Web App
-
-- **Installable** - Add to home screen as a native app
-- **Responsive Design** - Optimized for mobile, tablet, and desktop
-- **Performance** - Fast loading and smooth animations
+### 🤖 Insights & Reports
+Interactive charts (calendar heatmap, Sankey diagram, cumulative trends), advanced search with multiple filters, and custom reports for any time period.
 
 ---
 
-## 🛠️ Technologies Used
+## 🚀 Getting Started
 
-### Frontend
-- **HTML5, CSS3, JavaScript** - Vanilla JS for maximum performance
-- **Chart.js** - Library for interactive and responsive charts
-- **PWA APIs** - Service Worker, Web App Manifest, Cache API
-
-### Backend & Storage
-- **Firebase Firestore** - Real-time NoSQL database
-- **Firebase Authentication** - Secure authentication system
-- **Firebase Hosting** - Fast and reliable hosting with HTTPS
-- **Firebase Cloud Functions** - Serverless functions for Telegram
-
-### Integrations
-- **Google Drive API** - Document storage and organization
-- **Google Identity Services** - OAuth 2.0 authentication
-- **Telegram Bot API** - Notifications and automated reports
-- **SheetJS (xlsx)** - Excel file import
-- **JSZip** - Data export in ZIP archives
-
-### Architecture
-- **Single Page Application** - Smooth navigation without reload
-- **Offline First** - Local persistence with cloud synchronization
-- **Responsive Design** - Mobile-first approach
-- **Real-time Sync** - Instant updates across all devices
+1. **Open the app** at [financial-management-by-bonn.web.app](https://financial-management-by-bonn.web.app)
+2. **Create an account** with your email — takes about 30 seconds
+3. **Install the app** on your device for quick access (optional)
+4. **Add your first transactions** — expenses or income from this month
+5. **Set your budgets** for the categories you want to track, and let Budgee do the rest
 
 ---
 
-## 🚀 How It Works
+## 🛠️ Under the Hood
 
-### 1. Registration and Login
-Create an account with email and password. Verify your email to access.
-
-### 2. Create Your Profile
-Set your name, default currency, and preferred language.
-
-### 3. Record Transactions
-Add expenses and income with just a few clicks. Each transaction includes:
-- Amount and currency
-- Category and subcategory
-- Description (optional)
-- Date and payment method
-- Link to investments/loans (optional)
-
-### 4. Manage Investments
-Add your investments to the portfolio:
-- Enter name, type, and invested amount
-- Specify interest rate and dates
-- Link income (dividends/interest) to investments
-- Monitor expected and actual returns
-
-### 5. Monitor Loans
-Keep track of loans and mortgages:
-- Record loan amount, number of installments, and installment amount
-- Link installment payments to expenses
-- View progress and remaining to pay
-- Monitor total interest
-
-### 6. Organize Documents
-Connect Google Drive to store documents:
-- Sign in with your Google account
-- The app automatically creates 25+ organized folders
-- Customize which folders to display
-- Quickly access your financial documents
-
-### 7. View Charts
-Charts update automatically with each new transaction. Click on any element to see details.
-
-### 8. Analyze Savings
-Go to the "Savings" tab to:
-- View monthly trend of income, expenses, and savings
-- Monitor cumulative wealth growth
-- Analyze monthly savings percentage
-- Click on statistics for in-depth details
-- Receive automatic insights on your savings patterns
-
-### 9. Set Budgets
-Define monthly limits for each category and monitor usage in real-time. Use the "Copy Previous Month Budget" feature to quickly copy budgets from last month.
-
-### 10. Generate Custom Reports
-Create reports for specific periods (e.g., from October 15 to November 20). The system automatically calculates proportional budgets based on the actual days of each month included in the period.
-
-### 11. Configure Recurring Transactions
-Schedule expenses and income that repeat:
-- **Create a recurrence**: Check "🔄 Recurring Expense/Income" and choose the frequency
-- **Confirm payments**: Receive notifications when it's time to confirm a recurring transaction
-- **Manage recurrences**: Click "📋 Manage Recurring" to edit or delete future schedules
-
-**Practical examples:**
-- 💰 Monthly salary (last day of month)
-- 🏠 Rent (first day of month)
-- 📺 Netflix (15th of each month)
-- 🏋️ Gym (every Monday)
-- 💼 Fixed freelance client (first of month)
-- 💳 Mortgage payment (linked to financing)
-
-### 12. Receive Insights
-The system automatically analyzes your habits and provides personalized suggestions. Visualize money flow with the Sankey diagram to understand where your money goes.
+Budgee is a Progressive Web App (PWA) built with Vanilla JavaScript, HTML5, and CSS3. The backend runs on Firebase (Firestore for the database, Authentication for accounts, Cloud Functions for automations, Hosting for deployment). Charts are powered by Chart.js. Integrations include the Google Drive API and Telegram Bot API for notifications and automated reports.
 
 ---
 
-## 🎯 Try the App Now!
+## 👤 Author
 
-<div align="center">
-
-### 👉 [**OPEN BUDGEE**](https://financial-management-by-bonn.web.app) 👈
-
-**No installation required • Works on all devices • Cloud-synced data**
-
-[![Try Now](https://img.shields.io/badge/🚀_START_FREE-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white&labelColor=1a73e8)](https://financial-management-by-bonn.web.app)
-
-</div>
-
----
-
-## 📬 Contact
-
-For more information, collaborations, or feedback:
-
-📧 **Email:** [andreabonacci95@protonmail.com](mailto:andreabonacci95@protonmail.com)
+Built by **Andrea Bonacci** — [github.com/AndreaBonn](https://github.com/AndreaBonn)
 
 ---
 
 <div align="center">
 
-**The source code is private, but you can test the application via the link above.**
+*The source code is private, but the app is completely free to use.*
 
-**© 2025 Andrea Bonacci - All rights reserved**
+*If you found Budgee useful, consider leaving a ⭐ to the repository and checking out the other projects!*
+
+**© 2025 Andrea Bonacci**
 
 </div>
