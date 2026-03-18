@@ -16,7 +16,7 @@
 
 Budgee is a free web app that helps you manage your personal finances in a simple, visual way. Track expenses and income, set budgets, follow your investments and savings — all accessible from any device, always updated in real time.
 
-It's not a spreadsheet. It's not a complicated tool. It's built for people who want a clear picture of their money without spending hours on it.
+It's not a spreadsheet. It's not a complicated tool. It's built for people who want a clear picture of their money without spending hours on it. 
 
 ---
 
@@ -34,27 +34,35 @@ It's not a spreadsheet. It's not a complicated tool. It's built for people who w
 ## 📋 What you can do
 
 ### 💸 Expenses & Income
+
 Record every transaction with category, description, currency, and payment method. Import from Excel or export to CSV. Multi-currency support for EUR and PLN.
 
 ### 🎯 Budget
+
 Set a monthly limit for each spending category and monitor how much you've already spent in real time. Copy last month's budget in one click. End-of-month spending forecasts included.
 
 ### 📊 Savings
+
 A dedicated section with monthly trend charts, cumulative savings, and saving rate. Find your best and worst months, and receive automatic insights on your savings patterns.
 
 ### 📈 Investments
+
 Track your portfolio: bonds, stocks, ETFs, crypto, real estate. Monitor gross and net returns, maturity dates, and link your income (dividends, interest) to each investment.
 
 ### 💳 Loans & Financing
+
 Manage mortgages, car loans, personal loans, and other financing. Track installments paid, remaining balance, and overall repayment progress.
 
 ### 📁 Documents
+
 Connect your Google Drive and organize financial documents in 25+ predefined folders: payslips, invoices, medical receipts, tax returns, and much more.
 
 ### 🔄 Recurring Transactions
+
 Automate repeating expenses and income: subscriptions, rent, salary, bills. Choose the frequency (daily, weekly, monthly, yearly) and confirm each occurrence whenever you want.
 
 ### 🤖 Insights & Reports
+
 Interactive charts (calendar heatmap, Sankey diagram, cumulative trends), advanced search with multiple filters, and custom reports for any time period.
 
 ---

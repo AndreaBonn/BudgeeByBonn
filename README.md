@@ -16,7 +16,7 @@
 
 Budgee è un'app web gratuita che ti aiuta a gestire le finanze personali in modo semplice e visivo. Registri spese ed entrate, imposti budget, segui i tuoi investimenti e risparmi — il tutto accessibile da qualsiasi dispositivo, sempre aggiornato in tempo reale.
 
-Non è un foglio Excel. Non è un'app complicata. È uno strumento pensato per chi vuole avere chiarezza sui propri soldi senza perdere ore a farlo.
+Non è un foglio Excel. Non è un'app complicata. È uno strumento pensato per chi vuole avere chiarezza sui propri soldi senza perdere ore a farlo. 
 
 ---
 
@@ -34,27 +34,35 @@ Non è un foglio Excel. Non è un'app complicata. È uno strumento pensato per c
 ## 📋 Cosa puoi fare
 
 ### 💸 Spese ed Entrate
+
 Registra ogni transazione con categoria, descrizione, valuta e metodo di pagamento. Importa da Excel o esporta in CSV. Supporto multi-valuta con EUR e PLN.
 
 ### 🎯 Budget
+
 Imposta un limite mensile per ogni categoria e monitora quanto hai già speso in tempo reale. Copia il budget del mese precedente in un click. Previsioni di spesa a fine mese incluse.
 
 ### 📊 Risparmi
+
 Una sezione dedicata con grafici del trend mensile, risparmi cumulati e saving rate. Scopri il tuo mese migliore e quello peggiore, e ricevi insights automatici sui tuoi pattern.
 
 ### 📈 Investimenti
+
 Tieni traccia del tuo portafoglio: obbligazioni, azioni, ETF, crypto, immobili. Monitora rendimenti lordi e netti, date di scadenza e collega le entrate (dividendi, interessi) agli investimenti.
 
 ### 💳 Finanziamenti
+
 Gestisci mutui, prestiti auto, personali e altri finanziamenti. Monitora le rate pagate, l'importo residuo e il progresso complessivo del pagamento.
 
 ### 📁 Documenti
+
 Collega il tuo Google Drive e organizza i documenti finanziari in 25+ cartelle predefinite: buste paga, fatture, referti medici, dichiarazioni dei redditi e molto altro.
 
 ### 🔄 Transazioni Ricorrenti
+
 Automatizza spese ed entrate che si ripetono: abbonamenti, affitto, stipendio, bollette. Scegli la frequenza (giornaliera, settimanale, mensile, annuale) e conferma ogni occorrenza quando vuoi.
 
 ### 🤖 Insights e Report
+
 Grafici interattivi (heatmap calendario, diagramma Sankey, trend cumulativi), ricerca avanzata con filtri multipli, report personalizzati per qualsiasi periodo.
 
 ---
