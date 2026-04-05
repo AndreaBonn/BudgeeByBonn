@@ -254,7 +254,7 @@ I take all reports seriously and will respond as quickly as possible. Please do 
 
 <div align="center">
 
-**© 2025 Andrea Bonacci**
+**© 2025-2026 Andrea Bonacci**
 
 *Last updated: April 2026*
 

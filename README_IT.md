@@ -14,20 +14,22 @@
 
 ## 💡 Cos'è Budgee
 
-Budgee è un'app web gratuita che ti aiuta a gestire le finanze personali in modo semplice e visivo. Registri spese ed entrate, imposti budget, segui i tuoi investimenti e risparmi — il tutto accessibile da qualsiasi dispositivo, sempre aggiornato in tempo reale.
+Budgee è una Progressive Web App (PWA) completa per la gestione delle finanze personali. Traccia spese ed entrate, imposta budget, gestisci investimenti e finanziamenti, organizza documenti finanziari e raggiungi i tuoi obiettivi di risparmio — tutto in un unico posto, accessibile da qualsiasi dispositivo con sincronizzazione cloud in tempo reale.
 
-Non è un foglio Excel. Non è un'app complicata. È uno strumento pensato per chi vuole avere chiarezza sui propri soldi senza perdere ore a farlo.
+Non è un foglio Excel. Non è un'app complicata. È uno strumento pensato per chi vuole il controllo completo delle proprie finanze senza la complessità.
 
 ---
 
 ## 🎯 Perché usare Budgee
 
-- **Tutto in un posto** — spese, entrate, budget, investimenti, finanziamenti e documenti in un'unica app
-- **Gratis, per sempre** — nessun abbonamento, nessuna versione premium nascosta
-- **Funziona ovunque** — smartphone, tablet, desktop; installabile come app nativa sulla home screen
-- **I dati sono tuoi** — sincronizzazione cloud sicura su tutti i tuoi dispositivi
-- **Funziona anche offline** — puoi registrare transazioni anche senza connessione; tutto si sincronizza quando torni online
+- **Gestione finanziaria completa** — spese, entrate, budget, investimenti, finanziamenti, conti aperti, obiettivi di risparmio, spese deducibili e documenti in un'unica app
+- **Gratis, per sempre** — nessun abbonamento, nessuna versione premium nascosta, nessuna pubblicità
+- **Funziona ovunque** — smartphone, tablet, desktop; installabile come app nativa (PWA) sulla home screen
+- **I dati sono tuoi** — sincronizzazione cloud sicura con Firebase su tutti i tuoi dispositivi
+- **Funziona anche offline** — puoi registrare transazioni anche senza connessione; tutto si sincronizza automaticamente quando torni online
 - **Pronta all'uso in 2 minuti** — crea un account e inizia subito, senza configurazioni complesse
+- **Insights intelligenti** — analisi automatica dei tuoi pattern di spesa con suggerimenti pratici
+- **Supporto multi-valuta** — gestisci finanze in EUR, USD, GBP e PLN con conversione automatica
 
 ---
 
@@ -60,15 +62,22 @@ Vai alla sezione **Budget** e imposta i limiti di spesa per le categorie che vuo
 ### 💸 Spese ed Entrate
 
 Il cuore dell'app. Registra ogni transazione con:
-- **Importo** e **valuta** (EUR, PLN supportate)
-- **Categoria** — scegli tra quelle predefinite o creane di personalizzate
+- **Importo** e **valuta** (EUR, USD, GBP, PLN supportate)
+- **Categoria** — scegli tra categorie gerarchiche predefinite o creane di personalizzate
+- **Sottocategorie** — organizza le spese con sottocategorie dettagliate
 - **Descrizione** — note opzionali per il contesto
-- **Data** e **metodo di pagamento**
+- **Data** e **metodo di pagamento** (contanti, digitale, bonifico, crypto, addebito automatico, assegni)
+- **Collegamento finanziamenti** — associa i pagamenti delle spese alle rate dei prestiti
+- **Collegamento investimenti** — traccia i versamenti di capitale nei tuoi investimenti
+- **Flag deducibile** — marca le spese come deducibili ai fini fiscali
+- **Transazioni ricorrenti** — automatizza spese ed entrate che si ripetono (giornaliere, settimanali, mensili, annuali)
 
 Puoi anche:
 - **Importare da Excel** — carica un file `.xlsx` per aggiungere transazioni in blocco
 - **Esportare in CSV** — scarica i tuoi dati per uso esterno o backup
-- **Filtrare e cercare** — trova qualsiasi transazione per periodo, categoria, importo o parola chiave
+- **Ricerca avanzata** — trova qualsiasi transazione per periodo, categoria, importo, parola chiave, metodo di pagamento o elemento collegato
+- **Statistiche in tempo reale** — media giornaliera, proiezione fine mese, giorno con spesa massima
+- **Grafici interattivi** — trend mensili, pattern settimanali/mensili/annuali, distribuzione per categoria
 
 ### 🎯 Budget
 
@@ -91,33 +100,46 @@ Una sezione dedicata che calcola automaticamente i tuoi risparmi dalla differenz
 ### 📈 Investimenti
 
 Tieni traccia dell'intero portafoglio in un unico posto:
-- **Tipi di asset**: obbligazioni, azioni, ETF, crypto, immobili e altro
-- **Dati chiave**: importo investito, rendimento atteso lordo/netto, tasso di interesse, data di scadenza
-- **Collegamento entrate**: associa dividendi, interessi o affitti a investimenti specifici
-- **Vista riepilogativa**: totale investito, rendimenti attesi, composizione del portafoglio per tipo
+- **Tipi di asset**: obbligazioni, conti deposito, azioni, fondi comuni, ETF, criptovalute, immobili e altro
+- **Tracciamento dettagliato**: importo investito, data sottoscrizione, tasso di interesse, data scadenza, rendimenti attesi lordi/netti, rendimenti effettivi, note personalizzate
+- **Visualizzazione progresso**: barre di progresso temporali che mostrano il tempo trascorso fino alla scadenza
+- **Collegamento entrate**: collega automaticamente dividendi, interessi o affitti a investimenti specifici
+- **Tracciamento capitale**: collega pagamenti di spese per tracciare versamenti di capitale aggiuntivi
+- **Statistiche riepilogative**: totale investito, rendimenti attesi totali, rendimenti effettivi totali, tasso di interesse medio, prossima scadenza
+- **Ricerca avanzata**: trova investimenti rapidamente con filtri multipli
 
 ### 💳 Finanziamenti
 
-Gestisci tutti i tuoi debiti:
-- **Tipologie**: mutui, prestiti auto, prestiti personali, credito al consumo
-- **Monitoraggio**: rata mensile, importo totale, saldo residuo, tasso di interesse
-- **Progresso**: indicatore visivo di quanto hai già pagato
-- **Dettagli**: visualizza la timeline completa dell'ammortamento e lo storico dei pagamenti
+Gestisci tutti i tuoi debiti con tracciamento completo:
+- **Tipologie**: mutui casa, prestiti auto, prestiti personali, prestiti studenti, finanziamenti telefono, riscatto laurea e altro
+- **Informazioni dettagliate**: importo prestito, date inizio/fine, rate totali, importo rata, tasso di interesse, rate pagate, totale pagato, saldo residuo, note personalizzate
+- **Visualizzazione progresso**: barre di progresso visive che mostrano la percentuale di completamento del pagamento
+- **Collegamento spese**: collega automaticamente i pagamenti delle rate per tracciare gli importi pagati
+- **Gestione pagamenti**: inserisci rate pagate o importo totale pagato
+- **Statistiche riepilogative**: totale prestato, totale da pagare (con interessi), totale già pagato, totale rimanente, rata mensile media, progresso medio
+- **Ricerca avanzata**: trova prestiti rapidamente con filtri multipli
+- **Modal dettagliato**: visualizza informazioni complete sul prestito con storico pagamenti e piano di ammortamento
 
 ### 📁 Documenti
 
-Collega il tuo Google Drive e organizza i documenti finanziari:
-- **25+ cartelle predefinite**: buste paga, fatture, referti medici, dichiarazioni dei redditi, assicurazioni, contratti e altro
-- **Carica e sfoglia** direttamente dall'app
-- **Cerca** tra tutti i tuoi documenti
-- Accedi ai tuoi file da qualsiasi dispositivo tramite Google Drive
+Integrazione perfetta con Google Drive per la gestione dei documenti finanziari:
+- **27+ cartelle predefinite**: buste paga, fatture (incassate/pagate), spese detraibili, referti medici, documenti investimenti, documenti finanziamenti, contratti, assicurazioni, documenti fiscali, garanzie, estratti conto bancari, carte di credito, bollette e utenze, tasse e tributi, patrimonio immobiliare, veicoli, pensione, donazioni, spese scolastiche, criptovalute, spese condominiali, spese legali, spese veterinarie, giacenze medie e varie
+- **Organizzazione automatica per anno**: cartelle organizzate automaticamente per anno (2024, 2025, ecc.)
+- **Vista personalizzabile**: scegli quali cartelle visualizzare in base alle tue esigenze
+- **Accesso diretto**: link rapidi per aprire le cartelle direttamente su Google Drive
+- **OAuth 2.0 sicuro**: autenticazione sicura senza condividere password
+- **Multi-lingua**: nomi cartelle tradotti automaticamente in base alla lingua preferita
+- **Sincronizzazione cloud**: preferenze salvate e sincronizzate tra dispositivi
 
 ### 🔄 Transazioni Ricorrenti
 
-Automatizza spese ed entrate che si ripetono, senza doverle inserire manualmente:
-- **Frequenza**: giornaliera, settimanale, mensile, annuale
-- **Esempi**: affitto, stipendio, abbonamenti, bollette
-- **Conferma**: ogni occorrenza può essere confermata o saltata — nulla viene registrato senza la tua approvazione
+Sistema completo di automazione per spese ed entrate che si ripetono:
+- **Frequenze flessibili**: giornaliera, settimanale (scegli il giorno), mensile (primo giorno, ultimo giorno o giorno specifico), annuale
+- **Conferma manuale**: ogni occorrenza richiede conferma prima della registrazione — controllo completo su cosa viene aggiunto
+- **Gestione completa**: modifica importo, descrizione e metodo di pagamento; elimina singole occorrenze o tutte le future; visualizza storico conferme
+- **Notifiche intelligenti**: modal eleganti per un'esperienza premium
+- **Sincronizzazione cloud**: transazioni ricorrenti salvate su Firestore e sincronizzate tra dispositivi
+- **Esempi**: affitto, stipendio, abbonamenti, bollette, premi assicurativi, rate prestiti
 
 ### 🤖 Insights e Report
 
@@ -125,13 +147,64 @@ Budgee analizza i tuoi dati e li presenta visivamente:
 - **Heatmap calendario** — vedi l'intensità delle tue spese per ogni giorno del mese
 - **Diagramma Sankey** — visualizza dove vanno i tuoi soldi tra le categorie
 - **Grafici trend cumulativi** — monitora spese, entrate e risparmi nel tempo
+- **Rilevamento pattern** — identificazione automatica di pattern di spesa e anomalie
+- **Analisi comparativa** — confronta il periodo corrente con periodi precedenti
+- **Suggerimenti di ottimizzazione** — raccomandazioni personalizzate basate sul tuo comportamento finanziario
 - **Ricerca avanzata** — filtra per categoria, periodo, range di importo, parole chiave
-- **Report personalizzati** — genera report per qualsiasi periodo
+- **Report personalizzati** — genera report per qualsiasi periodo con calcoli budget proporzionali
 - **Insights automatici** — pattern, anomalie e suggerimenti basati sui tuoi dati
+
+### 🏦 Conti Aperti
+
+Traccia crediti e debiti con persone o aziende:
+- **Tipi di conto**: traccia soldi che devi (debiti) o soldi che ti devono (crediti)
+- **Informazioni dettagliate**: nome persona/fornitore, tipo conto, importo iniziale, saldo corrente, data apertura, note
+- **Storico transazioni**: registra pagamenti effettuati o ricevuti con date e importi
+- **Tracciamento stato**: conti automaticamente marcati come chiusi quando il saldo raggiunge zero
+- **Vista consolidata**: vedi tutti i conti in un'unica lista o separati per attivi/chiusi
+- **Transazioni collegate**: visualizza tutti i pagamenti e incassi associati a ogni conto
+- **Statistiche riepilogative**: crediti totali, debiti totali, saldo netto
+- **Ricerca avanzata**: trova conti per nome, tipo, range importo o data
+- **Esportazione**: scarica dati conti in CSV per analisi esterna
+
+### 🎯 Obiettivi di Risparmio
+
+Imposta e traccia i tuoi obiettivi finanziari:
+- **Tipi di obiettivo**: obiettivi una tantum con scadenza o target di risparmio continui
+- **Tracciamento dettagliato**: importo target, importo risparmiato, scadenza, percentuale di progresso
+- **Progresso visivo**: barre di progresso con codici colore e indicatori di completamento
+- **Allocazione intelligente**: traccia quanto del tuo saldo liquido è allocato agli obiettivi
+- **Gestione obiettivi**: crea, modifica, archivia o elimina obiettivi secondo necessità
+- **Calcoli automatici**: vedi quanto devi risparmiare mensilmente per raggiungere l'obiettivo
+- **Sistema di priorità**: organizza obiettivi per importanza e scadenza
+- **Celebrazione completamento**: feedback visivo quando gli obiettivi sono raggiunti
+- **Tracciamento storico**: visualizza obiettivi archiviati e traguardi passati
+
+### 📝 Spese Deducibili
+
+Semplifica la stagione fiscale con il tracciamento dedicato delle spese deducibili:
+- **Marcatura automatica**: marca le spese come deducibili quando le registri
+- **Vista anno per anno**: vedi le spese deducibili organizzate per anno fiscale
+- **Anno corrente e precedente**: accesso rapido ai due anni più rilevanti
+- **Dati storici**: visualizza spese deducibili di qualsiasi anno passato
+- **Deducibili extra**: aggiungi spese deducibili non tracciate come spese regolari
+- **Suddivisione per categoria**: vedi quali categorie contribuiscono di più alle detrazioni
+- **Calcoli totali**: somma automatica degli importi deducibili per anno
+- **Pronto per l'esportazione**: scarica spese deducibili per la preparazione fiscale
+- **Deducibili ricorrenti**: marca automaticamente spese ricorrenti come deducibili
+- **Contributi investimenti**: traccia contributi investimenti deducibili
 
 ### 🌐 Supporto Multi-lingua
 
-Budgee è disponibile in **Italiano** e **Inglese**. Cambia lingua in qualsiasi momento dalle impostazioni.
+Budgee è disponibile in **Italiano** e **Inglese**. Cambia lingua in qualsiasi momento dalle impostazioni. Tutti gli elementi dell'interfaccia, categorie, grafici, statistiche e nomi cartelle documenti sono tradotti automaticamente.
+
+### 🎨 Supporto Temi
+
+Scegli tra modalità chiara e scura per una visualizzazione confortevole in qualsiasi condizione di illuminazione. La tua preferenza viene salvata e sincronizzata tra dispositivi.
+
+### 📊 Tutorial Interattivo
+
+Gli utenti alla prima esperienza sono guidati attraverso l'app con un tutorial interattivo che spiega tutte le funzionalità principali e come usarle efficacemente.
 
 ---
 
@@ -156,18 +229,60 @@ Budgee è una Progressive Web App (PWA) costruita con tecnologie web moderne:
 
 | Componente | Tecnologia |
 |-----------|-----------|
-| **Frontend** | Vanilla JavaScript (ES6+), HTML5, CSS3 |
-| **Grafici** | Chart.js |
+| **Frontend** | Vanilla JavaScript (moduli ES6+), HTML5, CSS3 con proprietà personalizzate CSS |
+| **Architettura** | Design modulare con organizzazione basata su funzionalità, event delegation, gestione lifecycle |
+| **Grafici** | Chart.js per visualizzazione dati interattiva |
 | **Backend** | Firebase (Firestore, Authentication, Cloud Functions, Hosting) |
-| **Documenti** | Google Drive API |
-| **Notifiche** | Telegram Bot API |
-| **Offline** | Service Worker con caching Network-First |
+| **Documenti** | Google Drive API con OAuth 2.0 |
+| **Notifiche** | Telegram Bot API per avvisi e report |
+| **Offline** | Service Worker con strategia di caching Network-First |
+| **Import/Export Dati** | SheetJS (xlsx) per Excel, JSZip per export compressi |
+| **Sicurezza** | Content Security Policy, imposizione HTTPS, sanitizzazione input, regole sicurezza Firestore |
+
+---
+
+## 🚀 Riepilogo Funzionalità Principali
+
+✅ **Tracciamento Spese ed Entrate** con categorie, sottocategorie e metodi di pagamento  
+✅ **Gestione Budget** con monitoraggio in tempo reale e avvisi  
+✅ **Analisi Risparmi** con calcoli automatici e visualizzazione trend  
+✅ **Portafoglio Investimenti** con tracciamento rendimenti e date scadenza  
+✅ **Gestione Finanziamenti** con tracciamento pagamenti e visualizzazione progresso  
+✅ **Conti Aperti** per tracciare crediti e debiti  
+✅ **Obiettivi di Risparmio** con tracciamento progresso e gestione scadenze  
+✅ **Spese Deducibili** organizzate per anno  
+✅ **Gestione Documenti** con integrazione Google Drive  
+✅ **Transazioni Ricorrenti** con programmazione flessibile  
+✅ **Ricerca Avanzata** su tutti i tipi di dati  
+✅ **Insights Intelligenti** con rilevamento pattern e suggerimenti  
+✅ **Multi-Valuta** (EUR, USD, GBP, PLN)  
+✅ **Multi-Lingua** (Italiano, Inglese)  
+✅ **Tema Scuro/Chiaro**  
+✅ **Modalità Offline** con sincronizzazione automatica  
+✅ **PWA** installabile su tutti i dispositivi  
+✅ **Import/Export Excel**  
+✅ **Sincronizzazione Cloud** tra dispositivi  
+✅ **Tutorial Interattivo**
 
 ---
 
 ## 📄 Licenza
 
 Questo progetto è proprietario. L'applicazione web è **gratuita per uso personale**. Vedi [LICENSE](./LICENSE) per i dettagli.
+
+---
+
+## 💬 Feedback e Supporto
+
+Hai feedback, suggerimenti o hai trovato un bug? Mi piacerebbe sentirti!
+
+👉 **[Leggi la Guida Feedback](./FEEDBACK_IT.md)** per scoprire come:
+- Segnalare bug efficacemente
+- Richiedere nuove funzionalità
+- Condividere la tua esperienza
+- Ottenere supporto
+
+**Contatto rapido:** andreabonacci95@protonmail.com
 
 ---
 
@@ -183,6 +298,6 @@ Creata da **Andrea Bonacci** — [github.com/AndreaBonn](https://github.com/Andr
 
 *Se Budgee ti è piaciuta o ti è stata utile, lascia una ⭐ al repository!*
 
-**© 2025 Andrea Bonacci**
+**© 2025-2026 Andrea Bonacci**
 
 </div>

@@ -254,7 +254,7 @@ Prendo tutte le segnalazioni seriamente e risponderò il prima possibile. Ti chi
 
 <div align="center">
 
-**© 2025 Andrea Bonacci**
+**© 2025-2026 Andrea Bonacci**
 
 *Ultimo aggiornamento: Aprile 2026*
 
