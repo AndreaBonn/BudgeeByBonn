@@ -1,62 +1,65 @@
-# 💬 Feedback & Feature Requests
+# Feedback and feature requests
 
 <div align="center">
 
-**Your feedback helps make Budgee better for everyone**
+**Your feedback helps make Budgee better**
 
-[![Italiano](https://img.shields.io/badge/🇮🇹_Leggi_in_Italiano-009246?style=for-the-badge)](./FEEDBACK_IT.md) &nbsp; [![Back to README](https://img.shields.io/badge/📖_Back_to_README-4A90E2?style=for-the-badge)](./README.md)
+[![Italiano](https://img.shields.io/badge/Leggi_in_Italiano-009246?style=for-the-badge)](./FEEDBACK_IT.md) &nbsp; [![Back to README](https://img.shields.io/badge/Back_to_README-4A90E2?style=for-the-badge)](./README.md)
 
 </div>
 
 ---
 
-## 🎯 How to Provide Feedback
+## How to send feedback
 
-I'm always looking to improve Budgee based on real user needs. Your feedback, suggestions, and bug reports are incredibly valuable!
+Budgee evolves with the people who use it. If you have feedback, suggestions or bug reports, they are read and considered.
 
 ---
 
-## 📧 Contact Methods
+## Contact
 
-### Email (Preferred)
-**andreabonacci95@protonmail.com**
+### Email (preferred)
 
-This is the best way to reach me for:
+andreabonacci95@protonmail.com
+
+Use email for:
+
 - Detailed feedback
 - Feature requests
 - Bug reports
 - Questions about the app
 - Collaboration proposals
 
-**Response time:** Usually within 2-3 business days
+Response time is usually 2-3 business days.
 
 ---
 
-## 🐛 Reporting Bugs
+## Reporting bugs
 
-When reporting a bug, please include:
+When you report a bug, include:
 
-### Essential Information
-- **What happened**: Clear description of the issue
-- **Expected behavior**: What you thought should happen
-- **Steps to reproduce**: How can I recreate the bug?
-- **Device & Browser**: e.g., "iPhone 13, Safari 16" or "Windows 11, Chrome 120"
-- **Screenshots**: If applicable (very helpful!)
+### Essential information
 
-### Example Bug Report
+- What happened: a clear description of the issue
+- What you expected: how you thought it should behave
+- Steps to reproduce: how can the bug be recreated?
+- Device and browser: e.g. "iPhone 13, Safari 16" or "Windows 11, Chrome 120"
+- Screenshots, if available
+
+### Example bug report
 
 ```
 Subject: [BUG] Expenses not syncing after offline mode
 
 Description:
-After using the app offline for a few hours, my expenses 
-don't sync when I reconnect to the internet.
+After using the app offline for a few hours, my expenses
+do not sync when I reconnect to the internet.
 
 Steps to reproduce:
 1. Turn on airplane mode
 2. Add 3 expenses
 3. Turn off airplane mode
-4. Wait 5 minutes - expenses still not synced
+4. Wait 5 minutes; expenses still not synced
 
 Device: Samsung Galaxy S23, Chrome 119
 Screenshot: [attached]
@@ -64,27 +67,28 @@ Screenshot: [attached]
 
 ---
 
-## 💡 Requesting Features
+## Requesting features
 
-I love hearing about features you'd like to see! When requesting a feature:
+When you request a feature, the more concrete the request, the more it helps.
 
-### What to Include
-- **Feature description**: What would you like to add?
-- **Use case**: Why would this be useful? How would you use it?
-- **Priority**: Is this a "nice to have" or critical for your workflow?
-- **Examples**: Any apps that do this well? Screenshots?
+### What to include
 
-### Example Feature Request
+- Feature description: what would you like to add?
+- Use case: why would this be useful? How would you use it?
+- Priority: nice to have, or critical for your workflow?
+- Examples: any apps that do this well? Screenshots?
+
+### Example feature request
 
 ```
 Subject: [FEATURE] Add support for cryptocurrency tracking
 
 Description:
-I'd like to track my cryptocurrency portfolio alongside 
+I'd like to track my cryptocurrency portfolio alongside
 traditional investments.
 
 Use case:
-I hold Bitcoin and Ethereum and want to see them in my 
+I hold Bitcoin and Ethereum and want to see them in my
 total investment portfolio with automatic price updates.
 
 Priority: Medium - I currently track this in a separate app
@@ -94,125 +98,135 @@ Similar to: Coinbase portfolio view
 
 ---
 
-## 🌟 What Makes Good Feedback
+## What makes feedback useful
 
-### ✅ Good Feedback
-- **Specific**: "The expense form doesn't save when I press Enter on mobile"
-- **Actionable**: "Add a dark mode toggle in the settings menu"
-- **Constructive**: "The budget page is confusing - maybe add a tutorial?"
+### Useful feedback
 
-### ❌ Less Helpful Feedback
+- Specific: "The expense form doesn't save when I press Enter on mobile"
+- Actionable: "Add a dark mode toggle in the settings menu"
+- Constructive: "The budget page is confusing; maybe add a tutorial?"
+
+### Less useful feedback
+
 - Too vague: "The app is slow"
 - Not actionable: "Make it better"
 - Unclear: "Something is broken"
 
 ---
 
-## 🎨 Feature Request Categories
+## Feature request categories
 
-Here are some areas where I'm particularly interested in feedback:
+Areas where feedback is particularly welcome.
 
-### High Priority
-- **Usability improvements** - Make the app easier to use
-- **Performance issues** - Speed, loading times, responsiveness
-- **Critical bugs** - Anything that prevents normal use
-- **Data accuracy** - Calculation errors, sync issues
+### High priority
 
-### Medium Priority
-- **New features** - Additional functionality
-- **UI/UX enhancements** - Visual improvements, better layouts
-- **Integration requests** - Connect with other services
-- **Export/Import options** - New data formats
+- Usability improvements
+- Performance issues (speed, loading times, responsiveness)
+- Critical bugs that prevent normal use
+- Calculation errors or sync issues
 
-### Lower Priority (but still welcome!)
-- **Nice-to-have features** - Quality of life improvements
-- **Cosmetic changes** - Color schemes, fonts, icons
-- **Advanced features** - Power user functionality
+### Medium priority
 
----
+- New features
+- UI and UX improvements
+- Integration requests with other services
+- Additional export and import formats
 
-## 📊 What Happens to Your Feedback?
+### Lower priority (still welcome)
 
-1. **I read everything** - Every email gets read and considered
-2. **I prioritize** - Based on impact, feasibility, and user demand
-3. **I implement** - Popular and feasible features get added to the roadmap
-4. **I communicate** - If your feature is added, I'll let you know!
+- Quality-of-life improvements
+- Cosmetic changes (colour schemes, fonts, icons)
+- Power-user features
 
 ---
 
-## 🚀 Current Roadmap
+## What happens to your feedback
 
-Want to know what's already planned? Here are some features in development:
-
-### Coming Soon
-- 🔔 Push notifications for budget alerts
-- 📱 Native mobile apps (iOS & Android)
-- 🔄 Automatic bank transaction import
-- 📈 Advanced analytics dashboard
-- 👥 Shared budgets for families/couples
-
-### Under Consideration
-- 🌍 Additional language support
-- 💱 More currency options
-- 🤖 AI-powered spending insights
-- 📊 Custom report builder
-- 🔗 Integration with accounting software
-
-*Note: Roadmap is subject to change based on user feedback and technical feasibility*
+1. Every email is read and considered
+2. Items are prioritized by impact, feasibility and demand
+3. Items that fit both criteria land on the roadmap
+4. If your request is implemented, you will hear about it
 
 ---
 
-## 🤝 Other Ways to Help
+## Current roadmap
 
-### Spread the Word
-If you love Budgee, tell your friends! Word of mouth is the best way to help the app grow.
+What is already planned.
 
-### Leave a Star ⭐
-If you're on GitHub, leaving a star on the repository helps others discover Budgee.
+### Coming soon
 
-### Share Your Story
-How has Budgee helped you? Success stories motivate me to keep improving the app!
+- Push notifications for budget alerts
+- Native mobile apps (iOS and Android)
+- Automatic bank transaction import
+- Advanced analytics dashboard
+- Shared budgets for families and couples
 
----
+### Under consideration
 
-## ⚠️ What I Can't Help With
+- Additional language support
+- More currency options
+- AI-assisted spending insights
+- Custom report builder
+- Integration with accounting software
 
-Please note that I cannot:
-- Provide financial advice or tax guidance
-- Recover data from deleted accounts (deletions are permanent)
-- Access your personal data (it's encrypted and private)
-- Guarantee specific features will be implemented
-- Provide 24/7 support (I'm a solo developer!)
-
-For financial advice, please consult a qualified financial advisor.
+*Roadmap is subject to change based on user feedback and technical feasibility.*
 
 ---
 
-## 📝 Privacy Note
+## Other ways to help
 
-When you contact me:
+### Spread the word
+
+If Budgee works for you, mention it to other people. Word of mouth is the main way the app reaches new users.
+
+### Leave a star
+
+A star on the GitHub repository helps others find Budgee.
+
+### Share your story
+
+If Budgee changed something in how you handle your money, write it down. These stories help shape the next features.
+
+---
+
+## What is out of scope
+
+A few things that cannot be provided:
+
+- Financial advice or tax guidance
+- Recovery of data from deleted accounts; deletions are permanent
+- Access to your personal data; it is encrypted and private
+- Guarantees that a specific feature will ship
+- 24/7 support; this is a solo project
+
+For financial advice, consult a qualified financial advisor.
+
+---
+
+## Privacy
+
+When you get in touch:
+
 - Your email and feedback are kept private
-- I never share user information with third parties
+- User information is not shared with third parties
 - Feedback may be used anonymously to improve the app
-- You can request deletion of your correspondence at any time
+- You can ask for your correspondence to be deleted at any time
 
 ---
 
-## 🙏 Thank You!
+## Thank you
 
-Thank you for taking the time to provide feedback. Every suggestion, bug report, and kind word helps make Budgee better for everyone.
+Thanks for taking the time to write. Every suggestion, bug report or kind word feeds back into the next version of Budgee.
 
-I built Budgee because I wanted a simple, powerful way to manage my own finances. Your feedback ensures it works well for others too.
+Budgee was built first to manage my own finances. Your feedback is what makes it useful for other people too.
 
-**Happy budgeting!**
-
-— Andrea Bonacci
+- Andrea Bonacci
 
 ---
 
 <div align="center">
 
-**📧 andreabonacci95@protonmail.com**
+andreabonacci95@protonmail.com
 
 **© 2025-2026 Andrea Bonacci**
 

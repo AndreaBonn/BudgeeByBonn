@@ -1,110 +1,111 @@
-# 🔐 Budgee — Security Documentation
+# Budgee - Security documentation
 
 <div align="center">
 
-[![Italiano](https://img.shields.io/badge/🇮🇹_Leggi_in_Italiano-009246?style=for-the-badge)](./SECURITY_IT.md) &nbsp; [![Back to README](https://img.shields.io/badge/📖_Back_to_README-4A90E2?style=for-the-badge)](./README.md)
+[![Italiano](https://img.shields.io/badge/Leggi_in_Italiano-009246?style=for-the-badge)](./SECURITY_IT.md) &nbsp; [![Back to README](https://img.shields.io/badge/Back_to_README-4A90E2?style=for-the-badge)](./README.md)
 
 </div>
 
 ---
 
-This document describes the security measures implemented in Budgee to protect your data and ensure a safe user experience. Budgee handles sensitive financial information, and security is a core part of its design — not an afterthought.
+This document describes the security measures in place in Budgee. Budgee handles sensitive financial information, so security choices are written down in the open and kept up to date.
 
 ---
 
-## 📑 Table of Contents
+## Table of contents
 
-- [Authentication & Account Security](#-authentication--account-security)
-- [Data Protection](#-data-protection)
-- [Database Security](#-database-security)
-- [Network Security](#-network-security)
-- [Application Security](#-application-security)
-- [Offline Security](#-offline-security)
-- [Dependency Security](#-dependency-security)
-- [Privacy](#-privacy)
-- [Known Limitations & Roadmap](#-known-limitations--roadmap)
+- [Authentication and account security](#authentication-and-account-security)
+- [Data protection](#data-protection)
+- [Database security](#database-security)
+- [Network security](#network-security)
+- [Application security](#application-security)
+- [Offline security](#offline-security)
+- [Dependency security](#dependency-security)
+- [Privacy](#privacy)
+- [Known limitations and roadmap](#known-limitations-and-roadmap)
 
 ---
 
-## 🔑 Authentication & Account Security
+## Authentication and account security
 
-### Email & Password Authentication
+### Email and password authentication
 
-Budgee uses **Firebase Authentication**, a battle-tested identity platform by Google, for all account management.
+Budgee uses Firebase Authentication for all account management.
 
-- **Email verification** is mandatory — new accounts must verify their email address before accessing any feature
-- **Password requirements** enforce a minimum standard of complexity:
+- Email verification is mandatory; new accounts must verify their address before they can use any feature.
+- Password requirements:
   - At least 8 characters
   - At least one uppercase letter (A-Z)
   - At least one lowercase letter (a-z)
-  - At least one number (0-9)
-- **Password reset** is handled entirely by Firebase via secure email links — Budgee never stores or transmits passwords in plain text
+  - At least one digit (0-9)
+- Password reset is handled by Firebase via signed email links. Budgee never stores or transmits passwords in plain text.
 
-### Session Management
+### Session management
 
-- Authentication sessions are managed by Firebase with **JWT tokens**
-- Sessions expire automatically according to Firebase's security policies
-- **Logout** clears all local data — session tokens, cached data, and user preferences
+- Sessions are managed by Firebase with JWT tokens.
+- Sessions expire automatically following Firebase's policies.
+- Logout clears local data: session tokens, cached data and user preferences.
 
-### Account Deletion
+### Account deletion
 
-Deleting your account is a multi-step process with strong safeguards:
+Account deletion goes through several confirmation steps:
 
 1. Explicit confirmation dialog
-2. **Re-authentication required** — you must enter your password again to prove identity
+2. Re-authentication is required: you must enter your password again
 3. All user data is deleted from the database (expenses, income, budgets, investments, financings, goals, settings)
-4. The Firebase Authentication account is permanently removed
-5. All local cached data is cleared
+4. The Firebase Authentication account is removed
+5. All locally cached data is cleared
 
-### Brute-Force Protection
+### Brute-force protection
 
-Firebase Authentication includes built-in protection against brute-force login attempts. After multiple failed login attempts, the system temporarily blocks further attempts with a `too-many-requests` response.
+Firebase Authentication blocks repeated failed login attempts with a `too-many-requests` response.
 
 ---
 
-## 🛡️ Data Protection
+## Data protection
 
 ### Encryption
 
 | Layer | Method | Details |
 |-------|--------|---------|
-| **In transit** | TLS/HTTPS | All connections between your browser and Firebase are encrypted. HSTS (HTTP Strict Transport Security) is enforced with a 1-year duration, including subdomains. |
-| **At rest** | AES-256 | Firebase Firestore automatically encrypts all stored data using AES-256 encryption. This is managed by Google Cloud infrastructure and cannot be disabled. |
+| In transit | TLS/HTTPS | All connections between your browser and Firebase are encrypted. HSTS is enforced for 1 year, including subdomains. |
+| At rest | AES-256 | Firebase Firestore encrypts stored data with AES-256. The setting is managed by Google Cloud infrastructure and cannot be turned off. |
 
-### Data Isolation
+### Data isolation
 
-Every user's data is completely isolated:
+Per-user data is isolated:
 
-- Database security rules enforce that **you can only read and write your own data**
-- There is no admin panel or shared data — even the developer cannot access individual user data through the app
-- Each database operation checks the authenticated user's identity before proceeding
+- Database security rules require that you can only read and write your own data.
+- There is no admin panel that exposes other users' data.
+- Every database operation checks the authenticated user's identity before proceeding.
 
-### Sensitive Token Handling
+### Sensitive token handling
 
-- **Google Drive OAuth tokens** are stored in `sessionStorage` (automatically cleared when the browser tab is closed), never in persistent storage
-- **User credentials** are never stored locally — only the Firebase-managed session token
-- **API keys** for third-party services (Telegram, Google) are stored server-side in Firebase Cloud Functions configuration, never exposed in the frontend code
+- Google Drive OAuth tokens live in `sessionStorage` (cleared when the tab closes), not in persistent storage.
+- User credentials are never stored locally; only the Firebase-managed session token is kept.
+- Third-party API keys (Telegram, Google) are stored server-side in Firebase Cloud Functions configuration, not in frontend code.
 
 ---
 
-## 🗄️ Database Security
+## Database security
 
-### Firestore Security Rules
+### Firestore security rules
 
-Budgee uses a **whitelist approach** to database security — everything is denied by default, and only specific operations are explicitly allowed.
+Budgee follows a default-deny approach: every path is denied unless an explicit rule allows it.
 
-**Key protections:**
+Key protections:
 
-- **Owner-only access** — every read and write operation requires authentication and verifies that the requesting user owns the document
-- **Field validation** — the database rejects data that doesn't match expected types, ranges, and sizes:
-  - Monetary amounts must be positive numbers below a reasonable maximum (10 million)
-  - Strings (descriptions, names) have maximum length limits (200 characters)
-  - Currency values must be from an approved list (EUR, USD, GBP, PLN)
-  - Interest rates must be between 0% and 100%
-  - Arrays have size limits (e.g., max 10,000 expenses per user)
-- **Document size limits** — prevents abuse by limiting the number of fields and overall document size
-- **Write-only error logging** — error reports can be created but never read or modified from the client, preventing information leakage
-- **Default deny** — any database path not explicitly allowed is automatically blocked:
+- Owner-only access: every read and write requires authentication and verifies that the requester owns the document.
+- Field validation rejects data that does not match expected types, ranges and sizes:
+  - Monetary amounts must be positive numbers below 10 million
+  - Strings (descriptions, names) have a 200-character maximum
+  - Currency must be in the approved list (EUR, USD, GBP, PLN)
+  - Interest rates must be between 0 and 100
+  - Arrays have size limits (for example, 10,000 expenses per user)
+- Document size limits cap the number of fields and the overall document size.
+- Error logging is write-only from the client; reports cannot be read back, which avoids information leakage.
+- Any path not explicitly allowed is blocked:
+
   ```
   match /{document=**} {
     allow read, write: if false;
@@ -113,142 +114,142 @@ Budgee uses a **whitelist approach** to database security — everything is deni
 
 ---
 
-## 🌐 Network Security
+## Network security
 
-### HTTP Security Headers
+### HTTP security headers
 
-Budgee configures the following security headers on every response:
+Budgee sets these headers on every response:
 
 | Header | Value | Purpose |
 |--------|-------|---------|
-| **Strict-Transport-Security** | `max-age=31536000; includeSubDomains` | Forces HTTPS for 1 year, including subdomains |
-| **X-Content-Type-Options** | `nosniff` | Prevents browsers from guessing file types (MIME sniffing attacks) |
-| **X-Frame-Options** | `DENY` | Prevents the app from being embedded in iframes (clickjacking protection) |
-| **Referrer-Policy** | `strict-origin-when-cross-origin` | Limits referrer information sent to third parties |
-| **Permissions-Policy** | `camera=(), microphone=(), geolocation=()` | Disables unnecessary browser features (camera, microphone, geolocation) |
+| Strict-Transport-Security | `max-age=31536000; includeSubDomains` | Forces HTTPS for 1 year, including subdomains |
+| X-Content-Type-Options | `nosniff` | Prevents MIME sniffing |
+| X-Frame-Options | `DENY` | Blocks embedding in iframes (clickjacking protection) |
+| Referrer-Policy | `strict-origin-when-cross-origin` | Limits the referrer sent to third parties |
+| Permissions-Policy | `camera=(), microphone=(), geolocation=()` | Disables unused browser features |
 
 ### Content Security Policy (CSP)
 
-A Content Security Policy controls which resources the browser is allowed to load:
+A Content Security Policy controls which resources the browser can load:
 
-- **Scripts**: only from the app's own domain and trusted sources (Firebase, Google APIs, Chart.js CDN)
-- **Styles**: only from the app and Google Fonts
-- **Connections**: only to Firebase, Google APIs, Telegram API, and the exchange rate API
-- **Plugins**: completely blocked (`object-src 'none'`)
-- **Base URL**: locked to the app's own domain (`base-uri 'self'`)
+- Scripts: only from the app's own domain and trusted sources (Firebase, Google APIs, Chart.js CDN)
+- Styles: only from the app and Google Fonts
+- Connections: only to Firebase, Google APIs, the Telegram API and the exchange rate API
+- Plugins: fully blocked (`object-src 'none'`)
+- Base URL: locked to the app's own domain (`base-uri 'self'`)
 
-### Cache Control
+### Cache control
 
-- **HTML pages**: always revalidated with the server (never served stale)
-- **JavaScript and CSS**: cached for 24 hours (content-hashed filenames ensure fresh versions after updates)
-- **Images and fonts**: cached for 1 year (immutable assets with content hashes)
-
----
-
-## 🔒 Application Security
-
-### XSS (Cross-Site Scripting) Prevention
-
-All user-provided data (descriptions, category names, notes) is **sanitized before being displayed** in the interface:
-
-- **HTML escaping** — characters like `<`, `>`, `"`, `'`, `&` are converted to safe equivalents before rendering
-- **Attribute escaping** — additional protection for data placed inside HTML attributes
-- **Content Security Policy** — restricts which scripts can execute in the browser
-
-### Input Validation
-
-Every user input is validated both on the client and enforced on the server:
-
-- **Numeric fields**: checked for valid number format, positive value, and reasonable range
-- **Text fields**: trimmed of whitespace, checked for minimum/maximum length
-- **Date fields**: validated for correct format
-- **Currency fields**: must match the allowed currency list
-- **Server enforcement**: even if client-side validation is bypassed, Firestore security rules reject invalid data
-
-### Event Delegation Security
-
-Budgee uses an `EventDelegate` system that centralizes event handling with explicit selector-based allowlists, reducing the attack surface compared to inline event handlers.
-
-### Error Handling
-
-- **User-facing errors** show generic, helpful messages — never technical details, stack traces, or internal paths
-- **Error logging** to the database is rate-limited (max 20 per session) and uses a strict field whitelist — no sensitive data, file paths, or source code is ever stored
-- **Critical error monitoring** — the system detects repeated errors and sends alerts through a private Telegram channel
+- HTML pages are revalidated on every request (never served stale).
+- JavaScript and CSS are cached for 24 hours; content-hashed filenames ensure fresh versions on update.
+- Images and fonts are cached for 1 year (immutable assets with content hashes).
 
 ---
 
-## 📴 Offline Security
+## Application security
+
+### XSS prevention
+
+All user-provided data (descriptions, category names, notes) is sanitized before being rendered in the interface:
+
+- HTML escaping converts `<`, `>`, `"`, `'`, `&` to safe equivalents.
+- Attribute escaping adds extra protection for data placed inside HTML attributes.
+- The Content Security Policy restricts which scripts can execute in the browser.
+
+### Input validation
+
+Every input is validated on the client and enforced on the server:
+
+- Numeric fields are checked for valid format, positive value and a sane range.
+- Text fields are trimmed and checked for minimum and maximum length.
+- Date fields are validated for the expected format.
+- Currency fields must match the allowed list.
+- Server enforcement: even if the client validation is bypassed, Firestore security rules reject invalid data.
+
+### Event delegation security
+
+Budgee uses an `EventDelegate` system that centralises event handling with explicit selector allowlists. This reduces the attack surface compared to inline event handlers.
+
+### Error handling
+
+- User-facing errors show generic messages, never stack traces or internal paths.
+- Error logging to the database is rate-limited (max 20 per session) and uses a strict field whitelist; no sensitive data, file paths or source code is ever stored.
+- Repeated errors trigger alerts on a private Telegram channel.
+
+---
+
+## Offline security
 
 ### Service Worker
 
 Budgee works offline through a Service Worker that caches essential resources:
 
-- **Network-First strategy** — always tries to fetch fresh data from the server; falls back to cache only when offline
-- **Version-scoped cache** — each app version has its own cache; old caches are automatically cleaned up on update
-- **API exclusion** — calls to Firebase, Google, and Telegram APIs are never cached (always require network)
+- Network-First strategy: fresh data is always tried first; the cache is used only when offline.
+- Version-scoped cache: each app version has its own cache; old caches are cleaned up on update.
+- API exclusion: calls to Firebase, Google and Telegram are never cached and always require network.
 
-### Offline Data Sync
+### Offline data sync
 
-- Transactions created offline are stored in a **pending changes queue**
-- When connectivity returns, pending changes are synced to the server with **retry logic** (up to 3 attempts with exponential backoff)
-- If sync fails, the user is notified and data is preserved locally until the next successful sync
-
----
-
-## 📦 Dependency Security
-
-### npm Packages
-
-- All dependencies use **pinned versions** (`==`) to prevent unexpected updates
-- **`npm audit`** is run to check for known vulnerabilities before deployment
-- Security patches are applied promptly when vulnerabilities are disclosed
-
-### CDN Dependencies
-
-- Firebase SDK scripts loaded from CDN include **Subresource Integrity (SRI) hashes** — the browser verifies that the downloaded file hasn't been tampered with
-- A dedicated audit script checks CDN dependencies against the [OSV.dev](https://osv.dev/) vulnerability database
-- Chart.js is hosted locally (not loaded from CDN) to eliminate external dependency at runtime
-
-### CI/CD Pipeline
-
-- **Automated security audit** on every push — `npm audit --audit-level=high` blocks deployment if high-severity vulnerabilities are found
-- **CDN dependency check** — warns if any externally-loaded library has known issues
-- **ESLint** enforces code quality rules that catch potential security issues (unused variables, shadowed variables, strict equality)
+- Transactions created offline land in a pending changes queue.
+- When connectivity returns, pending changes are synced with retry logic (up to 3 attempts with exponential backoff).
+- If the sync fails, the user is notified and data is kept locally until the next successful sync.
 
 ---
 
-## 🔏 Privacy
+## Dependency security
 
-- **No analytics or tracking** — Budgee does not use Google Analytics, Facebook Pixel, or any other tracking service
-- **No ads** — the app is completely ad-free
-- **No data sharing** — your financial data is never sent to third parties (except the services you explicitly connect, like Google Drive)
-- **Data portability** — you can export all your data to CSV at any time
-- **Right to deletion** — delete your account and all associated data permanently from the settings
+### npm packages
+
+- All dependencies use pinned versions (`==`) to avoid unexpected updates.
+- `npm audit` runs before deployment to check for known vulnerabilities.
+- Security patches are applied promptly when vulnerabilities are disclosed.
+
+### CDN dependencies
+
+- Firebase SDK scripts loaded from CDN include Subresource Integrity (SRI) hashes; the browser refuses tampered files.
+- A dedicated audit script checks CDN dependencies against the [OSV.dev](https://osv.dev/) vulnerability database.
+- Chart.js is hosted locally to remove the runtime external dependency.
+
+### CI/CD pipeline
+
+- `npm audit --audit-level=high` runs on every push and blocks deployment if a high-severity vulnerability is found.
+- The CDN dependency check warns about externally loaded libraries with known issues.
+- ESLint rules catch common security smells (unused variables, shadowed variables, loose equality).
 
 ---
 
-## ⚠️ Known Limitations & Roadmap
+## Privacy
 
-Transparency is part of security. Here's what Budgee currently does **not** do, and what's planned:
+- No analytics, no tracking: no Google Analytics, no Facebook Pixel, no other tracker.
+- No ads.
+- No data sharing: financial data is never sent to third parties, except the services you connect explicitly (such as Google Drive).
+- Data portability: you can export all your data to CSV at any time.
+- Right to deletion: you can delete your account and all associated data from the settings.
+
+---
+
+## Known limitations and roadmap
+
+Transparency is part of security. Here is what Budgee currently does not do, and what is planned:
 
 | Limitation | Status | Notes |
 |-----------|--------|-------|
-| Two-factor authentication (2FA) | Planned | Currently relies on email/password + email verification |
-| Client-side encryption | Not implemented | Data is encrypted at rest by Firebase, but not end-to-end encrypted |
-| CSP `'unsafe-inline'` directive | Being phased out | Required for legacy code; actively being replaced with EventDelegate |
-| Read rate limiting on database | Not implemented | Firebase does not offer client-side read rate limiting; monitored server-side |
+| Two-factor authentication (2FA) | Planned | Currently relies on email/password plus email verification |
+| Client-side encryption | Not implemented | Data is encrypted at rest by Firebase, but not end-to-end |
+| CSP `'unsafe-inline'` directive | Being phased out | Required for legacy code; the EventDelegate refactor is replacing it |
+| Read rate limiting on the database | Not implemented | Firebase does not offer client-side read rate limiting; monitoring is server-side |
 
 ---
 
-## 📬 Reporting a Vulnerability
+## Reporting a vulnerability
 
-If you discover a security issue, please report it responsibly:
+If you find a security issue, please report it privately:
 
-- **Email**: [andreabonacci95@protonmail.com](mailto:andreabonacci95@protonmail.com)
-- **Subject line**: `[SECURITY] Budgee — Brief description`
-- Please include steps to reproduce the issue and any relevant details
+- Email: [andreabonacci95@protonmail.com](mailto:andreabonacci95@protonmail.com)
+- Subject: `[SECURITY] Budgee - Brief description`
+- Include steps to reproduce and any relevant details
 
-I take all reports seriously and will respond as quickly as possible. Please do not disclose the issue publicly until it has been addressed.
+Reports are read and answered as quickly as possible. Please do not disclose the issue publicly until it is addressed.
 
 ---
 

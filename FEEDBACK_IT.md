@@ -1,62 +1,65 @@
-# 💬 Feedback e Richieste Funzionalità
+# Feedback e richieste di funzionalità
 
 <div align="center">
 
-**Il tuo feedback aiuta a rendere Budgee migliore per tutti**
+**Il tuo feedback aiuta a far crescere Budgee**
 
-[![English](https://img.shields.io/badge/🇬🇧_Read_in_English-4A90E2?style=for-the-badge)](./FEEDBACK.md) &nbsp; [![Torna al README](https://img.shields.io/badge/📖_Torna_al_README-009246?style=for-the-badge)](./README_IT.md)
+[![English](https://img.shields.io/badge/Read_in_English-4A90E2?style=for-the-badge)](./FEEDBACK.md) &nbsp; [![Torna al README](https://img.shields.io/badge/Torna_al_README-009246?style=for-the-badge)](./README_IT.md)
 
 </div>
 
 ---
 
-## 🎯 Come Fornire Feedback
+## Come inviare feedback
 
-Sono sempre alla ricerca di modi per migliorare Budgee in base alle esigenze reali degli utenti. Il tuo feedback, i tuoi suggerimenti e le segnalazioni di bug sono incredibilmente preziosi!
+Budgee evolve insieme alle persone che la usano. Se hai feedback, suggerimenti o segnalazioni di bug, vengono letti e considerati.
 
 ---
 
-## 📧 Metodi di Contatto
+## Contatti
 
-### Email (Preferito)
-**andreabonacci95@protonmail.com**
+### Email (preferita)
 
-Questo è il modo migliore per contattarmi per:
+andreabonacci95@protonmail.com
+
+Usa l'email per:
+
 - Feedback dettagliato
 - Richieste di funzionalità
 - Segnalazioni di bug
 - Domande sull'app
 - Proposte di collaborazione
 
-**Tempo di risposta:** Solitamente entro 2-3 giorni lavorativi
+Tempo di risposta indicativo: 2-3 giorni lavorativi.
 
 ---
 
-## 🐛 Segnalare Bug
+## Segnalare bug
 
-Quando segnali un bug, includi:
+Quando segnali un bug, include:
 
-### Informazioni Essenziali
-- **Cosa è successo**: Descrizione chiara del problema
-- **Comportamento atteso**: Cosa pensavi dovesse accadere
-- **Passi per riprodurre**: Come posso ricreare il bug?
-- **Dispositivo e Browser**: es. "iPhone 13, Safari 16" o "Windows 11, Chrome 120"
-- **Screenshot**: Se applicabile (molto utile!)
+### Informazioni essenziali
 
-### Esempio di Segnalazione Bug
+- Cosa è successo: una descrizione chiara del problema
+- Cosa ti aspettavi: come pensavi dovesse comportarsi
+- Passi per riprodurre: come può essere ricreato il bug?
+- Dispositivo e browser: es. "iPhone 13, Safari 16" oppure "Windows 11, Chrome 120"
+- Screenshot, se disponibili
+
+### Esempio di segnalazione
 
 ```
 Oggetto: [BUG] Le spese non si sincronizzano dopo la modalità offline
 
 Descrizione:
-Dopo aver usato l'app offline per alcune ore, le mie spese 
-non si sincronizzano quando mi riconnetto a internet.
+Dopo aver usato l'app offline per alcune ore, le mie spese
+non si sincronizzano quando mi riconnetto.
 
 Passi per riprodurre:
 1. Attiva la modalità aereo
 2. Aggiungi 3 spese
 3. Disattiva la modalità aereo
-4. Aspetta 5 minuti - le spese non sono ancora sincronizzate
+4. Aspetta 5 minuti; le spese non sono ancora sincronizzate
 
 Dispositivo: Samsung Galaxy S23, Chrome 119
 Screenshot: [allegato]
@@ -64,155 +67,164 @@ Screenshot: [allegato]
 
 ---
 
-## 💡 Richiedere Funzionalità
+## Richiedere funzionalità
 
-Adoro sentire quali funzionalità vorresti vedere! Quando richiedi una funzionalità:
+Più la richiesta è concreta, più è utile.
 
-### Cosa Includere
-- **Descrizione funzionalità**: Cosa vorresti aggiungere?
-- **Caso d'uso**: Perché sarebbe utile? Come la useresti?
-- **Priorità**: È un "nice to have" o critico per il tuo workflow?
-- **Esempi**: Ci sono app che lo fanno bene? Screenshot?
+### Cosa includere
 
-### Esempio di Richiesta Funzionalità
+- Descrizione della funzionalità: cosa vorresti aggiungere?
+- Caso d'uso: perché sarebbe utile? Come la useresti?
+- Priorità: è un "nice to have" o critica per il tuo flusso?
+- Esempi: ci sono app che lo fanno bene? Screenshot?
+
+### Esempio di richiesta
 
 ```
 Oggetto: [FUNZIONALITÀ] Aggiungere supporto per tracciamento criptovalute
 
 Descrizione:
-Vorrei tracciare il mio portafoglio di criptovalute insieme 
+Vorrei tracciare il mio portafoglio di criptovalute insieme
 agli investimenti tradizionali.
 
 Caso d'uso:
-Possiedo Bitcoin ed Ethereum e vorrei vederli nel mio 
-portafoglio investimenti totale con aggiornamenti automatici dei prezzi.
+Possiedo Bitcoin ed Ethereum e vorrei vederli nel portafoglio
+investimenti complessivo con aggiornamenti automatici dei prezzi.
 
-Priorità: Media - attualmente lo traccio in un'app separata
+Priorità: Media - attualmente li traccio in un'app separata
 
-Simile a: Vista portafoglio Coinbase
+Simile a: vista portafoglio di Coinbase
 ```
 
 ---
 
-## 🌟 Cosa Rende un Buon Feedback
+## Cosa rende un feedback utile
 
-### ✅ Feedback Utile
-- **Specifico**: "Il form spese non salva quando premo Invio su mobile"
-- **Attuabile**: "Aggiungi un toggle per la modalità scura nel menu impostazioni"
-- **Costruttivo**: "La pagina budget è confusa - forse aggiungi un tutorial?"
+### Feedback utile
 
-### ❌ Feedback Meno Utile
+- Specifico: "Il form spese non salva quando premo Invio su mobile"
+- Attuabile: "Aggiungi un toggle per il tema scuro nelle impostazioni"
+- Costruttivo: "La pagina budget è confusa; forse aggiungere un tutorial?"
+
+### Feedback meno utile
+
 - Troppo vago: "L'app è lenta"
 - Non attuabile: "Rendila migliore"
 - Poco chiaro: "Qualcosa è rotto"
 
 ---
 
-## 🎨 Categorie Richieste Funzionalità
+## Aree dove il feedback è particolarmente benvenuto
 
-Ecco alcune aree dove sono particolarmente interessato al feedback:
+### Alta priorità
 
-### Alta Priorità
-- **Miglioramenti usabilità** - Rendere l'app più facile da usare
-- **Problemi di performance** - Velocità, tempi di caricamento, reattività
-- **Bug critici** - Qualsiasi cosa impedisca l'uso normale
-- **Accuratezza dati** - Errori di calcolo, problemi di sincronizzazione
+- Miglioramenti di usabilità
+- Problemi di performance (velocità, caricamento, reattività)
+- Bug critici che impediscono l'uso normale
+- Errori di calcolo o problemi di sincronizzazione
 
-### Media Priorità
-- **Nuove funzionalità** - Funzionalità aggiuntive
-- **Miglioramenti UI/UX** - Miglioramenti visivi, layout migliori
-- **Richieste integrazione** - Connessione con altri servizi
-- **Opzioni Export/Import** - Nuovi formati dati
+### Media priorità
 
-### Priorità Bassa (ma comunque benvenuti!)
-- **Funzionalità nice-to-have** - Miglioramenti qualità della vita
-- **Modifiche estetiche** - Schemi colore, font, icone
-- **Funzionalità avanzate** - Funzionalità per power user
+- Nuove funzionalità
+- Miglioramenti UI e UX
+- Richieste di integrazione con altri servizi
+- Formati aggiuntivi per import ed export
 
----
+### Bassa priorità (comunque benvenuti)
 
-## 📊 Cosa Succede al Tuo Feedback?
-
-1. **Leggo tutto** - Ogni email viene letta e considerata
-2. **Stabilisco priorità** - In base a impatto, fattibilità e richiesta utenti
-3. **Implemento** - Le funzionalità popolari e fattibili vengono aggiunte alla roadmap
-4. **Comunico** - Se la tua funzionalità viene aggiunta, te lo farò sapere!
+- Miglioramenti di qualità della vita
+- Modifiche estetiche (palette, font, icone)
+- Funzionalità per power user
 
 ---
 
-## 🚀 Roadmap Attuale
+## Cosa succede al tuo feedback
 
-Vuoi sapere cosa è già pianificato? Ecco alcune funzionalità in sviluppo:
-
-### In Arrivo
-- 🔔 Notifiche push per avvisi budget
-- 📱 App native mobile (iOS e Android)
-- 🔄 Import automatico transazioni bancarie
-- 📈 Dashboard analytics avanzata
-- 👥 Budget condivisi per famiglie/coppie
-
-### In Valutazione
-- 🌍 Supporto lingue aggiuntive
-- 💱 Più opzioni valuta
-- 🤖 Insights di spesa basati su AI
-- 📊 Builder report personalizzati
-- 🔗 Integrazione con software contabilità
-
-*Nota: La roadmap è soggetta a modifiche in base al feedback degli utenti e alla fattibilità tecnica*
+1. Ogni email viene letta e considerata
+2. Le richieste vengono ordinate per impatto, fattibilità e numero di richieste
+3. Le richieste che rientrano nei criteri finiscono in roadmap
+4. Se la tua richiesta viene implementata, te lo dico
 
 ---
 
-## 🤝 Altri Modi per Aiutare
+## Roadmap attuale
 
-### Spargi la Voce
-Se ami Budgee, dillo ai tuoi amici! Il passaparola è il modo migliore per aiutare l'app a crescere.
+Quello che è già in pianificazione.
 
-### Lascia una Stella ⭐
-Se sei su GitHub, lasciare una stella al repository aiuta altri a scoprire Budgee.
+### In arrivo
 
-### Condividi la Tua Storia
-Come ti ha aiutato Budgee? Le storie di successo mi motivano a continuare a migliorare l'app!
+- Notifiche push per gli avvisi di budget
+- App native mobile (iOS e Android)
+- Import automatico delle transazioni bancarie
+- Dashboard analitica avanzata
+- Budget condivisi per famiglie e coppie
 
----
+### In valutazione
 
-## ⚠️ Cosa Non Posso Fare
+- Supporto a lingue aggiuntive
+- Più opzioni di valuta
+- Insight di spesa assistiti da AI
+- Builder di report personalizzati
+- Integrazione con software di contabilità
 
-Ti prego di notare che non posso:
-- Fornire consulenza finanziaria o fiscale
-- Recuperare dati da account eliminati (le eliminazioni sono permanenti)
-- Accedere ai tuoi dati personali (sono crittografati e privati)
-- Garantire che funzionalità specifiche verranno implementate
-- Fornire supporto 24/7 (sono uno sviluppatore singolo!)
-
-Per consulenza finanziaria, consulta un consulente finanziario qualificato.
+*La roadmap può cambiare in base ai feedback e alla fattibilità tecnica.*
 
 ---
 
-## 📝 Nota sulla Privacy
+## Altri modi per aiutare
 
-Quando mi contatti:
-- La tua email e il feedback sono mantenuti privati
-- Non condivido mai informazioni utente con terze parti
-- Il feedback può essere usato anonimamente per migliorare l'app
-- Puoi richiedere la cancellazione della tua corrispondenza in qualsiasi momento
+### Spargi la voce
+
+Se Budgee ti è utile, parlane con altre persone. Il passaparola è il canale principale con cui l'app raggiunge nuovi utenti.
+
+### Lascia una stella
+
+Una stella sul repository GitHub aiuta altri a trovare Budgee.
+
+### Condividi la tua esperienza
+
+Se Budgee ha cambiato qualcosa nel modo in cui gestisci i soldi, scrivimelo. Sono questi racconti a guidare le prossime funzionalità.
 
 ---
 
-## 🙏 Grazie!
+## Cosa è fuori scopo
 
-Grazie per aver dedicato del tempo a fornire feedback. Ogni suggerimento, segnalazione di bug e parola gentile aiuta a rendere Budgee migliore per tutti.
+Alcune cose non possono essere offerte:
 
-Ho costruito Budgee perché volevo un modo semplice e potente per gestire le mie finanze personali. Il tuo feedback assicura che funzioni bene anche per gli altri.
+- Consulenza finanziaria o fiscale
+- Recupero dati da account eliminati; l'eliminazione è definitiva
+- Accesso ai tuoi dati personali; sono cifrati e privati
+- Garanzia che una specifica funzionalità verrà rilasciata
+- Supporto 24/7; è un progetto solista
 
-**Buon budgeting!**
+Per la consulenza finanziaria, rivolgiti a un professionista qualificato.
 
-— Andrea Bonacci
+---
+
+## Privacy
+
+Quando scrivi:
+
+- Email e contenuto del feedback restano privati
+- Le informazioni degli utenti non vengono condivise con terze parti
+- Il feedback può essere usato in forma anonima per migliorare l'app
+- Puoi chiedere la cancellazione della corrispondenza in qualsiasi momento
+
+---
+
+## Grazie
+
+Grazie per il tempo che dedichi a scrivere. Ogni suggerimento, segnalazione di bug o parola gentile finisce nella prossima versione di Budgee.
+
+Budgee è nata per gestire le mie finanze. Il tuo feedback è ciò che la rende utile anche ad altre persone.
+
+- Andrea Bonacci
 
 ---
 
 <div align="center">
 
-**📧 andreabonacci95@protonmail.com**
+andreabonacci95@protonmail.com
 
 **© 2025-2026 Andrea Bonacci**
 
