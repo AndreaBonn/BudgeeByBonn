@@ -18,6 +18,10 @@ Budgee è una Progressive Web App (PWA) completa per la gestione delle finanze p
 
 Non è un foglio Excel. Non è un'app complicata. È uno strumento pensato per chi vuole il controllo completo delle proprie finanze senza la complessità.
 
+![Dashboard principale di Budgee](./docs/screenshots/it/01-spese-dashboard.png)
+
+*Riepilogo del mese: entrate, spese, tasso di risparmio e totali deducibili a colpo d'occhio.*
+
 ---
 
 ## 🎯 Perché usare Budgee
@@ -79,6 +83,10 @@ Puoi anche:
 - **Statistiche in tempo reale** — media giornaliera, proiezione fine mese, giorno con spesa massima
 - **Grafici interattivi** — trend mensili, pattern settimanali/mensili/annuali, distribuzione per categoria
 
+![Calendario spese e trend mensile](./docs/screenshots/it/02-calendario-trend.png)
+
+*La heatmap giornaliera evidenzia i giorni con spesa più alta; il trend mensile mostra l'evoluzione giorno per giorno.*
+
 ### 🎯 Budget
 
 Imposta un limite di spesa mensile per ogni categoria. Budgee ti mostra:
@@ -88,6 +96,10 @@ Imposta un limite di spesa mensile per ogni categoria. Budgee ti mostra:
 
 Le categorie di budget supportano una gerarchia con macro-categorie e sotto-categorie, così puoi monitorare la spesa al livello di dettaglio che preferisci.
 
+![Budget con barre di progresso per categoria](./docs/screenshots/it/04-budget-progress.png)
+
+*Budget gerarchici per macro e sotto-categoria, con barre di progresso in tempo reale e avvisi di sforamento.*
+
 ### 📊 Risparmi
 
 Una sezione dedicata che calcola automaticamente i tuoi risparmi dalla differenza tra entrate e spese:
@@ -96,6 +108,10 @@ Una sezione dedicata che calcola automaticamente i tuoi risparmi dalla differenz
 - **Saving rate** — che percentuale del tuo reddito stai effettivamente risparmiando
 - **Mesi migliori e peggiori** — capisci i tuoi pattern a colpo d'occhio
 - **Insights automatici** — Budgee rileva pattern e ti dà suggerimenti
+
+![Analisi dei risparmi e trend mensile](./docs/screenshots/it/10-risparmi-trend.png)
+
+*Trend dei risparmi mese per mese con totali dell'anno corrente e saving rate.*
 
 ### 📈 Investimenti
 
@@ -108,6 +124,10 @@ Tieni traccia dell'intero portafoglio in un unico posto:
 - **Statistiche riepilogative**: totale investito, rendimenti attesi totali, rendimenti effettivi totali, tasso di interesse medio, prossima scadenza
 - **Ricerca avanzata**: trova investimenti rapidamente con filtri multipli
 
+![Portafoglio investimenti con progressi e rendimenti attesi](./docs/screenshots/it/06-investimenti-lista.png)
+
+*Ogni asset mostra importo investito, rendimento atteso, tasso di interesse, progresso alla scadenza e azioni rapide per i versamenti.*
+
 ### 💳 Finanziamenti
 
 Gestisci tutti i tuoi debiti con tracciamento completo:
@@ -119,6 +139,10 @@ Gestisci tutti i tuoi debiti con tracciamento completo:
 - **Statistiche riepilogative**: totale prestato, totale da pagare (con interessi), totale già pagato, totale rimanente, rata mensile media, progresso medio
 - **Ricerca avanzata**: trova prestiti rapidamente con filtri multipli
 - **Modal dettagliato**: visualizza informazioni complete sul prestito con storico pagamenti e piano di ammortamento
+
+![Gestione finanziamenti con progresso pagamenti](./docs/screenshots/it/08-finanziamenti-lista.png)
+
+*Mutui e prestiti con progresso delle rate, totale pagato, saldo residuo e tasso di interesse.*
 
 ### 📁 Documenti
 
@@ -153,6 +177,10 @@ Budgee analizza i tuoi dati e li presenta visivamente:
 - **Ricerca avanzata** — filtra per categoria, periodo, range di importo, parole chiave
 - **Report personalizzati** — genera report per qualsiasi periodo con calcoli budget proporzionali
 - **Insights automatici** — pattern, anomalie e suggerimenti basati sui tuoi dati
+
+![Analisi categorie con macro e sotto-categoria](./docs/screenshots/it/11-categorie.png)
+
+*L'analisi categorie ordina le spese per macro-categoria con drill-down nelle sotto-categorie e percentuale sul totale.*
 
 ### 🏦 Conti Aperti
 
@@ -201,6 +229,29 @@ Budgee è disponibile in **Italiano** e **Inglese**. Cambia lingua in qualsiasi 
 ### 🎨 Supporto Temi
 
 Scegli tra modalità chiara e scura per una visualizzazione confortevole in qualsiasi condizione di illuminazione. La tua preferenza viene salvata e sincronizzata tra dispositivi.
+
+<div align="center">
+<table>
+<tr>
+<td><img src="./docs/screenshots/it/01-spese-dashboard.png" alt="Tema chiaro" width="420"></td>
+<td><img src="./docs/screenshots/it/16-dark-mode.png" alt="Tema scuro" width="420"></td>
+</tr>
+<tr>
+<td align="center"><em>Tema chiaro</em></td>
+<td align="center"><em>Tema scuro</em></td>
+</tr>
+</table>
+</div>
+
+### 📱 Pensata per il Mobile
+
+Budgee è mobile-first: ogni sezione si adatta agli schermi piccoli con navigazione a bottom-tab e layout compatti. Installala dal browser per lanciarla come un'app nativa.
+
+<div align="center">
+<img src="./docs/screenshots/it/14-mobile-spese.png" alt="Vista spese mobile" width="280">
+&nbsp;&nbsp;&nbsp;
+<img src="./docs/screenshots/it/15-mobile-calendario.png" alt="Calendario spese mobile" width="280">
+</div>
 
 ### 📊 Tutorial Interattivo
 

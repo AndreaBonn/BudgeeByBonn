@@ -18,6 +18,10 @@ Budgee is a comprehensive Progressive Web App (PWA) for personal finance managem
 
 It's not a spreadsheet. It's not a complicated tool. It's built for people who want complete control over their finances without the complexity.
 
+![Budgee main dashboard](./docs/screenshots/en/01-expenses-dashboard.png)
+
+*Monthly overview: income, expenses, savings rate and deductible totals at a glance.*
+
 ---
 
 ## 🎯 Why Budgee
@@ -79,6 +83,10 @@ You can also:
 - **Real-time statistics** — daily average, month-end projection, highest spending day
 - **Interactive charts** — monthly trends, weekly/monthly/yearly patterns, category distribution
 
+![Expense calendar heatmap and monthly trend](./docs/screenshots/en/02-calendar-trend.png)
+
+*Daily heatmap calendar highlights your highest-spending days; the monthly trend chart shows how your spending evolves day after day.*
+
 ### 🎯 Budget
 
 Set a monthly spending limit for each category. Budgee shows you:
@@ -88,6 +96,10 @@ Set a monthly spending limit for each category. Budgee shows you:
 
 Budget categories support a hierarchy with macro-categories and sub-categories, so you can track spending at the level of detail you prefer.
 
+![Budget overview with progress bars per category](./docs/screenshots/en/04-budget-progress.png)
+
+*Hierarchical budgets per macro and sub-category, with real-time progress bars and overspending alerts.*
+
 ### 📊 Savings
 
 A dedicated section that calculates your savings automatically from your income and expenses:
@@ -96,6 +108,10 @@ A dedicated section that calculates your savings automatically from your income 
 - **Saving rate** — what percentage of your income you're actually saving
 - **Best and worst months** — understand your patterns at a glance
 - **Automatic insights** — Budgee detects patterns and gives you tips
+
+![Savings analysis and monthly trend](./docs/screenshots/en/10-savings-trend.png)
+
+*Monthly savings trend with year-to-date totals and saving rate.*
 
 ### 📈 Investments
 
@@ -108,6 +124,10 @@ Track your entire portfolio in one place:
 - **Summary statistics**: total invested, total expected returns, total actual returns, average interest rate, next maturity date
 - **Advanced search**: find investments quickly with multiple filters
 
+![Investments portfolio with progress and expected returns](./docs/screenshots/en/06-investments-list.png)
+
+*Each asset card shows invested amount, expected return, interest rate, maturity progress and quick actions for capital movements.*
+
 ### 💳 Loans & Financing
 
 Manage all your debts with complete tracking:
@@ -119,6 +139,10 @@ Manage all your debts with complete tracking:
 - **Summary statistics**: total borrowed, total to pay (with interest), total already paid, total remaining, average monthly installment, average progress
 - **Advanced search**: find loans quickly with multiple filters
 - **Detailed modal**: view complete loan information with payment history and amortization schedule
+
+![Loan tracking with payment progress](./docs/screenshots/en/08-financings-list.png)
+
+*Mortgages and loans with installment progress, total paid, remaining balance and interest rate.*
 
 ### 📁 Documents
 
@@ -153,6 +177,10 @@ Budgee analyzes your data and presents it visually:
 - **Advanced search** — filter by category, date range, amount range, keywords
 - **Custom reports** — generate reports for any time period you choose with proportional budget calculations
 - **Automatic insights** — patterns, anomalies, and suggestions based on your data
+
+![Category analysis with macro and sub-category breakdown](./docs/screenshots/en/11-categories.png)
+
+*Category analysis ranks your spending by macro-category with drill-down to sub-categories and percentage share.*
 
 ### 🏦 Open Accounts
 
@@ -201,6 +229,29 @@ Budgee is available in **Italian** and **English**. Switch language at any time 
 ### 🎨 Theme Support
 
 Choose between light and dark mode for comfortable viewing in any lighting condition. Your preference is saved and synced across devices.
+
+<div align="center">
+<table>
+<tr>
+<td><img src="./docs/screenshots/en/01-expenses-dashboard.png" alt="Light mode" width="420"></td>
+<td><img src="./docs/screenshots/en/16-dark-mode.png" alt="Dark mode" width="420"></td>
+</tr>
+<tr>
+<td align="center"><em>Light mode</em></td>
+<td align="center"><em>Dark mode</em></td>
+</tr>
+</table>
+</div>
+
+### 📱 Designed for Mobile
+
+Budgee is mobile-first: every section adapts to small screens with a bottom-tab navigation and condensed layouts. Install it from your browser to launch it like a native app.
+
+<div align="center">
+<img src="./docs/screenshots/en/14-mobile-expenses.png" alt="Mobile expenses view" width="280">
+&nbsp;&nbsp;&nbsp;
+<img src="./docs/screenshots/en/15-mobile-calendar.png" alt="Mobile spending calendar" width="280">
+</div>
 
 ### 📊 Interactive Tutorial
 
