@@ -352,6 +352,14 @@ Built by Andrea Bonacci - [github.com/AndreaBonn](https://github.com/AndreaBonn)
 
 ---
 
+## Support the project
+
+Budgee is free to use. If it helps you keep your finances under control and you want to give something back, you can leave a tip via PayPal. The amount is up to you and it is entirely optional.
+
+[![Donate with PayPal](https://img.shields.io/badge/Donate-PayPal-00457C?logo=paypal&logoColor=white&style=for-the-badge)](https://paypal.me/AndreaBonacci19)
+
+---
+
 <div align="center">
 
 *The source code is private, but the app is free to use.*
