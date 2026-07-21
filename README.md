@@ -30,8 +30,6 @@ A full walkthrough: login, expenses dashboard, adding an expense, income, saving
 
 ![Budgee demo](./docs/media/budgee-demo.gif)
 
-https://github.com/user-attachments/assets/59b93e4d-43b9-4054-aa43-bebd2351d878
-
 
 ---
 
