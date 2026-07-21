@@ -93,7 +93,7 @@ Other things you can do:
 - Read live statistics: daily average, projected month-end total, highest-spending day
 - Open monthly, weekly and yearly trend charts and category distributions
 
-![Expense calendar heatmap and monthly trend](./docs/screenshots/en/02-calendar-trend.png)
+![Expense calendar heatmap and monthly trend](./docs/media/features/en/spese.gif)
 
 *The daily calendar uses colour intensity to mark the days with higher spending; the trend chart below shows how spending builds up day by day.*
 
@@ -107,7 +107,7 @@ Set a monthly spending limit for each category. Budgee shows:
 
 Budget categories work in a hierarchy: macro-category first, then sub-categories. You decide how granular to go.
 
-![Budget overview with progress bars per category](./docs/screenshots/en/04-budget-progress.png)
+![Budget overview with progress bars per category](./docs/media/features/en/budget.gif)
 
 *Hierarchical budgets per macro and sub-category, with progress bars and alerts when you go over.*
 
@@ -137,7 +137,7 @@ Your portfolio in one place:
 - Portfolio totals: invested capital, expected returns, actual returns, average interest rate, next maturity date
 - Multi-filter search
 
-![Investments portfolio with progress and expected returns](./docs/screenshots/en/06-investments-list.png)
+![Investments portfolio with progress and expected returns](./docs/media/features/en/investimenti.gif)
 
 *Each card shows invested amount, expected return, interest rate, maturity progress and quick actions for capital movements.*
 

@@ -94,7 +94,7 @@ Cose che puoi fare in più:
 - Leggere statistiche in tempo reale: media giornaliera, proiezione di fine mese, giorno con spesa più alta
 - Aprire grafici di trend mensile, settimanale, annuale e distribuzione per categoria
 
-![Calendario spese e trend mensile](./docs/screenshots/it/02-calendario-trend.png)
+![Calendario spese e trend mensile](./docs/media/features/it/spese.gif)
 
 *Il calendario giornaliero usa l'intensità del colore per evidenziare i giorni con spesa più alta; il grafico del trend mostra come la spesa si accumula giorno per giorno.*
 
@@ -108,7 +108,7 @@ Imposti un limite di spesa mensile per ogni categoria. Budgee ti mostra:
 
 Le categorie di budget lavorano in gerarchia: prima la macro-categoria, poi le sotto-categorie. Decidi tu quanto scendere nel dettaglio.
 
-![Budget con barre di progresso per categoria](./docs/screenshots/it/04-budget-progress.png)
+![Budget con barre di progresso per categoria](./docs/media/features/it/budget.gif)
 
 *Budget gerarchici per macro e sotto-categoria, con barre di progresso e avvisi di sforamento.*
 
@@ -138,7 +138,7 @@ Il portafoglio in un unico posto:
 - Totali di portafoglio: capitale investito, rendimenti attesi, rendimenti effettivi, tasso medio, prossima scadenza
 - Ricerca con filtri multipli
 
-![Portafoglio investimenti con progressi e rendimenti attesi](./docs/screenshots/it/06-investimenti-lista.png)
+![Portafoglio investimenti con progressi e rendimenti attesi](./docs/media/features/it/investimenti.gif)
 
 *Ogni card mostra importo investito, rendimento atteso, tasso di interesse, progresso fino alla scadenza e azioni rapide per i movimenti di capitale.*
 
