@@ -24,6 +24,16 @@ Budgee è una Progressive Web App (PWA) per le finanze personali. Tracci spese e
 
 ---
 
+## Guardalo in azione
+
+Un giro completo: accesso, dashboard delle spese, aggiunta di una spesa, entrate, risparmi, aggiunta e svincolo di un investimento, budget.
+
+[![Demo di Budgee](./docs/media/budgee-demo.gif)](./docs/media/budgee-demo.mp4)
+
+*L'anteprima qui sopra è accelerata. Clicca sulla GIF per aprire il video completo ([budgee-demo.mp4](./docs/media/budgee-demo.mp4)).*
+
+---
+
 ## Cosa ti offre
 
 - Tutto in una sola app: spese, entrate, budget mensili, investimenti, finanziamenti, conti aperti, obiettivi di risparmio, spese deducibili e documenti

@@ -24,6 +24,16 @@ It was built for people who keep their finances in a notebook or a messy spreads
 
 ---
 
+## See it in action
+
+A full walkthrough: login, expenses dashboard, adding an expense, income, savings, adding and cashing out an investment, and budgets.
+
+[![Budgee demo](./docs/media/budgee-demo.gif)](./docs/media/budgee-demo.mp4)
+
+*The preview above is sped up. Click the GIF to open the full-quality video ([budgee-demo.mp4](./docs/media/budgee-demo.mp4)).*
+
+---
+
 ## What you get
 
 - Everything in one app: expenses, income, monthly budgets, investments, loans, open accounts, savings goals, deductible expenses and documents
