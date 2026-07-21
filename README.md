@@ -28,9 +28,8 @@ It was built for people who keep their finances in a notebook or a messy spreads
 
 A full walkthrough: login, expenses dashboard, adding an expense, income, savings, adding and cashing out an investment, and budgets.
 
-[![Budgee demo](./docs/media/budgee-demo.gif)](./docs/media/budgee-demo.mp4)
+![Budgee demo](./docs/media/budgee-demo.gif) https://github.com/user-attachments/assets/59b93e4d-43b9-4054-aa43-bebd2351d878
 
-*The preview above is sped up. Click the GIF to open the full-quality video ([budgee-demo.mp4](./docs/media/budgee-demo.mp4)).*
 
 ---
 
