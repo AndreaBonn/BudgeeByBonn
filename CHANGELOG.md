@@ -2,7 +2,7 @@
 
 This document summarises the significant progress of the project from its inception (January 2026) to today, grouped by **value eras** rather than by individual session. Purely cosmetic commits (formatting, variable renames, UI alignment without behaviour change), internal-only cleanups with no measurable impact (removing `console.log`, fixing unused CSS selectors) and empty sessions have been deliberately excluded.
 
-Time span: **January 2026 → June 2026**, 83 working sessions.
+Time span: **January 2026 → August 2026**, 118 working sessions.
 
 ---
 
@@ -56,7 +56,7 @@ Clicking "Total Expenses" or "Total Incomes" opens the monthly summary. Clicking
 
 ### CSV injection protection
 
-- **#63**: vulnerability found in the financings export — names with `=HYPERLINK(...)` were interpreted as formulas by Excel. Fixed with apostrophe prefix on dangerous characters.
+- **#63**: vulnerability found in the financings export: names with `=HYPERLINK(...)` were interpreted as formulas by Excel. Fixed with apostrophe prefix on dangerous characters.
 - **#65**: same protection extended to investments.
 - **#80**: `escapeCsvCell` helper with RFC 4180 quote-doubling + leading `'` on `=`, `+`, `-`, `@`, `\t`, `\r` for the open-accounts export.
 
@@ -189,7 +189,7 @@ The TDD refactor exposed pre-existing bugs that the system was hiding:
 
 ### Visual refresh
 
-- **#27**: refreshed look — clean title colours without gradient effects, more refined cards, animations reduced to functional ones, Figtree font for pleasant reading. Keyboard accessibility with restored focus indicators. Notification system using the browser-native `<dialog>` element.
+- **#27**: refreshed look: clean title colours without gradient effects, more refined cards, animations reduced to functional ones, Figtree font for pleasant reading. Keyboard accessibility with restored focus indicators. Notification system using the browser-native `<dialog>` element.
 - **#28**: cleaner and flatter background colours (Apple/Linear style), neutral subtle shadows, immediate touch feedback. Notch support (iPhone X+, Pixel) via safe-area insets.
 - **#29**: animated section transitions, form errors near the field, working browser back button, mobile swipe between sections, "Skip" button on tutorial. Hardcoded `rgba()` 388 → 12 (-97%).
 - **#26**: smoother animations on smartphones, robust layout on small screens, improved keyboard/screen-reader navigation, empty sections suggesting an action (assessed "UI score 5.5/10 → 8/10").
@@ -264,16 +264,96 @@ Tests are **behavioural**, not tautological. Every new module goes through a **r
 
 ---
 
+## Era 9 - AI, data rights and room to grow (June → August 2026)
+
+**Value delivered**: the app stopped asking you to type what a camera can read, gave you a way to take your data out or destroy it, and moved its storage off a ceiling it was heading straight for.
+
+### Receipt scanning
+
+- **AI scan for expenses and income** (June): photograph a receipt or upload a PDF and the amount, date, description and category land in the form. The scan runs on Google Gemini with an API key the user supplies; more than one key can be stored, and a key that hits its limit hands over to the next.
+- **A guard against the one silent mistake** (June): scanning something that reads as income while the expense form is open stops the flow and asks. Recording a refund as a purchase is the error nobody notices until the totals stop making sense.
+- **Sharing from the system** (August): with Budgee installed, the phone's share sheet lists it among the destinations for an image. The service worker holds the file until the app opens, and the scan starts with the picture already loaded.
+
+### Consent, and what leaves the app
+
+- **A consent of its own for AI scanning** (August): a receipt can reveal medicines, medical visits, habits. Sending it to a third party is a distinct decision from using Budgee, so it is asked separately, versioned, and revocable from the profile. If the notice changes in substance, the old answer no longer covers the new situation and the question comes back.
+- **Privacy notice in Italian and English** (August): a page of its own, reachable from the app.
+- **The API key never leaves** (August): `settings/ai` is excluded at the source from both the export and the Drive backup. A key that ends up in a backup stays readable forever.
+
+### Taking your data out, or destroying it
+
+- **A single registry of what an account is made of** (August): export and deletion used to walk two hand-written lists that had drifted apart. Deletion pointed at three retired subcollections and left the seven real ones untouched; the export covered four out of ten. Both now read the same registry.
+- **Full export as a ZIP** (August): a complete JSON plus a CSV per section, read from the database rather than from what the app has in memory, which held only expenses, income and budgets.
+- **Deletion that survives an interruption** (August): Firestore does not delete subcollections with their parent. Without an explicit visit they stay orphaned and invisible, and the account looks deleted while all the financial data is still there. The user document is now marked before the work starts and removed last, so an interrupted deletion leaves a trace that the next sign-in recognises and resumes.
+
+### Payment methods, and the cash you cannot see
+
+- **One canonical list** (August): the codes were duplicated in six places and the copies had diverged. The recurring-income edit select omitted `voucher`, so a recurring income paid by voucher lost its method on save.
+- **Required where a person fills the form** (August), with the method you usually use for that category pre-selected, and only when the field is still empty.
+- **Coverage and bulk completion** (August): the profile shows how much of the history carries the field and offers to fill the gaps by category, proposing the method most used in each.
+- **Cash share** (August): how much of your spending goes through cash, by month and by category, measured on amounts rather than on the number of entries. What has no known method is reported separately instead of quietly diluting the percentage.
+
+### Reading two years at once
+
+- **Year-on-year comparison by category** (August): difference and percentage change, as a table and as paired bars. A category present in one year only stays in the comparison with the other at zero, because a row that disappears is usually the interesting one. One currency at a time.
+
+### Backup on the user's own Drive
+
+- **Weekly copy, eight kept** (August): upload, retention and pruning on Drive, under the `drive.file` scope, so Budgee only ever touches the files it created.
+- **Said out loud** (August): with no Cloud Function there is no scheduler. The backup starts when the app opens, and the notice says exactly that. "Weekly backup" would otherwise promise something that happens on its own every seven days.
+
+### The tax package
+
+- **A wizard for the accountant** (August): seven profiles, from an employee filing a 730 to a partner in a company or a business on ordinary accounting. A chapter filter turns roughly twenty sections per profile into only the screens that concern the person in front of it.
+- **What Budgee already knows goes in the archive** (August): deductible expenses grouped by category, income, totals.
+- **What is missing is named** (August): an empty section does not distinguish "I do not have this" from "I forgot". The list is always generated, even when nothing is missing, because an archive without it leaves the doubt that the check never ran.
+- **Cash and the 19% relief** (August): since 2020 the relief generally requires a traceable payment, medicines and public providers aside. Budgee does not record who provided a service, so it flags rather than rules.
+- **What is not a file** (August): IBAN, dependants' tax codes, withholding agent details. The archive names them without containing them: a ZIP travelling by email is no place for those.
+- **Safe entry names** (August): names coming from Drive are not under Budgee's control and can carry path separators or directory traversal. Sanitising them is the responsibility of whoever builds the archive.
+
+### Room to grow
+
+The account lived in two arrays inside a single user document, which Firestore caps at 1 MiB. That ceiling was a matter of time.
+
+- **Monthly documents** (August): transactions split by month and put back together, with a rule that governs everything: no record may vanish. An unreadable date is not a reason to throw away an expense, so those go into a separate bucket that whoever migrates has to look at.
+- **A migration that can be inspected** (August): a pre-migration backup, a plan, verification before and after writing, a report kept on Firestore, and a reason written down whenever it does not advance.
+- **Realtime sync** (August): two tabs on the same account stay aligned, with listeners opening only after the startup read has settled, so the decision about where to read from is never made against data that moved underneath it.
+- **The SDK's own offline memory** (August): it was already being switched on inside `firebase-config.js`, with both error branches empty. A persistence that never came up looked exactly like one that had.
+- **Lazy month loading** (August): only the months the current view asks for, derived from the period filter rather than duplicated from it.
+
+### Investments and transactions
+
+- **Movements per investment** (June): capital added, capital released, returns collected, all editable or removable after the fact, plus recurring returns for what pays out on a schedule.
+- **Edit and delete inside every detail modal** (June): including the ones opened from the insights, so a wrong entry is corrected where it was noticed.
+
+### Accessibility
+
+- **Contrast lifted to the AA floor** in both themes across goals, search, open accounts, the remove button and the profile modal titles (June → August).
+- **Keyboard trapped inside modal dialogs** (August), so focus cannot wander behind an open modal.
+- **Accessible names** on controls that had none, such as the goal currency select.
+- **Decorative emoji removed** where the text already said the same thing.
+- **Semantic text colours** that follow the theme, instead of values repeated per component.
+- **axe-core pinned locally** (August), so the accessibility gate stops depending on the network.
+
+### Showing the app, and explaining it
+
+- **Reproducible demo pipeline** (July): Firebase emulators, seeded fake data, Playwright recording, ffmpeg conversion. Nothing real is touched, and the same seed produces the same video.
+- **Per-feature GIFs** (July) in Italian and English, cut from a single continuous tour.
+- **Screenshots of the recent features** (August), on the same infrastructure.
+- **A user guide** (August), in Italian and English, walking through every section step by step.
+
+---
+
 ## Aggregate metrics across the project's history
 
 | Metric                                           | Value                                            |
 | ------------------------------------------------ | ------------------------------------------------ |
-| Working sessions                                 | 83 (Jan 2026 → Jun 2026)                         |
-| User-facing features introduced                  | 15+                                              |
+| Working sessions                                 | 118 (Jan 2026 → Aug 2026)                        |
+| User-facing features introduced                  | 25+                                              |
 | Security vulnerabilities closed                  | Multiple XSS + 3 CSV injections + 5 recent HIGH  |
 | Silent failures made visible                     | 15+                                              |
-| Total tests on 9 June 2026                       | **5,510**                                        |
-| Global Lines coverage                            | 0% → **65.37%**                                  |
+| Total tests on 7 August 2026                     | **9,155** across 426 suites, all passing         |
+| Global Lines coverage                            | 0% → **65.37%** (measured on 9 June 2026)        |
 | Initial bundle                                   | 1.73 MB → 900 KB (-48%)                          |
 | Image assets                                     | 6.2 MB → 340 KB (-95%)                           |
 | `app.js` reduction                               | 13,150 → 1,734 lines                             |
@@ -286,12 +366,14 @@ Tests are **behavioural**, not tautological. Every new module goes through a **r
 
 ## What this means for Budgee users today
 
-In six months Budgee evolved from a working but fragile app into a product that is:
+In eight months Budgee evolved from a working but fragile app into a product that is:
 
 1. **Fast**: initial bundle halved, images down 95%, minified build, full offline.
 2. **Secure**: every known XSS vector closed, CSV injection blocked, password complexity rules, UUIDs as IDs, restrictive Firestore rules, auto-logout on inactivity.
 3. **Reliable**: errors that used to vanish silently are now visible. A button that does not work tells you why.
-4. **Verifiable**: 5,510 tests covering 65% of the code. Critical functions (login, budgets, investments, exports) are covered above 90%. A future change that breaks something is caught before deploy.
+4. **Verifiable**: 9,155 tests across 426 suites. Critical functions (login, budgets, investments, exports) are covered above 90%. A future change that breaks something is caught before deploy.
 5. **Transparent**: the code is linked from the app's header. Anyone can verify what Budgee does with their data.
+6. **Yours**: the whole account downloads as a single archive, the deletion leaves nothing behind, and the one feature that sends data to a third party asks first and can be switched off.
+7. **Not about to hit a wall**: transactions live in monthly documents, so the history can keep growing past the size limit of a single record.
 
-The next development cycle introduces new features on a foundation that is dramatically more protected by tests and security audits than it was six months ago.
+The next development cycle builds on a foundation that is dramatically better protected by tests and security audits than it was eight months ago, and no longer has a storage ceiling in sight.
