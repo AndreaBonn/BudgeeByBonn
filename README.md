@@ -375,10 +375,9 @@ Budgee is a Progressive Web App (PWA) built with web standards:
 | Frontend | Vanilla JavaScript (ES6+ modules), HTML5, CSS3 with custom properties |
 | Architecture | Modular, feature-based; event delegation; explicit lifecycle |
 | Charts | Chart.js |
-| Backend | Firebase (Firestore, Authentication, Cloud Functions, Hosting) |
+| Backend | Firebase (Firestore, Authentication, Hosting). No server-side code of its own: the logic runs in the browser and the Firestore rules are the only trust boundary |
 | Documents | Google Drive API with OAuth 2.0 |
 | Receipt scanning | Google Gemini, with an API key supplied by the user |
-| Notifications | Telegram Bot API |
 | Offline | Service Worker with Network-First caching, plus the Firestore SDK's own local cache |
 | Storage | Transactions split into monthly documents, so the account keeps growing past the size limit of a single record |
 | Import/Export | SheetJS (xlsx) for Excel, fflate for ZIP archives |
