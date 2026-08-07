@@ -2,7 +2,7 @@
 
 Questo documento riassume gli avanzamenti significativi del progetto dall'inizio (gennaio 2026) a oggi, raggruppati per **ere di valore** invece che per singola sessione. Sono stati esclusi i commit puramente cosmetici (formattazione, rename di variabili, allineamenti UI senza cambio di comportamento), i commit di pura pulizia interna senza impatto (rimozione `console.log`, fix di selettori CSS inutilizzati) e le sessioni vuote.
 
-Arco temporale coperto: **gennaio 2026 → agosto 2026**, 118 sessioni di lavoro.
+Arco temporale coperto: **gennaio 2026 → agosto 2026**, 119 sessioni di lavoro.
 
 ---
 
@@ -343,18 +343,37 @@ L'account viveva in due array dentro un unico documento utente, che Firestore li
 - **Screenshot delle feature recenti** (agosto), sulla stessa infrastruttura.
 - **Un manuale utente** (agosto), in italiano e in inglese, che accompagna sezione per sezione.
 
+### Togliere un backend che non c'era
+
+Budgee gira sul piano gratuito di Firebase, dove le Cloud Functions non esistono,
+eppure il repository ne conteneva ancora quattro e il client continuava a scrivere
+sul database per alimentarle. Un timer aggiornava un indicatore di attività ogni
+cinque minuti per una funzione che non esisteva in nessun file, e ogni richiesta
+di reset archiviava l'indirizzo dell'utente in una collezione che nessuno poteva
+leggere e nessuno poteva svuotare.
+
+È stato tolto tutto (agosto). Resta il log degli errori, che si consulta dalla
+console Firebase. L'app non ha più codice lato server proprio: la logica gira nel
+browser e le regole del database sono l'unico confine di fiducia.
+
+Lo stesso passaggio ha corretto un difetto che a est di Greenwich non si sarebbe
+mai visto. Le date delle transazioni viaggiano come stringhe, che JavaScript legge
+come mezzanotte a Greenwich: esportare un CSV dalla California trasformava una
+spesa del primo giugno in una del trentuno maggio. Ora le date sono fissate alla
+mezzanotte locale, e i test girano verdi a Los Angeles, a Roma e ad Auckland.
+
 ---
 
 ## Metriche aggregate sull'intera storia del progetto
 
 | Metrica                                          | Valore                                          |
 | ------------------------------------------------ | ----------------------------------------------- |
-| Sessioni di lavoro                               | 118 (gen 2026 → ago 2026)                       |
+| Sessioni di lavoro                               | 119 (gen 2026 → ago 2026)                       |
 | Funzionalità user-facing introdotte              | 25+                                             |
 | Vulnerabilità di sicurezza chiuse                | XSS multipli + 3 CSV injection + 5 HIGH recenti |
 | Silent failures resi visibili                    | 15+                                             |
-| Test totali al 7 agosto 2026                     | **9.155** su 426 suite, tutti verdi             |
-| Coverage globale Lines                           | 0% → **65.37%** (misurata il 9 giugno 2026)     |
+| Test totali al 7 agosto 2026                     | **9.447** su 440 suite, tutti verdi             |
+| Coverage globale Lines                           | 0% → **93.65%** (misurata il 7 agosto 2026)     |
 | Bundle iniziale                                  | 1.73 MB → 900 KB (-48%)                         |
 | Asset immagini                                   | 6.2 MB → 340 KB (-95%)                          |
 | Riduzione `app.js`                               | 13.150 → 1.734 righe                            |

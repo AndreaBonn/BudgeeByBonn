@@ -2,7 +2,7 @@
 
 This document summarises the significant progress of the project from its inception (January 2026) to today, grouped by **value eras** rather than by individual session. Purely cosmetic commits (formatting, variable renames, UI alignment without behaviour change), internal-only cleanups with no measurable impact (removing `console.log`, fixing unused CSS selectors) and empty sessions have been deliberately excluded.
 
-Time span: **January 2026 → August 2026**, 118 working sessions.
+Time span: **January 2026 → August 2026**, 119 working sessions.
 
 ---
 
@@ -342,18 +342,36 @@ The account lived in two arrays inside a single user document, which Firestore c
 - **Screenshots of the recent features** (August), on the same infrastructure.
 - **A user guide** (August), in Italian and English, walking through every section step by step.
 
+### Taking out a backend that was never there
+
+Budgee ran on Firebase's free plan, where Cloud Functions do not exist, yet the
+repository still carried four of them and the client still wrote to the database
+to feed them. A timer refreshed an activity marker every five minutes for a
+function that existed in no file at all, and every password reset filed the
+user's address in a collection nothing could read and nobody could empty.
+
+All of it is gone (August). What stays is the error log, which is still readable
+from the Firebase console. The app now has no server-side code of its own: the
+logic runs in the browser, and the database rules are the only trust boundary.
+
+The same pass fixed a defect nobody east of Greenwich would ever see. Transaction
+dates travel as plain strings, which JavaScript reads as midnight UTC: exporting
+a CSV from California turned a June 1st expense into May 31st. Dates are now
+pinned to local midnight, and the tests run green in Los Angeles, Rome and
+Auckland.
+
 ---
 
 ## Aggregate metrics across the project's history
 
 | Metric                                           | Value                                            |
 | ------------------------------------------------ | ------------------------------------------------ |
-| Working sessions                                 | 118 (Jan 2026 → Aug 2026)                        |
+| Working sessions                                 | 119 (Jan 2026 → Aug 2026)                        |
 | User-facing features introduced                  | 25+                                              |
 | Security vulnerabilities closed                  | Multiple XSS + 3 CSV injections + 5 recent HIGH  |
 | Silent failures made visible                     | 15+                                              |
-| Total tests on 7 August 2026                     | **9,155** across 426 suites, all passing         |
-| Global Lines coverage                            | 0% → **65.37%** (measured on 9 June 2026)        |
+| Total tests on 7 August 2026                     | **9,447** across 440 suites, all passing         |
+| Global Lines coverage                            | 0% → **93.65%** (measured on 7 August 2026)      |
 | Initial bundle                                   | 1.73 MB → 900 KB (-48%)                          |
 | Image assets                                     | 6.2 MB → 340 KB (-95%)                           |
 | `app.js` reduction                               | 13,150 → 1,734 lines                             |
@@ -371,7 +389,7 @@ In eight months Budgee evolved from a working but fragile app into a product tha
 1. **Fast**: initial bundle halved, images down 95%, minified build, full offline.
 2. **Secure**: every known XSS vector closed, CSV injection blocked, password complexity rules, UUIDs as IDs, restrictive Firestore rules, auto-logout on inactivity.
 3. **Reliable**: errors that used to vanish silently are now visible. A button that does not work tells you why.
-4. **Verifiable**: 9,155 tests across 426 suites. Critical functions (login, budgets, investments, exports) are covered above 90%. A future change that breaks something is caught before deploy.
+4. **Verifiable**: 9,447 tests across 440 suites. Critical functions (login, budgets, investments, exports) are covered above 90%. A future change that breaks something is caught before deploy.
 5. **Transparent**: the code is linked from the app's header. Anyone can verify what Budgee does with their data.
 6. **Yours**: the whole account downloads as a single archive, the deletion leaves nothing behind, and the one feature that sends data to a third party asks first and can be switched off.
 7. **Not about to hit a wall**: transactions live in monthly documents, so the history can keep growing past the size limit of a single record.
