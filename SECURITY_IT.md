@@ -85,7 +85,7 @@ I dati di ogni utente sono isolati:
 
 - I token OAuth di Google Drive sono in `sessionStorage` (cancellati alla chiusura della scheda), mai in memoria persistente.
 - Le credenziali utente non vengono salvate localmente; viene mantenuto solo il token di sessione gestito da Firebase.
-- Le chiavi API per i servizi esterni (Telegram, Google) sono conservate lato server nella configurazione delle Firebase Cloud Functions, non nel codice frontend.
+- Budgee non ha codice lato server proprio, quindi non esiste un posto dove nascondere un segreto: il client ID OAuth di Google viaggia nel frontend, come quel protocollo prevede, e il permesso di agire poggia sul consenso che concedi e sullo scope `drive.file`, non sulla segretezza dell'ID.
 - La chiave API di Gemini che inserisci per la scansione degli scontrini resta nel tuo account ed è esclusa alla fonte tanto dall'esportazione dei dati quanto dal backup su Drive. Una chiave finita dentro un file di backup resta leggibile finché quel file esiste.
 - L'integrazione con Drive usa lo scope `drive.file`: Budgee vede e tocca soltanto i file che ha creato lei. Il resto del tuo Drive le è invisibile.
 
@@ -138,7 +138,7 @@ Una Content Security Policy controlla quali risorse il browser può caricare:
 
 - Script: solo dal dominio dell'app e da fonti fidate (Firebase, Google APIs, CDN Chart.js)
 - Stili: solo dall'app e da Google Fonts
-- Connessioni: solo verso Firebase, Google APIs, Telegram API e l'API dei tassi di cambio
+- Connessioni: solo verso Firebase, Google APIs e l'API dei tassi di cambio
 - Plugin: completamente bloccati (`object-src 'none'`)
 - URL base: vincolato al dominio dell'app (`base-uri 'self'`)
 
@@ -178,7 +178,7 @@ Budgee usa un sistema `EventDelegate` che centralizza la gestione degli eventi c
 
 - Gli errori mostrati all'utente sono messaggi generici, mai stack trace o percorsi interni.
 - Il log degli errori sul database è rate-limited (max 20 per sessione) e usa una whitelist rigorosa di campi; nessun dato sensibile, percorso file o codice sorgente viene mai salvato.
-- Errori ripetuti generano notifiche su un canale Telegram privato.
+- Il log è scrivibile ma non leggibile dall'app: si consulta dalla console Firebase. Non esiste alcun sistema di notifica automatica sugli errori.
 
 ---
 
@@ -190,7 +190,7 @@ Budgee funziona offline grazie a un Service Worker che cache le risorse essenzia
 
 - Strategia Network-First: si prova sempre prima la rete; la cache è usata solo quando si è offline.
 - Cache con ambito per versione: ogni versione ha la propria cache; le cache vecchie vengono pulite all'aggiornamento.
-- Esclusione API: le chiamate a Firebase, Google e Telegram non vengono mai messe in cache e richiedono sempre la rete.
+- Esclusione API: le chiamate a Firebase e Google non vengono mai messe in cache e richiedono sempre la rete.
 
 ### Sincronizzazione dati offline
 
