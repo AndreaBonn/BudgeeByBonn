@@ -56,6 +56,8 @@ L'eliminazione passa da più conferme:
 4. L'account Firebase Authentication viene rimosso
 5. Tutti i dati in cache locale vengono cancellati
 
+Firestore non cancella le subcollection insieme al documento padre. Senza una visita esplicita restano orfane e invisibili, quindi la cancellazione percorre un registro unico di tutto ciò che compone un account, lo stesso che legge l'esportazione. Il documento utente viene marcato prima di iniziare e cancellato per ultimo: un'interruzione lascia una traccia che l'accesso successivo riconosce e riprende.
+
 ### Protezione brute-force
 
 Firebase Authentication blocca i tentativi di login ripetuti falliti con una risposta `too-many-requests`.
@@ -84,6 +86,8 @@ I dati di ogni utente sono isolati:
 - I token OAuth di Google Drive sono in `sessionStorage` (cancellati alla chiusura della scheda), mai in memoria persistente.
 - Le credenziali utente non vengono salvate localmente; viene mantenuto solo il token di sessione gestito da Firebase.
 - Le chiavi API per i servizi esterni (Telegram, Google) sono conservate lato server nella configurazione delle Firebase Cloud Functions, non nel codice frontend.
+- La chiave API di Gemini che inserisci per la scansione degli scontrini resta nel tuo account ed è esclusa alla fonte tanto dall'esportazione dei dati quanto dal backup su Drive. Una chiave finita dentro un file di backup resta leggibile finché quel file esiste.
+- L'integrazione con Drive usa lo scope `drive.file`: Budgee vede e tocca soltanto i file che ha creato lei. Il resto del tuo Drive le è invisibile.
 
 ---
 
@@ -223,8 +227,11 @@ Budgee funziona offline grazie a un Service Worker che cache le risorse essenzia
 - Nessuna analisi, nessun tracciamento: niente Google Analytics, niente Facebook Pixel, niente altri tracker.
 - Nessuna pubblicità.
 - Nessuna condivisione dati: i dati finanziari non vengono inviati a terze parti, eccetto i servizi che colleghi esplicitamente (per esempio Google Drive).
-- Portabilità dei dati: puoi esportare tutto in CSV in qualsiasi momento.
+- Portabilità dei dati: puoi esportare l'intero account in qualsiasi momento, come ZIP con un JSON completo più un CSV per sezione. Viene letto dal database e non da quello che l'app ha in memoria, così non resta fuori niente in silenzio.
 - Diritto alla cancellazione: puoi eliminare il tuo account e tutti i dati associati dalle impostazioni.
+- La scansione degli scontrini è spenta finché non la accendi tu. Chiede un consenso a parte, distinto dall'uso di Budgee, perché l'immagine arriva a Google e uno scontrino può rivelare farmaci, visite mediche e abitudini. Il consenso è versionato: se l'informativa cambia nella sostanza la domanda torna, invece di riusare la vecchia risposta.
+- Un'[informativa privacy](https://financial-management-by-bonn.web.app/src/pages/privacy.html) in italiano e inglese, raggiungibile dall'app, dice cosa viene raccolto e perché.
+- Gli archivi che Budgee costruisce sanificano i nomi delle voci presi da Drive. Quei nomi non sono sotto il controllo di Budgee e possono contenere separatori di percorso o risalite di directory, e consegnare un archivio innocuo è responsabilità di chi lo produce.
 
 ---
 
@@ -257,6 +264,6 @@ Le segnalazioni vengono lette e gestite il prima possibile. Per favore non divul
 
 **© 2025-2026 Andrea Bonacci**
 
-*Ultimo aggiornamento: aprile 2026*
+*Ultimo aggiornamento: agosto 2026*
 
 </div>

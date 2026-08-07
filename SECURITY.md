@@ -56,6 +56,8 @@ Account deletion goes through several confirmation steps:
 4. The Firebase Authentication account is removed
 5. All locally cached data is cleared
 
+Firestore does not delete subcollections along with their parent document. Without an explicit visit they stay orphaned and invisible, so the deletion walks a single registry of everything an account is made of, the same one the export reads. The user document is marked before the work starts and removed last: an interrupted deletion leaves a trace that the next sign-in recognises and resumes.
+
 ### Brute-force protection
 
 Firebase Authentication blocks repeated failed login attempts with a `too-many-requests` response.
@@ -84,6 +86,8 @@ Per-user data is isolated:
 - Google Drive OAuth tokens live in `sessionStorage` (cleared when the tab closes), not in persistent storage.
 - User credentials are never stored locally; only the Firebase-managed session token is kept.
 - Third-party API keys (Telegram, Google) are stored server-side in Firebase Cloud Functions configuration, not in frontend code.
+- The Gemini API key you supply for receipt scanning lives in your own account, and is excluded at the source from both the data export and the Drive backup. A key that ends up inside a backup file stays readable for as long as the file exists.
+- The Drive integration uses the `drive.file` scope: Budgee can only see and touch the files it created. The rest of your Drive is invisible to it.
 
 ---
 
@@ -223,8 +227,11 @@ Budgee works offline through a Service Worker that caches essential resources:
 - No analytics, no tracking: no Google Analytics, no Facebook Pixel, no other tracker.
 - No ads.
 - No data sharing: financial data is never sent to third parties, except the services you connect explicitly (such as Google Drive).
-- Data portability: you can export all your data to CSV at any time.
+- Data portability: you can export the whole account at any time, as a ZIP holding a complete JSON plus a CSV per section. It is read from the database rather than from what the app has in memory, so nothing is silently left out.
 - Right to deletion: you can delete your account and all associated data from the settings.
+- Receipt scanning is off unless you turn it on. It asks for a consent of its own, separate from using Budgee, because the image reaches Google and a receipt can reveal medicines, medical visits and habits. The consent is versioned: if the notice changes in substance, the question comes back rather than the old answer being reused.
+- A [privacy notice](https://financial-management-by-bonn.web.app/src/pages/privacy.html) in Italian and English, reachable from inside the app, states what is collected and why.
+- Archives that Budgee builds sanitise the entry names taken from Drive. Those names are not under Budgee's control and can carry path separators or directory traversal, and delivering a harmless archive is the responsibility of whoever produced it.
 
 ---
 
@@ -257,6 +264,6 @@ Reports are read and answered as quickly as possible. Please do not disclose the
 
 **© 2025-2026 Andrea Bonacci**
 
-*Last updated: April 2026*
+*Last updated: August 2026*
 
 </div>
