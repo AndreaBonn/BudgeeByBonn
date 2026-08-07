@@ -4,7 +4,7 @@
 
 **Take control of your finances, stress-free**
 
-[Open the app](https://financial-management-by-bonn.web.app) · Installable as a PWA · Cloud-synced · Free
+[Open the app](https://financial-management-by-bonn.web.app) · [Read the user guide](./USER_GUIDE.md) · Installable as a PWA · Cloud-synced · Free
 
 [![Italiano](https://img.shields.io/badge/Leggi_in_Italiano-009246?style=for-the-badge)](./README_IT.md)
 
@@ -41,8 +41,13 @@ A full walkthrough: login, expenses dashboard, adding an expense, income, saving
 - Cloud sync via Firebase, so the same data follows you across devices
 - Works offline; anything you add without connection syncs back when you reconnect
 - Quick to start: register and you are in
+- Photograph a receipt and let the AI fill the form, if you want it and only after you say so
 - Pattern detection on your spending, with practical suggestions
+- A weekly backup on your own Google Drive, and a one-click export of the whole account
+- A guided package of documents for your accountant at tax time
 - Multi-currency: EUR, USD, GBP and PLN with automatic conversion
+
+New here? The [user guide](./USER_GUIDE.md) walks through every section step by step.
 
 ---
 
@@ -80,7 +85,7 @@ The core of the app. For every transaction you can set:
 - Category, chosen from hierarchical categories you can customise
 - Subcategory for more detail
 - A free-text description
-- Date and payment method (cash, digital, bank transfer, crypto, direct debit, check)
+- Date and payment method: cash, card or app, cheque, bank transfer, crypto, direct debit for expenses, voucher for income. The field is required when you fill the form by hand, and it comes pre-selected with the method you normally use for that category
 - Link to a loan instalment or to an investment contribution
 - Tax-deductible flag for end-of-year reporting
 - Recurring frequency (daily, weekly, monthly, yearly)
@@ -96,6 +101,32 @@ Other things you can do:
 ![Expense calendar heatmap and monthly trend](./docs/media/features/en/spese.gif)
 
 *The daily calendar uses colour intensity to mark the days with higher spending; the trend chart below shows how spending builds up day by day.*
+
+### Scanning a receipt instead of typing it
+
+The camera button next to the expense and income forms opens the AI scan: upload a photo or a PDF, and the amount, date, description and category land in the form already filled in. You check them and save, so nothing is written without you seeing it.
+
+![AI scan of a receipt](./docs/screenshots/en/17-ai-scan.png)
+
+*Upload a photo or a PDF and the form comes back filled in. The last word is always yours.*
+
+Three things are worth knowing before you use it:
+
+- The scan runs on Google Gemini with an API key you enter yourself, in your profile. Without a key the feature stays off.
+- The image leaves Budgee, so it asks for a separate consent the first time and you can withdraw it whenever you like, from the same screen.
+- If you scan an invoice that looks like income while the expense form is open, Budgee stops and asks which of the two it is.
+
+On a phone you can also share a photo straight from the gallery or the camera: Budgee shows up among the apps you can share to, and it opens on the scan with the image already loaded.
+
+### Cash outflows
+
+Cash is the part of a budget that is easiest to lose track of. The Expenses tab charts how much of your spending goes through it, month by month and category by category, and says out loud how much of the total is still unmeasured because the payment method is missing.
+
+![Cash share by month and by category](./docs/screenshots/en/19-cash-share.png)
+
+*The share is measured on amounts, not on the number of entries: ten coffees do not weigh as much as a rent payment.*
+
+If your history predates the payment method field, your profile shows the coverage and offers to fill the gaps in bulk, one category at a time, suggesting the method you use most often for each.
 
 ### Budget
 
@@ -134,6 +165,8 @@ Your portfolio in one place:
 - Time-based progress bars on how much is left until maturity
 - Link dividends, interest or rental income to the right investment
 - Link expense payments to track additional capital contributions
+- A movement history per investment: capital added, capital released, returns collected, each one editable or removable after the fact
+- Recurring returns for what pays out on a schedule, such as a coupon or a rent
 - Portfolio totals: invested capital, expected returns, actual returns, average interest rate, next maturity date
 - Multi-filter search
 
@@ -161,13 +194,38 @@ Track every form of debt:
 
 Google Drive integration to keep your paperwork organized:
 
-- 27+ predefined folders for payslips, invoices, deductible expenses, medical reports, investment documents, loan documents, contracts, insurance, tax documents, warranties, bank statements, credit cards, bills, taxes, real estate, vehicles, pension, donations, education, cryptocurrencies, condo fees, legal expenses, veterinary expenses, average balances and miscellaneous
+- 32 predefined folders for payslips, invoices, deductible expenses, medical reports, investment documents, loan documents, contracts, insurance, tax documents, warranties, bank statements, credit cards, bills, taxes, real estate, vehicles, pension, donations, education, cryptocurrencies, condo fees, legal expenses, veterinary expenses, average balances and miscellaneous
 - Folders organized per year automatically (2024, 2025, ...)
 - Choose which folders you want to see
 - Quick links that open the folders straight in Google Drive
 - OAuth 2.0 authentication, no password sharing
 - Folder names translated based on your language
 - Folder preferences saved in the cloud and synced
+
+### Backup on your own Drive
+
+Once Drive is connected, Budgee writes a copy of your data into a **Budgee Backup** folder every seven days. It keeps the last eight copies and deletes the older ones by itself.
+
+There is no server behind it, so the backup starts when you open the app rather than at a fixed hour: if you do not open Budgee for two weeks, the copy waits for you. The app says so in plain words instead of letting you assume otherwise, and it tells you when the last one actually ran.
+
+Budgee only sees the files it created on your Drive. It cannot read the rest.
+
+### Documents for your accountant
+
+At tax time the hard part is not the arithmetic, it is remembering what to hand over. The **Documents for your accountant** wizard in your profile asks which return you are filing, which year, and which situations apply to you (property, family, medical expenses, and so on). It then walks you through the sections that are actually relevant, and for each one it points at the Drive folder where that paperwork normally lives.
+
+![The tax wizard asking which return you file](./docs/screenshots/en/18-tax-wizard.png)
+
+*Seven profiles, from an employee filing a 730 to a business on ordinary accounting. Only the chapters you tick become screens.*
+
+What comes out is a single ZIP holding the documents you picked, plus what Budgee already knows:
+
+- Your deductible expenses for the year, grouped by category, with the totals
+- A list of what is missing, keeping the mandatory items apart from the optional ones, so your accountant knows what to ask for
+- A note about the deductible expenses you paid in cash, which since 2020 generally lose the 19% relief unless they are medicines or a public health provider
+- A list of the things nobody can put in a folder, such as your IBAN or your dependants' tax codes. Budgee names them without including them: a ZIP travelling by email is no place for those.
+
+The wizard reads the Italian rules for the tax year you pick. If you file elsewhere, the list will not match what you need.
 
 ### Recurring transactions
 
@@ -195,6 +253,12 @@ The data view:
 ![Category analysis with macro and sub-category breakdown](./docs/screenshots/en/11-categories.png)
 
 *Category analysis ranks spending by macro-category, with drill-down to sub-categories and percentage share.*
+
+The Categories tab also compares two whole years, one category at a time. A category that shows up in one year only stays in the table with the other year at zero, because a line that disappears is usually the one worth looking at.
+
+![Year-on-year comparison by category](./docs/screenshots/en/20-year-comparison.png)
+
+*Difference and percentage change per category, with the two years side by side. One currency at a time: adding up different currencies would produce a number that means nothing.*
 
 ### Open accounts
 
@@ -287,6 +351,17 @@ Your financial data is sensitive, and Budgee treats it that way:
 - No tracking, no ads; Budgee does not sell or share your data
 - Data cached locally for offline use is synced back over an encrypted channel
 
+Your profile is also where you decide what happens to your data:
+
+![The profile screen with payment coverage and privacy](./docs/screenshots/en/21-profile-privacy.png)
+
+*Payment method coverage, the AI keys, the privacy notice, the export and the account deletion all live in the same screen.*
+
+- **Take everything with you.** One button downloads the whole account as a ZIP: a full JSON plus a CSV per section. It is read from the database rather than from what the app has in memory, so nothing is left behind. The Gemini API key is the one thing left out, on purpose.
+- **Delete the account for good.** Deletion walks through every part of the account, not just the main record, and confirms with your password. If it is interrupted halfway, the next login picks it up where it stopped rather than leaving orphaned data behind.
+- **Read what is actually collected.** The [privacy notice](https://financial-management-by-bonn.web.app/src/pages/privacy.html) is written in Italian and English and reachable from the app itself.
+- **Say no to the AI.** Receipt scanning is off until you turn it on, asks for a consent of its own, and can be switched off again from the same screen.
+
 For the detailed inventory of security measures, see the [security documentation](./SECURITY.md).
 
 ---
@@ -302,9 +377,11 @@ Budgee is a Progressive Web App (PWA) built with web standards:
 | Charts | Chart.js |
 | Backend | Firebase (Firestore, Authentication, Cloud Functions, Hosting) |
 | Documents | Google Drive API with OAuth 2.0 |
+| Receipt scanning | Google Gemini, with an API key supplied by the user |
 | Notifications | Telegram Bot API |
-| Offline | Service Worker with Network-First caching |
-| Import/Export | SheetJS (xlsx) for Excel, JSZip for compressed exports |
+| Offline | Service Worker with Network-First caching, plus the Firestore SDK's own local cache |
+| Storage | Transactions split into monthly documents, so the account keeps growing past the size limit of a single record |
+| Import/Export | SheetJS (xlsx) for Excel, fflate for ZIP archives |
 | Security | Content Security Policy, HTTPS enforcement, input sanitization, Firestore rules |
 
 ---
@@ -312,6 +389,9 @@ Budgee is a Progressive Web App (PWA) built with web standards:
 ## Feature checklist
 
 - Expense and income tracking with categories, subcategories and payment methods
+- AI receipt scanning, opt-in, with the option to share a photo straight from the phone
+- Cash share by month and by category, plus assisted completion of missing payment methods
+- Year-on-year comparison, one category at a time
 - Budget management with real-time monitoring and alerts
 - Savings analysis with automatic calculations and trend chart
 - Investment portfolio with returns and maturity dates
@@ -320,6 +400,9 @@ Budgee is a Progressive Web App (PWA) built with web standards:
 - Savings goals with progress and deadline
 - Tax-deductible expenses organized per year
 - Document management with Google Drive integration
+- Weekly backup on your own Drive, with the last eight copies kept
+- Guided package of documents for your accountant, across seven tax profiles
+- Full account export as a ZIP, and account deletion that leaves nothing behind
 - Recurring transactions with flexible scheduling
 - Search across all data types
 - Spending insights with pattern detection
