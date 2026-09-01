@@ -46,6 +46,7 @@ Un giro completo: accesso, dashboard delle spese, aggiunta di una spesa, entrate
 - Rilevamento di pattern sulle tue spese con suggerimenti pratici
 - Un backup settimanale sul tuo Google Drive e l'esportazione dell'intero account in un click
 - Un pacchetto guidato di documenti per il commercialista quando arriva la dichiarazione
+- I buoni pasto con un saldo proprio, tenuto fuori dalla liquidità perché non si spendono ovunque
 - Multi-valuta: EUR, USD, GBP e PLN con conversione automatica
 
 È la prima volta che la usi? Il [manuale utente](./USER_GUIDE_IT.md) accompagna sezione per sezione, passo dopo passo.
@@ -86,15 +87,16 @@ Il cuore dell'app. Per ogni transazione puoi impostare:
 - Categoria, scelta da categorie gerarchiche che puoi personalizzare
 - Sottocategoria per maggiore dettaglio
 - Descrizione libera
-- Data e metodo di pagamento: contanti, carta o app, assegno, bonifico, crypto, addebito automatico per le spese, voucher per le entrate. Il campo è obbligatorio quando compili il form a mano e arriva già preselezionato con il metodo che usi di solito per quella categoria
+- Data e metodo di pagamento: contanti, carta o app, assegno, bonifico, crypto, addebito automatico per le spese, voucher per le entrate, buono pasto su entrambe. Il campo è obbligatorio quando compili il form a mano e arriva già preselezionato con il metodo che usi di solito per quella categoria
 - Collegamento a una rata di finanziamento o a un versamento su un investimento
 - Flag deducibile per la dichiarazione di fine anno
 - Frequenza ricorrente (giornaliera, settimanale, mensile, annuale)
 
 Cose che puoi fare in più:
 
-- Importare transazioni da un file `.xlsx` in blocco
+- Importare transazioni da un file `.xlsx` in blocco, dall'icona nell'intestazione della sezione
 - Esportare i dati in CSV per backup o uso esterno
+- Ritrovare la valuta dell'ultima volta: ogni form ha la sua memoria, quindi le spese possono restare in zloty mentre lo stipendio continua ad arrivare in euro
 - Cercare fra le transazioni per data, categoria, importo, parola chiave, metodo di pagamento o elemento collegato
 - Leggere statistiche in tempo reale: media giornaliera, proiezione di fine mese, giorno con spesa più alta
 - Aprire grafici di trend mensile, settimanale, annuale e distribuzione per categoria
@@ -128,6 +130,20 @@ Il contante è la parte di un bilancio che sfugge più facilmente. La sezione Sp
 *La quota si misura sugli importi, non sul numero di voci: dieci caffè non pesano quanto un affitto.*
 
 Se il tuo storico è precedente al campo metodo di pagamento, il profilo mostra la copertura e ti propone di completare i buchi in blocco, una categoria alla volta, suggerendo per ciascuna il metodo che usi più spesso.
+
+### Buoni pasto
+
+Chi li riceve ha in tasca una seconda moneta: sono soldi veri, ma si spendono solo in certi posti. Budgee li tratta per quello che sono.
+
+Il metodo "buono pasto" vale sia sulle spese sia sulle entrate, perché un buono prima si incassa e poi si spende. Dal profilo dichiari di averli, imposti il saldo di partenza con la sua data, e da lì ogni movimento pagato in buoni muove il contatore. Il saldo compare in alto accanto al selettore di valuta e nella card del saldo attuale, su una riga sua.
+
+![Il pannello del saldo buoni pasto](./docs/screenshots/it/23-buoni-pasto.png)
+
+*Il saldo si ricava dai movimenti a partire dalla cifra che hai dichiarato, quindi non può divergere da essi. Finché quella cifra manca, il pannello lo dice, invece di mostrare uno zero che sembrerebbe un dato.*
+
+I buoni pasto restano fuori dalla liquidità, ed è la scelta che conta: sommarli direbbe che quei soldi sono disponibili per l'affitto. Nei totali di periodo, nei budget e nei risparmi contano invece come ogni altro movimento.
+
+Spegnere la funzione nasconde, non cancella. I movimenti storici restano in lista con la loro etichetta, e il saldo di partenza resta scritto: chi riaccende ritrova il punto da cui era partito.
 
 ### Budget
 
@@ -228,6 +244,8 @@ Quello che esce è un unico ZIP con i documenti che hai scelto, più ciò che Bu
 
 La procedura segue la normativa fiscale italiana per l'anno d'imposta che scegli. Se dichiari altrove, l'elenco può non corrispondere a quello che ti serve.
 
+Un avviso resta in cima alla procedura per tutta la sua durata: gli importi sono stime calcolate sui dati che hai inserito tu, e vanno fatti controllare da un commercialista. Budgee organizza documenti, non dà consulenza fiscale, ed è meglio leggerlo mentre si usa lo strumento che dentro un documento che nessuno apre.
+
 ### Transazioni ricorrenti
 
 Automazione per spese ed entrate che si ripetono:
@@ -306,7 +324,9 @@ Una sezione dedicata alla stagione delle dichiarazioni:
 
 ### Lingue
 
-Italiano e inglese. Cambi lingua dalle impostazioni quando vuoi. Interfaccia, categorie, grafici, statistiche e nomi delle cartelle documenti seguono la lingua scelta.
+Italiano e inglese, da un unico selettore in alto accanto alla valuta. Interfaccia, categorie, grafici, statistiche e nomi delle cartelle documenti seguono la lingua scelta.
+
+Le pagine legali seguono una regola a parte: informativa privacy e termini d'uso compaiono solo nelle lingue in cui il testo è stato riletto da una persona. Un'interfaccia può ripiegare in silenzio su un'altra lingua, un documento che vincola no.
 
 ### Tema chiaro e scuro
 
@@ -339,6 +359,10 @@ Budgee è progettata mobile-first: ogni sezione si adatta agli schermi piccoli c
 
 Alla prima apertura un tour guidato spiega le funzioni principali.
 
+### Quando esce una versione nuova
+
+All'apertura Budgee guarda se ne è stata pubblicata una e, in quel caso, te lo dice: aggiorni subito oppure rimandi. Finché non accetti continui a usare la versione che avevi aperto, così l'app non ti cambia sotto le mani mentre stai registrando una spesa. Se rimandi la ritrovi alla riapertura, e se hai più schede aperte accettare in una aggiorna anche le altre.
+
 ---
 
 ## Privacy e sicurezza
@@ -360,7 +384,8 @@ Nel profilo decidi anche cosa ne è dei tuoi dati:
 
 - **Portati via tutto.** Un pulsante scarica l'intero account come ZIP: un JSON completo più un CSV per sezione. Viene letto dal database e non da ciò che l'app ha in memoria, così non resta indietro niente. L'unica cosa esclusa, di proposito, è la chiave API di Gemini.
 - **Cancella l'account per davvero.** La cancellazione percorre ogni parte dell'account, non solo il documento principale, e chiede conferma con la password. Se si interrompe a metà, l'accesso successivo la riprende da dove si era fermata invece di lasciare dati orfani.
-- **Leggi cosa viene raccolto.** L'[informativa privacy](https://financial-management-by-bonn.web.app/src/pages/privacy.html) è scritta in italiano e in inglese e si raggiunge dall'app stessa.
+- **Leggi cosa viene raccolto.** L'[informativa privacy](https://financial-management-by-bonn.web.app/src/pages/privacy.html) è scritta in italiano e in inglese e si raggiunge dall'app stessa, anche dalla schermata di accesso: la raccolta comincia quando ti registri, quindi il documento deve stare lì, non dietro il login.
+- **Sai a cosa stai dicendo di sì.** La registrazione chiede di accettare i [termini d'uso](https://financial-management-by-bonn.web.app/src/pages/terms.html), con la casella mai già spuntata e i due documenti collegati accanto al punto in cui accetti. L'accettazione resta scritta con la versione del testo e con un momento che il tuo browser non sceglie, e nessuno la può riscrivere dopo.
 - **Di' no all'AI.** La scansione degli scontrini resta spenta finché non l'accendi tu, chiede un consenso a parte e si può revocare dalla stessa schermata.
 
 Per l'inventario dettagliato delle misure di sicurezza, vai alla [documentazione sulla sicurezza](./SECURITY_IT.md).
@@ -391,6 +416,7 @@ Budgee è una Progressive Web App (PWA) basata su standard web:
 - Tracciamento spese ed entrate con categorie, sottocategorie e metodi di pagamento
 - Scansione AI degli scontrini, facoltativa, con la possibilità di condividere una foto direttamente dal telefono
 - Quota di contante per mese e per categoria, più il completamento assistito dei metodi di pagamento mancanti
+- Buoni pasto con saldo proprio, tenuto fuori dalla liquidità e valido su entrate e spese
 - Confronto anno su anno, una categoria alla volta
 - Gestione budget con monitoraggio in tempo reale e avvisi
 - Analisi dei risparmi con calcoli automatici e grafico di trend
@@ -403,10 +429,12 @@ Budgee è una Progressive Web App (PWA) basata su standard web:
 - Backup settimanale sul tuo Drive, con le ultime otto copie conservate
 - Pacchetto guidato di documenti per il commercialista, su sette profili fiscali
 - Esportazione completa dell'account in ZIP e cancellazione che non lascia residui
+- Termini d'uso e informativa privacy raggiungibili dalla schermata di accesso, con l'accettazione registrata e non riscrivibile
+- Avviso quando esce una versione nuova, con l'aggiornamento che parte solo se lo accetti
 - Transazioni ricorrenti con programmazione flessibile
 - Ricerca su tutti i tipi di dato
 - Insight sulle spese con rilevamento pattern
-- Multi-valuta: EUR, USD, GBP, PLN
+- Multi-valuta: EUR, USD, GBP, PLN, con la valuta di inserimento ricordata per ogni form
 - Multi-lingua: italiano, inglese
 - Tema chiaro e scuro
 - Modalità offline con sincronizzazione automatica

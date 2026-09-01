@@ -45,6 +45,7 @@ A full walkthrough: login, expenses dashboard, adding an expense, income, saving
 - Pattern detection on your spending, with practical suggestions
 - A weekly backup on your own Google Drive, and a one-click export of the whole account
 - A guided package of documents for your accountant at tax time
+- Meal vouchers with a balance of their own, kept out of your liquidity because they cannot be spent everywhere
 - Multi-currency: EUR, USD, GBP and PLN with automatic conversion
 
 New here? The [user guide](./USER_GUIDE.md) walks through every section step by step.
@@ -85,15 +86,16 @@ The core of the app. For every transaction you can set:
 - Category, chosen from hierarchical categories you can customise
 - Subcategory for more detail
 - A free-text description
-- Date and payment method: cash, card or app, cheque, bank transfer, crypto, direct debit for expenses, voucher for income. The field is required when you fill the form by hand, and it comes pre-selected with the method you normally use for that category
+- Date and payment method: cash, card or app, cheque, bank transfer, crypto, direct debit for expenses, voucher for income, meal voucher for both. The field is required when you fill the form by hand, and it comes pre-selected with the method you normally use for that category
 - Link to a loan instalment or to an investment contribution
 - Tax-deductible flag for end-of-year reporting
 - Recurring frequency (daily, weekly, monthly, yearly)
 
 Other things you can do:
 
-- Import transactions from an `.xlsx` file in bulk
+- Import transactions from an `.xlsx` file in bulk, from the icon in the section header
 - Export your data to CSV for backup or external use
+- Find the currency you used last time already selected: every form keeps its own memory, so expenses can stay in zloty while your salary keeps arriving in euro
 - Search across transactions by date, category, amount, keyword, payment method or linked item
 - Read live statistics: daily average, projected month-end total, highest-spending day
 - Open monthly, weekly and yearly trend charts and category distributions
@@ -127,6 +129,20 @@ Cash is the part of a budget that is easiest to lose track of. The Expenses tab 
 *The share is measured on amounts, not on the number of entries: ten coffees do not weigh as much as a rent payment.*
 
 If your history predates the payment method field, your profile shows the coverage and offers to fill the gaps in bulk, one category at a time, suggesting the method you use most often for each.
+
+### Meal vouchers
+
+If you get them, you carry a second currency around: real money, but spendable only in certain places. Budgee treats them as what they are.
+
+The "meal voucher" method works on income as well as on expenses, because a voucher is first received and then spent. You declare that you have them in your profile, set an opening balance with its date, and from there every movement paid in vouchers moves the counter. The balance sits at the top next to the currency selector, and on a line of its own inside the current balance card.
+
+![The meal voucher balance panel](./docs/screenshots/en/23-meal-vouchers.png)
+
+*The balance is derived from your movements starting at the figure you declared, so it cannot drift away from them. Until that figure exists the panel says so, rather than showing a zero that would look like data.*
+
+What Budgee does not do is the decision that matters: meal vouchers stay out of your liquidity. Adding them in would claim that money is available for the rent. In period totals, budgets and savings they count like any other movement.
+
+Turning the feature off hides it, it does not erase it. Past movements stay in the list with their label, and the opening balance stays written down, so turning it back on returns you to the point you started from.
 
 ### Budget
 
@@ -227,6 +243,8 @@ What comes out is a single ZIP holding the documents you picked, plus what Budge
 
 The wizard reads the Italian rules for the tax year you pick. If you file elsewhere, the list will not match what you need.
 
+A notice stays at the top of the wizard for its whole length: the amounts are estimates worked out from the data you entered, and an accountant should check them. Budgee organises documents, it does not give tax advice, and that is better read while using the tool than inside a document nobody opens.
+
 ### Recurring transactions
 
 Automation for repeating expenses and income:
@@ -305,7 +323,9 @@ A dedicated section for tax season:
 
 ### Languages
 
-Italian and English. You can switch from the settings at any time. Interface, categories, charts, statistics and document folder names follow your language.
+Italian and English, from a single selector at the top next to the currency. Interface, categories, charts, statistics and document folder names follow your language.
+
+Legal pages follow a separate rule: the privacy notice and the terms of use appear only in the languages where a person has read the text. An interface can fall back quietly to another language, a binding document cannot.
 
 ### Light and dark theme
 
@@ -338,6 +358,10 @@ Budgee is designed mobile-first: every section adapts to small screens with bott
 
 First-time users go through a guided tour that explains the main features.
 
+### When a new version ships
+
+On open, Budgee checks whether one has been published and tells you if so: update now, or later. Until you accept you keep using the version you opened, so the app does not change under your hands while you are entering an expense. If you postpone you find the notice again next time, and with several tabs open, accepting in one updates the others.
+
 ---
 
 ## Privacy and security
@@ -359,7 +383,8 @@ Your profile is also where you decide what happens to your data:
 
 - **Take everything with you.** One button downloads the whole account as a ZIP: a full JSON plus a CSV per section. It is read from the database rather than from what the app has in memory, so nothing is left behind. The Gemini API key is the one thing left out, on purpose.
 - **Delete the account for good.** Deletion walks through every part of the account, not just the main record, and confirms with your password. If it is interrupted halfway, the next login picks it up where it stopped rather than leaving orphaned data behind.
-- **Read what is actually collected.** The [privacy notice](https://financial-management-by-bonn.web.app/src/pages/privacy.html) is written in Italian and English and reachable from the app itself.
+- **Read what is actually collected.** The [privacy notice](https://financial-management-by-bonn.web.app/src/pages/privacy.html) is written in Italian and English and reachable from the app itself, including from the sign-in screen: collection starts when you register, so the document belongs there and not behind the login.
+- **Know what you are agreeing to.** Registration asks you to accept the [terms of use](https://financial-management-by-bonn.web.app/src/pages/terms.html), with the box never pre-ticked and both documents linked next to the point where you accept. The acceptance is recorded with the version of the text and with a moment your browser does not choose, and nobody can rewrite it afterwards.
 - **Say no to the AI.** Receipt scanning is off until you turn it on, asks for a consent of its own, and can be switched off again from the same screen.
 
 For the detailed inventory of security measures, see the [security documentation](./SECURITY.md).
@@ -390,6 +415,7 @@ Budgee is a Progressive Web App (PWA) built with web standards:
 - Expense and income tracking with categories, subcategories and payment methods
 - AI receipt scanning, opt-in, with the option to share a photo straight from the phone
 - Cash share by month and by category, plus assisted completion of missing payment methods
+- Meal vouchers with a balance of their own, kept out of liquidity and valid on income as well as expenses
 - Year-on-year comparison, one category at a time
 - Budget management with real-time monitoring and alerts
 - Savings analysis with automatic calculations and trend chart
@@ -402,10 +428,12 @@ Budgee is a Progressive Web App (PWA) built with web standards:
 - Weekly backup on your own Drive, with the last eight copies kept
 - Guided package of documents for your accountant, across seven tax profiles
 - Full account export as a ZIP, and account deletion that leaves nothing behind
+- Terms of use and privacy notice reachable from the sign-in screen, with the acceptance recorded and not rewritable
+- A notice when a new version ships, with the update applied only if you accept it
 - Recurring transactions with flexible scheduling
 - Search across all data types
 - Spending insights with pattern detection
-- Multi-currency: EUR, USD, GBP, PLN
+- Multi-currency: EUR, USD, GBP, PLN, with the entry currency remembered per form
 - Multi-language: Italian, English
 - Light and dark theme
 - Offline mode with automatic sync
