@@ -62,6 +62,19 @@ Firestore does not delete subcollections along with their parent document. Witho
 
 Firebase Authentication blocks repeated failed login attempts with a `too-many-requests` response.
 
+### Accepting the terms of use
+
+Registering requires accepting the terms of use and the privacy notice. The box is never pre-ticked, and both documents are linked next to the point of acceptance, not only at the foot of the page.
+
+The acceptance is recorded, and the record is built so that nobody can alter it afterwards:
+
+- it is created and read, never updated: the database rules refuse `update`;
+- one constraint does the work: `acceptedAt == request.time`. It forces the client to use the server's clock, the only value that satisfies the equality. Without it, a client-chosen date would be accepted and nothing would look out of place;
+- the document id is `<document>-<version>`, so re-accepting the same version cannot produce a second record;
+- the rules pin the exact key set, the document name, the version format and a non-empty locale, so the stored shape cannot drift from what the reader expects.
+
+What this proves, stated without overselling it: that an authenticated registration accepted a specific version of the text, at a moment it could not pick, and that nobody rewrote it afterwards. Not who was at the keyboard, and not what they read. It is a click-wrap, not a signature.
+
 ---
 
 ## Data protection
@@ -107,6 +120,8 @@ Key protections:
   - Interest rates must be between 0 and 100
   - Arrays have size limits (for example, 10,000 expenses per user)
 - Document size limits cap the number of fields and the overall document size.
+- Settings documents are validated field by field rather than accepted wholesale. The meal voucher one, for instance, allows only five known keys, a currency from the supported list, an opening balance of zero or more, and a `YYYY-MM-DD` date with month and day in range: `2026-13-01` is not a date, and a lexical comparison on it would sort wrongly.
+- The rules are exercised against the Firestore emulator by a dedicated suite (`npm run check:rules`), covering both the cases that must be accepted and the ones that must be refused. A permission that is too broad shows up only when something tries to walk through it.
 - Error logging is write-only from the client; reports cannot be read back, which avoids information leakage.
 - Any path not explicitly allowed is blocked:
 
@@ -126,7 +141,7 @@ Budgee sets these headers on every response:
 
 | Header | Value | Purpose |
 |--------|-------|---------|
-| Strict-Transport-Security | `max-age=31536000; includeSubDomains` | Forces HTTPS for 1 year, including subdomains |
+| Strict-Transport-Security | `max-age=31556926; includeSubDomains; preload` | Forces HTTPS for 1 year, including subdomains. This is the value served on the `web.app` domain, which is already on the browsers' preload list; the project config declares an equivalent one |
 | X-Content-Type-Options | `nosniff` | Prevents MIME sniffing |
 | X-Frame-Options | `DENY` | Blocks embedding in iframes (clickjacking protection) |
 | Referrer-Policy | `strict-origin-when-cross-origin` | Limits the referrer sent to third parties |
@@ -136,11 +151,13 @@ Budgee sets these headers on every response:
 
 A Content Security Policy controls which resources the browser can load:
 
-- Scripts: only from the app's own domain and trusted sources (Firebase, Google APIs, Chart.js CDN)
+- Scripts: only from the app's own domain and from the Google origins used for Firebase, the APIs and sign-in. No `'unsafe-inline'`: the handlers written inside the markup have all been removed
 - Styles: only from the app and Google Fonts
 - Connections: only to Firebase, Google APIs and the exchange rate API
 - Plugins: fully blocked (`object-src 'none'`)
 - Base URL: locked to the app's own domain (`base-uri 'self'`)
+
+Chart.js and SheetJS do not come from a CDN: they are served from the app's own domain, so no third party can change what they contain.
 
 ### Cache control
 
@@ -192,6 +209,10 @@ Budgee works offline through a Service Worker that caches essential resources:
 - Version-scoped cache: each app version has its own cache; old caches are cleaned up on update.
 - API exclusion: calls to Firebase and Google are never cached and always require network.
 
+### Handing over to a new version
+
+A new version no longer takes control while the open page is still running the old code. That code asks for files the current release no longer serves, and the result is an app breaking halfway through an operation with no explanation. The new version now waits and takes over only when the user accepts; with several tabs open the handover applies to all of them, because a tab left on the old code is exactly the case this mechanism exists to avoid.
+
 ### Offline data sync
 
 - Transactions created offline land in a pending changes queue.
@@ -204,7 +225,7 @@ Budgee works offline through a Service Worker that caches essential resources:
 
 ### npm packages
 
-- All dependencies use pinned versions (`==`) to avoid unexpected updates.
+- Almost every development dependency is pinned to an exact version; three (`vite`, `axe-core`, `@firebase/rules-unit-testing`) still use a `^` range. The lockfile is committed either way, so every install reproduces the tree that was checked.
 - `npm audit` runs before deployment to check for known vulnerabilities.
 - Security patches are applied promptly when vulnerabilities are disclosed.
 
@@ -230,7 +251,9 @@ Budgee works offline through a Service Worker that caches essential resources:
 - Data portability: you can export the whole account at any time, as a ZIP holding a complete JSON plus a CSV per section. It is read from the database rather than from what the app has in memory, so nothing is silently left out.
 - Right to deletion: you can delete your account and all associated data from the settings.
 - Receipt scanning is off unless you turn it on. It asks for a consent of its own, separate from using Budgee, because the image reaches Google and a receipt can reveal medicines, medical visits and habits. The consent is versioned: if the notice changes in substance, the question comes back rather than the old answer being reused.
-- A [privacy notice](https://financial-management-by-bonn.web.app/src/pages/privacy.html) in Italian and English, reachable from inside the app, states what is collected and why.
+- A [privacy notice](https://financial-management-by-bonn.web.app/src/pages/privacy.html) in Italian and English states what is collected and why. It is also reachable from the sign-in screen, before registering: collection starts at that moment, and GDPR art. 13 wants the notice available there, not afterwards.
+- The [terms of use](https://financial-management-by-bonn.web.app/src/pages/terms.html) state what Budgee is and is not. The tax sections are informational, the estimates come from the data you enter, and anything with tax consequences should be checked by an accountant. A notice repeats this inside the wizard, because nobody opens the terms before using a calculator.
+- The notice and the terms exist only in the languages where a person has read the text. A machine translation of a binding document is not a translation.
 - Archives that Budgee builds sanitise the entry names taken from Drive. Those names are not under Budgee's control and can carry path separators or directory traversal, and delivering a harmless archive is the responsibility of whoever produced it.
 
 ---
@@ -243,7 +266,8 @@ Transparency is part of security. Here is what Budgee currently does not do, and
 |-----------|--------|-------|
 | Two-factor authentication (2FA) | Planned | Currently relies on email/password plus email verification |
 | Client-side encryption | Not implemented | Data is encrypted at rest by Firebase, but not end-to-end |
-| CSP `'unsafe-inline'` directive | Being phased out | Required for legacy code; the EventDelegate refactor is replacing it |
+| `'unsafe-inline'` on styles | Left over | Scripts no longer need it. It remains on styles, for the `style` attributes written into the markup: removing it means moving all of them into classes |
+| Two CDNs in the script allowlist | To be narrowed | `cdn.jsdelivr.net` and `cdnjs.cloudflare.com` stayed in the policy from when Chart.js came from there. No script loads from those origins today, so the policy is wider than it needs to be |
 | Read rate limiting on the database | Not implemented | Firebase does not offer client-side read rate limiting; monitoring is server-side |
 
 ---
@@ -264,6 +288,6 @@ Reports are read and answered as quickly as possible. Please do not disclose the
 
 **© 2025-2026 Andrea Bonacci**
 
-*Last updated: August 2026*
+*Last updated: September 2026*
 
 </div>

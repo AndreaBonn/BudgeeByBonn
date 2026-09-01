@@ -62,6 +62,19 @@ Firestore non cancella le subcollection insieme al documento padre. Senza una vi
 
 Firebase Authentication blocca i tentativi di login ripetuti falliti con una risposta `too-many-requests`.
 
+### Accettazione dei termini d'uso
+
+Per registrarsi bisogna accettare i termini d'uso e l'informativa privacy. La casella non è mai già spuntata, e i due documenti sono collegati accanto al punto in cui si accetta, non solo in fondo alla pagina.
+
+L'accettazione viene registrata, e il record è costruito perché nessuno lo possa alterare dopo:
+
+- si crea e si legge, mai si aggiorna: le regole del database rifiutano `update`;
+- un vincolo solo fa il lavoro: `acceptedAt == request.time`. Impone al client di usare l'orario del server, l'unico valore che soddisfa l'uguaglianza. Senza, una data scelta dal client verrebbe accettata e nulla sembrerebbe fuori posto;
+- l'identificativo del documento è `<documento>-<versione>`, quindi riaccettare la stessa versione non produce un secondo record;
+- le regole fissano l'insieme esatto delle chiavi, il nome del documento, il formato della versione e una lingua non vuota, così la forma salvata non può divergere da quella che il lettore si aspetta.
+
+Cosa questo dimostra, detto senza gonfiarlo: che una registrazione autenticata ha accettato una versione precisa del testo, in un momento che non ha scelto, e che nessuno l'ha riscritta dopo. Non chi fosse alla tastiera, e non cosa abbia letto. È un click-wrap, non una firma.
+
 ---
 
 ## Protezione dei dati
@@ -107,6 +120,8 @@ Protezioni chiave:
   - I tassi di interesse devono essere fra 0 e 100
   - Gli array hanno limiti di dimensione (per esempio 10.000 spese per utente)
 - Limiti sulla dimensione dei documenti su numero di campi e dimensione complessiva.
+- I documenti di configurazione sono validati campo per campo, non accettati in blocco. Quello dei buoni pasto, per esempio, ammette solo cinque chiavi note, una valuta fra quelle previste, un saldo di partenza pari o superiore a zero e una data `YYYY-MM-DD` con mese e giorno in intervallo: `2026-13-01` non è una data, e un confronto lessicale su di essa ordinerebbe in modo sbagliato.
+- Le regole sono verificate contro l'emulatore Firestore da una suite dedicata (`npm run check:rules`), che prova sia i casi da accettare sia quelli da rifiutare. Un permesso troppo largo si vede solo se qualcuno prova a passarci.
 - Il log degli errori dal client è in sola scrittura; non può essere riletto, riducendo il rischio di fughe di informazioni.
 - Qualsiasi percorso non esplicitamente permesso è bloccato:
 
@@ -126,7 +141,7 @@ Budgee imposta questi header su ogni risposta:
 
 | Header | Valore | Scopo |
 |--------|--------|-------|
-| Strict-Transport-Security | `max-age=31536000; includeSubDomains` | Forza HTTPS per 1 anno, sottodomini inclusi |
+| Strict-Transport-Security | `max-age=31556926; includeSubDomains; preload` | Forza HTTPS per 1 anno, sottodomini inclusi. Il valore è quello servito sul dominio `web.app`, che è già nella preload list dei browser; la configurazione del progetto ne dichiara uno equivalente |
 | X-Content-Type-Options | `nosniff` | Impedisce il MIME sniffing |
 | X-Frame-Options | `DENY` | Blocca l'inclusione in iframe (protezione clickjacking) |
 | Referrer-Policy | `strict-origin-when-cross-origin` | Limita le informazioni di referrer verso terze parti |
@@ -136,11 +151,13 @@ Budgee imposta questi header su ogni risposta:
 
 Una Content Security Policy controlla quali risorse il browser può caricare:
 
-- Script: solo dal dominio dell'app e da fonti fidate (Firebase, Google APIs, CDN Chart.js)
+- Script: solo dal dominio dell'app e dalle origini di Google usate per Firebase, le API e l'accesso. Nessun `'unsafe-inline'`: gli handler scritti dentro il markup sono stati tutti rimossi
 - Stili: solo dall'app e da Google Fonts
 - Connessioni: solo verso Firebase, Google APIs e l'API dei tassi di cambio
 - Plugin: completamente bloccati (`object-src 'none'`)
 - URL base: vincolato al dominio dell'app (`base-uri 'self'`)
+
+Chart.js e SheetJS non arrivano da una CDN: sono serviti dal dominio dell'app, quindi non c'è una terza parte che possa cambiarne il contenuto.
 
 ### Controllo cache
 
@@ -192,6 +209,10 @@ Budgee funziona offline grazie a un Service Worker che cache le risorse essenzia
 - Cache con ambito per versione: ogni versione ha la propria cache; le cache vecchie vengono pulite all'aggiornamento.
 - Esclusione API: le chiamate a Firebase e Google non vengono mai messe in cache e richiedono sempre la rete.
 
+### Il passaggio di versione
+
+Una versione nuova non prende più il controllo mentre la pagina aperta sta ancora eseguendo il codice vecchio. Quel codice chiede file che il rilascio corrente non pubblica più, e il risultato è un'app che si rompe a metà di un'operazione, senza spiegazioni. Ora la versione nuova resta in attesa e subentra solo quando l'utente accetta; se sono aperte più schede, il passaggio vale per tutte, perché una scheda lasciata sul codice vecchio è esattamente il caso che questo meccanismo evita.
+
 ### Sincronizzazione dati offline
 
 - Le transazioni create offline finiscono in una coda di modifiche pendenti.
@@ -204,7 +225,7 @@ Budgee funziona offline grazie a un Service Worker che cache le risorse essenzia
 
 ### Pacchetti npm
 
-- Tutte le dipendenze usano versioni fissate (`==`) per evitare aggiornamenti imprevisti.
+- Quasi tutte le dipendenze di sviluppo sono fissate alla versione esatta; tre (`vite`, `axe-core`, `@firebase/rules-unit-testing`) usano ancora l'intervallo `^`. Il lockfile è comunque committato, quindi ogni installazione riproduce l'albero verificato.
 - `npm audit` viene eseguito prima del deploy per controllare vulnerabilità note.
 - Le patch di sicurezza vengono applicate quando vengono divulgate vulnerabilità.
 
@@ -230,7 +251,9 @@ Budgee funziona offline grazie a un Service Worker che cache le risorse essenzia
 - Portabilità dei dati: puoi esportare l'intero account in qualsiasi momento, come ZIP con un JSON completo più un CSV per sezione. Viene letto dal database e non da quello che l'app ha in memoria, così non resta fuori niente in silenzio.
 - Diritto alla cancellazione: puoi eliminare il tuo account e tutti i dati associati dalle impostazioni.
 - La scansione degli scontrini è spenta finché non la accendi tu. Chiede un consenso a parte, distinto dall'uso di Budgee, perché l'immagine arriva a Google e uno scontrino può rivelare farmaci, visite mediche e abitudini. Il consenso è versionato: se l'informativa cambia nella sostanza la domanda torna, invece di riusare la vecchia risposta.
-- Un'[informativa privacy](https://financial-management-by-bonn.web.app/src/pages/privacy.html) in italiano e inglese, raggiungibile dall'app, dice cosa viene raccolto e perché.
+- Un'[informativa privacy](https://financial-management-by-bonn.web.app/src/pages/privacy.html) in italiano e inglese dice cosa viene raccolto e perché. Si raggiunge anche dalla schermata di accesso, prima di registrarsi: la raccolta comincia in quel momento, e l'art. 13 GDPR la vuole disponibile lì, non dopo.
+- I [termini d'uso](https://financial-management-by-bonn.web.app/src/pages/terms.html) dicono cosa Budgee è e cosa non è. Le sezioni fiscali sono informative, le stime nascono dai dati che inserisci tu, e qualsiasi cosa abbia conseguenze fiscali va fatta controllare a un commercialista. Un avviso lo ripete dentro la procedura guidata, perché nessuno apre i termini prima di usare un calcolatore.
+- Informativa e termini esistono solo nelle lingue in cui il testo è stato riletto da una persona. Una traduzione automatica di un documento che vincola non è una traduzione.
 - Gli archivi che Budgee costruisce sanificano i nomi delle voci presi da Drive. Quei nomi non sono sotto il controllo di Budgee e possono contenere separatori di percorso o risalite di directory, e consegnare un archivio innocuo è responsabilità di chi lo produce.
 
 ---
@@ -243,7 +266,8 @@ La trasparenza è parte della sicurezza. Cosa Budgee oggi non fa e cosa è in pr
 |------------|-------|------|
 | Autenticazione a due fattori (2FA) | In programma | Per ora ci si appoggia a email/password più verifica email |
 | Crittografia lato client | Non implementata | I dati sono cifrati a riposo da Firebase, ma non end-to-end |
-| Direttiva CSP `'unsafe-inline'` | In rimozione | Servita per codice legacy; il refactor con EventDelegate la sta sostituendo |
+| `'unsafe-inline'` sugli stili | Residuo | Gli script non ne hanno più bisogno. Resta sugli stili, per gli attributi `style` scritti nel markup: toglierlo richiede di spostarli tutti in classi |
+| Due CDN nell'allowlist degli script | Da restringere | `cdn.jsdelivr.net` e `cdnjs.cloudflare.com` sono rimasti nella policy da quando Chart.js arrivava da lì. Oggi nessuno script viene caricato da quelle origini, quindi la policy è più larga di quanto serva |
 | Rate limiting sulle letture del database | Non implementato | Firebase non offre rate limiting client-side sulle letture; il monitoraggio è server-side |
 
 ---
@@ -264,6 +288,6 @@ Le segnalazioni vengono lette e gestite il prima possibile. Per favore non divul
 
 **© 2025-2026 Andrea Bonacci**
 
-*Ultimo aggiornamento: agosto 2026*
+*Ultimo aggiornamento: settembre 2026*
 
 </div>
