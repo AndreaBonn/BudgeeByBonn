@@ -65,10 +65,13 @@ Installing also unlocks one thing the browser tab cannot do: sharing a photo to 
 
 1. Open the app and choose **Register**.
 2. Enter your email and a password of at least 8 characters, with an uppercase letter, a lowercase letter and a digit.
-3. You will receive a verification email. Click the link inside it.
-4. Come back to Budgee and sign in.
+3. Tick the box accepting the terms of use and the privacy notice. Both documents are linked next to the box, and the box is never pre-ticked: a consent that arrives already given is a button, not a consent.
+4. You will receive a verification email. Click the link inside it.
+5. Come back to Budgee and sign in.
 
 The verification step is not optional: an unverified account cannot use the app. If the message does not arrive within a few minutes, check the spam folder before asking for another one.
+
+If a field blocks the form, the error appears under that field. It used to appear one at a time: with an empty email and a weak password you fixed the email, submitted again, and only then found the second problem.
 
 ### Signing in and out
 
@@ -99,9 +102,10 @@ Budgee is divided into nine sections, reachable from the tabs at the top on a de
 ### The controls in the header
 
 - **Theme**: light or dark. The choice is saved and follows you across devices.
-- **Language**: Italian or English. The interface, the categories, the charts and the document folder names all switch.
+- **Language**: a dropdown with Italian and English. The interface, the categories, the charts and the document folder names all switch.
 - **Currency**: the currency amounts are shown in. Budgee handles EUR, USD, GBP and PLN and converts between them.
-- **Profile**: settings, AI keys, payment method coverage, privacy, export, deletion.
+- **Meal vouchers**: appears next to the currency only if you declared that you have them, and shows how many you have left. See [chapter 7](#7-payment-methods).
+- **Profile**: settings, AI keys, payment method coverage, meal vouchers, privacy, export, deletion.
 - **Help**: reopens the guided tour that you saw the first time.
 - **Sync indicator**: tells you whether Budgee is online and whether everything has been saved.
 
@@ -113,6 +117,12 @@ Most sections have a period filter: current month, previous month, year, or a cu
 
 Each section has a **Choose which parts to show** button. Not everyone wants the calendar, or the Sankey diagram, or the cash chart. Turn off what you do not read: the choice is saved and synced, so you set it once.
 
+### When a new version ships
+
+On open, Budgee checks whether one has been published. If so a notice appears with two choices: **Update** applies the new version and reloads the page, **Later** leaves it waiting and offers it again next time you open the app.
+
+The update never starts on its own. A version taking over while you are typing an expense is the fastest way to lose it, so until you accept you keep using the one you opened. If you have several Budgee tabs, accepting in one updates the others: they were the worst case, old code running underneath a new release.
+
 ---
 
 ## 4. Recording an expense
@@ -123,7 +133,7 @@ Each section has a **Choose which parts to show** button. Not everyone wants the
 
 | Field | Notes |
 |---|---|
-| **Amount** and currency | Required. Choose the currency next to the number. |
+| **Amount** and currency | Required. Choose the currency next to the number; it stays the one you used last time in that form, so a week abroad means changing it once. |
 | **Description** | Free text, such as "weekly shop". |
 | **Category** | Required. Pick the macro-category first. |
 | **Subcategory** | Optional but recommended: it is what makes the analyses readable. |
@@ -205,7 +215,7 @@ If you installed Budgee on your phone, it appears among the apps you can share t
 
 ## 7. Payment methods
 
-Every transaction can say how it was paid: cash, card or app, cheque, bank transfer, crypto, direct debit for expenses, voucher for income.
+Every transaction can say how it was paid: cash, card or app, cheque, bank transfer, crypto, direct debit for expenses, voucher for income, meal voucher for both.
 
 The field is required when a person fills in the form. Records the app generates on its own, such as a confirmed recurring entry or an investment return, keep filling it in their own way.
 
@@ -224,6 +234,24 @@ Press the completion button and Budgee groups what is missing by category, propo
 ### Why it matters
 
 Without this field, the cash chart in the Expenses tab has no denominator, and the tax check cannot tell which of your deductible expenses were paid in cash. Both are described further down.
+
+### Meal vouchers, a method with a balance
+
+The meal voucher is the only method that works both ways: you receive it as compensation, then you spend it. It is also the only one that carries a balance of its own.
+
+**Turning them on.** Open **Profile** and tick **I have meal vouchers**. From then on the method appears in the forms, and a button at the top next to the currency shows how many you have left. If you do not have them, the option is never offered anywhere: not in the entry forms, not in the edit dialogs, not in the recurring ones, and not in the assisted completion, which would otherwise assign past expenses to a channel you never had.
+
+**The opening balance.** Click the button at the top. The first time, the panel shows no figure: it asks what to start from and on which date. The balance is worked out from your movements starting there, and without a starting point the count would run from the beginning of your history. A zero in place of the prompt would tell someone with vouchers in their pocket that they have none.
+
+![The meal voucher balance panel](./docs/screenshots/en/23-meal-vouchers.png)
+
+After that, every income in vouchers raises the balance and every expense lowers it. The figure updates as soon as you record the movement. The opening balance can be corrected at any time from the same panel.
+
+**They stay out of your liquidity.** In the current balance card, meal vouchers sit on a line of their own and do not enter the total, nor the month-end projection. They are real money, but spendable only in certain places: adding them in would say you can count on them for the rent. In period totals, budgets and savings they count like any other movement.
+
+**A negative balance is not hidden.** If the count goes below zero, the panel shows the sign and explains it: either the opening balance is wrong or a credit is missing. Zeroing it would remove the only useful signal.
+
+**Turning them off erases nothing.** Unticking the box removes the button and the option from the forms, but the movements you already recorded stay in the list with their label and keep counting in the totals. The opening balance stays written down too, so turning the feature back on returns you to where you were.
 
 ---
 
@@ -295,6 +323,8 @@ total liquidity
 ```
 
 The last line is the one worth reading before deciding you can afford something.
+
+If you have meal vouchers, their balance sits below the ladder but not inside it: it is not liquidity and should not be spent mentally as if it were. See [chapter 7](#7-payment-methods).
 
 ### Goals
 
@@ -440,6 +470,8 @@ At tax time the hard part is not the arithmetic, it is remembering what to hand 
 
 ![The wizard asking which return you file](./docs/screenshots/en/18-tax-wizard.png)
 
+A notice stays at the top of the wizard for its whole length: the amounts are estimates, they are worked out from the data you entered, and an accountant should check them. Budgee organises documents, it does not give tax advice.
+
 1. Open **Profile** and start **Documents for your accountant**.
 2. Say which return you are filing. There are seven profiles, from an employee filing a 730 to a self-employed professional, a partner in a company, or a business on simplified or ordinary accounting.
 3. Pick the tax year.
@@ -462,7 +494,7 @@ The wizard follows Italian tax rules for the year you choose. If you file somewh
 
 ## 19. Importing and exporting
 
-**Bringing data in.** The **Import from Excel** button in the Expenses section reads an `.xlsx` file and loads the transactions in bulk. It is the fastest way to move a spreadsheet you have been keeping for years.
+**Bringing data in.** The Excel import icon, in the Expenses and Income section headers next to the camera one, reads an `.xlsx` file and loads the transactions in bulk. It is the fastest way to move a spreadsheet you have been keeping for years.
 
 **Taking data out.** Every section exports to CSV: expenses, income, investments, loans, open accounts. There is also a period export that only covers the range you are looking at.
 
@@ -524,6 +556,14 @@ If you use Budgee on more than one device, changes made on one show up on the ot
 **The scan read the wrong figures.** It is a proposal, not a verdict. Correct the fields before saving; a crumpled or badly lit receipt is hard to read for anyone.
 
 **The cash chart says a chunk is unmeasured.** Those are the transactions with no payment method. The assisted completion in Profile fixes them in bulk.
+
+**I cannot find "Meal Voucher" among the payment methods.** It has to be turned on first: Profile, tick **I have meal vouchers**. While it is off the option appears nowhere, on purpose.
+
+**The meal voucher button shows no figure.** The opening balance is missing. Click the button and state what to start from and on which date.
+
+**My meal voucher balance is negative.** Either the opening balance is lower than the truth, or a credit is missing. Correct the starting figure from the same panel, or record the income that is missing.
+
+**Meal vouchers do not show up in my available liquidity.** That is deliberate: they sit on a line of their own because they cannot be spent everywhere. They are there in the totals, the budgets and the savings.
 
 **The backup has not run.** It starts when you open the app, not on a schedule. Open Budgee with Drive connected and it catches up.
 

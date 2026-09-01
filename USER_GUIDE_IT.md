@@ -65,10 +65,13 @@ L'installazione sblocca anche una cosa che la scheda del browser non può fare: 
 
 1. Apri l'app e scegli **Registrati**.
 2. Inserisci l'email e una password di almeno 8 caratteri, con una maiuscola, una minuscola e una cifra.
-3. Riceverai un'email di verifica. Clicca il link che contiene.
-4. Torna su Budgee e accedi.
+3. Spunta l'accettazione dei termini d'uso e dell'informativa privacy. I due documenti sono collegati accanto alla casella, che non è mai già spuntata: se la spunta arriva precompilata non è un consenso, è un pulsante.
+4. Riceverai un'email di verifica. Clicca il link che contiene.
+5. Torna su Budgee e accedi.
 
 La verifica non è facoltativa: un account non verificato non può usare l'app. Se il messaggio non arriva entro qualche minuto, controlla lo spam prima di chiederne un altro.
+
+Se un campo blocca il salvataggio, l'errore compare sotto quel campo. Prima ne compariva uno solo alla volta: con l'email vuota e la password debole si correggeva l'email, si riprovava, e solo allora si scopriva il secondo problema.
 
 ### Accedere e uscire
 
@@ -99,9 +102,10 @@ Budgee è divisa in nove sezioni, raggiungibili dalle schede in alto sul compute
 ### I comandi nell'header
 
 - **Tema**: chiaro o scuro. La scelta viene salvata e ti segue fra dispositivi.
-- **Lingua**: italiano o inglese. Cambiano interfaccia, categorie, grafici e nomi delle cartelle documenti.
+- **Lingua**: un menu a tendina con italiano e inglese. Cambiano interfaccia, categorie, grafici e nomi delle cartelle documenti.
 - **Valuta**: quella in cui vedi gli importi. Budgee gestisce EUR, USD, GBP e PLN e converte fra loro.
-- **Profilo**: impostazioni, chiavi AI, copertura dei metodi di pagamento, privacy, esportazione, cancellazione.
+- **Buoni pasto**: compare solo se hai dichiarato di averli, accanto alla valuta, e mostra quanti te ne restano. Vedi il [capitolo 7](#7-metodi-di-pagamento).
+- **Profilo**: impostazioni, chiavi AI, copertura dei metodi di pagamento, buoni pasto, privacy, esportazione, cancellazione.
 - **Aiuto**: riapre il tour guidato che hai visto la prima volta.
 - **Indicatore di sincronizzazione**: dice se sei online e se è stato salvato tutto.
 
@@ -113,6 +117,12 @@ Quasi tutte le sezioni hanno un filtro di periodo: mese corrente, mese precedent
 
 Ogni sezione ha un pulsante **Scegli cosa mostrare**. Non tutti vogliono il calendario, o il diagramma Sankey, o il grafico del contante. Spegni quello che non leggi: la scelta viene salvata e sincronizzata, quindi la fai una volta sola.
 
+### Quando esce una versione nuova
+
+All'apertura Budgee controlla se ne è stata pubblicata una. Se sì compare un avviso con due scelte: **Aggiorna** applica la versione nuova e ricarica la pagina, **Più tardi** la lascia in attesa e te la ripropone alla prossima apertura.
+
+L'aggiornamento non parte mai da solo. Una versione che subentra mentre stai scrivendo una spesa è il modo più rapido per perderla, quindi finché non accetti continui a usare quella che avevi aperto. Se hai più schede di Budgee, accettare in una aggiorna anche le altre: erano il caso peggiore, codice vecchio in esecuzione sopra una versione nuova.
+
 ---
 
 ## 4. Registrare una spesa
@@ -123,7 +133,7 @@ Ogni sezione ha un pulsante **Scegli cosa mostrare**. Non tutti vogliono il cale
 
 | Campo | Note |
 |---|---|
-| **Importo** e valuta | Obbligatorio. La valuta si sceglie accanto al numero. |
+| **Importo** e valuta | Obbligatorio. La valuta si sceglie accanto al numero e resta quella che hai usato l'ultima volta in quel form: chi passa una settimana all'estero la cambia una volta sola. |
 | **Descrizione** | Testo libero, per esempio "spesa settimanale". |
 | **Categoria** | Obbligatoria. Prima la macro-categoria. |
 | **Sottocategoria** | Facoltativa ma consigliata: è quella che rende leggibili le analisi. |
@@ -205,7 +215,7 @@ Se hai installato Budgee sul telefono, compare fra le app di condivisione. Scatt
 
 ## 7. Metodi di pagamento
 
-Ogni transazione può dire come è stata pagata: contanti, carta o app, assegno, bonifico, crypto, addebito automatico per le spese, voucher per le entrate.
+Ogni transazione può dire come è stata pagata: contanti, carta o app, assegno, bonifico, crypto, addebito automatico per le spese, voucher per le entrate, buono pasto su entrambe.
 
 Il campo è obbligatorio quando è una persona a compilare il form. I record che l'app genera da sé, come una ricorrente confermata o il rendimento di un investimento, continuano a valorizzarlo per conto loro.
 
@@ -224,6 +234,24 @@ Premi il pulsante di completamento e Budgee raggruppa per categoria quello che m
 ### Perché conta
 
 Senza questo campo il grafico del contante nella sezione Spese non ha denominatore, e il controllo fiscale non può sapere quali delle tue spese detraibili sono state pagate in contanti. Di entrambi si parla più avanti.
+
+### I buoni pasto, che sono un metodo con un saldo
+
+Il buono pasto è l'unico metodo che vale sia in entrata sia in uscita: prima lo ricevi come compenso, poi lo spendi. Ed è l'unico che si porta dietro un saldo suo.
+
+**Accenderli.** Apri **Profilo** e spunta **Ho i buoni pasto**. Da quel momento il metodo compare nei form, e in alto accanto alla valuta compare un pulsante con quanti te ne restano. Se non li hai, l'opzione non ti viene proposta da nessuna parte: né nei form di inserimento, né nelle modifiche, né nelle ricorrenti, né nel completamento assistito, che altrimenti attribuirebbe spese passate a un canale che non hai mai avuto.
+
+**Il saldo di partenza.** Clicca il pulsante in alto. La prima volta il pannello non mostra una cifra: chiede da quanto partire e a che data. Serve perché il saldo si calcola dai movimenti a partire da lì, e senza un punto di partenza il conto ricomincerebbe dall'inizio del tuo storico. Uno zero al posto dell'invito direbbe "non hai buoni pasto" a chi ne ha in tasca.
+
+![Il pannello del saldo buoni pasto](./docs/screenshots/it/23-buoni-pasto.png)
+
+Da lì in poi ogni entrata in buoni pasto lo alza e ogni spesa lo abbassa. La cifra si aggiorna sul momento, appena registri il movimento. Il saldo di partenza si corregge quando vuoi dallo stesso pannello.
+
+**Restano fuori dalla liquidità.** Nella card del saldo attuale i buoni pasto stanno su una riga a parte e non entrano nel totale, né nella proiezione di fine mese. Sono soldi veri, ma spendibili solo in certi posti: sommarli direbbe che puoi contarci per l'affitto. Nei totali di periodo, nei budget e nei risparmi contano invece come qualsiasi altro movimento.
+
+**Un saldo negativo non viene nascosto.** Se il conto va sotto zero, il pannello lo mostra con il segno e lo spiega: vuol dire che il saldo di partenza è sbagliato o che manca un accredito. Azzerarlo toglierebbe l'unico segnale utile.
+
+**Spegnerli non cancella niente.** Togliendo la spunta spariscono il pulsante e l'opzione nei form, ma i movimenti già registrati restano in lista con la loro etichetta e continuano a contare nei totali. Anche il saldo di partenza resta scritto, così riaccendendo la funzione ritrovi il punto da cui eri partito.
 
 ---
 
@@ -295,6 +323,8 @@ liquidità totale
 ```
 
 L'ultima riga è quella da leggere prima di decidere che una spesa te la puoi permettere.
+
+Se hai i buoni pasto, il loro saldo compare sotto la scala ma non dentro: non è liquidità e non va speso mentalmente come tale. Vedi il [capitolo 7](#7-metodi-di-pagamento).
 
 ### Obiettivi
 
@@ -440,6 +470,8 @@ Alla dichiarazione la parte difficile non sono i conti, è ricordarsi cosa conse
 
 ![La procedura chiede che dichiarazione presenti](./docs/screenshots/it/18-wizard-fiscale.png)
 
+In cima alla procedura resta un avviso per tutta la sua durata: gli importi sono stime, sono calcolati sui dati che hai inserito tu, e vanno fatti controllare da un commercialista. Budgee organizza documenti, non dà consulenza fiscale.
+
 1. Apri **Profilo** e avvia **Documenti per il commercialista**.
 2. Dichiara che modello presenti. I profili sono sette, dal dipendente che presenta il 730 al professionista con partita IVA, al socio di una società, all'impresa in contabilità semplificata o ordinaria.
 3. Scegli l'anno d'imposta.
@@ -462,7 +494,7 @@ La procedura segue la normativa fiscale italiana per l'anno che scegli. Se dichi
 
 ## 19. Importare ed esportare
 
-**Portare dentro i dati.** Il pulsante **Importa da Excel** nella sezione Spese legge un file `.xlsx` e carica le transazioni in blocco. È il modo più rapido per travasare un foglio di calcolo che tieni da anni.
+**Portare dentro i dati.** L'icona di import Excel, nell'intestazione delle sezioni Spese ed Entrate accanto a quella della fotocamera, legge un file `.xlsx` e carica le transazioni in blocco. È il modo più rapido per travasare un foglio di calcolo che tieni da anni.
 
 **Portare fuori i dati.** Ogni sezione esporta in CSV: spese, entrate, investimenti, finanziamenti, conti aperti. C'è anche un'esportazione di periodo che copre solo l'intervallo che stai guardando.
 
@@ -524,6 +556,14 @@ Se usi Budgee su più dispositivi, le modifiche fatte su uno compaiono sugli alt
 **La scansione ha letto i numeri sbagliati.** È una proposta, non un verdetto. Correggi i campi prima di salvare: uno scontrino spiegazzato o con poca luce è difficile da leggere per chiunque.
 
 **Il grafico del contante dice che una parte non è misurata.** Sono le transazioni senza metodo di pagamento. Il completamento assistito nel Profilo le sistema in blocco.
+
+**Non trovo "Buono Pasto" fra i metodi di pagamento.** Va acceso prima: Profilo, spunta **Ho i buoni pasto**. Finché è spento l'opzione non compare da nessuna parte, di proposito.
+
+**Il pulsante dei buoni pasto non mostra una cifra.** Manca il saldo di partenza. Clicca il pulsante e dichiara da quanto partire e a che data.
+
+**Il saldo dei buoni pasto è negativo.** Il saldo di partenza è più basso del vero, oppure manca un accredito. Correggi la cifra di partenza dallo stesso pannello, o registra l'entrata che manca.
+
+**I buoni pasto non compaiono nella liquidità disponibile.** È voluto: stanno su una riga a parte perché non si spendono ovunque. Nei totali, nei budget e nei risparmi ci sono.
 
 **Il backup non è partito.** Parte quando apri l'app, non a orario. Apri Budgee con Drive collegato e recupera.
 
