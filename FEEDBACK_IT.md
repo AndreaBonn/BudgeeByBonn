@@ -161,7 +161,7 @@ Quello che è già in pianificazione.
 
 ### In valutazione
 
-- Supporto a lingue aggiuntive
+- Lingue aggiuntive. L'impalcatura c'è già: le lingue sono dichiarate in un registro, aggiungerne una non richiede di toccare il codice. Manca la traduzione, e una lingua resta nascosta finché non è completa. Se ne parli una e vuoi darci una mano, scrivimi
 - Più opzioni di valuta
 - Insight di spesa assistiti da AI
 - Builder di report personalizzati

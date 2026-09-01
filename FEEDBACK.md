@@ -163,7 +163,7 @@ What is already planned.
 
 ### Under consideration
 
-- Additional language support
+- Additional languages. The scaffolding is already there: languages are declared in a registry, and adding one does not mean touching the code. What is missing is the translation, and a language stays hidden until it is complete. If you speak one and want to help, get in touch
 - More currency options
 - AI-assisted spending insights
 - Custom report builder
