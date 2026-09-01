@@ -2,7 +2,7 @@
 
 Questo documento riassume gli avanzamenti significativi del progetto dall'inizio (gennaio 2026) a oggi, raggruppati per **ere di valore** invece che per singola sessione. Sono stati esclusi i commit puramente cosmetici (formattazione, rename di variabili, allineamenti UI senza cambio di comportamento), i commit di pura pulizia interna senza impatto (rimozione `console.log`, fix di selettori CSS inutilizzati) e le sessioni vuote.
 
-Arco temporale coperto: **gennaio 2026 → agosto 2026**, 119 sessioni di lavoro.
+Arco temporale coperto: **gennaio 2026 → settembre 2026**, 128 sessioni di lavoro.
 
 ---
 
@@ -364,16 +364,70 @@ mezzanotte locale, e i test girano verdi a Los Angeles, a Roma e ad Auckland.
 
 ---
 
+## Era 10 - Le regole del gioco, dette per iscritto (agosto → settembre 2026)
+
+**Valore aggiunto**: l'app ha smesso di dare per scontate tre cose che nessuno le aveva detto. Quante lingue può parlare, a cosa acconsente chi si registra, e quando può cambiare versione sotto le mani di chi la sta usando. In coda, una funzione nuova per chi viene pagato anche in buoni pasto.
+
+### Le lingue smettono di essere due
+
+Ogni scelta legata alla lingua era scritta come `lang === 'it' ? x : y`, sparsa nel codice. Aggiungerne una terza avrebbe significato ritrovarle tutte.
+
+- **Un registro unico** (agosto) dichiara quali lingue esistono e come si comportano: tag per date e numeri, nome nella lingua stessa, separatore decimale per i file importati, lingua a cui ripiegare quando una chiave manca, e se la lingua va offerta o resta nascosta finché la traduzione non è completa. Aggiungerne una è una voce in un elenco.
+- **Un selettore al posto delle bandiere** (agosto): una fila di bandiere non scala, e una bandiera non è una lingua. L'inglese non è americano, l'italiano si parla anche in Svizzera, e le emoji regionali non compaiono su tutte le piattaforme. Il controllo è un menu a tendina nativo, quindi tastiera, Esc, ricerca per lettera e lettore di schermo li gestisce il browser.
+- **Dizionari separati per lingua** (agosto), invece di un unico file con le coppie IT/EN affiancate.
+- **Le pagine legali non ripiegano** (agosto): l'interfaccia può mostrare una stringa in un'altra lingua senza danno, un'informativa privacy no. Compaiono solo dove il testo è stato riletto da una persona.
+- **Categorie confrontate in forma canonica** (agosto): la stessa categoria scritta in due lingue non è più due categorie.
+
+### Termini d'uso, e un'accettazione che regge
+
+L'app distribuisce una guida fiscale con calcoli che una persona potrebbe riportare in dichiarazione. Senza un documento che dica cosa quella guida è, l'app stava offrendo consulenza fiscale a sconosciuti.
+
+- **Una pagina di termini in italiano e inglese** (agosto). Il testo definisce l'oggetto del servizio invece di escludere responsabilità: la Cassazione (ord. 20945/2026) chiede l'approvazione specifica per una clausola limitativa anche online, e il Codice del consumo (art. 33) la presume vessatoria verso i consumatori. Una clausola nulla si porta dietro la credibilità del resto del documento, quindi il testo dice cosa Budgee è e cosa non è, che le sezioni fiscali sono informative e che le stime nascono dai dati inseriti dall'utente.
+- **Accettazione obbligatoria alla registrazione** (agosto), con la casella mai già spuntata e i due documenti collegati accanto al punto in cui si accetta.
+- **Un'accettazione che nessuno può riscrivere** (agosto): il record si crea e si legge, non si aggiorna, e un vincolo solo fa il lavoro: `acceptedAt == request.time`. Costringe il client a usare l'orario del server, l'unico che non sceglie lui. Senza, una data del 2020 sarebbe stata accettata senza che nulla sembrasse storto. Cosa dimostra, detto senza gonfiarlo: che una registrazione autenticata ha accettato una versione precisa in un momento che non ha scelto. Non chi fosse alla tastiera.
+- **L'informativa raggiungibile prima di registrarsi** (agosto): stava dentro l'app, cioè dopo. La raccolta dei dati comincia con la registrazione, e l'art. 13 GDPR la vuole disponibile in quel momento.
+- **L'avviso dentro il wizard fiscale** (agosto): i termini dicono che le sezioni fiscali sono informative, ma nessuno apre i termini prima di usare un calcolatore. L'avviso resta in cima alla procedura per tutta la sua durata, non lampeggia alla prima schermata.
+- **Errori ancorati al campo** (agosto) su registrazione, obiettivi, investimenti, finanziamenti, conti aperti e budget. Un solo messaggio per volta obbligava a scoprire i problemi uno alla volta, un tentativo per ciascuno.
+
+### La PWA fa quello che dichiara
+
+- **Il service worker non si registrava** (agosto). `main.js` aspettava l'evento `load`, che in produzione era già passato quando quel codice veniva eseguito: misurato in Chromium, evento a 147,6 ms e ascoltatore aggiunto a 167,7 ms. Nessuna registrazione, quindi nessuna cache offline e nessun aggiornamento da annunciare.
+- **Icone della dimensione che dichiaravano** (agosto): `icon-512.png` era 394x340 e non quadrata, ma manifest e pagina la annunciavano 512x512. I browser prendono la dichiarazione per buona e ridisegnano, quindi il difetto si vedeva solo a app installata. Rigenerate tutte da un'unica sorgente, più il 32 e il 16 che servono alla scheda del browser: 243 KB complessivi diventano 100 KB.
+- **Un avviso quando esce una versione nuova** (agosto): la versione in attesa non subentra più in silenzio mentre la pagina aperta esegue ancora il codice vecchio. Compare un avviso con "Aggiorna" e "Più tardi", l'aggiornamento parte solo se accetti, e accettare in una scheda aggiorna anche le altre.
+- **Un tentativo tolto perché costava troppo** (agosto): la barra delle sezioni era stata fissata in fondo allo schermo su mobile, poi rimessa nel flusso. Nove pulsanti su due colonne misurano 226 px su uno schermo da 375: un terzo dello schermo occupato mentre si scorre una lista di transazioni, che è l'unica cosa che quello schermo deve mostrare.
+
+### Cose piccole che si notano ogni giorno
+
+- **L'import Excel nell'intestazione di sezione** (agosto), accanto alla fotocamera, al posto del pulsante dentro il modulo richiuso. Lo spostamento ha fatto emergere che in produzione quel pulsante scaricava il pacchetto xlsx e si fermava lì: il gestore non veniva mai costruito, e il selezionatore di file non si apriva. Regressione della migrazione a moduli ES, mai notata perché non produce errori.
+- **Un caricamento fallito adesso lo dice** (agosto): i due caricatori a richiesta non avevano un ramo di errore. Senza rete il pulsante restava cliccabile e inerte, senza messaggi.
+- **La valuta resta quella dell'ultima volta** (agosto), con una memoria per ogni form: le spese possono restare in zloty mentre lo stipendio continua ad arrivare in euro. I form che modificano un record già salvato sono esclusi, perché precompilarli falsificherebbe il contenuto.
+
+### I buoni pasto (settembre 2026)
+
+Chi li riceve ha in tasca una seconda moneta. Sono soldi veri, ma si spendono solo in certi posti, e trattarli come contante è il modo più semplice per credersi più liquidi di quanto si sia.
+
+- **Un codice nuovo, non uno riciclato**: `voucher` esisteva già, ma è il buono regalo, e vietato sulle spese. Rietichettarlo avrebbe fatto entrare le gift card già registrate nel saldo dei buoni pasto. Il codice `meal-voucher` è l'unico ammesso sia in entrata sia in uscita, perché un buono prima si incassa e poi si spende.
+- **Un saldo derivato, non memorizzato**: parte da una cifra dichiarata dall'utente e datata, e da lì segue i movimenti. Non viene mai scritto da nessuna parte, quindi non può divergere da essi.
+- **La stessa aritmetica del saldo liquido**: il saldo dei buoni pasto è la funzione della liquidità applicata ai soli movimenti pagati in buoni. Una seconda funzione di calcolo sarebbe stata più corta da leggere e più lunga da mantenere, perché due funzioni che devono restare d'accordo per sempre finiscono per non esserlo, e la divergenza si vede come due saldi che non tornano mentre nessun test fallisce.
+- **Fuori dalla liquidità, dentro tutto il resto**: nella card del saldo attuale stanno su una riga a parte e non entrano nel totale né nella proiezione del mese. Nei totali di periodo, nei budget e nei risparmi contano come ogni altro movimento.
+- **Nessuno stato mostra un numero falso**: senza saldo di partenza il pannello invita a impostarlo invece di mostrare uno zero, che direbbe "non ne hai" a chi ne ha in tasca; un saldo negativo si vede con il segno, perché è l'unico segnale che l'apertura è sbagliata o che manca un accredito.
+- **Spegnere nasconde, non cancella**: i movimenti storici restano in lista con la loro etichetta e il saldo di partenza resta scritto.
+- **Un bug preesistente trovato per strada**: il calcolo della liquidità controllava ogni entrata e ogni spesa, ma non il saldo di partenza. Un importo corrotto trasformava l'intero saldo in `NaN`, e l'interfaccia lo stampava come se fosse una cifra.
+- **Due buchi trovati dalla verifica, non dal codice**: i form di inserimento hanno le opzioni scritte nel markup, che nessuno ricostruisce all'apertura, quindi chi non aveva mai acceso la funzione si vedeva comunque offrire "Buono Pasto" a ogni spesa; e il completamento assistito dei metodi elencava tutti i codici, quindi avrebbe attribuito spese passate a un canale mai posseduto.
+- **Un difetto che solo l'esecuzione ha trovato**: registrando una spesa in buoni pasto, il saldo restava sulla cifra precedente fino al ricaricamento della pagina. È derivato, quindi cambia solo quando qualcosa lo ridisegna, e non lo faceva nessuno.
+
+---
+
 ## Metriche aggregate sull'intera storia del progetto
 
 | Metrica                                          | Valore                                          |
 | ------------------------------------------------ | ----------------------------------------------- |
-| Sessioni di lavoro                               | 119 (gen 2026 → ago 2026)                       |
-| Funzionalità user-facing introdotte              | 25+                                             |
+| Sessioni di lavoro                               | 128 (gen 2026 → set 2026)                       |
+| Funzionalità user-facing introdotte              | 30+                                             |
 | Vulnerabilità di sicurezza chiuse                | XSS multipli + 3 CSV injection + 5 HIGH recenti |
 | Silent failures resi visibili                    | 15+                                             |
-| Test totali al 7 agosto 2026                     | **9.447** su 440 suite, tutti verdi             |
-| Coverage globale Lines                           | 0% → **93.65%** (misurata il 7 agosto 2026)     |
+| Test totali al 1 settembre 2026                  | **10.282** su 479 suite, tutti verdi            |
+| Coverage globale Lines                           | 0% → **91.99%** (misurata il 1 settembre 2026)  |
 | Bundle iniziale                                  | 1.73 MB → 900 KB (-48%)                         |
 | Asset immagini                                   | 6.2 MB → 340 KB (-95%)                          |
 | Riduzione `app.js`                               | 13.150 → 1.734 righe                            |
@@ -386,14 +440,15 @@ mezzanotte locale, e i test girano verdi a Los Angeles, a Roma e ad Auckland.
 
 ## Cosa significa per chi usa Budgee oggi
 
-In otto mesi Budgee è passata da un'app funzionante ma fragile a un prodotto:
+In nove mesi Budgee è passata da un'app funzionante ma fragile a un prodotto:
 
 1. **Veloce**: bundle iniziale dimezzato, immagini ridotte del 95%, build minificato, offline completo.
 2. **Sicuro**: tutti i vettori XSS noti chiusi, CSV injection bloccata, password con regole di complessità, UUID per gli ID, regole Firestore restrittive, auto-logout per inattività.
 3. **Affidabile**: gli errori che prima sparivano silenziosamente ora sono visibili. Un pulsante che non funziona spiega il perché.
-4. **Verificabile**: 9.155 test su 426 suite. Le funzioni critiche (login, budget, investimenti, esportazioni) sono coperte oltre il 90%. Una modifica futura che rompe qualcosa viene intercettata prima del deploy.
+4. **Verificabile**: 10.282 test su 479 suite. Le funzioni critiche (login, budget, investimenti, esportazioni) sono coperte oltre il 90%. Una modifica futura che rompe qualcosa viene intercettata prima del deploy.
 5. **Trasparente**: il codice è linkato dall'header dell'app. Chiunque può verificare cosa fa Budgee con i propri dati.
 6. **Tuo**: l'intero account si scarica in un unico archivio, la cancellazione non lascia residui, e l'unica funzione che manda dati a un terzo lo chiede prima e si può spegnere.
 7. **Senza un muro davanti**: le transazioni vivono in documenti mensili, quindi lo storico può continuare a crescere oltre il limite di dimensione di un singolo record.
+8. **Con le regole scritte**: termini d'uso e informativa privacy si leggono prima di registrarsi, l'accettazione resta agganciata alla versione del testo, e una versione nuova dell'app non subentra finché non sei tu a dire di sì.
 
-Il prossimo ciclo di sviluppo parte da una base molto più protetta da test e da audit di sicurezza rispetto a otto mesi fa, e non ha più un tetto di archiviazione all'orizzonte.
+Il prossimo ciclo di sviluppo parte da una base molto più protetta da test e da audit di sicurezza rispetto a nove mesi fa, non ha più un tetto di archiviazione all'orizzonte, e può aggiungere una lingua senza rimettere mano al codice.

@@ -2,7 +2,7 @@
 
 This document summarises the significant progress of the project from its inception (January 2026) to today, grouped by **value eras** rather than by individual session. Purely cosmetic commits (formatting, variable renames, UI alignment without behaviour change), internal-only cleanups with no measurable impact (removing `console.log`, fixing unused CSS selectors) and empty sessions have been deliberately excluded.
 
-Time span: **January 2026 → August 2026**, 119 working sessions.
+Time span: **January 2026 → September 2026**, 128 working sessions.
 
 ---
 
@@ -362,16 +362,70 @@ Auckland.
 
 ---
 
+## Era 10 - The rules of the game, written down (August → September 2026)
+
+**Value added**: the app stopped taking three things for granted that nobody had ever stated. How many languages it can speak, what a person agrees to when they register, and when it may change version under the hands of someone using it. At the end, a new feature for anyone who also gets paid in meal vouchers.
+
+### Languages stop being two
+
+Every language-dependent choice was written as `lang === 'it' ? x : y`, scattered through the code. Adding a third would have meant finding them all again.
+
+- **One registry** (August) declares which languages exist and how they behave: the tag used for dates and numbers, the name of the language in itself, the decimal separator for imported spreadsheets, the language to consult when a key is missing, and whether the language is offered at all or stays hidden until its translation is complete. Adding one is an entry in a list.
+- **A selector instead of flags** (August): a row of flags does not scale, and a flag is not a language. English is not American, Italian is also Swiss, and regional emoji do not render on every platform. The control is a native dropdown, so keyboard handling, Esc, type-ahead and the screen reader role come from the browser.
+- **Separate dictionaries per language** (August), instead of one file holding IT/EN pairs side by side.
+- **Legal pages do not fall back** (August): the interface can show a string in another language without harm, a privacy notice cannot. They appear only where a person has read the text.
+- **Categories compared in canonical form** (August): the same category written in two languages is no longer two categories.
+
+### Terms of use, and an acceptance that holds
+
+The app ships a tax guide with calculators producing amounts someone could put in a return. Without a document saying what that guide is, the app was offering tax advice to strangers.
+
+- **A terms page in Italian and English** (August). The text defines the object of the service instead of excluding liability: the Italian Supreme Court (ord. 20945/2026) requires specific approval for a liability-limiting clause even online, and the Consumer Code (art. 33) presumes it unfair against consumers. A void clause takes the credibility of the rest of the document with it, so the text says what Budgee is and is not, that the tax sections are informational, and that the estimates come from user-entered data.
+- **Acceptance required to register** (August), with the box never pre-ticked and both documents linked next to the point of acceptance.
+- **An acceptance nobody can rewrite** (August): the record is create-and-read, never update, and one constraint does the work: `acceptedAt == request.time`. It forces the client to use the server's clock, the only one it does not choose. Without it a date in 2020 would have been accepted and nothing would have looked wrong. What it proves, stated without overselling: that an authenticated registration accepted a specific version at a moment it could not pick. Not who was at the keyboard.
+- **The notice reachable before registering** (August): it lived inside the app, which is to say afterwards. Collection starts at registration, and GDPR art. 13 wants the notice available at that moment.
+- **The warning inside the tax wizard** (August): the terms say the tax sections are informational, but nobody opens the terms before using a calculator. The notice stays at the top of the wizard for its whole length rather than flashing past on the first screen.
+- **Errors anchored to their field** (August) on registration, goals, investments, financing, open accounts and budgets. One message at a time forced people to discover problems one at a time, one submission each.
+
+### The PWA does what it declares
+
+- **The service worker never registered** (August). `main.js` waited for the `load` event, which in production had already fired by the time that code ran: measured in Chromium, event at 147.6 ms and listener added at 167.7 ms. No registration, therefore no offline cache and no update to announce.
+- **Icons the size they claimed** (August): `icon-512.png` was 394x340 and not square, while the manifest and the page both declared it 512x512. Browsers take the declaration at face value and redraw, so the defect only showed up once installed. All sizes regenerated from one source, plus the 32 and 16 the browser tab actually wants: 243 KB in total becomes 100 KB.
+- **A notice when a new version ships** (August): the waiting version no longer takes over silently while the open page is still running the old code. A banner offers "Update" and "Later", the update applies only if you accept, and accepting in one tab updates the others.
+- **One attempt withdrawn because it cost too much** (August): the section bar had been pinned to the bottom of the screen on mobile, then put back in the flow. Nine buttons on two columns measure 226 px on a 375 px screen, a third of the viewport permanently spoken for while scrolling a transaction list, which is the one thing that screen is there to show.
+
+### Small things you notice every day
+
+- **Excel import in the section header** (August), next to the camera, instead of the button inside the collapsed form. Moving it revealed that in production the button downloaded the xlsx package and stopped there: the manager was never constructed, so the file picker never opened. A regression from the ES modules migration, unnoticed because it produces no error.
+- **A failed load now says so** (August): the two on-demand loaders had no error branch. Without a network the button stayed clickable and inert, with no message.
+- **The currency stays the one you used last** (August), with a separate memory per form: expenses can stay in zloty while your salary keeps arriving in euro. Forms that edit an already-saved record are excluded, because pre-filling them would misrepresent their contents.
+
+### Meal vouchers (September 2026)
+
+Anyone who gets them carries a second currency around. Real money, but spendable only in certain places, and treating it as cash is the easiest way to believe you are more liquid than you are.
+
+- **A new code, not a recycled one**: `voucher` already existed, but it is the gift voucher, and it is barred from expenses. Relabelling it would have pulled gift cards already recorded into the meal voucher balance. The `meal-voucher` code is the only one allowed on both directions, because a voucher is first received and then spent.
+- **A derived balance, never stored**: it starts from a figure the user declares, with a date, and follows the movements from there. It is never written anywhere, so it cannot drift away from them.
+- **The same arithmetic as the liquid balance**: the meal voucher balance is the liquidity function applied to the movements paid in vouchers. A second calculation would have been shorter to read and longer to maintain, because two functions that must agree forever end up not agreeing, and the divergence shows up as two balances that do not match while no test fails.
+- **Out of liquidity, in everything else**: in the current balance card they sit on their own line and enter neither the total nor the month projection. In period totals, budgets and savings they count like any other movement.
+- **No state shows a false number**: with no opening balance the panel invites you to set one instead of showing a zero, which would tell someone with vouchers in their pocket that they have none; a negative balance shows its sign, because it is the only signal that the opening figure is wrong or a credit is missing.
+- **Turning it off hides, it does not erase**: past movements stay in the list with their label and the opening balance stays written down.
+- **A pre-existing bug found on the way**: the liquidity calculation checked every income and every expense, but not the opening balance. A corrupted amount turned the whole balance into `NaN`, and the interface printed it as if it were a figure.
+- **Two gaps found by verification, not by the code**: the entry forms have their options written in the markup, which nobody rebuilds on open, so anyone who had never turned the feature on was still offered "Meal Voucher" on every expense; and the assisted payment method completion listed every code, so it would have assigned past expenses to a channel never held.
+- **A defect only running it could find**: after recording an expense in vouchers, the balance stayed on the previous figure until the page was reloaded. It is derived, so it changes only when something redraws it, and nothing did.
+
+---
+
 ## Aggregate metrics across the project's history
 
 | Metric                                           | Value                                            |
 | ------------------------------------------------ | ------------------------------------------------ |
-| Working sessions                                 | 119 (Jan 2026 → Aug 2026)                        |
-| User-facing features introduced                  | 25+                                              |
+| Working sessions                                 | 128 (Jan 2026 → Sep 2026)                        |
+| User-facing features introduced                  | 30+                                              |
 | Security vulnerabilities closed                  | Multiple XSS + 3 CSV injections + 5 recent HIGH  |
 | Silent failures made visible                     | 15+                                              |
-| Total tests on 7 August 2026                     | **9,447** across 440 suites, all passing         |
-| Global Lines coverage                            | 0% → **93.65%** (measured on 7 August 2026)      |
+| Total tests on 1 September 2026                  | **10,282** across 479 suites, all passing        |
+| Global Lines coverage                            | 0% → **91.99%** (measured on 1 September 2026)   |
 | Initial bundle                                   | 1.73 MB → 900 KB (-48%)                          |
 | Image assets                                     | 6.2 MB → 340 KB (-95%)                           |
 | `app.js` reduction                               | 13,150 → 1,734 lines                             |
@@ -384,14 +438,15 @@ Auckland.
 
 ## What this means for Budgee users today
 
-In eight months Budgee evolved from a working but fragile app into a product that is:
+In nine months Budgee evolved from a working but fragile app into a product that is:
 
 1. **Fast**: initial bundle halved, images down 95%, minified build, full offline.
 2. **Secure**: every known XSS vector closed, CSV injection blocked, password complexity rules, UUIDs as IDs, restrictive Firestore rules, auto-logout on inactivity.
 3. **Reliable**: errors that used to vanish silently are now visible. A button that does not work tells you why.
-4. **Verifiable**: 9,447 tests across 440 suites. Critical functions (login, budgets, investments, exports) are covered above 90%. A future change that breaks something is caught before deploy.
+4. **Verifiable**: 10,282 tests across 479 suites. Critical functions (login, budgets, investments, exports) are covered above 90%. A future change that breaks something is caught before deploy.
 5. **Transparent**: the code is linked from the app's header. Anyone can verify what Budgee does with their data.
 6. **Yours**: the whole account downloads as a single archive, the deletion leaves nothing behind, and the one feature that sends data to a third party asks first and can be switched off.
 7. **Not about to hit a wall**: transactions live in monthly documents, so the history can keep growing past the size limit of a single record.
+8. **Working to written rules**: the terms of use and the privacy notice can be read before registering, the acceptance stays tied to the version of the text, and a new release does not take over until you say so.
 
-The next development cycle builds on a foundation that is dramatically better protected by tests and security audits than it was eight months ago, and no longer has a storage ceiling in sight.
+The next development cycle builds on a foundation far better protected by tests and security audits than it was nine months ago, no longer has a storage ceiling in sight, and can take a new language without touching the code.
