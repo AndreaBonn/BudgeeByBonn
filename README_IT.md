@@ -4,7 +4,7 @@
 
 **Tieni sotto controllo le tue finanze, senza stress**
 
-[Apri l'app](https://financial-management-by-bonn.web.app) · [Leggi il manuale](./USER_GUIDE_IT.md) · Installabile come PWA · Sincronizzata sul cloud · Gratuita
+[Apri l'app](https://financial-management-by-bonn.web.app) · [Prova la demo](https://financial-management-by-bonn.web.app) · [Leggi il manuale](./USER_GUIDE_IT.md) · Installabile come PWA · Sincronizzata sul cloud · Gratuita
 
 [![English](https://img.shields.io/badge/Read_in_English-4A90E2?style=for-the-badge)](./README.md)
 
@@ -31,6 +31,10 @@ Un giro completo: accesso, dashboard delle spese, aggiunta di una spesa, entrate
 [![Demo di Budgee](./docs/media/budgee-demo.gif)](./docs/media/budgee-demo.mp4)
 
 *L'anteprima qui sopra è accelerata. Clicca sulla GIF per aprire il video completo ([budgee-demo.mp4](./docs/media/budgee-demo.mp4)).*
+
+### Provala tu, senza registrarti
+
+Apri [financial-management-by-bonn.web.app](https://financial-management-by-bonn.web.app) e clicca **Prova la demo** nella schermata di accesso. Trovi l'app intera già riempita con dati di esempio: puoi visitare e modificare ogni sezione. Non viene inviato nulla al cloud, la demo vive solo in quella scheda del browser e sparisce quando la chiudi. Le poche funzioni che richiedono servizi esterni reali (Google Drive, lettura degli scontrini, esportazione dell'account) lì sono disattivate.
 
 ---
 

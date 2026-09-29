@@ -4,7 +4,7 @@
 
 **Take control of your finances, stress-free**
 
-[Open the app](https://financial-management-by-bonn.web.app) · [Read the user guide](./USER_GUIDE.md) · Installable as a PWA · Cloud-synced · Free
+[Open the app](https://financial-management-by-bonn.web.app) · [Try the live demo](https://financial-management-by-bonn.web.app) · [Read the user guide](./USER_GUIDE.md) · Installable as a PWA · Cloud-synced · Free
 
 [![Italiano](https://img.shields.io/badge/Leggi_in_Italiano-009246?style=for-the-badge)](./README_IT.md)
 
@@ -29,6 +29,10 @@ It was built for people who keep their finances in a notebook or a messy spreads
 A full walkthrough: login, expenses dashboard, adding an expense, income, savings, adding and cashing out an investment, and budgets.
 
 ![Budgee demo](./docs/media/budgee-demo.gif)
+
+### Try it yourself, no sign-up
+
+Open [financial-management-by-bonn.web.app](https://financial-management-by-bonn.web.app) and click **Try the demo** on the sign-in screen. You get the whole app filled with sample data: every section can be browsed and edited. Nothing is sent to the cloud, the demo lives only in that browser tab and disappears when you close it. A few features that need real external services (Google Drive, receipt scanning, account export) are disabled there.
 
 
 ---
