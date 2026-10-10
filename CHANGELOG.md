@@ -2,7 +2,7 @@
 
 This document summarises the significant progress of the project from its inception (January 2026) to today, grouped by **value eras** rather than by individual session. Purely cosmetic commits (formatting, variable renames, UI alignment without behaviour change), internal-only cleanups with no measurable impact (removing `console.log`, fixing unused CSS selectors) and empty sessions have been deliberately excluded.
 
-Time span: **January 2026 → September 2026**, 128 working sessions.
+Time span: **January 2026 → October 2026**, 146 working sessions.
 
 ---
 
@@ -416,19 +416,104 @@ Anyone who gets them carries a second currency around. Real money, but spendable
 
 ---
 
+## Era 11 - Room to grow, and a way in (September → October 2026)
+
+**Value added**: the app answers questions it could not answer before (where the money went, what an investment really earns, what a crypto position is worth), a visitor can try it without registering, and the whole interface went through a review on phone and desktop. Underneath, the storage ceiling stopped being a matter of time.
+
+### Seeing where the money went
+
+- **Year-over-year drill-down** (September): in the comparison table, a category's amount in a year opens the expenses that make it up. The cells are real buttons, reachable from the keyboard. Edit and delete work from the detail, and the table redraws afterwards, because an expense that changes amount, date or category moves to another cell. Amounts are not converted: the table compares one currency at a time, and converting would show a total different from the figure just clicked.
+- **Expense location and spending by country** (September): every expense can carry a country, chosen from a searchable list. The home country sits in the header next to the currency, foreign expenses get a badge, and the country travels through recurring expenses, CSV and Excel import and export, and the search filter. A new section ranks countries and draws a map, by year or overall, by continent or worldwide. The map opens on the continent with the most transactions, because a world view where only your own country is lit tells you nothing.
+- **A retroactive backfill** (September): the first time the home country is chosen, every past expense receives it, once, after a backup copy is written to the account. Review found that the backfill worked from a snapshot read before the backup, so an expense added during that wait would have been erased. It now applies the change to the live state at the moment of writing.
+- **A map that drew lines across the top** (October): outlines crossing the 180th meridian, Russia and Fiji, were projected as a horizontal line from one edge of the map to the other. The outline is now made continuous and the part beyond the edge reappears on the opposite side.
+
+### What an investment really earns
+
+An expense linked to an investment could only be a payment into it. A broker's yearly fee was therefore either capital that was never invested or an expense with no connection to the product it belonged to.
+
+- **Link type** (September): the link is either capital, the historic behaviour and still the default, or a management fee. A fee leaves the invested capital untouched.
+- **Costs and net return** (September): the investment card shows management costs, actual net return and expected net return; the totals show actual return gross and net. Fees are computed on the fly from the expenses, with no counter stored on the investment, so there is nothing to drift. The transactions window lists them, and the expense list and recurring expenses label them.
+- **A bug found on the way** (September): currency conversion for investments, financings and open accounts added a Promise instead of its value, so totals in mixed currencies printed as strings like `0[object Promise]3`.
+
+### Crypto portfolio
+
+A crypto investment stopped being a fixed amount and became a register of purchases (September).
+
+- **Lots and average cost**: quantity, purchase price and date per lot, with average cost on the card.
+- **Live price**: read from CoinGecko without blocking the page, with the market value and the unrealised gain on the card. The daily move sits on its own line, because on a day of market rise a position in loss would otherwise show two numbers of opposite sign side by side. A button asks for the price now. The reading is on for everyone and can be switched off on a single device.
+- **Position chart**: each day is valued with the lots bought up to that day, not with today's quantity, which would draw a position that never existed. The cost basis is drawn as steps.
+- **Sales**: partial disposals are recorded from the card, and everything shown afterwards describes what is left.
+- **Two criteria side by side**: realised gain per calendar year with LIFO, the default of the Italian declaration regime, and with average cost. On a partial sale they diverge and can have opposite signs: in the test case the same sale is a loss of €1,500 under LIFO and a gain of €1,833.33 at average cost. The page states that the figure is not a tax return.
+- **Defects found by review**: the chart ignored sales and kept drawing an intact position while the card showed the remainder; a sale of exactly what was left failed on a floating-point comparison and left a zero-coin position on screen as if still open; a sale without a date consumed lots and then vanished from the yearly summary.
+- **Three buttons that did nothing** (October): the price refresh, the sale and the position chart listened on a page element that did not exist, so in production none of them responded. Their tests passed because they built that element themselves. They now listen on the real investments section, and a test reads the real page to check it is there.
+
+### Transactions in monthly documents, live
+
+The August work on monthly documents had been written but switched off: in production nobody was using it.
+
+- **Live for everyone** (September): transactions are written to the monthly documents alongside the main one and read from them. On the real account used for the check, the 21 month documents matched the main document record by record, 793 expenses and 65 incomes. The six accounts never migrated run the migration on their next open.
+- **The step that lifts the ceiling** (September): stopping the growth of the single document, so the account can keep growing past its size limit, is built and tested on the emulator but stays off by default. It checks before writing anything, takes a fresh backup, and records the new version of the account last, so an interruption in the middle leaves the account as it was. After it, the old document stops being a reference for content, so an audit asks only two questions: did anything present at the step vanish without a deletion mark, and does each month hold what it declares.
+- **A way back** (September): a page rebuilds the main document from the monthly ones, with a dry run and a confirmation.
+- **Found before shipping**: the step would have rewritten every month from the main document, erasing an expense added from another tab in those seconds; the offline queue did not know about the step and could report a failed write as synchronised; the Firestore rules had two ways around the freeze.
+
+### Search that answers questions
+
+- **Summary bar** (September): count, total in the current currency and average of the results, pinned above them. Items without an exchange rate are excluded and declared, and the total carries a "≈" when a rate is missing.
+- **Statistics panel** (September): category breakdown, monthly trend, the largest item, the top month and the period covered.
+- **Detail in place** (September): a result card expands to its detail, with Edit and Delete. After saving, cancelling or deleting, the list redraws with query and filters intact and the view returns to the same item.
+- **Typing no longer redraws everything** (September): with 3,069 expenses, redrawing cost 451 ms at the 95th percentile on every key against a budget of 50 ms. The search now runs 150 ms after the last key: twelve keystrokes at 80 ms apart went from 13 redraws to 2.
+- **Defects found on the way** (September): the search modal was built twice, so every key launched two searches; closing it left Escape disabled for the rest of the session; highlighting split `&amp;` in half; the investments search button opened two windows on top of each other.
+
+### Try it without registering
+
+- **A "Try the demo" button** (September) on the login and registration screens opens the whole app with realistic fake data. The data lives in the browser tab and disappears when it closes. Nothing is sent to Firebase, and a visitor's session cannot touch a real account. Actions that would use real services (Google Drive, receipt scanning, account export and deletion, password reset) say "Not available in the demo". It is on for everyone since 29 September, and a single device can hide it.
+- **Found by running it, not by reading it** (September): three modules fell back to the real `localStorage` and would have left a trace of the demo in a real user's browser.
+
+### A failed save no longer leaves a false screen
+
+The app has no server: when Firestore rejects a write, what remains is what is in memory. If memory had already been updated, the screen showed a result the database never accepted, and the amount went back on reload with no explanation.
+
+- **Write first, then update** (September): fixed in twenty-two operations across open accounts, investment tracking, financings and income edited from the popup. Every case has a regression test seen failing before the fix.
+- **A missing method** (September): changing language raised `this.salvaCategorie is not a function` and left the categories normalised in memory but never saved. The method had never existed, and the tests supplied it as a stub.
+- **Two October fixes**: a save superseded by the typing delay never resolved, so a button disabled until the save ended stayed stuck until reload; and a failed optimistic income insert removed the wrong entry when another one had landed at the top of the list in the meantime.
+
+### The October interface review
+
+A set of 41 proposals from a mockup was applied to the real app, with identifiers and handlers kept.
+
+- **Navigation**: a profile menu in the header, a four-tab bar on mobile with a "More" sheet, and a switcher that shows one savings chart at a time.
+- **Lists**: compact rows with relative dates and icon actions, month arrows and date shortcuts, and delete with "Undo" instead of a confirmation dialog.
+- **Defaults**: sections reordered, with two hidden by default for people who have not saved their own preferences. Saved preferences are left as they are.
+- **Settings next to what they affect**: payment-method coverage moved from the profile to a gear on the cash section, the accountant documents entry of the tax wizard moved to the Documents tab, and a gear on the country map lets you assign a country to expenses that lack one, in one pass.
+- **Charts**: the year comparison covers the same part of both years and ranks the top five categories by combined spend, and the expenses chart gets a monthly budget line. Amounts and percentages are written in Italian notation everywhere.
+- **Found and fixed on the way**: Escape did not close two windows; with five or more entries on the same day, the one just added could drop out of the five rows shown after a reload (2 times in 10); after logout and login the investment card buttons did nothing; a card's insight popup opened once per render; the currency breakdown vanished with a single currency even when switched on.
+
+### Accessibility and production-only defects
+
+- **99 violations to 0** (September): an axe-core audit of the login, the tutorial and nine sections in both themes, plus reflow checks at 280, 320 and 375 px. Text colours moved to theme-aware aliases, currency colours darkened, section toggles named, and horizontal scrolling removed on narrow screens.
+- **Contrast measured on the render** (September → October): a rewritten checker reads the real design tokens, and a probe measures the rendered page. In October it took the pairs below AA in light theme from 7 and 15 (at 1280 and 375 px) to 0, including budget labels that were nearly invisible.
+- **Service worker cached for a year** (September): the hosting rule gave the one file whose job is to change an immutable one-year cache. Measured on the live site and fixed.
+- **Mobile header lost in production only** (September): the build emitted two stylesheets in the wrong order, so the base rules beat the media queries. Development looked right.
+
+### Splitting the largest classes
+
+Seventeen oversized classes were split into modules with the suite green at every step. The largest, `investments.js`, went from 1,945 to 521 lines and `documents.js` from 1,501 to 234 (September).
+
+---
+
 ## Aggregate metrics across the project's history
 
 | Metric                                           | Value                                            |
 | ------------------------------------------------ | ------------------------------------------------ |
-| Working sessions                                 | 128 (Jan 2026 → Sep 2026)                        |
+| Working sessions                                 | 146 (Jan 2026 → Oct 2026)                        |
 | User-facing features introduced                  | 30+                                              |
 | Security vulnerabilities closed                  | Multiple XSS + 3 CSV injections + 5 recent HIGH  |
 | Silent failures made visible                     | 15+                                              |
-| Total tests on 1 September 2026                  | **10,282** across 479 suites, all passing        |
-| Global Lines coverage                            | 0% → **91.99%** (measured on 1 September 2026)   |
+| Total tests on 10 October 2026                   | **13,672** across 672 suites, all passing        |
+| Global Lines coverage                            | 0% → **98.51%** (measured on 10 October 2026)    |
 | Initial bundle                                   | 1.73 MB → 900 KB (-48%)                          |
 | Image assets                                     | 6.2 MB → 340 KB (-95%)                           |
-| `app.js` reduction                               | 13,150 → 1,734 lines                             |
+| `app.js` reduction                               | 13,150 → 576 lines                               |
 | `investments-modals.js` reduction                | 1,439 → 41 lines (barrel)                        |
 | Inline styles removed                            | ~540 → ~85 (-84%)                                |
 | Hardcoded `rgba()`                               | 388 → 12 (-97%)                                  |
@@ -438,15 +523,15 @@ Anyone who gets them carries a second currency around. Real money, but spendable
 
 ## What this means for Budgee users today
 
-In nine months Budgee evolved from a working but fragile app into a product that is:
+In ten months Budgee evolved from a working but fragile app into a product that is:
 
 1. **Fast**: initial bundle halved, images down 95%, minified build, full offline.
 2. **Secure**: every known XSS vector closed, CSV injection blocked, password complexity rules, UUIDs as IDs, restrictive Firestore rules, auto-logout on inactivity.
 3. **Reliable**: errors that used to vanish silently are now visible. A button that does not work tells you why.
-4. **Verifiable**: 10,282 tests across 479 suites. Critical functions (login, budgets, investments, exports) are covered above 90%. A future change that breaks something is caught before deploy.
+4. **Verifiable**: 13,672 tests across 672 suites. Critical functions (login, budgets, investments, exports) are covered above 90%. A future change that breaks something is caught before deploy.
 5. **Transparent**: the code is linked from the app's header. Anyone can verify what Budgee does with their data.
 6. **Yours**: the whole account downloads as a single archive, the deletion leaves nothing behind, and the one feature that sends data to a third party asks first and can be switched off.
-7. **Not about to hit a wall**: transactions live in monthly documents, so the history can keep growing past the size limit of a single record.
+7. **Not about to hit a wall**: transactions are read from and written to monthly documents, and the step that stops the single record from growing is built, tested and waiting to be switched on.
 8. **Working to written rules**: the terms of use and the privacy notice can be read before registering, the acceptance stays tied to the version of the text, and a new release does not take over until you say so.
 
-The next development cycle builds on a foundation far better protected by tests and security audits than it was nine months ago, no longer has a storage ceiling in sight, and can take a new language without touching the code.
+The next development cycle builds on a foundation far better protected by tests and security audits than it was ten months ago, has the step that removes the storage ceiling built and tested, and can take a new language without touching the code.

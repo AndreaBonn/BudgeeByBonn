@@ -2,7 +2,7 @@
 
 Questo documento riassume gli avanzamenti significativi del progetto dall'inizio (gennaio 2026) a oggi, raggruppati per **ere di valore** invece che per singola sessione. Sono stati esclusi i commit puramente cosmetici (formattazione, rename di variabili, allineamenti UI senza cambio di comportamento), i commit di pura pulizia interna senza impatto (rimozione `console.log`, fix di selettori CSS inutilizzati) e le sessioni vuote.
 
-Arco temporale coperto: **gennaio 2026 → settembre 2026**, 128 sessioni di lavoro.
+Arco temporale coperto: **gennaio 2026 → ottobre 2026**, 146 sessioni di lavoro.
 
 ---
 
@@ -418,19 +418,104 @@ Chi li riceve ha in tasca una seconda moneta. Sono soldi veri, ma si spendono so
 
 ---
 
+## Era 11 - Spazio per crescere, e una porta d'ingresso (settembre → ottobre 2026)
+
+**Valore aggiunto**: l'app risponde a domande a cui prima non sapeva rispondere (dove sono finiti i soldi, quanto rende davvero un investimento, quanto vale una posizione crypto), chi vuole provarla può farlo senza registrarsi, e l'intera interfaccia è stata rivista su telefono e desktop. Sotto, il tetto di archiviazione ha smesso di essere questione di tempo.
+
+### Vedere dove sono andati i soldi
+
+- **Dettaglio del confronto anno su anno** (settembre): nella tabella di confronto, l'importo di una categoria in un anno apre le spese che lo compongono. Le celle sono veri pulsanti, raggiungibili da tastiera. Dal dettaglio si modifica e si elimina, e la tabella si ridisegna subito dopo, perché una spesa che cambia importo, data o categoria finisce in un'altra cella. Gli importi non vengono convertiti: la tabella confronta una valuta alla volta, e convertire mostrerebbe un totale diverso dalla cifra appena cliccata.
+- **Località delle spese e spesa per nazione** (settembre): ogni spesa può avere una nazione, scelta da un elenco in cui si cerca scrivendo. La nazione principale sta nell'header accanto alla valuta, le spese estere hanno un badge, e la nazione viaggia con le ricorrenti, con l'importazione e l'esportazione in CSV ed Excel e con il filtro della ricerca. Una sezione nuova ordina i paesi e disegna una mappa, per anno o complessiva, per continente o mondiale. La mappa si apre sul continente con più transazioni, perché un mondo in cui è acceso solo il proprio paese non dice niente.
+- **Un'assegnazione retroattiva** (settembre): la prima volta che si sceglie la nazione principale, tutte le spese passate la ricevono, una sola volta, dopo aver scritto una copia di sicurezza nell'account. La revisione ha trovato che l'operazione lavorava su una lettura precedente alla copia, quindi una spesa aggiunta durante quell'attesa sarebbe stata cancellata. Ora applica la modifica allo stato vivo nel momento della scrittura.
+- **Una mappa che tirava righe in alto** (ottobre): i contorni che attraversano il 180° meridiano, Russia e Figi, venivano proiettati come una linea orizzontale da un capo all'altro della mappa. Il contorno ora è continuo e la parte oltre il bordo ricompare sul lato opposto.
+
+### Quanto rende davvero un investimento
+
+Una spesa collegata a un investimento poteva essere solo un versamento. La commissione annuale di un intermediario era quindi o capitale mai investito, o una spesa senza legame col prodotto a cui apparteneva.
+
+- **Tipo di collegamento** (settembre): il collegamento è capitale, il comportamento storico e ancora il predefinito, oppure costo di gestione. Un costo lascia intatto il capitale investito.
+- **Costi e rendimento netto** (settembre): la scheda dell'investimento mostra i costi di gestione, il rendimento effettivo netto e il rendimento atteso netto; i totali mostrano il rendimento effettivo lordo e netto. I costi si calcolano al volo dalle spese, senza un contatore salvato sull'investimento, quindi non c'è niente che possa andare fuori sincrono. La finestra delle transazioni li elenca, e l'elenco spese e le ricorrenti li etichettano.
+- **Un difetto trovato per strada** (settembre): la conversione di valuta di investimenti, finanziamenti e conti aperti sommava una Promise invece del suo valore, quindi i totali in valute miste comparivano come stringhe del tipo `0[object Promise]3`.
+
+### Portafoglio crypto
+
+Un investimento crypto ha smesso di essere un importo fisso ed è diventato un registro di acquisti (settembre).
+
+- **Lotti e costo medio**: quantità, prezzo e data per ogni lotto, con il costo medio sulla scheda.
+- **Prezzo aggiornato**: letto da CoinGecko senza bloccare la pagina, con controvalore e plusvalenza latente sulla scheda. La variazione giornaliera sta su una riga propria, perché in una giornata di rialzo una posizione in perdita mostrerebbe due numeri di segno opposto affiancati. Un pulsante chiede il prezzo subito. La lettura è attiva per tutti e si può spegnere su un singolo dispositivo.
+- **Grafico della posizione**: ogni giorno è valutato con i lotti comprati fino a quel giorno, non con la quantità di oggi, che disegnerebbe una posizione mai esistita. Il costo di carico è disegnato a gradini.
+- **Vendite**: le cessioni parziali si registrano dalla scheda, e tutto ciò che compare dopo descrive quello che resta.
+- **Due criteri affiancati**: plusvalenza realizzata per anno solare con LIFO, il predefinito del regime dichiarativo italiano, e con costo medio. Sulla cessione parziale divergono e possono avere segno opposto: nel caso di prova la stessa vendita è una minusvalenza di 1.500 euro con LIFO e una plusvalenza di 1.833,33 euro a costo medio. La pagina dichiara che il numero non è una dichiarazione fiscale.
+- **Difetti trovati dalla revisione**: il grafico ignorava le vendite e continuava a disegnare una posizione intera mentre la scheda mostrava il residuo; la vendita esatta di ciò che restava cadeva su un confronto in virgola mobile e lasciava a schermo una posizione da zero monete come se fosse ancora aperta; una vendita senza data consumava i lotti e poi spariva dal riepilogo annuale.
+- **Tre pulsanti che non facevano niente** (ottobre): aggiornamento del prezzo, vendita e grafico della posizione ascoltavano un elemento della pagina che non esisteva, quindi in produzione nessuno dei tre rispondeva. I loro test passavano perché quell'elemento se lo costruivano da soli. Ora ascoltano la vera sezione investimenti, e un test legge la pagina reale per controllare che ci sia.
+
+### Le transazioni nei documenti mensili, in produzione
+
+Il lavoro di agosto sui documenti mensili era scritto ma spento: in produzione nessuno lo usava.
+
+- **Acceso per tutti** (settembre): le transazioni si scrivono nei documenti mensili accanto al documento principale e si leggono da lì. Sul conto reale usato per il controllo, i 21 documenti mensili coincidevano col documento principale record per record, 793 spese e 65 entrate. I sei conti mai migrati eseguono la migrazione alla prossima apertura.
+- **Il passo che toglie il tetto** (settembre): fermare la crescita del documento unico, così che l'account possa continuare a crescere oltre il suo limite di dimensione, è costruito e provato sull'emulatore ma resta spento di default. Controlla prima di scrivere qualsiasi cosa, fa una copia di sicurezza fresca e registra per ultima la nuova versione del conto, quindi un'interruzione a metà lascia il conto com'era. Dopo, il vecchio documento smette di essere un riferimento per il contenuto, e una verifica pone solo due domande: è sparito qualcosa che c'era al passo senza una marcatura di cancellazione, e ogni mese contiene quello che dichiara.
+- **Una via di ritorno** (settembre): una pagina ricostruisce il documento principale dai mensili, con prova a vuoto e conferma.
+- **Trovato prima del rilascio**: il passo avrebbe riscritto ogni mese dal documento principale, cancellando una spesa aggiunta da un'altra scheda in quei secondi; la coda offline non conosceva il passo e poteva dichiarare sincronizzata una scrittura fallita; le regole di Firestore avevano due strade per aggirare il congelamento.
+
+### Una ricerca che risponde
+
+- **Barra di riepilogo** (settembre): conteggio, totale nella valuta corrente e media dei risultati, fissa sopra di essi. Le voci senza tasso di cambio sono escluse e dichiarate, e il totale porta un "≈" se un tasso manca.
+- **Pannello statistiche** (settembre): ripartizione per categoria, andamento mensile, la voce più alta, il mese più alto e il periodo coperto.
+- **Dettaglio sul posto** (settembre): la card di un risultato si espande nel suo dettaglio, con Modifica ed Elimina. Dopo un salvataggio, un annullamento o un'eliminazione la lista si ridisegna con query e filtri intatti e la vista torna sulla stessa voce.
+- **Scrivere non ridisegna più tutto** (settembre): con 3.069 spese il ridisegno costava 451 ms al 95° percentile a ogni tasto, contro un budget di 50 ms. La ricerca ora parte 150 ms dopo l'ultimo tasto: dodici tasti a 80 ms l'uno dall'altro sono passati da 13 ridisegni a 2.
+- **Difetti trovati per strada** (settembre): la finestra di ricerca veniva costruita due volte, quindi ogni tasto lanciava due ricerche; chiuderla lasciava Esc disattivato fino a fine sessione; l'evidenziazione spezzava `&amp;` a metà; il pulsante di ricerca degli investimenti apriva due finestre sovrapposte.
+
+### Provare senza registrarsi
+
+- **Un pulsante "Prova la demo"** (settembre) nelle schermate di accesso e registrazione apre l'app intera con dati finti verosimili. I dati stanno nella scheda del browser e spariscono alla chiusura. Niente viene inviato a Firebase, e la sessione di un visitatore non può toccare un conto reale. Le azioni che userebbero servizi reali (Google Drive, scansione degli scontrini, esportazione ed eliminazione dell'account, reset della password) mostrano "Non disponibile nella demo". È attiva per tutti dal 29 settembre, e un singolo dispositivo può nasconderla.
+- **Trovato eseguendola, non leggendo** (settembre): tre moduli ripiegavano sul vero `localStorage` e avrebbero lasciato una traccia della demo nel browser di un utente reale.
+
+### Un salvataggio fallito non lascia più uno schermo falso
+
+L'app non ha un server: quando Firestore rifiuta una scrittura, resta ciò che è in memoria. Se la memoria era già stata aggiornata, lo schermo mostrava un esito che il database non aveva mai accettato, e al ricaricamento l'importo tornava indietro senza spiegazioni.
+
+- **Prima si scrive, poi si aggiorna** (settembre): corretto in ventidue operazioni tra conti aperti, tracking degli investimenti, finanziamenti e modifica di un'entrata dal popup. Ogni caso ha un test di regressione visto fallire prima della correzione.
+- **Un metodo che non esisteva** (settembre): cambiare lingua sollevava `this.salvaCategorie is not a function` e lasciava le categorie normalizzate in memoria ma mai salvate. Il metodo non era mai esistito, e i test lo fornivano come finto.
+- **Due correzioni di ottobre**: un salvataggio scavalcato dal ritardo di digitazione non si concludeva mai, e un pulsante disabilitato fino alla fine del salvataggio restava bloccato fino al ricaricamento; e l'inserimento ottimistico di un'entrata fallito toglieva la voce sbagliata quando nel frattempo ne era arrivata un'altra in cima all'elenco.
+
+### La revisione dell'interfaccia di ottobre
+
+Un insieme di 41 proposte raccolte in un mockup è stato applicato all'app vera, mantenendo identificatori e handler.
+
+- **Navigazione**: un menu profilo nell'header, una barra a quattro schede su mobile con un foglio "Altro", e un selettore che mostra un solo grafico dei risparmi alla volta.
+- **Elenchi**: righe compatte con date relative e azioni a icona, frecce tra i mesi e scorciatoie sulla data, ed eliminazione con "Annulla" al posto della finestra di conferma.
+- **Predefiniti**: sezioni riordinate, con due nascoste di partenza per chi non ha salvato preferenze proprie. Le preferenze salvate restano come sono.
+- **Le impostazioni accanto a ciò che riguardano**: la copertura dei metodi di pagamento è passata dal profilo a un ingranaggio sulla sezione del contante, la voce per i documenti del commercialista del wizard fiscale è passata alla scheda Documenti, e un ingranaggio sulla mappa dei paesi permette di assegnare in un colpo solo una nazione alle spese che ne sono prive.
+- **Grafici**: il confronto tra anni copre la stessa porzione dei due anni e ordina le prime cinque categorie per spesa combinata, e il grafico delle spese riceve una linea del budget mensile. Importi e percentuali sono scritti ovunque in notazione italiana.
+- **Trovato e corretto per strada**: Esc non chiudeva due finestre; con cinque o più voci nello stesso giorno, quella appena aggiunta poteva uscire dalle cinque righe mostrate dopo un ricaricamento (2 volte su 10); dopo un logout e un nuovo accesso i pulsanti delle schede investimento non facevano niente; il popup di approfondimento di una scheda si apriva una volta per ogni ridisegno; la ripartizione per valuta spariva con una sola valuta anche quando era attivata.
+
+### Accessibilità e difetti che esistevano solo in produzione
+
+- **Da 99 violazioni a 0** (settembre): un controllo con axe-core su accesso, tutorial e nove sezioni nei due temi, più verifiche di reflow a 280, 320 e 375 px. I testi sono passati ad alias che seguono il tema, i colori delle valute sono stati scuriti, i pulsanti delle sezioni hanno un nome, e lo scorrimento orizzontale sugli schermi stretti è sparito.
+- **Contrasto misurato sul render** (settembre → ottobre): un controllo riscritto legge i token reali del design system e una sonda misura la pagina disegnata. A ottobre ha portato le coppie sotto AA in tema chiaro da 7 e 15 (a 1280 e 375 px) a 0, comprese etichette del budget quasi invisibili.
+- **Il service worker in cache per un anno** (settembre): la regola di hosting dava al solo file che esiste per cambiare una cache immutabile di un anno. Misurato sul sito pubblicato e corretto.
+- **L'header mobile perso solo in produzione** (settembre): la build emetteva due fogli di stile nell'ordine sbagliato, quindi le regole di base battevano le media query. In sviluppo sembrava tutto a posto.
+
+### Scomposizione delle classi più grandi
+
+Diciassette classi sovradimensionate sono state scomposte in moduli, con la suite verde a ogni passo. La più grande, `investments.js`, è passata da 1.945 a 521 righe e `documents.js` da 1.501 a 234 (settembre).
+
+---
+
 ## Metriche aggregate sull'intera storia del progetto
 
 | Metrica                                          | Valore                                          |
 | ------------------------------------------------ | ----------------------------------------------- |
-| Sessioni di lavoro                               | 128 (gen 2026 → set 2026)                       |
+| Sessioni di lavoro                               | 146 (gen 2026 → ott 2026)                       |
 | Funzionalità user-facing introdotte              | 30+                                             |
 | Vulnerabilità di sicurezza chiuse                | XSS multipli + 3 CSV injection + 5 HIGH recenti |
 | Silent failures resi visibili                    | 15+                                             |
-| Test totali al 1 settembre 2026                  | **10.282** su 479 suite, tutti verdi            |
-| Coverage globale Lines                           | 0% → **91.99%** (misurata il 1 settembre 2026)  |
+| Test totali al 10 ottobre 2026                   | **13.672** su 672 suite, tutti verdi            |
+| Coverage globale Lines                           | 0% → **98.51%** (misurata il 10 ottobre 2026)   |
 | Bundle iniziale                                  | 1.73 MB → 900 KB (-48%)                         |
 | Asset immagini                                   | 6.2 MB → 340 KB (-95%)                          |
-| Riduzione `app.js`                               | 13.150 → 1.734 righe                            |
+| Riduzione `app.js`                               | 13.150 → 576 righe                              |
 | Riduzione `investments-modals.js`                | 1.439 → 41 righe (barrel)                       |
 | Inline styles eliminati                          | ~540 → ~85 (-84%)                               |
 | `rgba()` hardcodati                              | 388 → 12 (-97%)                                 |
@@ -440,15 +525,15 @@ Chi li riceve ha in tasca una seconda moneta. Sono soldi veri, ma si spendono so
 
 ## Cosa significa per chi usa Budgee oggi
 
-In nove mesi Budgee è passata da un'app funzionante ma fragile a un prodotto:
+In dieci mesi Budgee è passata da un'app funzionante ma fragile a un prodotto:
 
 1. **Veloce**: bundle iniziale dimezzato, immagini ridotte del 95%, build minificato, offline completo.
 2. **Sicuro**: tutti i vettori XSS noti chiusi, CSV injection bloccata, password con regole di complessità, UUID per gli ID, regole Firestore restrittive, auto-logout per inattività.
 3. **Affidabile**: gli errori che prima sparivano silenziosamente ora sono visibili. Un pulsante che non funziona spiega il perché.
-4. **Verificabile**: 10.282 test su 479 suite. Le funzioni critiche (login, budget, investimenti, esportazioni) sono coperte oltre il 90%. Una modifica futura che rompe qualcosa viene intercettata prima del deploy.
+4. **Verificabile**: 13.672 test su 672 suite. Le funzioni critiche (login, budget, investimenti, esportazioni) sono coperte oltre il 90%. Una modifica futura che rompe qualcosa viene intercettata prima del deploy.
 5. **Trasparente**: il codice è linkato dall'header dell'app. Chiunque può verificare cosa fa Budgee con i propri dati.
 6. **Tuo**: l'intero account si scarica in un unico archivio, la cancellazione non lascia residui, e l'unica funzione che manda dati a un terzo lo chiede prima e si può spegnere.
-7. **Senza un muro davanti**: le transazioni vivono in documenti mensili, quindi lo storico può continuare a crescere oltre il limite di dimensione di un singolo record.
+7. **Senza un muro davanti**: le transazioni si leggono e si scrivono nei documenti mensili, e il passo che ferma la crescita del record unico è costruito, provato e in attesa di essere acceso.
 8. **Con le regole scritte**: termini d'uso e informativa privacy si leggono prima di registrarsi, l'accettazione resta agganciata alla versione del testo, e una versione nuova dell'app non subentra finché non sei tu a dire di sì.
 
-Il prossimo ciclo di sviluppo parte da una base molto più protetta da test e da audit di sicurezza rispetto a nove mesi fa, non ha più un tetto di archiviazione all'orizzonte, e può aggiungere una lingua senza rimettere mano al codice.
+Il prossimo ciclo di sviluppo parte da una base molto più protetta da test e da audit di sicurezza rispetto a dieci mesi fa, ha pronto e collaudato il passo che toglie il tetto di archiviazione, e può aggiungere una lingua senza rimettere mano al codice.
