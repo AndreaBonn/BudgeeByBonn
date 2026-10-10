@@ -75,17 +75,27 @@ Se un campo blocca il salvataggio, l'errore compare sotto quel campo. Prima ne c
 
 ### Accedere e uscire
 
-Nell'header trovi il profilo, l'interruttore del tema, quello della lingua, il selettore di valuta e il pulsante di uscita. Dopo un lungo periodo di inattività Budgee esce da sola, ed è voluto: sono dati finanziari su un dispositivo che potrebbe non essere solo tuo.
+Il menu **Profilo** nell'header contiene il pulsante di uscita, insieme a tema, lingua e valuta. Vedi il [capitolo 3](#3-orientarsi-nellapp). Dopo un lungo periodo di inattività Budgee esce da sola, ed è voluto: sono dati finanziari su un dispositivo che potrebbe non essere solo tuo.
 
 ### Cambiare la password
 
-Apri **Profilo** dall'header. Nella stessa schermata ci sono il cambio password, l'esportazione dei dati e la cancellazione dell'account.
+Apri il menu **Profilo** nell'header e scegli **Il mio profilo**. Nella stessa schermata ci sono il cambio password, l'esportazione dei dati e la cancellazione dell'account.
+
+### Provare prima la demo
+
+Se preferisci dare un'occhiata prima di registrarti, premi **Prova la demo** nella schermata di accesso. Budgee si apre per intero con dati di esempio, senza bisogno di un account.
+
+![La schermata di accesso con il pulsante della demo](./docs/screenshots/it/28-accesso-demo.png)
+
+La demo vive solo nella scheda del browser: lo dice un banner in alto, e i dati di esempio spariscono quando chiudi la scheda. Niente di quello che fai lì viene salvato su un account, e non tocca i dati di chi è collegato sullo stesso browser. Alcune funzioni sono spente e mostrano "Non disponibile nella demo": Google Drive, la scansione degli scontrini, l'esportazione dei dati, la cancellazione dell'account e il recupero della password. Il banner offre **Registrati** ed **Esci dalla demo**.
 
 ---
 
 ## 3. Orientarsi nell'app
 
-Budgee è divisa in nove sezioni, raggiungibili dalle schede in alto sul computer e dalla barra in basso sul telefono:
+Budgee è divisa in nove sezioni. Sul computer sono le schede sotto il titolo. Sul telefono una barra in basso tiene le quattro che usi ogni giorno, **Spese**, **Entrate**, **Risparmi** e **Budget**, e un quinto pulsante, **Altro**, apre un pannello con le altre cinque: Categorie, Investimenti, Finanziamenti, Conti aperti e Documenti.
+
+![La sezione spese sul telefono, con la barra in basso](./docs/screenshots/it/26-mobile-spese.png)
 
 | Sezione | Cosa ci trovi |
 |---|---|
@@ -101,13 +111,25 @@ Budgee è divisa in nove sezioni, raggiungibili dalle schede in alto sul compute
 
 ### I comandi nell'header
 
-- **Tema**: chiaro o scuro. La scelta viene salvata e ti segue fra dispositivi.
-- **Lingua**: un menu a tendina con italiano e inglese. Cambiano interfaccia, categorie, grafici e nomi delle cartelle documenti.
+Le impostazioni che cambi di rado stanno in un posto solo, il menu **Profilo** a destra del titolo, così la parte alta della pagina resta per i tuoi dati.
+
+![Il menu Profilo](./docs/screenshots/it/20-menu-profilo.png)
+
+Il menu contiene:
+
+- **Il mio profilo**: impostazioni, chiavi AI, buoni pasto, privacy, password, esportazione, cancellazione.
+- **Nazione principale**: il paese in cui vivi. Serve per la località delle spese, vedi il [capitolo 4](#4-registrare-una-spesa).
 - **Valuta**: quella in cui vedi gli importi. Budgee gestisce EUR, USD, GBP e PLN e converte fra loro.
-- **Buoni pasto**: compare solo se hai dichiarato di averli, accanto alla valuta, e mostra quanti te ne restano. Vedi il [capitolo 7](#7-metodi-di-pagamento).
-- **Profilo**: impostazioni, chiavi AI, copertura dei metodi di pagamento, buoni pasto, privacy, esportazione, cancellazione.
-- **Aiuto**: riapre il tour guidato che hai visto la prima volta.
-- **Indicatore di sincronizzazione**: dice se sei online e se è stato salvato tutto.
+- **Lingua**: un menu a tendina con italiano e inglese, mostrato qui con il codice breve (IT, EN). Cambiano interfaccia, categorie, grafici e nomi delle cartelle documenti.
+- **Tema**: chiaro o scuro. La scelta viene salvata e ti segue fra dispositivi.
+- **Guida**: riapre il tour guidato che hai visto la prima volta.
+- **Esci**: ti disconnette.
+
+Due cose restano fuori dal menu. Il pulsante dei **buoni pasto** compare accanto a esso solo se hai dichiarato di averli, e mostra quanti te ne restano; vedi il [capitolo 7](#7-metodi-di-pagamento). L'**indicatore di sincronizzazione** dice se sei online e se è stato salvato tutto.
+
+### I pulsanti di una sezione
+
+Ogni sezione si apre con una riga di azioni. In **Spese** e **Entrate** si legge **Aggiungi spesa** o **Aggiungi entrata**, **Scansiona** (la scansione dello scontrino, [capitolo 6](#6-scansionare-uno-scontrino-con-lai)), **Importa** (Excel, [capitolo 19](#19-importare-ed-esportare)), **Cerca**, **Personalizza** e **Ricorrenti** ([capitolo 8](#8-transazioni-ricorrenti)). Investimenti, Finanziamenti, Conti aperti e Budget hanno il pulsante **Aggiungi** e, tranne Budget, **Cerca**. Sul telefono i pulsanti vanno a capo su righe intere.
 
 ### Filtrare per periodo
 
@@ -115,7 +137,9 @@ Quasi tutte le sezioni hanno un filtro di periodo: mese corrente, mese precedent
 
 ### Nascondere quello che non usi
 
-Ogni sezione ha un pulsante **Scegli cosa mostrare**. Non tutti vogliono il calendario, o il diagramma Sankey, o il grafico del contante. Spegni quello che non leggi: la scelta viene salvata e sincronizzata, quindi la fai una volta sola.
+Ogni sezione ha un pulsante **Personalizza** (titolo: "Seleziona sezioni da mostrare"). Non tutti vogliono il calendario, o il diagramma Sankey, o il grafico del contante. Spegni quello che non leggi: la scelta viene salvata e sincronizzata, quindi la fai una volta sola.
+
+Due blocchi partono nascosti per i nuovi utenti perché ripetono quello che è già a schermo: **Tasso di Risparmio** in Spese, dato che il Riepilogo Periodo dice già quanta parte del reddito hai tenuto, e **Riepilogo Totali** in Risparmi, che ripete entrate e spese del riepilogo. Apri **Personalizza** per mostrarli. In Spese ed Entrate l'elenco ora segue il riepilogo, e in Risparmi lo seguono i numeri chiave. Se avevi già salvato una tua disposizione, resta esattamente com'era.
 
 ### Quando esce una versione nuova
 
@@ -128,7 +152,7 @@ L'aggiornamento non parte mai da solo. Una versione che subentra mentre stai scr
 ## 4. Registrare una spesa
 
 1. Apri la sezione **Spese**.
-2. Premi **Aggiungi**. Si apre il form.
+2. Premi **Aggiungi spesa**. Si apre il form.
 3. Compila quello che serve:
 
 | Campo | Note |
@@ -139,8 +163,8 @@ L'aggiornamento non parte mai da solo. Una versione che subentra mentre stai scr
 | **Sottocategoria** | Facoltativa ma consigliata: è quella che rende leggibili le analisi. |
 | **Data** | Di default è oggi. |
 | **Metodo di pagamento** | Obbligatorio quando compili il form a mano. Vedi il [capitolo 7](#7-metodi-di-pagamento). |
-| **Rata di finanziamento collegata** | Lega la spesa a un prestito, così il residuo scende da solo. |
-| **Investimento collegato** | Lega la spesa a un versamento di capitale. |
+| **Località** | Facoltativa. Il paese in cui hai fatto la spesa, scelto da un elenco in cui puoi cercare scrivendo. Vedi "Dove hai speso" più sotto. |
+| **Collega a un finanziamento o a un investimento** | I due campi di collegamento stanno dietro questo interruttore, chiuso di default. Aprilo per legare la spesa a una rata di prestito (il residuo scende da solo) o a un investimento. |
 | **Ricorrente** | Trasforma la spesa in ricorrente. Vedi il [capitolo 8](#8-transazioni-ricorrenti). |
 | **Deducibile** | Marca la spesa per il riepilogo di fine anno. Vedi il [capitolo 14](#14-spese-deducibili). |
 
@@ -152,9 +176,24 @@ La spesa compare nell'elenco, e totali, calendario e grafici si aggiornano subit
 
 Apri una spesa dall'elenco, oppure da un popup di dettaglio nelle analisi. Ogni vista di dettaglio contiene **Modifica** ed **Elimina**, così non devi andare a caccia della voce originale.
 
+### Dove hai speso
+
+Imposta una volta la tua **Nazione principale** nel menu Profilo. Da lì in poi:
+
+- Una spesa fatta in un altro paese mostra il nome di quel paese accanto a sé nell'elenco. Le spese nella tua nazione principale non portano etichetta, così quelle che risaltano sono le straniere.
+- Il campo facoltativo **Località** si imposta quando aggiungi una spesa, si cambia più tardi nel popup di modifica, e lo portano con sé le spese ricorrenti e l'import e l'export CSV ed Excel.
+- La prima volta che scegli una nazione principale, Budgee la assegna in silenzio alle spese che avevi registrato prima. Poiché questo scrive un valore che non hai mai inserito per nessun viaggio passato, Budgee salva prima una copia di sicurezza.
+- Le spese che non hanno ancora un paese sono contate da un badge su un ingranaggio nell'angolo della sezione **Distribuzione Geografica** ([capitolo 15](#15-leggere-i-tuoi-numeri)).
+
 ### Cercare
 
-La lente nell'intestazione della sezione cerca per parola chiave, data, categoria, fascia di importo, metodo di pagamento o elemento collegato.
+Il pulsante **Cerca** nell'intestazione della sezione cerca per parola chiave, data, categoria, fascia di importo, metodo di pagamento, località (**Tutte le località** o **Senza località**) o elemento collegato.
+
+Sopra i risultati una barra di riepilogo dà il numero di spese trovate, il loro totale e la media. Il pulsante **Statistiche** apre un pannello con la suddivisione per categoria, un grafico mensile dei risultati e qualche punto notevole: la voce più grande e il mese in cima. Dove un importo non si può convertire per mancanza di un tasso di cambio, la barra dice quante voci restano fuori dal totale.
+
+![I risultati di ricerca con il pannello delle statistiche](./docs/screenshots/it/06-ricerca-statistiche.png)
+
+Clicca un risultato per espanderlo sul posto. La voce espansa ha **Modifica** ed **Elimina**, e quando chiudi la modifica Budgee ti riporta allo stesso punto dei risultati invece di rimandarti in cima.
 
 ![Calendario spese e trend mensile](./docs/media/features/it/spese.gif)
 
@@ -167,10 +206,12 @@ La lente nell'intestazione della sezione cerca per parola chiave, data, categori
 Lo stesso form, con due differenze: non c'è il flag deducibile, e i metodi di pagamento proposti sono quelli che hanno senso per i soldi che entrano (un addebito automatico non è un modo di essere pagati, un voucher sì).
 
 1. Apri la sezione **Entrate**.
-2. Premi **Aggiungi**.
+2. Premi **Aggiungi entrata**.
 3. Compila importo, valuta, categoria, descrizione, data e metodo di pagamento.
-4. Se i soldi sono il rendimento di un investimento, collegali lì: l'investimento registra da sé il rendimento effettivo.
+4. Se i soldi sono il rendimento di un investimento, apri **Collega a un investimento** e sceglilo lì: l'investimento registra da sé il rendimento effettivo.
 5. Premi **Aggiungi Entrata**.
+
+![La sezione entrate](./docs/screenshots/it/07-entrate.png)
 
 ---
 
@@ -178,13 +219,13 @@ Lo stesso form, con due differenze: non c'è il flag deducibile, e i metodi di p
 
 Invece di scrivere uno scontrino puoi fotografarlo. Budgee manda l'immagine a Google Gemini, riceve importo, data, descrizione e una proposta di categoria, e ti compila il form.
 
-![La modale di scansione AI](./docs/screenshots/it/17-scansione-ai.png)
+![La modale di scansione AI](./docs/screenshots/it/05-scansione-ai.png)
 
 La funzione è spenta finché non l'accendi tu, e le servono due cose: una chiave API tua e il tuo consenso esplicito.
 
 ### La configurazione, una volta sola
 
-1. Apri **Profilo** dall'header e scendi alla sezione **AI**.
+1. Apri il menu **Profilo**, scegli **Il mio profilo** e scendi alla sezione **AI**.
 2. Incolla una chiave API di Google Gemini. Budgee la prova sul momento e ti dice se funziona.
 3. Puoi inserirne più di una: se la prima raggiunge il limite, subentra la successiva.
 
@@ -192,11 +233,11 @@ La chiave è tua, resta nel tuo account, ed è l'unico dato escluso sia dall'esp
 
 ### Dare il consenso
 
-La prima volta che premi il pulsante con la fotocamera, Budgee spiega cosa sta per succedere: l'immagine esce dall'app e arriva a Google. Uno scontrino può dire parecchio di te, dai farmaci alle visite mediche, quindi è una decisione distinta dall'uso di Budgee. La accetti una volta e la puoi revocare quando vuoi, dalla stessa schermata del profilo. Revocarla spegne la scansione, e non tocca nient'altro.
+La prima volta che premi **Scansiona**, Budgee spiega cosa sta per succedere: l'immagine esce dall'app e arriva a Google. Uno scontrino può dire parecchio di te, dai farmaci alle visite mediche, quindi è una decisione distinta dall'uso di Budgee. La accetti una volta e la puoi revocare quando vuoi, dalla stessa schermata del profilo. Revocarla spegne la scansione, e non tocca nient'altro.
 
 ### Scansionare
 
-1. In **Spese** o in **Entrate**, premi il pulsante con la fotocamera accanto ad **Aggiungi**.
+1. In **Spese** o in **Entrate**, premi **Scansiona**, accanto ad **Aggiungi spesa** o **Aggiungi entrata**.
 2. Carica una foto, uno screenshot o un PDF. Il limite è 10 MB.
 3. Premi **Estrai dati** e aspetta qualche secondo.
 4. Il form si apre già compilato. **Controllalo**, correggi quello che non torna e salva.
@@ -225,11 +266,11 @@ Budgee guarda quello che usi di solito per quella categoria. Se la spesa aliment
 
 ### Se il tuo storico è più vecchio del campo
 
-Apri **Profilo**. La sezione **Metodo di pagamento** mostra quanta parte dello storico è coperta, su spese ed entrate, e quali categorie stanno peggio.
+Nella sezione **Spese** trova il riquadro **Uscite in contanti** e premi l'ingranaggio nel suo angolo (**Gestisci i metodi di pagamento**). Un badge sull'ingranaggio conta le spese e le entrate che non hanno ancora un metodo di pagamento, e sparisce quando non ce ne sono. La finestra mostra quanta parte dello storico è coperta, su spese ed entrate, e quali categorie stanno peggio.
 
-![Copertura dei metodi nel profilo](./docs/screenshots/it/21-profilo-privacy.png)
+![Il riquadro delle uscite in contanti, da cui si apre la copertura dei metodi](./docs/screenshots/it/04-quota-contante.png)
 
-Premi il pulsante di completamento e Budgee raggruppa per categoria quello che manca, proponendo per ognuna il metodo che usi più spesso lì. Confermi i gruppi su cui sei d'accordo e li compila in blocco, invece che una voce alla volta.
+Premi **Completa i metodi mancanti** e Budgee raggruppa per categoria quello che manca, proponendo per ognuna il metodo che usi più spesso lì. Confermi i gruppi su cui sei d'accordo e li compila in blocco, invece che una voce alla volta.
 
 ### Perché conta
 
@@ -239,11 +280,11 @@ Senza questo campo il grafico del contante nella sezione Spese non ha denominato
 
 Il buono pasto è l'unico metodo che vale sia in entrata sia in uscita: prima lo ricevi come compenso, poi lo spendi. Ed è l'unico che si porta dietro un saldo suo.
 
-**Accenderli.** Apri **Profilo** e spunta **Ho i buoni pasto**. Da quel momento il metodo compare nei form, e in alto accanto alla valuta compare un pulsante con quanti te ne restano. Se non li hai, l'opzione non ti viene proposta da nessuna parte: né nei form di inserimento, né nelle modifiche, né nelle ricorrenti, né nel completamento assistito, che altrimenti attribuirebbe spese passate a un canale che non hai mai avuto.
+**Accenderli.** Apri **Il mio profilo** e spunta **Ho i buoni pasto**. Da quel momento il metodo compare nei form, e in alto accanto alla valuta compare un pulsante con quanti te ne restano. Se non li hai, l'opzione non ti viene proposta da nessuna parte: né nei form di inserimento, né nelle modifiche, né nelle ricorrenti, né nel completamento assistito, che altrimenti attribuirebbe spese passate a un canale che non hai mai avuto.
 
 **Il saldo di partenza.** Clicca il pulsante in alto. La prima volta il pannello non mostra una cifra: chiede da quanto partire e a che data. Serve perché il saldo si calcola dai movimenti a partire da lì, e senza un punto di partenza il conto ricomincerebbe dall'inizio del tuo storico. Uno zero al posto dell'invito direbbe "non hai buoni pasto" a chi ne ha in tasca.
 
-![Il pannello del saldo buoni pasto](./docs/screenshots/it/23-buoni-pasto.png)
+![Il pannello del saldo buoni pasto](./docs/screenshots/it/19-buoni-pasto.png)
 
 Da lì in poi ogni entrata in buoni pasto lo alza e ogni spesa lo abbassa. La cifra si aggiorna sul momento, appena registri il movimento. Il saldo di partenza si corregge quando vuoi dallo stesso pannello.
 
@@ -273,7 +314,7 @@ Una ricorrente non finisce nei tuoi record da sola. Quando ne scade una, Budgee 
 
 ### Gestirle
 
-Il pulsante **Gestisci Ricorrenti**, in cima alla sezione Spese, elenca tutto quello che hai impostato. Da lì modifichi una serie, elimini una singola occorrenza o tutte le future, e consulti lo storico di quelle confermate.
+Il pulsante **Ricorrenti**, nella riga di azioni della sezione Spese, elenca tutto quello che hai impostato. Da lì modifichi una serie, elimini una singola occorrenza o tutte le future, e consulti lo storico di quelle confermate.
 
 ---
 
@@ -304,7 +345,9 @@ La sezione **Risparmi** risponde a una domanda diversa da quella delle Spese: no
 - Mesi migliori e peggiori
 - Osservazioni brevi sui pattern che Budgee trova
 
-![Trend dei risparmi](./docs/screenshots/it/10-risparmi-trend.png)
+I grafici dei risparmi condividono un unico pannello con un selettore: **Mese per mese**, **Accumulato** e **Tasso di risparmio**. Se ne vede uno alla volta, e ognuno tiene la propria scelta di mostra/nascondi in **Personalizza**.
+
+![Trend dei risparmi](./docs/screenshots/it/09-risparmi-trend.png)
 
 ### Liquidità disponibile
 
@@ -363,6 +406,31 @@ Capitale investito, rendimenti attesi, rendimenti effettivi, tasso medio, prossi
 
 ![Portafoglio investimenti](./docs/media/features/it/investimenti.gif)
 
+### Costi di gestione
+
+Quando colleghi una spesa a un investimento, un campo **Tipo di collegamento** chiede se è un **Versamento di capitale** o un **Costo di gestione**. Un costo non si somma al capitale investito: abbassa il rendimento netto. La stessa scelta c'è quando modifichi la spesa e nelle spese ricorrenti, e i costi sono etichettati nell'elenco delle spese.
+
+Sulla card dell'investimento il rendimento effettivo è indicato come lordo, i **Costi di Gestione** compaiono a parte e accanto a essi sta il **Rendimento Effettivo Netto**. La finestra dei movimenti elenca i costi insieme agli altri movimenti.
+
+![Una card investimento con costi di gestione e rendimento netto](./docs/screenshots/it/15-costi-gestione.png)
+
+### Criptovalute
+
+Un investimento in criptovaluta è un registro di acquisti, non un importo unico. Scegli la criptovaluta, poi registra ogni acquisto con la sua **Quantità acquistata**, il **Prezzo di carico (per unità)** e la data. L'importo investito si ricava da questi e resta il costo che hai pagato: non segue mai il mercato, quindi il tuo capitale investito non oscilla col prezzo.
+
+La card mostra la quantità posseduta e il prezzo medio di acquisto. Il prezzo arriva da CoinGecko. Il **Valore attuale** ha quattro stati possibili:
+
+- **Lettura del prezzo in corso**, mentre carica
+- il valore, con la **Variazione 24 ore** su una riga propria e la **Plus/minusvalenza latente**
+- le stesse cifre con "Prezzo letto il" e la data, quando l'ultima lettura è più vecchia di dieci minuti
+- **Prezzo non disponibile**, con un pulsante di aggiornamento, quando non è mai stato letto un prezzo
+
+Il pulsante di aggiornamento (**Aggiorna il prezzo**) chiede una nuova lettura. Sotto, un grafico, **Andamento della posizione**, mette il valore della posizione a confronto con il suo costo.
+
+![Una posizione in criptovaluta](./docs/screenshots/it/14-crypto.png)
+
+**Registra una vendita** sulla card chiede la quantità venduta, il prezzo di vendita e la data. Vendere più di quanto possiedi viene rifiutato, e una vendita che svuota la posizione ti rimanda alla liquidazione dell'investimento. La **Plus/minusvalenza realizzata** compare poi per anno secondo due criteri affiancati, **LIFO** e **Costo medio**, perché su una vendita parziale possono differire e perfino avere segno opposto. Un avviso dichiara che la cifra è indicativa e non una dichiarazione fiscale. Le plusvalenze, realizzate o no, non entrano mai nei totali dell'app. L'esportazione CSV degli investimenti aggiunge quattro colonne per ogni posizione: l'asset, la quantità posseduta, il costo medio e la quantità venduta.
+
 ---
 
 ## 12. Finanziamenti
@@ -373,7 +441,7 @@ Capitale investito, rendimenti attesi, rendimenti effettivi, tasso medio, prossi
 
 Da quel momento una spesa collegata a quel finanziamento riduce il residuo da sola. La vista di dettaglio mostra lo storico dei pagamenti e il piano di ammortamento, e i totali della sezione dicono quanto devi in tutto, quanta parte sono interessi e quanto paghi al mese fra tutti i prestiti.
 
-![Finanziamenti con progresso dei pagamenti](./docs/screenshots/it/08-finanziamenti-lista.png)
+![Finanziamenti con progresso dei pagamenti](./docs/screenshots/it/16-finanziamenti.png)
 
 ---
 
@@ -387,6 +455,8 @@ Per i soldi che si muovono fra persone e non fra conti: quello che hai prestato 
 4. Quando il saldo arriva a zero il conto si chiude da solo.
 
 I totali della sezione separano crediti e debiti e mostrano il netto. Tutto si può esportare in CSV.
+
+![Conti aperti](./docs/screenshots/it/17-conti-aperti.png)
 
 ---
 
@@ -410,24 +480,44 @@ Tutto quello che sta qui alimenta il [capitolo 18](#18-documenti-per-il-commerci
 
 La sezione **Categorie** ordina la spesa per macro-categoria, permette di scendere nelle sottocategorie e mostra quanto pesa ciascuna. Puoi scegliere liberamente le categorie, confrontare entrate e uscite, e cliccare una categoria per vedere le transazioni dietro al numero.
 
-![Analisi per categoria](./docs/screenshots/it/11-categorie.png)
+![Analisi per categoria](./docs/screenshots/it/12-categorie.png)
 
 ### Anno su anno
 
 Più in basso nella stessa sezione, Budgee confronta due anni interi, categoria per categoria, con la differenza e la variazione percentuale.
 
-![Confronto anno su anno](./docs/screenshots/it/20-confronto-anni.png)
+![Confronto anno su anno](./docs/screenshots/it/10-confronto-anni.png)
+
+Il selettore **Periodo** sceglie fra **Anno intero** e **Stesso periodo, fino a oggi**. Il secondo confronta l'anno in corso fin qui con lo stesso tratto dell'altro anno, che a marzo è il confronto onesto. Il grafico accanto alla tabella mostra le cinque categorie che pesano di più.
+
+Clicca una cella con un importo e Budgee apre le spese che ci stanno dietro. Da lì puoi modificarle o eliminarle, e il confronto si aggiorna.
+
+![Le spese dietro un importo del confronto](./docs/screenshots/it/11-confronto-anni-dettaglio.png)
 
 Due cose da sapere mentre lo leggi:
 
 - Una categoria presente in un anno solo resta nella tabella, con l'altro anno a zero. Di solito è proprio quella la riga interessante.
 - Una valuta per volta. Sommare importi di valute diverse produrrebbe un numero senza significato.
 
+### Distribuzione geografica
+
+Nella sezione Spese, la sezione **Distribuzione Geografica** mostra dove hai speso, su una mappa del mondo e in una tabella ordinata dal paese più alto al più basso, con la quota, il totale e il numero di spese di ciascuno. Conta solo le spese che hanno una località ([capitolo 4](#4-registrare-una-spesa)).
+
+![La spesa per paese sulla mappa](./docs/screenshots/it/03-mappa-paesi.png)
+
+Il selettore **Anno** restringe a un anno o a **Tutti gli anni**, e il selettore **Continente** ingrandisce la mappa, con **Mondo intero** come vista più ampia. Si apre sul continente dove hai più spese, contate per numero di spese e non per importo, così un grosso bonifico all'estero non sposta la vista di partenza. Questa sezione segue i propri selettori e non il filtro di periodo della scheda.
+
+L'ingranaggio nell'angolo, **Gestisci le spese senza nazione**, porta un badge con il numero di spese senza paese in tutto il tuo storico. La finestra le elenca: scegli un paese, spunta le spese che hai fatto lì e salva una volta sola.
+
+### Il budget del mese sul grafico del trend
+
+Il grafico del trend delle spese disegna il **Budget del mese** come una linea, così vedi il mese avvicinarsi al suo limite.
+
 ### Uscite in contanti
 
 Nella sezione Spese, Budgee mostra quanta parte della spesa passa dal contante, mese per mese e categoria per categoria.
 
-![Quota di contante](./docs/screenshots/it/19-quota-contante.png)
+![Quota di contante](./docs/screenshots/it/04-quota-contante.png)
 
 La quota si misura sugli importi e non sul numero di voci, e il denominatore conta solo ciò di cui si conosce il metodo di pagamento. Quello che manca viene dichiarato apertamente, invece di abbassare la percentuale in silenzio.
 
@@ -454,6 +544,10 @@ Budgee non conserva i tuoi documenti. Li organizza sul tuo Drive e ci porta.
 
 I nomi delle cartelle seguono la tua lingua. Su Drive, Budgee vede soltanto i file che ha creato lei: il resto del tuo Drive le resta invisibile.
 
+![La scheda Documenti](./docs/screenshots/it/22-documenti.png)
+
+Il riquadro **Documenti per il commercialista** sta in cima a questa scheda, sopra l'avviso sul backup su Drive. Il [capitolo 18](#18-documenti-per-il-commercialista) lo descrive.
+
 ---
 
 ## 17. Il backup settimanale
@@ -468,11 +562,11 @@ Su una cosa vale la pena essere precisi: dietro Budgee non c'è un server che lo
 
 Alla dichiarazione la parte difficile non sono i conti, è ricordarsi cosa consegnare.
 
-![La procedura chiede che dichiarazione presenti](./docs/screenshots/it/18-wizard-fiscale.png)
+![La procedura chiede che dichiarazione presenti](./docs/screenshots/it/23-wizard-fiscale.png)
 
 In cima alla procedura resta un avviso per tutta la sua durata: gli importi sono stime, sono calcolati sui dati che hai inserito tu, e vanno fatti controllare da un commercialista. Budgee organizza documenti, non dà consulenza fiscale.
 
-1. Apri **Profilo** e avvia **Documenti per il commercialista**.
+1. Apri la scheda **Documenti** e premi **Prepara i documenti** nel riquadro **Documenti per il commercialista**, sopra l'avviso su Drive.
 2. Dichiara che modello presenti. I profili sono sette, dal dipendente che presenta il 730 al professionista con partita IVA, al socio di una società, all'impresa in contabilità semplificata o ordinaria.
 3. Scegli l'anno d'imposta.
 4. Spunta le situazioni che ti riguardano: casa, famiglia, spese sanitarie, istruzione e così via. Solo i capitoli che spunti diventano schermate, così un inquilino senza figli non attraversa dodici pagine che non lo riguardano.
@@ -494,7 +588,7 @@ La procedura segue la normativa fiscale italiana per l'anno che scegli. Se dichi
 
 ## 19. Importare ed esportare
 
-**Portare dentro i dati.** L'icona di import Excel, nell'intestazione delle sezioni Spese ed Entrate accanto a quella della fotocamera, legge un file `.xlsx` e carica le transazioni in blocco. È il modo più rapido per travasare un foglio di calcolo che tieni da anni.
+**Portare dentro i dati.** Il pulsante **Importa**, nella riga di azioni delle sezioni Spese ed Entrate accanto a **Scansiona**, legge un file `.xlsx` e carica le transazioni in blocco. È il modo più rapido per travasare un foglio di calcolo che tieni da anni.
 
 **Portare fuori i dati.** Ogni sezione esporta in CSV: spese, entrate, investimenti, finanziamenti, conti aperti. C'è anche un'esportazione di periodo che copre solo l'intervallo che stai guardando.
 
@@ -504,11 +598,13 @@ Per una copia completa di tutto in una volta, vedi il capitolo seguente.
 
 ## 20. I tuoi dati e la tua privacy
 
-Tutto quello di cui parla questo capitolo sta in **Profilo**.
+Tutto quello di cui parla questo capitolo sta in **Il mio profilo**, nel menu Profilo.
 
 ### Esportare tutto
 
 Un pulsante scarica l'intero account come ZIP: un JSON completo, più un CSV per sezione. Viene letto dal database e non da quello che l'app ha in memoria in quel momento, così non resta indietro niente. L'unica cosa esclusa di proposito è la chiave API di Gemini, che in un file da inoltrare non ci deve stare.
+
+![La schermata del profilo](./docs/screenshots/it/21-profilo-privacy.png)
 
 ### Cancellare l'account
 
@@ -520,7 +616,7 @@ Non si torna indietro. Se hai un dubbio, esporta prima.
 
 L'[informativa privacy](https://financial-management-by-bonn.web.app/src/pages/privacy.html) è scritta in italiano e in inglese e si raggiunge dall'app stessa. Dice cosa viene raccolto, perché, e chi altro lo vede.
 
-![L'informativa privacy](./docs/screenshots/it/22-informativa-privacy.png)
+![L'informativa privacy](./docs/screenshots/it/24-informativa-privacy.png)
 
 ### Il consenso all'AI
 
@@ -551,13 +647,13 @@ Se usi Budgee su più dispositivi, le modifiche fatte su uno compaiono sugli alt
 
 **Una spesa non si salva.** Importo, categoria e, quando compili il form a mano, metodo di pagamento sono obbligatori. Il form dice quale campo sta bloccando il salvataggio.
 
-**La scansione AI dice che non c'è la chiave.** Inserisci una chiave Gemini nel Profilo. Senza, la funzione resta spenta di proposito.
+**La scansione AI dice che non c'è la chiave.** Inserisci una chiave Gemini in Il mio profilo. Senza, la funzione resta spenta di proposito.
 
 **La scansione ha letto i numeri sbagliati.** È una proposta, non un verdetto. Correggi i campi prima di salvare: uno scontrino spiegazzato o con poca luce è difficile da leggere per chiunque.
 
-**Il grafico del contante dice che una parte non è misurata.** Sono le transazioni senza metodo di pagamento. Il completamento assistito nel Profilo le sistema in blocco.
+**Il grafico del contante dice che una parte non è misurata.** Sono le transazioni senza metodo di pagamento. Il completamento assistito, dietro l'ingranaggio della sezione Uscite in contanti, le sistema in blocco.
 
-**Non trovo "Buono Pasto" fra i metodi di pagamento.** Va acceso prima: Profilo, spunta **Ho i buoni pasto**. Finché è spento l'opzione non compare da nessuna parte, di proposito.
+**Non trovo "Buono Pasto" fra i metodi di pagamento.** Va acceso prima: Il mio profilo, spunta **Ho i buoni pasto**. Finché è spento l'opzione non compare da nessuna parte, di proposito.
 
 **Il pulsante dei buoni pasto non mostra una cifra.** Manca il saldo di partenza. Clicca il pulsante e dichiara da quanto partire e a che data.
 
@@ -567,7 +663,7 @@ Se usi Budgee su più dispositivi, le modifiche fatte su uno compaiono sugli alt
 
 **Il backup non è partito.** Parte quando apri l'app, non a orario. Apri Budgee con Drive collegato e recupera.
 
-**Una ricorrente non è comparsa.** Aspetta la tua conferma. Guarda in **Gestisci Ricorrenti**.
+**Una ricorrente non è comparsa.** Aspetta la tua conferma. Guarda in **Ricorrenti**.
 
 ---
 

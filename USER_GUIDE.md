@@ -75,17 +75,27 @@ If a field blocks the form, the error appears under that field. It used to appea
 
 ### Signing in and out
 
-The header holds your profile, the theme switch, the language switch, the currency selector and the exit button. Budgee signs you out on its own after a long stretch of inactivity, which is deliberate: this is financial data on a device that might not be only yours.
+The **Profile** menu in the header holds the sign-out button, together with the theme, the language and the currency. See [chapter 3](#3-finding-your-way-around). Budgee signs you out on its own after a long stretch of inactivity, which is deliberate: this is financial data on a device that might not be only yours.
 
 ### Changing your password
 
-Open **Profile** from the header. The same screen holds the password change, the data export and the account deletion.
+Open the **Profile** menu in the header and choose **My profile**. The same screen holds the password change, the data export and the account deletion.
+
+### Trying the demo first
+
+If you would rather look around before registering, press **Try the demo** on the sign-in screen. Budgee opens in full with sample data, and no account is needed.
+
+![The sign-in screen with the demo button](./docs/screenshots/en/28-sign-in-demo.png)
+
+The demo lives in the browser tab only: a banner at the top says so, and the sample data disappears when you close the tab. Nothing you do there is saved to an account, and it does not touch the data of anyone signed in on the same browser. A few features are switched off and show "Not available in the demo": Google Drive, receipt scanning, data export, account deletion and password reset. The banner offers **Sign up** and **Exit the demo**.
 
 ---
 
 ## 3. Finding your way around
 
-Budgee is divided into nine sections, reachable from the tabs at the top on a desktop and from the bar at the bottom on a phone:
+Budgee is divided into nine sections. On a desktop they are the tabs under the title. On a phone a bar at the bottom keeps the four you use every day, **Expenses**, **Income**, **Savings** and **Budget**, and a fifth button, **More**, opens a panel with the other five: Categories, Investments, Financings, Open Accounts and Documents.
+
+![The expenses section on a phone, with the bottom bar](./docs/screenshots/en/26-mobile-expenses.png)
 
 | Section | What lives there |
 |---|---|
@@ -101,13 +111,25 @@ Budgee is divided into nine sections, reachable from the tabs at the top on a de
 
 ### The controls in the header
 
-- **Theme**: light or dark. The choice is saved and follows you across devices.
-- **Language**: a dropdown with Italian and English. The interface, the categories, the charts and the document folder names all switch.
+The settings you rarely change live in one place, the **Profile** menu at the right of the title, so the top of the page is left to your data.
+
+![The Profile menu](./docs/screenshots/en/20-profile-menu.png)
+
+The menu holds:
+
+- **My profile**: settings, AI keys, meal vouchers, privacy, password, export, deletion.
+- **Home country**: the country you live in. It is used by the location of expenses, see [chapter 4](#4-recording-an-expense).
 - **Currency**: the currency amounts are shown in. Budgee handles EUR, USD, GBP and PLN and converts between them.
-- **Meal vouchers**: appears next to the currency only if you declared that you have them, and shows how many you have left. See [chapter 7](#7-payment-methods).
-- **Profile**: settings, AI keys, payment method coverage, meal vouchers, privacy, export, deletion.
+- **Language**: a dropdown with Italian and English, shown here as the short code (IT, EN). The interface, the categories, the charts and the document folder names all switch.
+- **Theme**: light or dark. The choice is saved and follows you across devices.
 - **Help**: reopens the guided tour that you saw the first time.
-- **Sync indicator**: tells you whether Budgee is online and whether everything has been saved.
+- **Logout**: signs you out.
+
+Two things stay outside the menu. The **meal vouchers** button appears next to it only if you declared that you have them, and shows how many you have left; see [chapter 7](#7-payment-methods). The **sync indicator** tells you whether Budgee is online and whether everything has been saved.
+
+### The buttons of a section
+
+Each section opens with a row of actions. In **Expenses** and **Income** it reads **Add expense** or **Add income**, **Scan** (the receipt scan, [chapter 6](#6-scanning-a-receipt-with-ai)), **Import** (Excel, [chapter 19](#19-importing-and-exporting)), **Search**, **Customize** and **Recurring** ([chapter 8](#8-recurring-transactions)). Investments, Financings, Open Accounts and Budget have the **Add** button and, except Budget, **Search**. On a phone the buttons wrap into full rows.
 
 ### Filtering by period
 
@@ -115,7 +137,9 @@ Most sections have a period filter: current month, previous month, year, or a cu
 
 ### Hiding what you do not use
 
-Each section has a **Choose which parts to show** button. Not everyone wants the calendar, or the Sankey diagram, or the cash chart. Turn off what you do not read: the choice is saved and synced, so you set it once.
+Each section has a **Customize** button (title: "Select sections to show"). Not everyone wants the calendar, or the Sankey diagram, or the cash chart. Turn off what you do not read: the choice is saved and synced, so you set it once.
+
+Two blocks start hidden for new users because they repeat what is already on screen: **Savings Rate** in Expenses, since the Period Summary already says how much of your income you kept, and **Totals Summary** in Savings, which repeats the income and expenses of the summary. Open **Customize** to show them. In Expenses and Income the list now follows the summary, and in Savings the key numbers do. If you had already saved your own layout, it is left exactly as it was.
 
 ### When a new version ships
 
@@ -128,7 +152,7 @@ The update never starts on its own. A version taking over while you are typing a
 ## 4. Recording an expense
 
 1. Open the **Expenses** tab.
-2. Press **Add**. The form opens.
+2. Press **Add expense**. The form opens.
 3. Fill in what applies:
 
 | Field | Notes |
@@ -139,8 +163,8 @@ The update never starts on its own. A version taking over while you are typing a
 | **Subcategory** | Optional but recommended: it is what makes the analyses readable. |
 | **Date** | Defaults to today. |
 | **Payment method** | Required when you fill the form by hand. See [chapter 7](#7-payment-methods). |
-| **Linked loan instalment** | Ties the expense to a loan, so the balance goes down by itself. |
-| **Linked investment** | Ties the expense to a capital contribution. |
+| **Location** | Optional. The country where you made the expense, picked from a list you can search by typing. See "Where you spent" below. |
+| **Link to a financing or an investment** | The two link fields sit behind this toggle, closed by default. Open it to tie the expense to a loan instalment (the balance goes down by itself) or to an investment. |
 | **Recurring** | Turns the expense into a recurring one. See [chapter 8](#8-recurring-transactions). |
 | **Tax-deductible** | Flags the expense for the end-of-year report. See [chapter 14](#14-deductible-expenses). |
 
@@ -152,9 +176,24 @@ The expense appears in the list, and the totals, the calendar and the charts upd
 
 Open any expense from the list, or from a detail popup in the analyses. Every detail view has **Edit** and **Delete** inside it, so you do not have to go hunting for the original entry.
 
+### Where you spent
+
+Set your **Home country** once in the Profile menu. From then on:
+
+- An expense made in another country shows that country's name next to it in the list. Expenses in your home country carry no label, so the ones that stand out are the foreign ones.
+- The optional **Location** field can be set when you add an expense, changed later in the edit popup, and carried by recurring expenses and by the CSV and Excel import and export.
+- The first time you choose a home country, Budgee assigns it quietly to the expenses you recorded before. Because this writes a value you never entered for any past trip, Budgee saves a safety copy first.
+- Expenses that still have no country are counted by a badge on a gear in the corner of the **Geographic Distribution** section ([chapter 15](#15-reading-your-numbers)).
+
 ### Searching
 
-The magnifying glass in the section header searches by keyword, date, category, amount range, payment method or linked item.
+The **Search** button in the section header looks by keyword, date, category, amount range, payment method, location (**All locations** or **Without location**) or linked item.
+
+Above the results a summary bar gives the number of expenses found, their total and the average. The **Statistics** button opens a panel with the breakdown by category, a monthly chart of the results and a few highlights: the largest item and the top month. Where an amount cannot be converted for lack of an exchange rate, the bar says how many entries are left out of the total.
+
+![Search results with the statistics panel](./docs/screenshots/en/06-search-stats.png)
+
+Click a result to expand it in place. The expanded entry has **Edit** and **Delete**, and when you close the edit Budgee returns you to the same spot in the results instead of sending you back to the top.
 
 ![The expense calendar and the monthly trend](./docs/media/features/en/spese.gif)
 
@@ -167,10 +206,12 @@ The magnifying glass in the section header searches by keyword, date, category, 
 The same form, with two differences: there is no deductible flag, and the payment methods on offer are the ones that make sense for money coming in (a direct debit is not a way of being paid; a voucher is).
 
 1. Open the **Income** tab.
-2. Press **Add**.
+2. Press **Add income**.
 3. Fill in amount, currency, category, description, date and payment method.
-4. If the money is a return on an investment, link it there: the investment records the actual return by itself.
+4. If the money is a return on an investment, open **Link to an investment** and pick it there: the investment records the actual return by itself.
 5. Press **Add Income**.
+
+![The income section](./docs/screenshots/en/07-income.png)
 
 ---
 
@@ -178,13 +219,13 @@ The same form, with two differences: there is no deductible flag, and the paymen
 
 Instead of typing a receipt, you can photograph it. Budgee sends the image to Google Gemini, gets back the amount, the date, the description and a category suggestion, and fills the form in for you.
 
-![The AI scan modal](./docs/screenshots/en/17-ai-scan.png)
+![The AI scan modal](./docs/screenshots/en/05-ai-scan.png)
 
 This feature is off until you switch it on, and it needs two things: an API key of your own, and your explicit consent.
 
 ### Setting it up, once
 
-1. Open **Profile** from the header and scroll to the **AI** section.
+1. Open the **Profile** menu, choose **My profile** and scroll to the **AI** section.
 2. Paste a Google Gemini API key. Budgee tests it on the spot and tells you whether it works.
 3. You can add more than one key: if one hits its limit, the next one takes over.
 
@@ -192,11 +233,11 @@ The key is yours, it is stored in your account, and it is the one piece of data 
 
 ### Giving consent
 
-The first time you press the camera button, Budgee explains what is about to happen: the image leaves the app and reaches Google. A receipt can say a lot about you, from medicines to medical visits, so this is a separate decision from using Budgee itself. You accept it once and can withdraw it whenever you like, from the same profile screen. Withdrawing it turns the scan off; nothing else changes.
+The first time you press **Scan**, Budgee explains what is about to happen: the image leaves the app and reaches Google. A receipt can say a lot about you, from medicines to medical visits, so this is a separate decision from using Budgee itself. You accept it once and can withdraw it whenever you like, from the same profile screen. Withdrawing it turns the scan off; nothing else changes.
 
 ### Scanning
 
-1. In **Expenses** or **Income**, press the camera button next to **Add**.
+1. In **Expenses** or **Income**, press **Scan**, next to **Add expense** or **Add income**.
 2. Upload a photo, a screenshot or a PDF. The limit is 10 MB.
 3. Press **Extract data** and wait a few seconds.
 4. The form opens already filled in. **Check it**, correct what is wrong, and save.
@@ -225,11 +266,11 @@ Budgee looks at what you normally use for that category. If your groceries are a
 
 ### If your history predates the field
 
-Open **Profile**. The **Payment method** section shows how much of your history is covered, on expenses and on income, and which categories are the worst off.
+In the **Expenses** tab, find the **Cash outflows** section and press the gear in its corner (**Manage payment methods**). A badge on the gear counts the expenses and income that have no payment method yet, and disappears when there are none. The window shows how much of your history is covered, on expenses and on income, and which categories are the worst off.
 
-![Payment coverage in the profile](./docs/screenshots/en/21-profile-privacy.png)
+![The cash outflows section, where the payment method coverage opens](./docs/screenshots/en/04-cash-share.png)
 
-Press the completion button and Budgee groups what is missing by category, proposing for each one the method you use most often there. You confirm the groups you agree with and it fills them in one go, rather than one entry at a time.
+Press **Complete the missing methods** and Budgee groups what is missing by category, proposing for each one the method you use most often there. You confirm the groups you agree with and it fills them in one go, rather than one entry at a time.
 
 ### Why it matters
 
@@ -239,11 +280,11 @@ Without this field, the cash chart in the Expenses tab has no denominator, and t
 
 The meal voucher is the only method that works both ways: you receive it as compensation, then you spend it. It is also the only one that carries a balance of its own.
 
-**Turning them on.** Open **Profile** and tick **I have meal vouchers**. From then on the method appears in the forms, and a button at the top next to the currency shows how many you have left. If you do not have them, the option is never offered anywhere: not in the entry forms, not in the edit dialogs, not in the recurring ones, and not in the assisted completion, which would otherwise assign past expenses to a channel you never had.
+**Turning them on.** Open **My profile** and tick **I have meal vouchers**. From then on the method appears in the forms, and a button at the top next to the currency shows how many you have left. If you do not have them, the option is never offered anywhere: not in the entry forms, not in the edit dialogs, not in the recurring ones, and not in the assisted completion, which would otherwise assign past expenses to a channel you never had.
 
 **The opening balance.** Click the button at the top. The first time, the panel shows no figure: it asks what to start from and on which date. The balance is worked out from your movements starting there, and without a starting point the count would run from the beginning of your history. A zero in place of the prompt would tell someone with vouchers in their pocket that they have none.
 
-![The meal voucher balance panel](./docs/screenshots/en/23-meal-vouchers.png)
+![The meal voucher balance panel](./docs/screenshots/en/19-meal-vouchers.png)
 
 After that, every income in vouchers raises the balance and every expense lowers it. The figure updates as soon as you record the movement. The opening balance can be corrected at any time from the same panel.
 
@@ -273,7 +314,7 @@ This is deliberate: an amount that appears in your accounts without you agreeing
 
 ### Managing them
 
-The **Manage recurring** button, at the top of the Expenses section, lists everything you have set up. From there you can edit a series, delete one occurrence or every future one, and go through the history of what has been confirmed.
+The **Recurring** button, in the action row of the Expenses section, lists everything you have set up. From there you can edit a series, delete one occurrence or every future one, and go through the history of what has been confirmed.
 
 ---
 
@@ -304,7 +345,9 @@ The **Savings** tab answers a different question from the Expenses tab: not wher
 - Best and worst months
 - Short observations on the patterns Budgee finds
 
-![Savings trend](./docs/screenshots/en/10-savings-trend.png)
+The savings charts share one panel with a switcher: **Month by month**, **Cumulative** and **Savings rate**. One chart shows at a time, and each keeps its own show/hide choice in **Customize**.
+
+![Savings trend](./docs/screenshots/en/09-savings-trend.png)
 
 ### Available liquidity
 
@@ -363,6 +406,31 @@ Invested capital, expected returns, actual returns, average interest rate, the n
 
 ![Investment portfolio](./docs/media/features/en/investimenti.gif)
 
+### Management fees
+
+When you link an expense to an investment, a **Link type** field asks whether it is a **Capital contribution** or a **Management fee**. A fee does not add to the invested capital: it lowers the net return. The same choice is available when you edit the expense and on recurring expenses, and fees are labelled in the expense list.
+
+On the investment card, the actual return is labelled gross, the **Management Fees** are shown on their own and a **Net Actual Return** sits beside them. The transactions window lists the fees along with the other movements.
+
+![An investment card with management fees and net return](./docs/screenshots/en/15-management-fees.png)
+
+### Cryptocurrency
+
+A cryptocurrency investment is a register of purchases, not a single amount. Choose the cryptocurrency, then record each purchase with its **Quantity purchased**, **Purchase price (per unit)** and date. The invested amount is worked out from those and stays the cost you paid: it never follows the market, so your invested capital does not swing with the price.
+
+The card shows the quantity held and the average purchase price. The price comes from CoinGecko. The **Current value** has four possible states:
+
+- **Reading the price**, while it loads
+- the value, with the **24h change** on its own line and the **Unrealised gain/loss**
+- the same figures with "Price read on" and the date, when the last reading is older than ten minutes
+- **Price unavailable**, with a refresh button, when no price was ever read
+
+The refresh button (**Refresh the price**) asks for a new reading. Under it a chart, **Position over time**, sets the value of the position against its cost.
+
+![A cryptocurrency position](./docs/screenshots/en/14-crypto.png)
+
+**Record a sale** on the card takes the quantity sold, the sale price and the date. Selling more than you hold is refused, and a sale that empties the position points you to the investment liquidation. The **Realised gain/loss** is then shown per year under two criteria side by side, **LIFO** and **Average cost**, because on a partial sale they can differ and even have opposite signs. A notice states that the figure is indicative and not a tax return. Gains, realised or not, never enter the totals of the app. The investments CSV export adds four columns for each position: the asset, the quantity held, the average cost and the quantity sold.
+
 ---
 
 ## 12. Loans and financing
@@ -373,7 +441,7 @@ Invested capital, expected returns, actual returns, average interest rate, the n
 
 From then on, an expense linked to that loan reduces the balance by itself. The detail view shows the payment history and the amortisation schedule, and the section totals tell you how much you owe in total, how much of it is interest, and what you pay per month across every loan.
 
-![Loans with payment progress](./docs/screenshots/en/08-financings-list.png)
+![Loans with payment progress](./docs/screenshots/en/16-financings.png)
 
 ---
 
@@ -387,6 +455,8 @@ For money that moves between people rather than between accounts: what you lent 
 4. When the balance reaches zero the account closes on its own.
 
 The section totals separate credits from debts and show the net figure. Everything can be exported to CSV.
+
+![Open accounts](./docs/screenshots/en/17-open-accounts.png)
 
 ---
 
@@ -410,24 +480,44 @@ Everything here feeds [chapter 18](#18-documents-for-your-accountant).
 
 The **Categories** tab ranks your spending by macro-category, lets you drill into the subcategories, and shows what share each one takes. You can pick categories freely, compare income against expenses, and click any category to see the transactions behind the number.
 
-![Category analysis](./docs/screenshots/en/11-categories.png)
+![Category analysis](./docs/screenshots/en/12-categories.png)
 
 ### Year on year
 
 Further down the same tab, Budgee compares two whole years, category by category, with the difference and the percentage change.
 
-![Year-on-year comparison](./docs/screenshots/en/20-year-comparison.png)
+![Year-on-year comparison](./docs/screenshots/en/10-year-comparison.png)
+
+The **Period** selector chooses between **Whole year** and **Same period, up to today**. The second compares the current year so far with the same stretch of the other year, which is the fair comparison in March. The chart beside the table shows the five categories that weigh most.
+
+Click an amount cell and Budgee opens the expenses behind it. You can edit or delete them from there, and the comparison updates.
+
+![The expenses behind one amount of the comparison](./docs/screenshots/en/11-year-comparison-detail.png)
 
 Two things to know while reading it:
 
 - A category present in one year only stays in the table, with the other year at zero. That row is usually the interesting one.
 - One currency at a time. Adding up amounts in different currencies would produce a number that means nothing.
 
+### Geographic distribution
+
+In the Expenses tab, the **Geographic Distribution** section shows where you spent, on a world map and in a table ranked from the highest country to the lowest, with each country's share, total and number of expenses. It counts only expenses that have a location ([chapter 4](#4-recording-an-expense)).
+
+![Spending by country on the map](./docs/screenshots/en/03-country-map.png)
+
+The **Year** selector narrows it to one year or **All years**, and the **Continent** selector zooms the map, with **Whole world** as the widest view. It opens on the continent where you have the most expenses, counted by number of expenses and not by amount, so one large transfer abroad does not move the starting view. This section follows its own selectors and not the period filter of the tab.
+
+The gear in the corner, **Manage expenses without a country**, carries a badge with the number of expenses without a country over your whole history. The window lists them: pick a country, tick the expenses you made there, and save once.
+
+### The month's budget on the trend chart
+
+The expense trend chart draws the **Monthly budget** as a line, so you see the month approach its limit.
+
 ### Cash outflows
 
 In the Expenses tab, Budgee charts how much of your spending goes through cash, month by month and category by category.
 
-![Cash share](./docs/screenshots/en/19-cash-share.png)
+![Cash share](./docs/screenshots/en/04-cash-share.png)
 
 The share is measured on amounts, not on the number of entries, and the denominator only counts what has a known payment method. Whatever is still missing is stated explicitly rather than quietly lowering the percentage.
 
@@ -454,6 +544,10 @@ Budgee does not store your documents. It organises them on your Drive and links 
 
 Folder names follow your language. Budgee only sees the files it created on your Drive: the rest of your Drive stays invisible to it.
 
+![The Documents tab](./docs/screenshots/en/22-documents.png)
+
+The **Documents for your accountant** box sits at the top of this tab, above the Drive backup notice. [Chapter 18](#18-documents-for-your-accountant) describes it.
+
 ---
 
 ## 17. The weekly backup
@@ -468,11 +562,11 @@ One thing is worth being precise about: there is no server behind Budgee doing t
 
 At tax time the hard part is not the arithmetic, it is remembering what to hand over.
 
-![The wizard asking which return you file](./docs/screenshots/en/18-tax-wizard.png)
+![The wizard asking which return you file](./docs/screenshots/en/23-tax-wizard.png)
 
 A notice stays at the top of the wizard for its whole length: the amounts are estimates, they are worked out from the data you entered, and an accountant should check them. Budgee organises documents, it does not give tax advice.
 
-1. Open **Profile** and start **Documents for your accountant**.
+1. Open the **Documents** tab and press **Prepare the documents** in the **Documents for your accountant** box, above the Drive notice.
 2. Say which return you are filing. There are seven profiles, from an employee filing a 730 to a self-employed professional, a partner in a company, or a business on simplified or ordinary accounting.
 3. Pick the tax year.
 4. Tick the situations that apply to you: property, family, medical expenses, education, and so on. Only the chapters you tick become screens, so an employee renting a flat with no children does not walk through twelve pages that do not concern them.
@@ -494,7 +588,7 @@ The wizard follows Italian tax rules for the year you choose. If you file somewh
 
 ## 19. Importing and exporting
 
-**Bringing data in.** The Excel import icon, in the Expenses and Income section headers next to the camera one, reads an `.xlsx` file and loads the transactions in bulk. It is the fastest way to move a spreadsheet you have been keeping for years.
+**Bringing data in.** The **Import** button, in the Expenses and Income action rows next to **Scan**, reads an `.xlsx` file and loads the transactions in bulk. It is the fastest way to move a spreadsheet you have been keeping for years.
 
 **Taking data out.** Every section exports to CSV: expenses, income, investments, loans, open accounts. There is also a period export that only covers the range you are looking at.
 
@@ -504,11 +598,13 @@ For a full copy of everything at once, see the next chapter.
 
 ## 20. Your data and your privacy
 
-Everything in this chapter lives in **Profile**.
+Everything in this chapter lives in **My profile**, in the Profile menu.
 
 ### Export everything
 
 One button downloads the whole account as a ZIP: a complete JSON, plus one CSV per section. It is read from the database rather than from what the app happens to have in memory, so nothing is left behind. The only thing deliberately excluded is your Gemini API key, which has no business sitting in a file you might forward.
+
+![The profile screen](./docs/screenshots/en/21-profile-privacy.png)
 
 ### Delete the account
 
@@ -520,7 +616,7 @@ This cannot be undone. Export first if there is any doubt.
 
 The [privacy notice](https://financial-management-by-bonn.web.app/src/pages/privacy.html) is written in Italian and English and reachable from inside the app. It says what is collected, why, and who else sees it.
 
-![The privacy notice](./docs/screenshots/en/22-privacy-notice.png)
+![The privacy notice](./docs/screenshots/en/24-privacy-notice.png)
 
 ### AI consent
 
@@ -551,13 +647,13 @@ If you use Budgee on more than one device, changes made on one show up on the ot
 
 **An expense will not save.** The amount, the category and, when you fill the form by hand, the payment method are required. The form says which field is holding things up.
 
-**The AI scan says there is no key.** Add a Gemini key in Profile. Without one the feature stays off by design.
+**The AI scan says there is no key.** Add a Gemini key in My profile. Without one the feature stays off by design.
 
 **The scan read the wrong figures.** It is a proposal, not a verdict. Correct the fields before saving; a crumpled or badly lit receipt is hard to read for anyone.
 
-**The cash chart says a chunk is unmeasured.** Those are the transactions with no payment method. The assisted completion in Profile fixes them in bulk.
+**The cash chart says a chunk is unmeasured.** Those are the transactions with no payment method. The assisted completion, behind the gear on the Cash outflows section, fixes them in bulk.
 
-**I cannot find "Meal Voucher" among the payment methods.** It has to be turned on first: Profile, tick **I have meal vouchers**. While it is off the option appears nowhere, on purpose.
+**I cannot find "Meal Voucher" among the payment methods.** It has to be turned on first: My profile, tick **I have meal vouchers**. While it is off the option appears nowhere, on purpose.
 
 **The meal voucher button shows no figure.** The opening balance is missing. Click the button and state what to start from and on which date.
 
@@ -567,7 +663,7 @@ If you use Budgee on more than one device, changes made on one show up on the ot
 
 **The backup has not run.** It starts when you open the app, not on a schedule. Open Budgee with Drive connected and it catches up.
 
-**A recurring transaction has not appeared.** It waits for your confirmation. Look at **Manage recurring**.
+**A recurring transaction has not appeared.** It waits for your confirmation. Look at **Recurring**.
 
 ---
 
