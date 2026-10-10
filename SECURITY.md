@@ -153,7 +153,7 @@ A Content Security Policy controls which resources the browser can load:
 
 - Scripts: only from the app's own domain and from the Google origins used for Firebase, the APIs and sign-in. No `'unsafe-inline'`: the handlers written inside the markup have all been removed
 - Styles: only from the app and Google Fonts
-- Connections: only to Firebase, Google APIs and the exchange rate API
+- Connections: only to Firebase, Google APIs, the exchange rate API and CoinGecko for crypto prices
 - Plugins: fully blocked (`object-src 'none'`)
 - Base URL: locked to the app's own domain (`base-uri 'self'`)
 
@@ -248,6 +248,7 @@ A new version no longer takes control while the open page is still running the o
 - No analytics, no tracking: no Google Analytics, no Facebook Pixel, no other tracker.
 - No ads.
 - No data sharing: financial data is never sent to third parties, except the services you connect explicitly (such as Google Drive).
+- Crypto prices: if you hold a crypto investment, the app asks CoinGecko for the current price and its history. The request names only the asset (for example `bitcoin`) and the currency: no quantity, no amount and no account identifier leave the device, though CoinGecko sees the request come from your connection. In the demo, prices are fixed sample values and no request is made.
 - Data portability: you can export the whole account at any time, as a ZIP holding a complete JSON plus a CSV per section. It is read from the database rather than from what the app has in memory, so nothing is silently left out.
 - Right to deletion: you can delete your account and all associated data from the settings.
 - Receipt scanning is off unless you turn it on. It asks for a consent of its own, separate from using Budgee, because the image reaches Google and a receipt can reveal medicines, medical visits and habits. The consent is versioned: if the notice changes in substance, the question comes back rather than the old answer being reused.

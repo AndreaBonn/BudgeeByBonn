@@ -153,7 +153,7 @@ Una Content Security Policy controlla quali risorse il browser può caricare:
 
 - Script: solo dal dominio dell'app e dalle origini di Google usate per Firebase, le API e l'accesso. Nessun `'unsafe-inline'`: gli handler scritti dentro il markup sono stati tutti rimossi
 - Stili: solo dall'app e da Google Fonts
-- Connessioni: solo verso Firebase, Google APIs e l'API dei tassi di cambio
+- Connessioni: solo verso Firebase, Google APIs, l'API dei tassi di cambio e CoinGecko per i prezzi crypto
 - Plugin: completamente bloccati (`object-src 'none'`)
 - URL base: vincolato al dominio dell'app (`base-uri 'self'`)
 
@@ -248,6 +248,7 @@ Una versione nuova non prende più il controllo mentre la pagina aperta sta anco
 - Nessuna analisi, nessun tracciamento: niente Google Analytics, niente Facebook Pixel, niente altri tracker.
 - Nessuna pubblicità.
 - Nessuna condivisione dati: i dati finanziari non vengono inviati a terze parti, eccetto i servizi che colleghi esplicitamente (per esempio Google Drive).
+- Prezzi crypto: se hai un investimento in crypto, l'app chiede a CoinGecko il prezzo corrente e il suo storico. La richiesta nomina solo l'asset (per esempio `bitcoin`) e la valuta: nessuna quantità, nessun importo e nessun identificativo dell'account escono dal dispositivo, anche se CoinGecko vede la richiesta arrivare dalla tua connessione. Nella demo i prezzi sono valori di esempio fissi e non parte nessuna richiesta.
 - Portabilità dei dati: puoi esportare l'intero account in qualsiasi momento, come ZIP con un JSON completo più un CSV per sezione. Viene letto dal database e non da quello che l'app ha in memoria, così non resta fuori niente in silenzio.
 - Diritto alla cancellazione: puoi eliminare il tuo account e tutti i dati associati dalle impostazioni.
 - La scansione degli scontrini è spenta finché non la accendi tu. Chiede un consenso a parte, distinto dall'uso di Budgee, perché l'immagine arriva a Google e uno scontrino può rivelare farmaci, visite mediche e abitudini. Il consenso è versionato: se l'informativa cambia nella sostanza la domanda torna, invece di riusare la vecchia risposta.
