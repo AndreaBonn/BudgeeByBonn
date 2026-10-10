@@ -1,346 +1,347 @@
-# Budgee - Gestione Finanze Personali
+[English](./README.md) | **Italiano**
 
-<div align="center">
+```
+ ____            _
+| __ ) _   _  __| | __ _  ___  ___
+|  _ \| | | |/ _` |/ _` |/ _ \/ _ \
+| |_) | |_| | (_| | (_| |  __/  __/
+|____/ \__,_|\__,_|\__, |\___|\___|
+                   |___/
+```
 
-**Tieni sotto controllo le tue finanze, senza stress**
+# Budgee - Gestione delle finanze personali
 
-[Apri l'app](https://financial-management-by-bonn.web.app) · [Prova la demo](https://financial-management-by-bonn.web.app) · [Leggi il manuale](./USER_GUIDE_IT.md) · Installabile come PWA · Sincronizzata sul cloud · Gratuita
+Una web app gratuita per tenere traccia di spese, entrate, budget, investimenti e finanziamenti, installabile su qualsiasi dispositivo e sincronizzata fra tutti.
 
-[![English](https://img.shields.io/badge/Read_in_English-4A90E2?style=for-the-badge)](./README.md)
+![Licenza: proprietaria](https://img.shields.io/badge/licenza-proprietaria-lightgrey)
+![JavaScript](https://img.shields.io/badge/javascript-ES2022%2C%20senza%20framework-f7df1e)
+![Firebase](https://img.shields.io/badge/backend-Firebase-ffca28)
+![PWA](https://img.shields.io/badge/PWA-installabile-5a0fc8)
+![Lingue](https://img.shields.io/badge/lingue-IT%20%7C%20EN-009246)
 
-</div>
+[Apri l'app](https://financial-management-by-bonn.web.app) · [Prova la demo](https://financial-management-by-bonn.web.app) · [Leggi la guida utente](./USER_GUIDE_IT.md)
 
----
+Budgee è una Progressive Web App (PWA) per le finanze personali. Registri spese ed entrate, imposti budget mensili, segui investimenti, crypto e finanziamenti, conservi i documenti finanziari su Google Drive e fissi obiettivi di risparmio, dal telefono o dal computer, con gli stessi dati su ogni dispositivo.
 
-## Cos'è Budgee
+È nata per chi tiene i conti su un quaderno o su un foglio di calcolo disordinato e vuole qualcosa di più semplice senza rinunciare al dettaglio. Niente abbonamento, niente versione premium, niente pubblicità. Funziona offline e si sincronizza quando torna la connessione, e tiene un backup settimanale sul tuo Google Drive.
 
-Budgee è una Progressive Web App (PWA) per le finanze personali. Tracci spese ed entrate, imposti budget mensili, segui investimenti e finanziamenti, conservi documenti finanziari su Google Drive e gestisci obiettivi di risparmio - da qualsiasi dispositivo, con sincronizzazione cloud in tempo reale.
+## In pratica
 
-È pensata per chi tiene i conti in un quaderno o in un foglio Excel disordinato e vuole qualcosa di più semplice senza rinunciare al dettaglio.
+Un giro su dati di esempio: la dashboard delle spese fino alla mappa per paese, una spesa nuova, una ricerca con le sue statistiche, il confronto anno su anno aperto su una cella, la posizione crypto e il budget.
 
-![Dashboard principale di Budgee](./docs/screenshots/it/01-spese-dashboard.png)
+![Demo di Budgee](./docs/media/budgee-demo.gif)
 
-*Riepilogo del mese: entrate, spese, tasso di risparmio e totali deducibili in un'unica pagina.*
+[Guardalo come video](./docs/media/budgee-demo.mp4)
 
----
+Per provarla senza registrarti, apri [financial-management-by-bonn.web.app](https://financial-management-by-bonn.web.app) e premi **Prova la demo** nella schermata di accesso. Si apre l'app intera con dati di esempio, che puoi sfogliare e modificare. Nulla arriva al cloud: la demo vive in quella scheda del browser e sparisce quando la chiudi. Le funzioni che richiedono servizi esterni veri (Google Drive, scansione degli scontrini, esportazione ed eliminazione dell'account, reimpostazione della password) lo dicono invece di partire.
 
-## Guardalo in azione
+![La schermata di accesso con l'ingresso alla demo](./docs/screenshots/it/28-accesso-demo.png)
 
-Un giro completo: accesso, dashboard delle spese, aggiunta di una spesa, entrate, risparmi, aggiunta e svincolo di un investimento, budget.
+## Indice
 
-[![Demo di Budgee](./docs/media/budgee-demo.gif)](./docs/media/budgee-demo.mp4)
+- [Stack tecnologico](#stack-tecnologico)
+- [Architettura](#architettura)
+- [Installazione](#installazione)
+- [Funzionalità](#funzionalità)
+  - [Orientarsi](#orientarsi)
+  - [Spese ed entrate](#spese-ed-entrate)
+  - [Cercare, con le statistiche](#cercare-con-le-statistiche)
+  - [Scansionare uno scontrino invece di digitarlo](#scansionare-uno-scontrino-invece-di-digitarlo)
+  - [Spese per paese](#spese-per-paese)
+  - [Uscite in contanti](#uscite-in-contanti)
+  - [Buoni pasto](#buoni-pasto)
+  - [Budget](#budget)
+  - [Risparmi](#risparmi)
+  - [Investimenti](#investimenti)
+  - [Portafoglio crypto](#portafoglio-crypto)
+  - [Finanziamenti](#finanziamenti)
+  - [Conti aperti](#conti-aperti)
+  - [Obiettivi di risparmio](#obiettivi-di-risparmio)
+  - [Transazioni ricorrenti](#transazioni-ricorrenti)
+  - [Analisi e confronto anno su anno](#analisi-e-confronto-anno-su-anno)
+  - [Spese detraibili](#spese-detraibili)
+  - [Documenti e backup settimanale](#documenti-e-backup-settimanale)
+  - [Documenti per il commercialista](#documenti-per-il-commercialista)
+  - [I tuoi dati e la tua privacy](#i-tuoi-dati-e-la-tua-privacy)
+  - [Lingue, tema e mobile](#lingue-tema-e-mobile)
+  - [Quando esce una nuova versione](#quando-esce-una-nuova-versione)
+- [Come contribuire](#come-contribuire)
+- [Team e maintainer](#team-e-maintainer)
+- [Sicurezza](#sicurezza)
+- [Licenza](#licenza)
+- [Supporta il progetto](#supporta-il-progetto)
 
-*L'anteprima qui sopra è accelerata. Clicca sulla GIF per aprire il video completo ([budgee-demo.mp4](./docs/media/budgee-demo.mp4)).*
+## Stack tecnologico
 
-### Provala tu, senza registrarti
+| Livello | Tecnologia |
+|---------|-----------|
+| Frontend | JavaScript puro (moduli ES, nessun framework), HTML5, CSS3 con custom properties |
+| Grafici | Chart.js, servito dal dominio dell'app |
+| Backend | Firebase Authentication, Firestore e Hosting. Nessun codice lato server proprio: la logica gira nel browser e le security rules di Firestore sono l'unico confine di fiducia |
+| Offline | Service Worker con cache Network-First, più la cache locale dell'SDK di Firestore |
+| Archiviazione | Transazioni suddivise in documenti mensili, così un account continua a crescere oltre il limite di dimensione di un singolo record |
+| Documenti e backup | Google Drive API con OAuth 2.0 |
+| Scansione scontrini | Google Gemini, con una chiave API fornita dall'utente |
+| Dati di mercato | Tassi di cambio da exchangerate-api.com, prezzi crypto da CoinGecko |
+| Import ed export | SheetJS per Excel, fflate per gli archivi ZIP |
 
-Apri [financial-management-by-bonn.web.app](https://financial-management-by-bonn.web.app) e clicca **Prova la demo** nella schermata di accesso. Trovi l'app intera già riempita con dati di esempio: puoi visitare e modificare ogni sezione. Non viene inviato nulla al cloud, la demo vive solo in quella scheda del browser e sparisce quando la chiudi. Le poche funzioni che richiedono servizi esterni reali (Google Drive, lettura degli scontrini, esportazione dell'account) lì sono disattivate.
+## Architettura
 
----
+```mermaid
+flowchart LR
+    user(["Tu, da telefono o computer"])
+    subgraph device["Il tuo browser"]
+        app["Budgee PWA<br/>tutta la logica"]
+        sw["Service Worker<br/>e cache locale"]
+    end
+    subgraph firebase["Firebase"]
+        auth["Authentication"]
+        db[("Firestore<br/>uno spazio per utente")]
+        rules{{"Security rules"}}
+    end
+    drive["Il tuo Google Drive<br/>documenti e backup"]
+    services["Gemini, CoinGecko,<br/>tassi di cambio"]
 
-## Cosa ti offre
+    user --> app
+    app <--> sw
+    app --> auth
+    app --> rules --> db
+    app -. "solo se lo colleghi" .-> drive
+    app -. "su richiesta" .-> services
 
-- Tutto in una sola app: spese, entrate, budget mensili, investimenti, finanziamenti, conti aperti, obiettivi di risparmio, spese deducibili e documenti
-- Nessun abbonamento, nessuna versione premium, nessuna pubblicità
-- Funziona su smartphone, tablet e desktop; la installi dal browser e si comporta come un'app nativa
-- Sincronizzazione cloud via Firebase, gli stessi dati ti seguono fra dispositivi
-- Funziona offline; ciò che inserisci senza connessione si sincronizza al rientro
-- Pronta in pochi minuti: ti registri e sei dentro
-- Fotografi uno scontrino e l'AI compila il form al posto tuo, se lo vuoi e solo dopo che l'hai detto
-- Rilevamento di pattern sulle tue spese con suggerimenti pratici
-- Un backup settimanale sul tuo Google Drive e l'esportazione dell'intero account in un click
-- Un pacchetto guidato di documenti per il commercialista quando arriva la dichiarazione
-- I buoni pasto con un saldo proprio, tenuto fuori dalla liquidità perché non si spendono ovunque
-- Multi-valuta: EUR, USD, GBP e PLN con conversione automatica
+    classDef client fill:#dcfce7,stroke:#15803d,color:#14532d
+    classDef cloud fill:#dbeafe,stroke:#1d4ed8,color:#1e3a8a
+    classDef guard fill:#fef3c7,stroke:#b45309,color:#78350f
+    classDef external fill:#f3f4f6,stroke:#6b7280,color:#1f2937
+    class app,sw client
+    class auth,db cloud
+    class rules guard
+    class drive,services external
+```
 
-È la prima volta che la usi? Il [manuale utente](./USER_GUIDE_IT.md) accompagna sezione per sezione, passo dopo passo.
+Tutto ciò che vedi è calcolato nel browser. Firestore conserva i tuoi dati e le sue regole decidono chi può leggerli; i servizi tratteggiati vengono chiamati solo per la funzione che li richiede: Drive quando lo colleghi, Gemini quando scansioni uno scontrino con la tua chiave, CoinGecko quando hai delle crypto, i tassi di cambio quando usi più di una valuta.
 
----
+## Installazione
 
-## Come iniziare
+Budgee è una web app ospitata: da questo repository non c'è niente da scaricare.
 
-### 1. Apri l'app
+1. Apri [financial-management-by-bonn.web.app](https://financial-management-by-bonn.web.app) in Chrome, Safari, Firefox o Edge.
+2. Premi **Registrati**, inserisci email e password e accetta i termini d'uso. Clicca il link nell'email di verifica per attivare l'account.
+3. Facoltativo: installala. Su mobile il browser propone "Aggiungi a schermata Home"; su desktop cerca l'icona di installazione nella barra degli indirizzi. Da lì Budgee si apre come un'app nativa.
+4. Aggiungi qualche spesa ed entrata del mese corrente. Ognuna richiede importo, categoria, data e metodo di pagamento.
+5. Apri **Budget** e imposta i limiti per le categorie che vuoi tenere d'occhio.
 
-Vai su [financial-management-by-bonn.web.app](https://financial-management-by-bonn.web.app) da qualsiasi browser (Chrome, Safari, Firefox, Edge).
+La [guida utente](./USER_GUIDE_IT.md) percorre ogni sezione passo per passo.
 
-### 2. Crea il tuo account
+## Funzionalità
 
-Tocca **Registrati** e inserisci email e password. Riceverai un'email di verifica; clicca sul link per attivare l'account.
+![La dashboard delle spese](./docs/screenshots/it/01-spese.png)
 
-### 3. Installa sul dispositivo (opzionale)
+*La scheda Spese: la barra delle azioni in alto, il selettore del periodo e il saldo del mese con entrate, spese e quanto delle entrate hai messo da parte.*
 
-Su mobile, il browser ti proporrà "Aggiungi alla schermata Home". Accetta e Budgee comparirà come un'app nativa. Su desktop, cerca l'icona di installazione nella barra degli indirizzi.
+### Orientarsi
 
-### 4. Aggiungi le prime transazioni
+Le schede in alto portano alle sezioni: Spese, Entrate, Risparmi, Categorie, Investimenti, Finanziamenti, Conti aperti, Budget e Documenti. Ogni sezione si apre con la stessa barra delle azioni: aggiungi, scansiona, importa, cerca, scegli quali blocchi vedere e gestisci le voci ricorrenti.
 
-Inizia aggiungendo qualche spesa o entrata del mese corrente. Ogni transazione richiede importo, categoria e data.
+Il menu **Profilo** in alto a destra raccoglie quella che prima era una fila di icone: il tuo profilo, la nazione principale, la valuta, la lingua, il tema chiaro o scuro, la guida e l'uscita. Accanto c'è il saldo dei buoni pasto, per chi li usa.
 
-### 5. Imposta i budget
-
-Apri la sezione **Budget** e imposta i limiti di spesa per le categorie che vuoi monitorare. Budgee terrà traccia dei progressi in tempo reale.
-
----
-
-## Come usare Budgee
+![Il menu Profilo](./docs/screenshots/it/20-menu-profilo.png)
 
 ### Spese ed entrate
 
-Il cuore dell'app. Per ogni transazione puoi impostare:
+Per ogni transazione puoi indicare:
 
 - Importo e valuta (EUR, USD, GBP, PLN)
-- Categoria, scelta da categorie gerarchiche che puoi personalizzare
-- Sottocategoria per maggiore dettaglio
-- Descrizione libera
-- Data e metodo di pagamento: contanti, carta o app, assegno, bonifico, crypto, addebito automatico per le spese, voucher per le entrate, buono pasto su entrambe. Il campo è obbligatorio quando compili il form a mano e arriva già preselezionato con il metodo che usi di solito per quella categoria
-- Collegamento a una rata di finanziamento o a un versamento su un investimento
-- Flag deducibile per la dichiarazione di fine anno
-- Frequenza ricorrente (giornaliera, settimanale, mensile, annuale)
+- Categoria e sottocategoria, da una gerarchia personalizzabile
+- Una descrizione libera e una data
+- Il metodo di pagamento: contanti, carta o app, assegno, bonifico, crypto, addebito diretto per le spese, voucher per le entrate, buono pasto per entrambe. È obbligatorio quando compili il form a mano e arriva preselezionato con il metodo che usi di solito per quella categoria
+- Il paese in cui hai speso, se diverso da casa
+- Un collegamento a una rata di finanziamento o a un investimento, dietro un interruttore così il form resta corto quando non serve
+- Il flag di spesa detraibile e una frequenza di ricorrenza
 
-Cose che puoi fare in più:
+Altre cose che puoi fare:
 
-- Importare transazioni da un file `.xlsx` in blocco, dall'icona nell'intestazione della sezione
-- Esportare i dati in CSV per backup o uso esterno
-- Ritrovare la valuta dell'ultima volta: ogni form ha la sua memoria, quindi le spese possono restare in zloty mentre lo stipendio continua ad arrivare in euro
-- Cercare fra le transazioni per data, categoria, importo, parola chiave, metodo di pagamento o elemento collegato
-- Leggere statistiche in tempo reale: media giornaliera, proiezione di fine mese, giorno con spesa più alta
-- Aprire grafici di trend mensile, settimanale, annuale e distribuzione per categoria
+- Importare transazioni in blocco da un file `.xlsx`, ed esportarle in CSV o Excel
+- Trovare già selezionata la valuta dell'ultima volta: ogni form ha la sua memoria
+- Leggere statistiche dal vivo: media giornaliera, totale previsto a fine mese, giorno di spesa più alta
+- Seguire il mese su un calendario giornaliero e su un andamento cumulativo che disegna il budget del mese come una linea, così vedi il giorno in cui lo supererai
 
-![Calendario spese e trend mensile](./docs/media/features/it/spese.gif)
+![Calendario delle spese e andamento mensile](./docs/media/features/it/spese.gif)
 
-*Il calendario giornaliero usa l'intensità del colore per evidenziare i giorni con spesa più alta; il grafico del trend mostra come la spesa si accumula giorno per giorno.*
+*Il calendario segna i giorni di spesa più alta; l'andamento sotto cresce giorno per giorno contro il budget.*
 
-### Scansionare uno scontrino invece di scriverlo
+### Cercare, con le statistiche
 
-Il pulsante con la fotocamera accanto ai form di spesa ed entrata apre la scansione AI: carichi una foto o un PDF e importo, data, descrizione e categoria arrivano nel form già compilati. Controlli e salvi, così non viene scritto nulla che tu non abbia visto.
+Il pulsante di ricerca apre una ricerca su spese, entrate, investimenti, finanziamenti e conti aperti, con filtri per categoria, periodo, importo, metodo di pagamento, elemento collegato e paese. Su spese ed entrate una barra sopra i risultati dà il numero, il totale e la media di ciò che è stato trovato, e **Statistiche** apre la ripartizione per categoria, un grafico mese per mese e i punti salienti.
 
-![Scansione AI di uno scontrino](./docs/screenshots/it/17-scansione-ai.png)
+![Risultati di ricerca con il pannello delle statistiche](./docs/screenshots/it/06-ricerca-statistiche.png)
 
-*Carichi una foto o un PDF e il form torna compilato. L'ultima parola resta sempre tua.*
+*La ricerca di "cena" su due anni di dati: 45 spese, il loro totale e la media, e come si distribuiscono nei mesi.*
 
-Tre cose da sapere prima di usarla:
+Un risultato si apre sul posto con i suoi dettagli e i pulsanti per modificarlo o eliminarlo. Dopo una modifica la ricerca torna allo stesso punto della lista invece di ricominciare da capo.
 
-- La scansione gira su Google Gemini con una chiave API che inserisci tu, nel profilo. Senza chiave la funzione resta spenta.
-- L'immagine esce da Budgee, quindi la prima volta ti viene chiesto un consenso a parte, che puoi revocare quando vuoi dalla stessa schermata.
-- Se scansioni una fattura che sembra un'entrata mentre è aperto il form delle spese, Budgee si ferma e ti chiede quale delle due sia.
+### Scansionare uno scontrino invece di digitarlo
 
-Dal telefono puoi anche condividere una foto direttamente da galleria o fotocamera: Budgee compare fra le app di condivisione e si apre sulla scansione con l'immagine già caricata.
+**Scansiona** apre la scansione AI: carichi una foto o un PDF, e importo, data, descrizione e categoria arrivano nel form già compilati. Li controlli e salvi, così nulla viene scritto senza che tu l'abbia visto.
+
+![Scansione AI di uno scontrino](./docs/screenshots/it/05-scansione-ai.png)
+
+Tre cose da sapere:
+
+- La scansione usa Google Gemini con una chiave API che inserisci nel profilo. Senza chiave la funzione resta spenta.
+- L'immagine esce da Budgee, quindi la prima volta chiede un consenso a parte, che puoi ritirare dalla stessa schermata.
+- Se scansioni una fattura che sembra un'entrata mentre è aperto il form delle spese, Budgee si ferma e chiede quale delle due è.
+
+Dal telefono puoi anche condividere una foto direttamente dalla galleria o dalla fotocamera: Budgee compare fra le app a cui condividere e si apre sulla scansione con l'immagine già caricata.
+
+### Spese per paese
+
+Imposta la nazione principale nel menu Profilo e ogni spesa registra dove è stata fatta. Le spese passate prendono la nazione principale in silenzio la prima volta che la scegli; un viaggio all'estero è un campo del form, e le spese estere hanno un segno nella lista, e la ricerca filtra per paese. Anche le spese ricorrenti, il CSV ed Excel portano con sé il paese.
+
+La scheda Spese mostra poi su una mappa dove sono finiti i tuoi soldi, con un selettore dell'anno e uno del continente, che si apre sul continente in cui hai viaggiato di più.
+
+![Spese per paese](./docs/screenshots/it/03-mappa-paesi.png)
+
+*Più scuro è il paese, più ci hai speso. La tabella sotto la mappa riporta totali e numero di spese.*
+
+L'ingranaggio della sezione conta le spese ancora senza paese e le elenca: scegli un paese, spunti le spese a cui si applica e salvi una volta sola.
 
 ### Uscite in contanti
 
-Il contante è la parte di un bilancio che sfugge più facilmente. La sezione Spese mostra quanta parte della spesa ci passa, mese per mese e categoria per categoria, e dice a voce alta quanta parte del totale resta fuori dalla misura perché il metodo di pagamento manca.
+Il contante è la parte del budget di cui si perde traccia più facilmente. La scheda Spese mostra quanto delle tue spese passa da lì, mese per mese e categoria per categoria, e dice quanto del totale resta non misurato perché manca il metodo di pagamento.
 
-![Quota di contante per mese e per categoria](./docs/screenshots/it/19-quota-contante.png)
+![Quota di contante per mese e per categoria](./docs/screenshots/it/04-quota-contante.png)
 
 *La quota si misura sugli importi, non sul numero di voci: dieci caffè non pesano quanto un affitto.*
 
-Se il tuo storico è precedente al campo metodo di pagamento, il profilo mostra la copertura e ti propone di completare i buchi in blocco, una categoria alla volta, suggerendo per ciascuna il metodo che usi più spesso.
+Se il tuo storico è precedente al campo del metodo di pagamento, l'ingranaggio di questa sezione mostra la copertura e riempie i buchi in blocco, una categoria alla volta, proponendo il metodo che usi più spesso per ciascuna.
 
 ### Buoni pasto
 
-Chi li riceve ha in tasca una seconda moneta: sono soldi veri, ma si spendono solo in certi posti. Budgee li tratta per quello che sono.
+Se li ricevi, porti in tasca una seconda valuta: denaro vero, spendibile solo in certi posti. Il metodo "buono pasto" vale sulle entrate come sulle spese, perché un buono prima si riceve e poi si spende. Dichiari nel profilo che li hai, imposti un saldo di partenza con la sua data, e da lì ogni movimento pagato in buoni sposta il contatore.
 
-Il metodo "buono pasto" vale sia sulle spese sia sulle entrate, perché un buono prima si incassa e poi si spende. Dal profilo dichiari di averli, imposti il saldo di partenza con la sua data, e da lì ogni movimento pagato in buoni muove il contatore. Il saldo compare in alto accanto al selettore di valuta e nella card del saldo attuale, su una riga sua.
+![Il pannello del saldo buoni pasto](./docs/screenshots/it/19-buoni-pasto.png)
 
-![Il pannello del saldo buoni pasto](./docs/screenshots/it/23-buoni-pasto.png)
+*Il saldo è ricavato dai tuoi movimenti a partire dalla cifra che hai dichiarato. Finché quella cifra non c'è, il pannello lo dice invece di mostrare uno zero che sembrerebbe un dato.*
 
-*Il saldo si ricava dai movimenti a partire dalla cifra che hai dichiarato, quindi non può divergere da essi. Finché quella cifra manca, il pannello lo dice, invece di mostrare uno zero che sembrerebbe un dato.*
-
-I buoni pasto restano fuori dalla liquidità, ed è la scelta che conta: sommarli direbbe che quei soldi sono disponibili per l'affitto. Nei totali di periodo, nei budget e nei risparmi contano invece come ogni altro movimento.
-
-Spegnere la funzione nasconde, non cancella. I movimenti storici restano in lista con la loro etichetta, e il saldo di partenza resta scritto: chi riaccende ritrova il punto da cui era partito.
+I buoni pasto restano fuori dalla liquidità: sommarli direbbe che quei soldi sono disponibili per l'affitto. Nei totali di periodo, nei budget e nei risparmi contano come qualsiasi altro movimento. Spegnere la funzione la nasconde senza cancellare niente.
 
 ### Budget
 
-Imposti un limite di spesa mensile per ogni categoria. Budgee ti mostra:
+Imposta un limite di spesa mensile per ogni categoria. Budgee mostra quanto hai speso rispetto al limite con barre di avanzamento, quanto puoi ancora spendere al giorno per restare dentro, e ti fa copiare i limiti del mese scorso con un clic. I budget seguono la gerarchia delle categorie: prima la macrocategoria, poi le sottocategorie.
 
-- Quanto hai speso rispetto al limite, con barre di progresso
-- Una proiezione di dove stai andando a fine mese
-- Un click per copiare il budget del mese precedente, così non devi reinserire i limiti ogni volta
-
-Le categorie di budget lavorano in gerarchia: prima la macro-categoria, poi le sotto-categorie. Decidi tu quanto scendere nel dettaglio.
-
-![Budget con barre di progresso per categoria](./docs/media/features/it/budget.gif)
-
-*Budget gerarchici per macro e sotto-categoria, con barre di progresso e avvisi di sforamento.*
+![Budget con barre di avanzamento per categoria](./docs/media/features/it/budget.gif)
 
 ### Risparmi
 
-Una sezione dedicata che calcola i risparmi dalla differenza fra entrate e spese:
+La scheda Risparmi ricava quanto hai messo da parte da entrate meno spese: il saldo attuale e il capitale investito, il totale risparmiato, il tasso medio di risparmio, il mese migliore e il peggiore. Un unico grafico passa fra tre viste: mese per mese, accumulato e tasso di risparmio.
 
-- Grafico mensile dei risparmi nel tempo
-- Linea dei risparmi cumulati
-- Saving rate (la quota di reddito che effettivamente tieni)
-- Mesi migliori e peggiori a colpo d'occhio
-- Rilevamento di pattern con suggerimenti brevi
-
-![Analisi dei risparmi e trend mensile](./docs/screenshots/it/10-risparmi-trend.png)
-
-*Trend dei risparmi mese per mese con totali dell'anno corrente e saving rate.*
+![Andamento dei risparmi](./docs/screenshots/it/09-risparmi-trend.png)
 
 ### Investimenti
 
-Il portafoglio in un unico posto:
+Il tuo portafoglio in un posto solo:
 
-- Tipi di asset: obbligazioni, conti deposito, azioni, fondi comuni, ETF, criptovalute, immobili e altro
-- Dettagli per investimento: importo investito, data sottoscrizione, tasso di interesse, data scadenza, rendimento atteso lordo/netto, rendimento effettivo, note libere
-- Barre di progresso temporali su quanto manca alla scadenza
-- Collegamento di dividendi, interessi o affitti all'investimento giusto
-- Collegamento di spese per tracciare versamenti di capitale aggiuntivi
-- Uno storico dei movimenti per investimento: capitale versato, capitale svincolato, rendimenti incassati, ognuno modificabile o eliminabile anche dopo
-- Rendimenti ricorrenti per ciò che rende a scadenza fissa, come una cedola o un affitto
-- Totali di portafoglio: capitale investito, rendimenti attesi, rendimenti effettivi, tasso medio, prossima scadenza
-- Ricerca con filtri multipli
+- Obbligazioni, conti deposito, azioni, fondi, ETF, crypto, immobili e altro
+- Importo investito, data di sottoscrizione, tasso, scadenza, rendimento atteso lordo e netto, rendimento effettivo, note
+- Dividendi, interessi e affitti collegati all'investimento che li ha prodotti; versamenti aggiuntivi collegati da una spesa
+- Lo storico dei movimenti di ogni investimento, ciascuno modificabile o eliminabile anche dopo, e rendimenti ricorrenti per ciò che paga a scadenza fissa
+- Totali di portafoglio: capitale investito, rendimenti attesi ed effettivi, tasso medio, prossima scadenza
 
-![Portafoglio investimenti con progressi e rendimenti attesi](./docs/media/features/it/investimenti.gif)
+I costi di gestione hanno un posto loro. Quando colleghi una spesa a un investimento indichi se è capitale nuovo o un costo: i costi restano fuori dal capitale investito, la scheda li mostra accanto al rendimento netto, e il rendimento effettivo è indicato come lordo con il netto al fianco.
 
-*Ogni card mostra importo investito, rendimento atteso, tasso di interesse, progresso fino alla scadenza e azioni rapide per i movimenti di capitale.*
+![La scheda di un ETF con costi di gestione e rendimento netto](./docs/screenshots/it/15-costi-gestione.png)
+
+![Portafoglio investimenti con avanzamento e rendimenti attesi](./docs/media/features/it/investimenti.gif)
+
+### Portafoglio crypto
+
+Un investimento crypto è un registro di acquisti, non un importo unico. Ogni lotto ha quantità, prezzo unitario e data; la scheda mostra la quantità posseduta, il prezzo medio di carico, i lotti e le vendite.
+
+![Una posizione in Bitcoin con lotti, valore di mercato e grafico della posizione](./docs/screenshots/it/14-crypto.png)
+
+*Valore di mercato, variazione del giorno e plusvalenza latente vengono dal prezzo corrente; il grafico confronta la posizione con quanto è costata.*
+
+- Il prezzo arriva da CoinGecko e porta sempre l'ora in cui è stato letto. Un prezzo più vecchio di dieci minuti si mostra con la sua data, e un prezzo che non è stato possibile leggere non viene mai sostituito da una stima. Un pulsante ne chiede uno aggiornato.
+- Una vendita parziale si registra dalla scheda. La plusvalenza realizzata è mostrata per anno con due criteri affiancati, LIFO e costo medio, perché su una vendita parziale possono divergere e avere perfino segno opposto. La pagina dichiara che il numero è indicativo e non è una dichiarazione fiscale.
+- Ciò che l'app conta come investito è quanto hai pagato, mai il valore di mercato, e le plusvalenze non entrano in nessun totale: il tuo patrimonio non oscilla con il prezzo del bitcoin.
+- La posizione viaggia nell'esportazione CSV.
 
 ### Finanziamenti
 
-Tieni traccia di ogni forma di debito:
+Mutui, prestiti auto, prestiti personali e d'onore, finanziamenti del telefono e altro: importo, date, rate, tasso, pagato e residuo, con barre di avanzamento, una vista di dettaglio con lo storico dei pagamenti e il piano di ammortamento, e le spese collegate alle rate che pagano.
 
-- Tipologie: mutui casa, prestiti auto, prestiti personali, prestiti studenti, finanziamento telefono, riscatto laurea e altro
-- Dettagli per finanziamento: importo, date di inizio e fine, rate totali, importo rata, tasso di interesse, rate pagate, totale pagato, saldo residuo, note
-- Barre di progresso su quanto manca a chiudere il prestito
-- Collegamento di spese alle rate per registrare i pagamenti reali
-- Inserimento di rate pagate o importo cumulato
-- Totali del portafoglio: totale prestato, totale da pagare (con interessi), già pagato, residuo, rata media mensile, progresso medio
-- Ricerca e vista di dettaglio con storico pagamenti e piano di ammortamento
-
-![Gestione finanziamenti con progresso pagamenti](./docs/screenshots/it/08-finanziamenti-lista.png)
-
-*Mutui e prestiti con progresso delle rate, totale pagato, saldo residuo e tasso di interesse.*
-
-### Documenti
-
-Integrazione con Google Drive per tenere ordinati i documenti finanziari:
-
-- 32 cartelle predefinite per buste paga, fatture incassate e pagate, spese detraibili, referti medici, documenti investimenti, documenti finanziamenti, contratti, assicurazioni, documenti fiscali, garanzie, estratti conto, carte di credito, bollette, tasse, immobili, veicoli, pensione, donazioni, spese scolastiche, criptovalute, spese condominiali, spese legali, spese veterinarie, giacenze medie e varie
-- Cartelle organizzate per anno in automatico (2024, 2025, ...)
-- Scegli quali cartelle visualizzare
-- Link diretti che aprono le cartelle su Google Drive
-- Autenticazione OAuth 2.0, senza condividere password
-- Nomi delle cartelle tradotti in base alla lingua scelta
-- Preferenze sulle cartelle salvate sul cloud e sincronizzate
-
-### Backup sul tuo Drive
-
-Una volta collegato Drive, ogni sette giorni Budgee scrive una copia dei tuoi dati in una cartella **Budgee Backup**. Tiene le ultime otto copie e cancella da sé le più vecchie.
-
-Dietro non c'è un server, quindi il backup parte quando apri l'app e non a un orario fisso: se non apri Budgee per due settimane, la copia ti aspetta. L'app lo dice in chiaro invece di lasciartelo immaginare, e ti riporta quando è andato l'ultimo.
-
-Su Drive, Budgee vede soltanto i file che ha creato lei. Il resto non lo può leggere.
-
-### Documenti per il commercialista
-
-Alla dichiarazione la parte difficile non sono i conti, è ricordarsi cosa consegnare. La procedura guidata **Documenti per il commercialista**, nel profilo, chiede che dichiarazione presenti, per quale anno e quali situazioni ti riguardano (casa, famiglia, spese sanitarie e così via). Poi ti accompagna solo nelle sezioni che contano davvero e per ognuna indica la cartella di Drive dove quei documenti stanno di solito.
-
-![La procedura guidata chiede che dichiarazione presenti](./docs/screenshots/it/18-wizard-fiscale.png)
-
-*Sette profili, dal dipendente che presenta il 730 all'impresa in contabilità ordinaria. Solo i capitoli che spunti diventano schermate.*
-
-Quello che esce è un unico ZIP con i documenti che hai scelto, più ciò che Budgee sa già:
-
-- Le spese detraibili dell'anno, raggruppate per categoria, con i totali
-- L'elenco di cosa manca, con le voci obbligatorie tenute separate dalle facoltative, così il commercialista sa cosa chiederti
-- Una segnalazione sulle spese detraibili pagate in contanti, che dal 2020 di norma perdono la detrazione del 19% salvo farmaci e strutture pubbliche
-- L'elenco delle cose che in una cartella non ci vanno, come l'IBAN o i codici fiscali dei familiari a carico. Budgee le nomina senza contenerle: uno ZIP che viaggia per email non è il posto giusto.
-
-La procedura segue la normativa fiscale italiana per l'anno d'imposta che scegli. Se dichiari altrove, l'elenco può non corrispondere a quello che ti serve.
-
-Un avviso resta in cima alla procedura per tutta la sua durata: gli importi sono stime calcolate sui dati che hai inserito tu, e vanno fatti controllare da un commercialista. Budgee organizza documenti, non dà consulenza fiscale, ed è meglio leggerlo mentre si usa lo strumento che dentro un documento che nessuno apre.
-
-### Transazioni ricorrenti
-
-Automazione per spese ed entrate che si ripetono:
-
-- Frequenze: giornaliera, settimanale (con giorno della settimana), mensile (primo giorno, ultimo giorno o giorno specifico), annuale
-- Ogni occorrenza richiede conferma prima di finire nei record, così nulla viene aggiunto a tua insaputa
-- Modifica importo, descrizione e metodo di pagamento; elimina una singola occorrenza o tutte le future; consulta lo storico delle conferme
-- Sincronizzazione cloud via Firestore
-- Usi tipici: affitto, stipendio, abbonamenti, bollette, assicurazioni, rate di finanziamento
-
-### Analisi e report
-
-La vista dei dati:
-
-- Heatmap calendario con intensità di spesa per ogni giorno del mese
-- Diagramma Sankey su dove vanno i tuoi soldi tra le categorie
-- Grafici di trend cumulati per spese, entrate e risparmi nel tempo
-- Rilevamento di pattern e anomalie nel comportamento di spesa
-- Confronto fra il periodo corrente e quelli precedenti
-- Suggerimenti calibrati sulle tue abitudini
-- Ricerca con filtri su categoria, periodo, importo, parole chiave
-- Report personalizzati per qualsiasi intervallo, con calcoli budget proporzionali
-
-![Analisi categorie con macro e sotto-categoria](./docs/screenshots/it/11-categorie.png)
-
-*L'analisi categorie ordina la spesa per macro-categoria, con drill-down nelle sotto-categorie e percentuale sul totale.*
-
-La sezione Categorie confronta anche due anni interi, una categoria alla volta. Una categoria presente in un anno solo resta nella tabella con l'altro anno a zero, perché la riga che sparisce è di solito quella che vale la pena guardare.
-
-![Confronto anno su anno per categoria](./docs/screenshots/it/20-confronto-anni.png)
-
-*Differenza e variazione percentuale per categoria, con i due anni affiancati. Una valuta per volta: sommare valute diverse produrrebbe un numero senza significato.*
+![Monitoraggio dei finanziamenti](./docs/screenshots/it/16-finanziamenti.png)
 
 ### Conti aperti
 
-Traccia soldi che devi e soldi che ti devono:
-
-- Tipi di conto: debito o credito
-- Dettagli per conto: nome della persona o del fornitore, tipo, importo iniziale, saldo corrente, data di apertura, note
-- Storico pagamenti con data e importo per ogni rata
-- Conti automaticamente marcati chiusi quando il saldo arriva a zero
-- Vista consolidata in un'unica lista o separata fra attivi e chiusi
-- Transazioni collegate: ogni pagamento associato al conto
-- Totali: crediti, debiti, saldo netto
-- Ricerca per nome, tipo, importo o data
-- Esportazione in CSV
+I soldi che devi e quelli che ti devono, per persona o fornitore: importi, storico dei pagamenti, conti che si chiudono da soli quando il saldo arriva a zero, totali di crediti, debiti e saldo netto, ricerca ed esportazione CSV.
 
 ### Obiettivi di risparmio
 
-Imposta e segui obiettivi concreti:
+Obiettivi una tantum con scadenza o continuativi, con traguardo, importo accantonato, la cifra mensile necessaria per arrivare in tempo, avanzamento a colori, priorità e un archivio per quelli completati. La scheda della liquidità mostra quanto del saldo è accantonato per gli obiettivi.
 
-- Tipi di obiettivo: una tantum con scadenza, oppure ricorrenti
-- Dettagli per obiettivo: importo target, risparmiato finora, scadenza, percentuale di progresso
-- Barre di progresso colorate e indicatori di completamento
-- Quota del saldo liquido allocata agli obiettivi
-- Crea, modifica, archivia o elimina un obiettivo in qualsiasi momento
-- Calcolo automatico della quota mensile per raggiungere la scadenza
-- Priorità per importanza e scadenza
-- Conferma visiva al completamento
-- Vista di archivio per gli obiettivi passati
+### Transazioni ricorrenti
 
-### Spese deducibili
+Affitto, stipendio, abbonamenti, bollette: giornaliere, settimanali, mensili (primo giorno, ultimo o un giorno preciso) o annuali. Ogni occorrenza chiede conferma prima di entrare nei tuoi movimenti, così nulla viene aggiunto alle tue spalle. Importo, descrizione e metodo restano modificabili, e si può eliminare una singola occorrenza o tutte quelle future.
 
-Una sezione dedicata alla stagione delle dichiarazioni:
+### Analisi e confronto anno su anno
 
-- Marca le spese come deducibili mentre le registri
-- Visualizza le deducibili raggruppate per anno fiscale
-- Accesso rapido all'anno corrente e a quello precedente
-- Drill-down su qualsiasi anno passato
-- Aggiungi deducibili senza una spesa corrispondente (extra)
-- Suddivisione per categoria, per vedere chi pesa di più
-- Totale annuale
-- Pronta per l'esportazione utile in dichiarazione
-- Deducibili ricorrenti marcate in automatico
-- Tracci anche versamenti di capitale deducibili
+La scheda Categorie ordina le spese per macrocategoria con il dettaglio delle sottocategorie, confronta categorie di entrata e di uscita e aggiunge il riconoscimento delle abitudini con brevi suggerimenti.
 
-### Lingue
+![Analisi per categoria](./docs/screenshots/it/12-categorie.png)
 
-Italiano e inglese, da un unico selettore in alto accanto alla valuta. Interfaccia, categorie, grafici, statistiche e nomi delle cartelle documenti seguono la lingua scelta.
+Confronta anche due anni interi, una categoria alla volta, oppure lo stesso tratto dei due anni fino alla data di oggi. Una categoria presente in un solo anno resta in tabella con l'altro anno a zero, perché una riga che sparisce è di solito quella che vale la pena guardare.
 
-Le pagine legali seguono una regola a parte: informativa privacy e termini d'uso compaiono solo nelle lingue in cui il testo è stato riletto da una persona. Un'interfaccia può ripiegare in silenzio su un'altra lingua, un documento che vincola no.
+![Confronto anno su anno per categoria](./docs/screenshots/it/10-confronto-anni.png)
 
-### Tema chiaro e scuro
+Ogni importo della tabella apre le spese che lo compongono, e ciascuna si può modificare o eliminare da lì.
 
-Scegli chiaro o scuro dall'header. La preferenza viene salvata e sincronizzata.
+![Le spese dietro una cella del confronto](./docs/screenshots/it/11-confronto-anni-dettaglio.png)
+
+### Spese detraibili
+
+Segna le spese come detraibili mentre le registri, vedile per anno fiscale con la ripartizione per categoria, aggiungi detraibili che non hanno una spesa corrispondente, e trova già segnate le detraibili ricorrenti.
+
+### Documenti e backup settimanale
+
+La scheda Documenti collega Google Drive: 32 cartelle predefinite (buste paga, fatture, referti, contratti, assicurazioni, tasse, veicoli e altro), organizzate per anno, tradotte nella tua lingua, aperte con un clic. L'accesso passa da OAuth 2.0; Budgee vede solo i file che ha creato.
+
+![La scheda Documenti](./docs/screenshots/it/22-documenti.png)
+
+Una volta collegato Drive, Budgee scrive una copia dei tuoi dati in una cartella **Budgee Backup** ogni sette giorni e tiene le ultime otto. Non c'è un server, quindi il backup parte quando apri l'app: se non la apri per due settimane, la copia ti aspetta, e l'app ti dice quando è stata fatta davvero l'ultima.
+
+### Documenti per il commercialista
+
+Nel periodo delle tasse la parte difficile è ricordarsi cosa consegnare. La procedura **Documenti per il commercialista**, nella scheda Documenti, chiede quale dichiarazione presenti, per quale anno e quali situazioni ti riguardano, poi ti accompagna nelle sezioni pertinenti e indica la cartella di Drive dove di solito sta ogni documento.
+
+![La procedura per il commercialista](./docs/screenshots/it/23-wizard-fiscale.png)
+
+Ne esce un unico ZIP con i documenti che hai scelto, le spese detraibili dell'anno con i totali, l'elenco di ciò che manca (obbligatorio separato dal facoltativo), una nota sulle spese detraibili pagate in contanti, e l'elenco delle cose che non stanno in una cartella, come il tuo IBAN, nominate senza essere incluse. La procedura segue le regole italiane per l'anno fiscale che scegli, e un avviso in cima ricorda che gli importi sono stime che un commercialista deve verificare.
+
+### I tuoi dati e la tua privacy
+
+![La schermata del profilo](./docs/screenshots/it/21-profilo-privacy.png)
+
+- **Porta via tutto.** Un pulsante scarica l'intero account come ZIP: un JSON completo più un CSV per sezione, letti dal database e non dalla memoria. La chiave API di Gemini resta fuori di proposito.
+- **Elimina l'account del tutto.** L'eliminazione passa da ogni parte dell'account e chiede la password. Se si interrompe, l'accesso successivo la riprende dal punto in cui si era fermata.
+- **Leggi cosa viene raccolto.** L'[informativa privacy](https://financial-management-by-bonn.web.app/src/pages/privacy.html), in italiano e in inglese, è raggiungibile dalla schermata di accesso, perché la raccolta comincia quando ti registri.
+- **Sai a cosa acconsenti.** La registrazione chiede di accettare i [termini d'uso](https://financial-management-by-bonn.web.app/src/pages/terms.html), con la casella mai prespuntata. L'accettazione viene registrata con la versione del testo e un orario fissato dal server, e nessuno può riscriverla dopo.
+- **Di' di no all'AI.** La scansione degli scontrini è spenta finché non la accendi e chiede un consenso suo.
+
+Ogni utente può accedere solo ai propri dati, e lo impongono le regole del database; niente tracciamento, niente pubblicità.
+
+### Lingue, tema e mobile
+
+Italiano e inglese, scelti dal menu Profilo. Interfaccia, categorie, grafici e nomi delle cartelle seguono la lingua. L'informativa privacy e i termini compaiono solo nelle lingue in cui una persona ha letto il testo: un'interfaccia può ripiegare su un'altra lingua, un documento vincolante no.
+
+Tema chiaro o scuro, salvato e sincronizzato:
 
 <div align="center">
 <table>
 <tr>
-<td><img src="./docs/screenshots/it/01-spese-dashboard.png" alt="Tema chiaro" width="420"></td>
-<td><img src="./docs/screenshots/it/16-dark-mode.png" alt="Tema scuro" width="420"></td>
+<td><img src="./docs/screenshots/it/01-spese.png" alt="Tema chiaro" width="420"></td>
+<td><img src="./docs/screenshots/it/25-dark-mode.png" alt="Tema scuro" width="420"></td>
 </tr>
 <tr>
 <td align="center"><em>Tema chiaro</em></td>
@@ -349,150 +350,43 @@ Scegli chiaro o scuro dall'header. La preferenza viene salvata e sincronizzata.
 </table>
 </div>
 
-### Pensata per il mobile
-
-Budgee è progettata mobile-first: ogni sezione si adatta agli schermi piccoli con navigazione a bottom-tab e layout compatti. Installala dal browser per lanciarla come un'app nativa.
+Sul telefono le sezioni passano a una barra in basso: Spese, Entrate, Risparmi e Budget a portata di pollice, il resto sotto **Altro**. Al primo accesso un tour guidato presenta le funzioni principali.
 
 <div align="center">
-<img src="./docs/screenshots/it/14-mobile-spese.png" alt="Vista spese mobile" width="280">
+<img src="./docs/screenshots/it/26-mobile-spese.png" alt="Vista spese su mobile con la barra in basso" width="280">
 &nbsp;&nbsp;&nbsp;
-<img src="./docs/screenshots/it/15-mobile-calendario.png" alt="Calendario spese mobile" width="280">
+<img src="./docs/screenshots/it/27-mobile-calendario.png" alt="Calendario spese su mobile" width="280">
 </div>
 
-### Tutorial interattivo
+### Quando esce una nuova versione
 
-Alla prima apertura un tour guidato spiega le funzioni principali.
+All'apertura Budgee controlla se è stata pubblicata una versione nuova e chiede: aggiorna ora o più tardi. Finché non accetti resti sulla versione che hai aperto, così l'app non cambia sotto le tue mani mentre inserisci una spesa.
 
-### Quando esce una versione nuova
+## Come contribuire
 
-All'apertura Budgee guarda se ne è stata pubblicata una e, in quel caso, te lo dice: aggiorni subito oppure rimandi. Finché non accetti continui a usare la versione che avevi aperto, così l'app non ti cambia sotto le mani mentre stai registrando una spesa. Se rimandi la ritrovi alla riapertura, e se hai più schede aperte accettare in una aggiorna anche le altre.
+Il codice sorgente è privato, quindi i contributi arrivano come feedback. La [guida al feedback](./FEEDBACK_IT.md) spiega come segnalare un bug in modo che si possa agire, chiedere una funzione o chiedere supporto. Contatto rapido: andreabonacci95@protonmail.com
 
----
+## Team e maintainer
 
-## Privacy e sicurezza
+Sviluppata e mantenuta da Andrea Bonacci - [github.com/AndreaBonn](https://github.com/AndreaBonn)
 
-I tuoi dati finanziari sono sensibili e Budgee li tratta come tali:
+## Sicurezza
 
-- Ogni utente accede solo ai propri dati, garantito a livello di database
-- Tutte le connessioni passano da HTTPS; i dati sono cifrati a riposo con AES-256
-- Gli account devono verificare l'email prima dell'uso
-- La password deve essere lunga almeno 8 caratteri, con maiuscole, minuscole e numeri
-- Nessun tracciamento, nessuna pubblicità; Budgee non vende e non condivide i tuoi dati
-- I dati in cache offline si sincronizzano al rientro su un canale cifrato
-
-Nel profilo decidi anche cosa ne è dei tuoi dati:
-
-![La schermata del profilo con copertura dei metodi e privacy](./docs/screenshots/it/21-profilo-privacy.png)
-
-*Copertura dei metodi di pagamento, chiavi AI, informativa privacy, esportazione e cancellazione dell'account stanno tutte nella stessa schermata.*
-
-- **Portati via tutto.** Un pulsante scarica l'intero account come ZIP: un JSON completo più un CSV per sezione. Viene letto dal database e non da ciò che l'app ha in memoria, così non resta indietro niente. L'unica cosa esclusa, di proposito, è la chiave API di Gemini.
-- **Cancella l'account per davvero.** La cancellazione percorre ogni parte dell'account, non solo il documento principale, e chiede conferma con la password. Se si interrompe a metà, l'accesso successivo la riprende da dove si era fermata invece di lasciare dati orfani.
-- **Leggi cosa viene raccolto.** L'[informativa privacy](https://financial-management-by-bonn.web.app/src/pages/privacy.html) è scritta in italiano e in inglese e si raggiunge dall'app stessa, anche dalla schermata di accesso: la raccolta comincia quando ti registri, quindi il documento deve stare lì, non dietro il login.
-- **Sai a cosa stai dicendo di sì.** La registrazione chiede di accettare i [termini d'uso](https://financial-management-by-bonn.web.app/src/pages/terms.html), con la casella mai già spuntata e i due documenti collegati accanto al punto in cui accetti. L'accettazione resta scritta con la versione del testo e con un momento che il tuo browser non sceglie, e nessuno la può riscrivere dopo.
-- **Di' no all'AI.** La scansione degli scontrini resta spenta finché non l'accendi tu, chiede un consenso a parte e si può revocare dalla stessa schermata.
-
-Per l'inventario dettagliato delle misure di sicurezza, vai alla [documentazione sulla sicurezza](./SECURITY_IT.md).
-
----
-
-## Sotto il cofano
-
-Budgee è una Progressive Web App (PWA) basata su standard web:
-
-| Componente | Tecnologia |
-|-----------|-----------|
-| Frontend | Vanilla JavaScript (moduli ES6+), HTML5, CSS3 con custom properties |
-| Architettura | Modulare, organizzata per feature; event delegation; lifecycle esplicito |
-| Grafici | Chart.js |
-| Backend | Firebase (Firestore, Authentication, Hosting). Nessun codice lato server proprio: la logica gira nel browser e le regole Firestore sono l'unico confine di fiducia |
-| Documenti | Google Drive API con OAuth 2.0 |
-| Scansione scontrini | Google Gemini, con chiave API fornita dall'utente |
-| Offline | Service Worker con caching Network-First, più la cache locale dell'SDK Firestore |
-| Archiviazione | Transazioni divise in documenti mensili, così l'account continua a crescere oltre il limite di dimensione di un singolo record |
-| Import/Export | SheetJS (xlsx) per Excel, fflate per gli archivi ZIP |
-| Sicurezza | Content Security Policy, HTTPS forzato, sanitizzazione input, Firestore rules |
-
----
-
-## Checklist delle funzionalità
-
-- Tracciamento spese ed entrate con categorie, sottocategorie e metodi di pagamento
-- Scansione AI degli scontrini, facoltativa, con la possibilità di condividere una foto direttamente dal telefono
-- Quota di contante per mese e per categoria, più il completamento assistito dei metodi di pagamento mancanti
-- Buoni pasto con saldo proprio, tenuto fuori dalla liquidità e valido su entrate e spese
-- Confronto anno su anno, una categoria alla volta
-- Gestione budget con monitoraggio in tempo reale e avvisi
-- Analisi dei risparmi con calcoli automatici e grafico di trend
-- Portafoglio investimenti con rendimenti e date di scadenza
-- Gestione finanziamenti con tracciamento pagamenti e visualizzazione del progresso
-- Conti aperti per crediti e debiti
-- Obiettivi di risparmio con progresso e scadenza
-- Spese deducibili organizzate per anno
-- Gestione documenti con integrazione Google Drive
-- Backup settimanale sul tuo Drive, con le ultime otto copie conservate
-- Pacchetto guidato di documenti per il commercialista, su sette profili fiscali
-- Esportazione completa dell'account in ZIP e cancellazione che non lascia residui
-- Termini d'uso e informativa privacy raggiungibili dalla schermata di accesso, con l'accettazione registrata e non riscrivibile
-- Avviso quando esce una versione nuova, con l'aggiornamento che parte solo se lo accetti
-- Transazioni ricorrenti con programmazione flessibile
-- Ricerca su tutti i tipi di dato
-- Insight sulle spese con rilevamento pattern
-- Multi-valuta: EUR, USD, GBP, PLN, con la valuta di inserimento ricordata per ogni form
-- Multi-lingua: italiano, inglese
-- Tema chiaro e scuro
-- Modalità offline con sincronizzazione automatica
-- Installabile come PWA su qualsiasi dispositivo
-- Import ed export Excel
-- Sincronizzazione cloud
-- Tutorial interattivo
-
----
+L'inventario dettagliato delle misure di sicurezza, e come segnalare una vulnerabilità, è in [SECURITY_IT.md](./SECURITY_IT.md).
 
 ## Licenza
 
-Questo progetto è proprietario. L'app web è gratuita per uso personale. Per i dettagli vedi [LICENSE](./LICENSE).
+Proprietaria. La web app è gratuita per uso personale; il codice sorgente non viene distribuito. Vedi [LICENSE](./LICENSE).
 
----
+## Supporta il progetto
 
-## Feedback e supporto
+Se Budgee ti è stata utile, una stella su questo repository aiuta altri a trovarla.
 
-Se hai feedback, suggerimenti o un bug da segnalare, scrivimi.
-
-Leggi la [guida feedback](./FEEDBACK_IT.md) per sapere come:
-
-- Segnalare bug in modo davvero utile
-- Richiedere nuove funzionalità
-- Condividere la tua esperienza
-- Chiedere supporto
-
-Contatto rapido: andreabonacci95@protonmail.com
-
----
-
-## Autore
-
-Creata da Andrea Bonacci - [github.com/AndreaBonn](https://github.com/AndreaBonn)
-
----
-
-## Sostieni il progetto
-
-Budgee è gratuita. Se ti aiuta a tenere sotto controllo le tue finanze e vuoi contribuire, puoi lasciare un'offerta tramite PayPal. L'importo lo scegli tu ed è del tutto facoltativo.
+Budgee è gratuita. Se vuoi ricambiare puoi lasciare una mancia via PayPal; l'importo lo decidi tu ed è del tutto facoltativo.
 
 <div align="center">
 
 [![Dona con PayPal](https://img.shields.io/badge/Dona-PayPal-00457C?logo=paypal&logoColor=white&style=for-the-badge)](https://paypal.me/AndreaBonacci19)
-
-</div>
-
----
-
-<div align="center">
-
-*Il codice sorgente è privato, ma l'uso dell'app è completamente libero e gratuito.*
-
-*Se Budgee ti è stata utile, lascia una stella al repository.*
 
 **© 2025-2026 Andrea Bonacci**
 
